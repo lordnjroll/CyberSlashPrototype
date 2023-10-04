@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class BaseEnemyScript : MonoBehaviour
 {
     public float enemyHp = 1f;
-    public float enemyMoveSpeedX = 1f;
-    public float enemyMoveSpeedY = 1f;
+    private float enemyMoveSpeedX = 1f;
+    private float enemyMoveSpeedY = 1f;
     public Transform target;
     public float test = 1f;
 
@@ -57,7 +57,7 @@ public class BaseEnemyScript : MonoBehaviour
 
     public void UpdatePath()
     {
-        navMeshagent.SetDestination(target.position);\
+        enemyManager.navMeshAgent.SetDestination(target.position);
 
         if (Time.time >= pathUpdateDeadline)
         {
@@ -73,10 +73,6 @@ public class BaseEnemyScript : MonoBehaviour
 
     }
 
-    void Move()
-    {
-
-    }
 
     void Death()
     {
