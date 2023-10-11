@@ -14,7 +14,7 @@ public class BaseEnemyScript : MonoBehaviour
     public float attankRange;
     private float pathUpdateDeadline;
     private EnemyManager enemyManager;
-
+    private ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class BaseEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region target
         if (target != null)
         {
             //Run to target(Player)
@@ -39,6 +40,9 @@ public class BaseEnemyScript : MonoBehaviour
                 UpdatePath();
             }
         }
+        #endregion
+
+        Death();
     }
 
     private void Awake()
@@ -78,7 +82,8 @@ public class BaseEnemyScript : MonoBehaviour
     {
         if (enemyHp == 0)
         {
-
+            Destroy(gameObject);
+            scoreManager.score += 200;
         }
     }
 }

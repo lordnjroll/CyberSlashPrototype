@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     public Text scorecount;
-    int score;
+    public int score;
     float scoreTime;
 
 
