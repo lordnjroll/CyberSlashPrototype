@@ -10,7 +10,6 @@ public class BaseEnemyScript : MonoBehaviour
     private float enemyMoveSpeedY = 1f;
     public Transform target;
     public float test = 1f;
-
     public float attankRange;
     private float pathUpdateDeadline;
     private EnemyManager enemyManager;
@@ -25,6 +24,7 @@ public class BaseEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         #region target
         if (target != null)
         {
