@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
             escMenuLayer.SetActive(true);
             gameUILayer.SetActive(false);
             menuSwitch = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             Debug.Log("EscMenu has open");
         }else if (Input.GetKeyDown(KeyCode.Escape) && menuSwitch == true)
         {
