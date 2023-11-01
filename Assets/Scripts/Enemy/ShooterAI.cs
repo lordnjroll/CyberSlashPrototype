@@ -23,6 +23,8 @@ public class ShooterAI : MonoBehaviour
     public LineRenderer laserLine;
 
     RaycastHit PlayerHit;
+
+    [SerializeField] private float ememyHP = 10f;
     private void Awake()
     {
         // laserLine = GetComponent<LineRenderer>();
@@ -62,7 +64,7 @@ public class ShooterAI : MonoBehaviour
             AttackMode();
         }
 
-
+        
     }
 
     IEnumerator ChasePlayer()
@@ -121,6 +123,10 @@ public class ShooterAI : MonoBehaviour
 
     public void Killed()
     {
-        Destroy(gameObject);
+        if(ememyHP == 0)
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }

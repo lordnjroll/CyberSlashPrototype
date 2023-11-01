@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject escMenuLayer;
     public GameObject gameUILayer;
     public GameObject continueLayer;
-    public GameObject musicLayer;
+    public GameObject musicSettingLayer;
     public GameObject quitLayer;
 
     private bool menuSwitch = false;
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         escMenuLayer.SetActive(false);
+        musicSettingLayer.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -34,7 +36,8 @@ public class UIManager : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             Debug.Log("EscMenu has open");
-        }else if (Input.GetKeyDown(KeyCode.Escape) && menuSwitch == true)
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && menuSwitch == true)
         {
             Time.timeScale = 1f;
             escMenuLayer.SetActive(false);
@@ -44,11 +47,32 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    void GoBackEscMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            
+        }
+    }
+
     public void ContinueBtnOnClick()
     {
-        Time.timeScale = 0f;
-        musicLayer.SetActive(false);
-        quitLayer.SetActive(false);
+        Time.timeScale = 1f;
+        escMenuLayer.SetActive(false);
+        gameUILayer.SetActive(true);
+        menuSwitch = false;
+        Cursor.visible = false;
         Debug.Log("Clicked");
+    }
+
+    public void MusicBtnOnClick()
+    {
+        musicSettingLayer.SetActive(true);
+        escMenuLayer.SetActive(false);
+    }
+
+    public void QuitBtnOnClick()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }
