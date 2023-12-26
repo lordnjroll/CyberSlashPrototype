@@ -4397,7 +4397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494074128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.2, y: 32.3, z: 31.9}
+  m_LocalPosition: {x: 55.2, y: 32.3, z: 84.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4496,9 +4496,10 @@ MonoBehaviour:
     m_Bits: 8
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 0
-  WallrunSpeedBoost: 0
-  WallrunJumpBoost: 0
+    m_Bits: 64
+  WallrunSpeedBoost: 250
+  WallrunJumpBoost: 10
+  WallCheckDistance: 2
   orientation: {fileID: 1963756627}
 --- !u!1 &504349038
 GameObject:

@@ -41,7 +41,7 @@ public class FastMovementScript : MonoBehaviour
     private RaycastHit rightWallHit;
     private bool wallLeft;
     private bool wallRight;
-
+    private bool isWallRunning = false;
 
     public Transform orientation;
 
@@ -71,13 +71,14 @@ public class FastMovementScript : MonoBehaviour
 
         
         SpeedControl();
-
+        CheckForWall();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
         MyInput();
+        WallRunCheck();
 
         if (!grounded)
         {
@@ -89,6 +90,15 @@ public class FastMovementScript : MonoBehaviour
             airTime = 0;
         }
 
+        if (isWallRunning)
+        {
+            WallRunningMovement();
+          //Debug.Log("wall running");
+        }
+        /*if (!isWallRunning)
+        {
+            Debug.Log("not wall running");
+        }*/
     }
 
     private void MyInput()
@@ -97,7 +107,7 @@ public class FastMovementScript : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(jumpKey) && readyToJump && grounded && !isWallRunning)
         {
             readyToJump = false;
 
@@ -108,11 +118,12 @@ public class FastMovementScript : MonoBehaviour
             }
        
         }
-        if(Input.GetKey(jumpKey) && !grounded && remainingJump > 0) //double jump
+        if(Input.GetKey(jumpKey) && !grounded && remainingJump > 0 && !isWallRunning) //double jump
         {
             DoubleJump();
             remainingJump -= 1;
         }
+        
     }
 
     private void MovePlayer()
@@ -204,8 +215,44 @@ public class FastMovementScript : MonoBehaviour
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, WallCheckDistance, whatIsWall);
     }
 
+    private void WallRunCheck()
+    {
+        if((wallLeft || wallRight) && verticalInput > 0 && !grounded)
+        {
+            isWallRunning = true;
+            readyToJump = true;
+            remainingJump = Maxjumps;
+        }
+        else
+        {
+            isWallRunning = false;
+        }
+    }
+
    private void WallRunningMovement()
     {
+        //Debug.Log("wall running");
+
+        rb.useGravity = false;
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+
+        if((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
+        {
+            wallForward = -wallForward;
+        }
+
+        //forward force
+        rb.AddForce(wallForward * WallrunSpeedBoost, ForceMode.Force);
+
+        // push to wall force
+        if (!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
+        {
+            rb.AddForce(-wallNormal * 100 * WallrunJumpBoost, ForceMode.Force);
+        }
 
     }
 }
