@@ -4420,7 +4420,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &494074136
@@ -4477,6 +4477,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe5e13a09062c74ca813ba5e76f034d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 15
+  groundDrag: 5
+  OriginalDrag: 0
+  jumpForce: 15
+  DoublejumpForce: 10
+  jumpCooldown: 0.3
+  airMultiplier: 1
+  remainingJump: 0
+  Maxjumps: 2
+  DownwardForce: 18.5
+  walkSpeed: 0
+  sprintSpeed: 0
+  jumpKey: 32
+  playerHeight: 1.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  WallrunSpeedBoost: 0
+  WallrunJumpBoost: 0
+  orientation: {fileID: 1963756627}
 --- !u!1 &504349038
 GameObject:
   m_ObjectHideFlags: 0
@@ -10385,6 +10408,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2e82002925ee35b4497390c9829b4fcb, type: 2}
     - target: {fileID: 7647803755668204244, guid: 87f587bbcfcb19443949fc6c2c504758, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647803755668204244, guid: 87f587bbcfcb19443949fc6c2c504758, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10394,7 +10421,7 @@ PrefabInstance:
       objectReference: {fileID: 989805185}
     - target: {fileID: 7647803755668204254, guid: 87f587bbcfcb19443949fc6c2c504758, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.69
+      value: -0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87f587bbcfcb19443949fc6c2c504758, type: 3}
