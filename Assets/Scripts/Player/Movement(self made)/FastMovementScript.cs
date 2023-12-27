@@ -124,9 +124,7 @@ public class FastMovementScript : MonoBehaviour
         {
             DoubleJump();
             remainingJump -= 1;
-        }
-
-        
+        }        
 
     }
 
