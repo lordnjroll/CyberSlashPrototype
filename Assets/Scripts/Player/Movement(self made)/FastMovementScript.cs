@@ -35,13 +35,15 @@ public class FastMovementScript : MonoBehaviour
     [Header("Wall Running")]
     public LayerMask whatIsWall;
     public float WallrunSpeedBoost;
-    public float WallrunJumpBoost;
+    public float WallrunJumpSideBoost;
+    public float WallrunJumpUpBoost;
     public float WallCheckDistance;
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
     private bool wallLeft;
     private bool wallRight;
     private bool isWallRunning = false;
+    private bool iswallDoubleJumpOnCD;
 
     public Transform orientation;
 
@@ -118,12 +120,14 @@ public class FastMovementScript : MonoBehaviour
             }
        
         }
-        if(Input.GetKey(jumpKey) && !grounded && remainingJump > 0 && !isWallRunning) //double jump
+        if(Input.GetKey(jumpKey) && !grounded && remainingJump > 0 && !isWallRunning && !iswallDoubleJumpOnCD) //double jump
         {
             DoubleJump();
             remainingJump -= 1;
         }
+
         
+
     }
 
     private void MovePlayer()
@@ -222,6 +226,12 @@ public class FastMovementScript : MonoBehaviour
             isWallRunning = true;
             readyToJump = true;
             remainingJump = Maxjumps;
+
+            if (Input.GetKey(jumpKey)) //wall jump
+            {
+                Debug.Log("wall jumped");
+                WallJump();
+            }
         }
         else
         {
@@ -251,8 +261,34 @@ public class FastMovementScript : MonoBehaviour
         // push to wall force
         if (!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
         {
-            rb.AddForce(-wallNormal * 100 * WallrunJumpBoost, ForceMode.Force);
+            rb.AddForce(-wallNormal * 100 , ForceMode.Force);
         }
 
+    }
+
+   private void WallJump()
+   {
+        //determine which wall the player is running from
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        //add the side and up jump force
+        Vector3 forceToApply = transform.up * WallrunJumpUpBoost + wallNormal * WallrunJumpSideBoost;
+
+        //reset y velocity and add force
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(forceToApply, ForceMode.Force);
+
+        iswallDoubleJumpOnCD = true;
+
+        //to prevent the player from using their double jump immediately afte wall jumping
+        Invoke("WallDoubleJumpCoolDown", 0.2f);
+    }
+
+    private void WallDoubleJumpCoolDown()
+    {
+        iswallDoubleJumpOnCD = false;
+
+        //resets double jump
+        remainingJump = Maxjumps;
     }
 }

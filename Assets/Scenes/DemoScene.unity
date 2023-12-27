@@ -4376,7 +4376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   PlayerAttackStartPoint: {fileID: 392274882}
   AttackRange: 5
   fpcamera: {fileID: 633442855}
@@ -4480,10 +4480,10 @@ MonoBehaviour:
   moveSpeed: 15
   groundDrag: 5
   OriginalDrag: 0
-  jumpForce: 15
+  jumpForce: 13
   DoublejumpForce: 10
   jumpCooldown: 0.3
-  airMultiplier: 1
+  airMultiplier: 0.5
   remainingJump: 0
   Maxjumps: 2
   DownwardForce: 18.5
@@ -4498,8 +4498,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   WallrunSpeedBoost: 250
-  WallrunJumpBoost: 10
-  WallCheckDistance: 2
+  WallrunJumpSideBoost: 500
+  WallrunJumpUpBoost: 500
+  WallCheckDistance: 1
   orientation: {fileID: 1963756627}
 --- !u!1 &504349038
 GameObject:
