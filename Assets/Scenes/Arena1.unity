@@ -1871,6 +1871,43 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5312183132878606582, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
   m_PrefabInstance: {fileID: 5312183133070682594}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &494074133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494074128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe5e13a09062c74ca813ba5e76f034d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 15
+  groundDrag: 5
+  OriginalDrag: 0
+  jumpForce: 13
+  DoublejumpForce: 10
+  jumpCooldown: 0.3
+  airMultiplier: 0.5
+  remainingJump: 0
+  Maxjumps: 2
+  DownwardForce: 17
+  walkSpeed: 0
+  sprintSpeed: 0
+  jumpKey: 32
+  playerHeight: 1.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 64
+  WallrunSpeedBoost: 250
+  WallrunJumpSideBoost: 500
+  WallrunJumpUpBoost: 500
+  WallCheckDistance: 1
+  orientation: {fileID: 1963756627}
 --- !u!1 &504349038
 GameObject:
   m_ObjectHideFlags: 0
@@ -9245,6 +9282,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5312183132878606579, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312183132878606581, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5312183132878606582, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -9289,6 +9334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5312183132878606583, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5312183132878606584, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: scorecount
       value: 
@@ -9297,6 +9346,10 @@ PrefabInstance:
       propertyPath: Hpbar
       value: 
       objectReference: {fileID: 7954661462345226348}
+    - target: {fileID: 5312183132878606591, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5312183132878606591, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: quitLayer
       value: 
