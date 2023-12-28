@@ -12,6 +12,8 @@ public class SwordSlash : MonoBehaviour
     private GameObject Shooter;
     private ShooterAI ShooterScript;
     public ScoreManager Score;
+    public GameObject Shield;
+    public int ShieldHP = 10;
 
     private Animator anim;
     
@@ -36,11 +38,11 @@ public class SwordSlash : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //anim.SetTrigger("AttackTrigger" );
-
+            Debug.Log("clicked");
             RaycastHit hit;
             if (Physics.Raycast(fpcamera.transform.position, fpcamera.transform.forward, out hit, AttackRange))
             {
-
+                
                 if(hit.transform.tag == "Shooter")
                 {
                     Shooter = hit.transform.gameObject;
@@ -52,7 +54,20 @@ public class SwordSlash : MonoBehaviour
 
                     Score.GetScore();
                 }
-                
+
+                if(hit.transform.tag == "Shield")
+                {
+                    Shield = hit.transform.gameObject;
+                    
+                    ShieldHP--;
+
+                    Debug.Log("Hit Shield");
+
+                    if(ShieldHP == 0)
+                    {
+                        Destroy(this.Shield);
+                    }
+                }
             }
             else
             {
