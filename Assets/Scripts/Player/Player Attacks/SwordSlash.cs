@@ -50,7 +50,8 @@ public class SwordSlash : MonoBehaviour
                     ShooterScript = Shooter.GetComponent<ShooterAI>();
 
                     Debug.Log("Hit enemy");
-                    ShooterScript.Killed();
+                    //ShooterScript.Killed();
+                    Destroy(Shooter);
 
                     Score.GetScore();
                 }

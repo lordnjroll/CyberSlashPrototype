@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 5312183132878606584}
   - component: {fileID: 5312183132878606576}
   - component: {fileID: 5312183132878606585}
-  - component: {fileID: 5312183132878606590}
   - component: {fileID: 5312183132878606591}
   m_Layer: 7
   m_Name: Player
@@ -159,6 +158,8 @@ MonoBehaviour:
   AttackRange: 5
   fpcamera: {fileID: 5312183133561322437}
   Score: {fileID: 5312183132878606584}
+  Shield: {fileID: 0}
+  ShieldHP: 10
 --- !u!114 &5312183132878606585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,25 +180,6 @@ MonoBehaviour:
   throwKey: 324
   throwForce: 70
   throwUpwardForce: 0
---- !u!114 &5312183132878606590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5312183132878606578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644fa02c8c049b2488596da457ec161b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knifePrefab: {fileID: 4438154089097453830, guid: 188d725f9a8607947b1206ad2ff11cd3, type: 3}
-  knifeSpeed: 50
-  maxDistance: 100
-  attachLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  mainCamera: {fileID: 5312183133561322437}
 --- !u!114 &5312183132878606591
 MonoBehaviour:
   m_ObjectHideFlags: 0
