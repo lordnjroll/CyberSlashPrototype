@@ -30,7 +30,7 @@ public class ShooterProjectile : MonoBehaviour
     {
         DespawnTime += Time.deltaTime;
 
-        if (DespawnTime == 2)
+        if (DespawnTime == 5)
         {
             Destroy(this);
         }
@@ -44,9 +44,11 @@ public class ShooterProjectile : MonoBehaviour
         {
             PlayerHealth.hit();
             //Debug.Log("Player Hit");
+
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        
 
         
     }

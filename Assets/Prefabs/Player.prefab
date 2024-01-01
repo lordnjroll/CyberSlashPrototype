@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 5312183132878606587}
   - component: {fileID: 5312183132878606584}
   - component: {fileID: 5312183132878606576}
-  - component: {fileID: 5312183132878606585}
   - component: {fileID: 5312183132878606591}
   m_Layer: 7
   m_Name: Player
@@ -160,26 +159,6 @@ MonoBehaviour:
   Score: {fileID: 5312183132878606584}
   Shield: {fileID: 0}
   ShieldHP: 10
---- !u!114 &5312183132878606585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5312183132878606578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5448bfacbecbde4c86f5f62eec0c5f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 5312183133561322439}
-  attackPoint: {fileID: 5312183132779072032}
-  objectToThrow: {fileID: 4438154089097453830, guid: 188d725f9a8607947b1206ad2ff11cd3, type: 3}
-  totalThrows: 200
-  throwCooldown: 0.1
-  throwKey: 324
-  throwForce: 70
-  throwUpwardForce: 0
 --- !u!114 &5312183132878606591
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,9 +6,9 @@ public class FastMovementScript : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-
     public float groundDrag;
     public float OriginalDrag;
+    private float desiredSpeed;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -62,6 +62,8 @@ public class FastMovementScript : MonoBehaviour
         readyToJump = true;
         remainingJump = Maxjumps;
 
+
+        desiredSpeed = moveSpeed;
         OriginalDrag = groundDrag;
         StartCoroutine(DragHandler());
     }
@@ -147,9 +149,10 @@ public class FastMovementScript : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         // limit velocity if needed
-        if (flatVel.magnitude > moveSpeed)
+        //if (flatVel.magnitude > moveSpeed)
+        if(flatVel.magnitude > desiredSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * desiredSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
