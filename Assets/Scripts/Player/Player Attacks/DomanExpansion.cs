@@ -7,9 +7,12 @@ public class DomanExpansion : MonoBehaviour
 
     public GameObject DomainSphere;
     public ParticleSystem DomainParticleEffect;
+    public float DomainParticleDuration = 0.75f;
+    private GameObject[] TargetTraped;
 
     public float ChargeUpSpeed = 2f;
     public float expandSpeed = 5f;
+    public float shrinkSpeed = 5; //speed the domain shrink after fully expanded
 
     public float ChargeUpMaxScale = 10f;
     public float minScale = 0.1f;
@@ -29,12 +32,20 @@ public class DomanExpansion : MonoBehaviour
     private bool isExpanding = false;
     private Vector3 initialScale;
 
+    //Script references
+    public ScoreManager Score;
+    private mesh_destroy dismemberScript;
+
     // Start is called before the first frame update
     void Start()
     {
         //set the domain as the minimum scale at the beginning
         DomainSphere.transform.localScale = new Vector3(minScale, minScale, minScale);
         initialScale = new Vector3(minScale, minScale, minScale);
+
+        Score = GetComponent<ScoreManager>();
+        dismemberScript = GetComponent<mesh_destroy>();
+
     }
 
     // Update is called once per frame
@@ -54,20 +65,23 @@ public class DomanExpansion : MonoBehaviour
             {
                 //start the domain charging when holding the button
                 startCharge();
+                Debug.Log("fuck");
             }
             else if (ChargeUpTimer > 0 && !(Input.GetKey(expandButton)) && !FullyExpanded)
             {
                 //decrease the domain charging when not holding the button
                 DecreaseCharge();
+                
             }
-            else if (ChargeUpTimer <= 0)
+            else if (ChargeUpTimer < 0)
             {
                 //to make sure the charge up timer doesn't go below 0
                 ChargeUpTimer = 0;
                 DomainSphere.transform.localScale = new Vector3(minScale, minScale, minScale);
+                Debug.Log("you");
             }
         }
-        else if(ChargeUpTimer >= TimeToCharge)
+        else if(ChargeUpTimer >= TimeToCharge && !OnCoolDown)
         {
             //domain expansion
             FullExpansion();
@@ -99,7 +113,7 @@ public class DomanExpansion : MonoBehaviour
         isExpanding = false;
 
         ////Slowly decrease the size
-        DomainSphere.transform.localScale = Vector3.Lerp(DomainSphere.transform.localScale, initialScale, ChargeUpSpeed * Time.deltaTime);
+        DomainSphere.transform.localScale = Vector3.Lerp(DomainSphere.transform.localScale, initialScale, ChargeUpSpeed * Time.deltaTime * 2);
     }
 
     void FullExpansion()
@@ -118,6 +132,26 @@ public class DomanExpansion : MonoBehaviour
             Debug.Log("Domain Activate");
             DomainParticleEffect.Play();
             FullyExpanded = false;
+
+            InvokeRepeating("QuickDecreaseCharge", DomainParticleDuration, 0.1f);
+            Invoke("DomainCD",CoolDownTime);
+
+            //domain effects here, also still mission the collision check 
         }
+    }
+
+    void DomainCD()
+    {
+        OnCoolDown = false;
+        FullyExpanded = false;
+        CancelInvoke("QuickDecreaseCharge");
+    }
+
+    void QuickDecreaseCharge()
+    {
+        ChargeUpTimer = 0f;
+
+        ////Slowly decrease the size
+        DomainSphere.transform.localScale = Vector3.Lerp(DomainSphere.transform.localScale, initialScale, shrinkSpeed * Time.deltaTime * 2);
     }
 }
