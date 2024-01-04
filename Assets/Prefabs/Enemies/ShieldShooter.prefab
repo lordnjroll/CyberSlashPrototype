@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1858559407483051322}
   - component: {fileID: 6537195101970036726}
   - component: {fileID: 446927869350561398}
+  - component: {fileID: 864705859296476193}
   m_Layer: 8
   m_Name: ShieldShooter
   m_TagString: Shooter
@@ -280,6 +281,24 @@ MonoBehaviour:
   AttackCD: 0
   laserLine: {fileID: 7466099997991774759, guid: 1e907082ec4ab6b4ca0d9c33426f58d4, type: 3}
   ememyHP: 10
+--- !u!114 &864705859296476193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876251210765111946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feb784eb6fa7c340859352e44c42aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  forceToExplode: 1
+  generation: 1
+  maxGeneration: 6
+  cutPerHit: 7
+  ExplodeForce: 5000
 --- !u!1 &6970027488517963700
 GameObject:
   m_ObjectHideFlags: 0

@@ -2307,8 +2307,8 @@ MonoBehaviour:
   hit: 0
   forceToExplode: 1
   generation: 1
-  maxGeneration: 6
-  cutPerHit: 3
+  maxGeneration: 4
+  cutPerHit: 5
   ExplodeForce: 200
 --- !u!43 &509765252
 Mesh:
@@ -5792,14 +5792,13 @@ GameObject:
   m_Component:
   - component: {fileID: 914142705}
   - component: {fileID: 914142704}
-  - component: {fileID: 914142706}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &914142704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5823,7 +5822,7 @@ MonoBehaviour:
   - {fileID: 270410523}
   - {fileID: 1724324849}
   - {fileID: 1239737420}
-  Shieldenemy: {fileID: 0}
+  Shieldenemy: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
   ShieldenemyCount: 0
 --- !u!4 &914142705
 Transform:
@@ -5840,26 +5839,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &914142706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914142703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8af76055a523604686a14f02cd79399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 1541958320}
-  EnemyCount: 0
-  XPosition: 0
-  ZPosition: 0
-  SpawnPoints:
-  - {fileID: 1698671331}
-  Shieldenemy: {fileID: 0}
-  ShieldenemyCount: 0
 --- !u!1 &930251971
 GameObject:
   m_ObjectHideFlags: 0
@@ -5965,6 +5944,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &986511403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
+  m_PrefabInstance: {fileID: 7936785017805777619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &986511410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986511403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feb784eb6fa7c340859352e44c42aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  forceToExplode: 1
+  generation: 1
+  maxGeneration: 6
+  cutPerHit: 2
+  ExplodeForce: 200
 --- !u!1 &1001911231
 GameObject:
   m_ObjectHideFlags: 0
@@ -7720,11 +7722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6593077a9059faa47a39701f4a96e213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1541958320 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
-  m_PrefabInstance: {fileID: 1325602770654876648}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1557057619
 Mesh:
   m_ObjectHideFlags: 0
@@ -8942,11 +8939,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &1698671331 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5973925674986405397, guid: 932c5b8264961d046bc2479ef06e7c3e, type: 3}
-  m_PrefabInstance: {fileID: 5973925676545856758}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1724324849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5973925675048816391, guid: 932c5b8264961d046bc2479ef06e7c3e, type: 3}
@@ -11009,6 +11001,10 @@ PrefabInstance:
       propertyPath: CoolDownTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745118, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: EnemyMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745119, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: quitLayer
       value: 
@@ -11029,6 +11025,10 @@ PrefabInstance:
       propertyPath: musicSettingLayer
       value: 
       objectReference: {fileID: 930251971}
+    - target: {fileID: 8103605600238961340, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 27.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8103605600238961343, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.12
@@ -11483,6 +11483,14 @@ PrefabInstance:
     - target: {fileID: 3492876334676278114, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492876334676278118, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
+      propertyPath: m_Size.y
+      value: 2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492876334676278118, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
+      propertyPath: m_Center.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
       propertyPath: m_Name

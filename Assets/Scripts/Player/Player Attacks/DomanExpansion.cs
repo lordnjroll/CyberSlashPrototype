@@ -8,7 +8,8 @@ public class DomanExpansion : MonoBehaviour
     public GameObject DomainSphere;
     public ParticleSystem DomainParticleEffect;
     public float DomainParticleDuration = 0.75f;
-    private GameObject[] TargetTraped;
+
+    public LayerMask EnemyMask;
 
     public float ChargeUpSpeed = 2f;
     public float expandSpeed = 5f;
@@ -65,7 +66,7 @@ public class DomanExpansion : MonoBehaviour
             {
                 //start the domain charging when holding the button
                 startCharge();
-                Debug.Log("fuck");
+                //Debug.Log("fuck");
             }
             else if (ChargeUpTimer > 0 && !(Input.GetKey(expandButton)) && !FullyExpanded)
             {
@@ -78,7 +79,7 @@ public class DomanExpansion : MonoBehaviour
                 //to make sure the charge up timer doesn't go below 0
                 ChargeUpTimer = 0;
                 DomainSphere.transform.localScale = new Vector3(minScale, minScale, minScale);
-                Debug.Log("you");
+                //Debug.Log("you");
             }
         }
         else if(ChargeUpTimer >= TimeToCharge && !OnCoolDown)
@@ -134,9 +135,22 @@ public class DomanExpansion : MonoBehaviour
             FullyExpanded = false;
 
             InvokeRepeating("QuickDecreaseCharge", DomainParticleDuration, 0.1f);
-            Invoke("DomainCD",CoolDownTime);
 
-            //domain effects here, also still mission the collision check 
+            //domain effects here, also still missing the collision check
+            Collider[] trappedTargets = Physics.OverlapSphere(DomainSphere.transform.position, maxScale, EnemyMask);
+            foreach(Collider hit in trappedTargets)
+            {
+                Debug.Log("slashed");
+
+                dismemberScript = hit.GetComponent<mesh_destroy>();
+
+                dismemberScript.gothit();
+
+                Score.GetScore();
+            }
+
+            Invoke("DomainCD",CoolDownTime);
+          
         }
     }
 

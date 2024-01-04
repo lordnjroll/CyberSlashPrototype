@@ -16,10 +16,12 @@ public class SwordSlash : MonoBehaviour
     public int ShieldHP = 10;
 
     private Animator anim;
-    
+
+    private mesh_destroy DismentleScript;
 
     void Start()
     {
+        
         Score = GetComponent<ScoreManager>();
 
         Shooter = GameObject.FindWithTag("Shooter").gameObject;
@@ -49,9 +51,14 @@ public class SwordSlash : MonoBehaviour
 
                     ShooterScript = Shooter.GetComponent<ShooterAI>();
 
+                    DismentleScript = Shooter.GetComponent<mesh_destroy>();
+
                     Debug.Log("Hit enemy");
+
                     //ShooterScript.Killed();
-                    Destroy(Shooter);
+                    //Destroy(Shooter);
+
+                    DismentleScript.gothit();
 
                     Score.GetScore();
                 }
