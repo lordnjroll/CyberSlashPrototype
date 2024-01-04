@@ -10,6 +10,9 @@ public class spwanenimy : MonoBehaviour
     public float ZPosition;
     public Transform[] SpawnPoints;
 
+    public GameObject Shieldenemy;
+    public float ShieldenemyCount;
+
     private int RandomSpawnNumber;
 
     private float SpawnCoolDown;
@@ -22,6 +25,7 @@ public class spwanenimy : MonoBehaviour
         RandomSpawnNumber = Random.Range(0, 5);
 
         EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length;
+        ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
 
         //Debug.Log(RandomSpawnNumber);
 
@@ -43,6 +47,14 @@ public class spwanenimy : MonoBehaviour
 
             Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
             EnemyCount += 1;
+
+            SpawnCoolDown = 1;
+        }
+
+        if(ShieldenemyCount < 10 && SpawnCoolDown <= 0)
+        {
+            Instantiate(Shieldenemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+            ShieldenemyCount += 1;
 
             SpawnCoolDown = 1;
         }
