@@ -10800,6 +10800,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745113, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: score
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745113, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: scorecount
       value: 
       objectReference: {fileID: 7954661461600310202}

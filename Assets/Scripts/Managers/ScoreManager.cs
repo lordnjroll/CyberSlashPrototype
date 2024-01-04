@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
 
+    private int DesiredScore;
     public Text scorecount;
     public int score;
     float scoreTime;
+
 
 
     // Start is called before the first frame update
@@ -25,6 +27,14 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateScore()
     {
+        
+        if(DesiredScore - score > 10)
+        {
+            score += 1;
+        }else if(DesiredScore != score)
+        {
+            score = DesiredScore;
+        }
         scoreTime += Time.deltaTime;
         
         
@@ -35,6 +45,6 @@ public class ScoreManager : MonoBehaviour
 
     public void GetScore()
     {
-        score += 200;
+        DesiredScore += 200;
     }
 }
