@@ -77,6 +77,7 @@ public class InGameUI : MonoBehaviour
 
     public void StartBtnOnClick()
     {
+        inGameLayer.SetActive(false);
         chooseModeLayer.SetActive(true);
     }
 

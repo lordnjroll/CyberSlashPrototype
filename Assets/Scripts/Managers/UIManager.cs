@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f;
             escMenuLayer.SetActive(false);
             gameUILayer.SetActive(true);
+            musicSettingLayer.SetActive(false);
             menuSwitch = false;
             Debug.Log("EscMenu has close");
         }
