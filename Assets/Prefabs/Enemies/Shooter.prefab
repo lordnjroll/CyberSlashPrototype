@@ -229,8 +229,8 @@ MonoBehaviour:
   hit: 0
   forceToExplode: 1
   generation: 1
-  maxGeneration: 6
-  cutPerHit: 7
+  maxGeneration: 4
+  cutPerHit: 5
   ExplodeForce: 5000
 --- !u!1001 &1518096732265113895
 PrefabInstance:
