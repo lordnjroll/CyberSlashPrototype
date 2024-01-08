@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.1808995, a: 1}
+  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.18090063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4381,6 +4381,8 @@ MonoBehaviour:
   AttackRange: 5
   fpcamera: {fileID: 633442855}
   Score: {fileID: 494074138}
+  Shield: {fileID: 0}
+  ShieldHP: 10
 --- !u!33 &494074131
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4478,6 +4480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  defaultSpeed: 0
   groundDrag: 5
   OriginalDrag: 0
   jumpForce: 13
