@@ -11010,8 +11010,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: Maxjumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: moveSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: slamSpeed
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: WallrunSpeedBoost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: wallRunDesireSpeedIncrease
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: wallJumpDesireSpeedIncrease
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745118, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: shrinkSpeed
@@ -11045,6 +11065,10 @@ PrefabInstance:
       propertyPath: musicSettingLayer
       value: 
       objectReference: {fileID: 930251971}
+    - target: {fileID: 2607600040284745188, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8103605600238961340, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 27.5

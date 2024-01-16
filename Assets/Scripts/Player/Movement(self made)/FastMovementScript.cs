@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class FastMovementScript : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movement settings")]
     public float moveSpeed;
     public float defaultSpeed;
     public float groundDrag;
     public float OriginalDrag;
     private float desiredSpeed;
 
-    [Header("Jumping")]
+    [Header("Jump settings")]
     public float jumpForce;
     public float DoublejumpForce;
     public float jumpCooldown;
@@ -20,7 +20,16 @@ public class FastMovementScript : MonoBehaviour
     public float Maxjumps = 2;
     public float DownwardForce = 17;
     private float airTime;
+    private float groundedTime = 0;
+    private float jumpBuffer;
     bool readyToJump;
+
+    [Header("Slam settings")]
+    public float slamSpeed;
+    public KeyCode CroutchKey = KeyCode.LeftControl;
+    private Vector3 VelocityStorage;
+    private bool isSlaming;
+
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
@@ -45,6 +54,11 @@ public class FastMovementScript : MonoBehaviour
     private bool wallRight;
     private bool isWallRunning = false;
     private bool iswallDoubleJumpOnCD;
+
+    [Header("Desire speed increase settings")]
+    public float wallRunDesireSpeedIncrease;
+    public float wallJumpDesireSpeedIncrease;
+    public float DashDesireSpeedIncrease;
 
     public Transform orientation;
 
@@ -76,7 +90,7 @@ public class FastMovementScript : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
-        
+        MyInput();
         SpeedControl();
         CheckForWall();
     }
@@ -84,7 +98,7 @@ public class FastMovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
-        MyInput();
+        //MyInput();
         WallRunCheck();
 
         if (!grounded)
@@ -99,13 +113,13 @@ public class FastMovementScript : MonoBehaviour
 
         if (isWallRunning)
         {
+            //increase desired speed
+            desiredSpeed += wallRunDesireSpeedIncrease;
+
             WallRunningMovement();
-          //Debug.Log("wall running");
+          
         }
-        /*if (!isWallRunning)
-        {
-            Debug.Log("not wall running");
-        }*/
+       
     }
 
     private void MyInput()
@@ -114,7 +128,7 @@ public class FastMovementScript : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded && !isWallRunning)
+        if (Input.GetKeyDown(jumpKey) && readyToJump && grounded && !isWallRunning)
         {
             readyToJump = false;
 
@@ -125,12 +139,44 @@ public class FastMovementScript : MonoBehaviour
             }
        
         }
-        if(Input.GetKey(jumpKey) && !grounded && remainingJump > 0 && !isWallRunning && !iswallDoubleJumpOnCD) //double jump
+        else if (Input.GetKeyDown(jumpKey) && remainingJump <= 0) //jump buffer
+        {
+            jumpBuffer += Time.deltaTime;
+
+            if (grounded && jumpBuffer < 0.5f)
+            {
+                //allow the player to buffer their jump by half a second
+
+                readyToJump = false;
+
+                jumpBuffer = 0;
+
+                Jump();
+                if (grounded)
+                {
+                    Invoke(nameof(ResetJump), jumpCooldown);
+                }
+            }
+        }
+        //setting the max jump to one works, don't change it
+        if (Input.GetKeyDown(jumpKey) && !grounded && remainingJump > 0 && !isWallRunning && !iswallDoubleJumpOnCD) 
         {
             DoubleJump();
             remainingJump -= 1;
-        }        
+        }
+        
 
+
+        //air slam
+        if(!grounded && Input.GetKeyDown(CroutchKey))
+        {
+            //store the player's speed before slamming
+            VelocityStorage = rb.velocity;
+
+            Debug.Log("start slam");
+            InvokeRepeating("SlamDown", 0, 0.1f);
+
+        }
     }
 
     private void MovePlayer()
@@ -150,6 +196,7 @@ public class FastMovementScript : MonoBehaviour
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        float velocity0 = 0.0f;
 
         // limit velocity if needed
         if(flatVel.magnitude > desiredSpeed)
@@ -161,11 +208,31 @@ public class FastMovementScript : MonoBehaviour
 
 
         //increase the player's speed as the desiredSpeed build up
-        moveSpeed = Mathf.Lerp(moveSpeed, desiredSpeed, 1f);
+
+        if(desiredSpeed > defaultSpeed && moveSpeed < desiredSpeed)
+        {
+            //moveSpeed += 0.5f;
+
+            moveSpeed = Mathf.SmoothDamp(moveSpeed, desiredSpeed, ref velocity0, 0.5f);
+        }
+        
+        if(grounded && verticalInput == 0)
+        {
+            desiredSpeed = defaultSpeed;
+        }
     }
 
     private void Jump()
     {
+        if (grounded)
+        {
+            groundedTime += Time.deltaTime;
+        }
+        if (!grounded)
+        {
+            groundedTime = 0;
+        }
+
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
@@ -247,7 +314,7 @@ public class FastMovementScript : MonoBehaviour
         }
     }
 
-   private void WallRunningMovement()
+    private void WallRunningMovement()
     {
         //Debug.Log("wall running");
 
@@ -274,8 +341,11 @@ public class FastMovementScript : MonoBehaviour
 
     }
 
-   private void WallJump()
+    private void WallJump()
    {
+        //increase desireSpeed
+        desiredSpeed += wallJumpDesireSpeedIncrease;
+
         //determine which wall the player is running from
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
 
@@ -298,5 +368,16 @@ public class FastMovementScript : MonoBehaviour
 
         //resets double jump
         remainingJump = Maxjumps;
+    }
+
+    private void SlamDown()
+    {
+        rb.velocity = new Vector3(0, slamSpeed, 0);
+        Debug.Log("slamming");
+
+        if (grounded)
+        {
+          CancelInvoke("SlamDown");          
+        }
     }
 }
