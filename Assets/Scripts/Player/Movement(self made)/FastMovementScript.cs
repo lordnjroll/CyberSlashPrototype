@@ -20,7 +20,6 @@ public class FastMovementScript : MonoBehaviour
     public float Maxjumps = 2;
     public float DownwardForce = 17;
     private float airTime;
-    private float groundedTime = 0;
     private float jumpBuffer;
     bool readyToJump;
 
@@ -29,7 +28,8 @@ public class FastMovementScript : MonoBehaviour
     public KeyCode CroutchKey = KeyCode.LeftControl;
     private Vector3 VelocityStorage;
     private bool isSlaming;
-
+    private GameObject FloorObject;
+    private bool SlamFloorCheck;
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
@@ -59,6 +59,8 @@ public class FastMovementScript : MonoBehaviour
     public float wallRunDesireSpeedIncrease;
     public float wallJumpDesireSpeedIncrease;
     public float DashDesireSpeedIncrease;
+    private float groundedTime = 0;
+    public float bhopTimeLimit; //how long is the player allowed on the ground before losinig desire speed
 
     public Transform orientation;
 
@@ -93,6 +95,7 @@ public class FastMovementScript : MonoBehaviour
         MyInput();
         SpeedControl();
         CheckForWall();
+        BhopTimer();
     }
 
     private void FixedUpdate()
@@ -120,6 +123,23 @@ public class FastMovementScript : MonoBehaviour
           
         }
        
+    }
+
+    private void BhopTimer()
+    {
+        if (grounded)
+        {
+            groundedTime += Time.deltaTime;
+        }
+        if (!grounded)
+        {
+            groundedTime = 0;
+        }
+
+        if(groundedTime > bhopTimeLimit)
+        {
+            desiredSpeed = defaultSpeed;
+        }
     }
 
     private void MyInput()
@@ -173,7 +193,6 @@ public class FastMovementScript : MonoBehaviour
             //store the player's speed before slamming
             VelocityStorage = rb.velocity;
 
-            Debug.Log("start slam");
             InvokeRepeating("SlamDown", 0, 0.1f);
 
         }
@@ -224,14 +243,7 @@ public class FastMovementScript : MonoBehaviour
 
     private void Jump()
     {
-        if (grounded)
-        {
-            groundedTime += Time.deltaTime;
-        }
-        if (!grounded)
-        {
-            groundedTime = 0;
-        }
+        
 
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -373,11 +385,27 @@ public class FastMovementScript : MonoBehaviour
     private void SlamDown()
     {
         rb.velocity = new Vector3(0, slamSpeed, 0);
-        Debug.Log("slamming");
 
-        if (grounded)
-        {
-          CancelInvoke("SlamDown");          
+        var ray = new Ray(this.transform.position, -this.transform.up); // shoots a ray below the player
+        RaycastHit FloorHit; // stores the information of the object the player slammed down to
+
+        if(Physics.Raycast(ray, out FloorHit, playerHeight * 0.5f + 5f, whatIsGround))
+        {        
+            FloorObject = FloorHit.transform.gameObject;
+            if(verticalInput != 0)
+            {
+                //add a small acceleration boost if holding w or s
+                rb.AddForce(moveDirection.normalized * moveSpeed , ForceMode.Impulse);
+                CancelInvoke("SlamDown");
+            }
+            else
+            {
+                CancelInvoke("SlamDown");
+            }
+            
         }
+        
+
+        
     }
 }
