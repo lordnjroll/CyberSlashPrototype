@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaunchWave : MonoBehaviour
 {
 
-
+    public float launchForce;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,8 @@ public class LaunchWave : MonoBehaviour
         
     }
 
+    void PlayerIniatedLaunch()
+    {
 
+    }
 }
