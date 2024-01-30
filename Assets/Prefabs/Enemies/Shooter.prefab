@@ -185,8 +185,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.5, z: 1.2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.2, y: 2.32, z: 1.2}
+  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!114 &3492876334676278119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,10 +227,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  forceToExplode: 1
+  forceToExplode: 0.5
   generation: 1
-  maxGeneration: 4
-  cutPerHit: 5
+  maxGeneration: 1
+  cutPerHit: 8
   ExplodeForce: 5000
 --- !u!1001 &1518096732265113895
 PrefabInstance:

@@ -89,4 +89,10 @@ public class InGameUI : MonoBehaviour
         }
         
     }
+
+    public void ExitBtnOnClick()
+    {
+        chooseModeLayer.SetActive(false);
+        inGameLayer.SetActive(true);
+    }
 }
