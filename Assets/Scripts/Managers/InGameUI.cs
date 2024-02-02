@@ -11,6 +11,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private GameObject startGamebtn;
     [SerializeField] private GameObject quitGamebtn;
     [SerializeField] private GameObject chooseModeLayer;
+    [SerializeField] private GameObject settingLayer;
 
     public int Stagenum = 1;
     //Stage Text
@@ -79,6 +80,7 @@ public class InGameUI : MonoBehaviour
     {
         inGameLayer.SetActive(false);
         chooseModeLayer.SetActive(true);
+        settingLayer.SetActive(false);
     }
 
     public void GoBtnOnClick()
@@ -90,8 +92,16 @@ public class InGameUI : MonoBehaviour
         
     }
 
+    public void SettingBtnOnClick()
+    {
+        settingLayer.SetActive(true);
+        inGameLayer.SetActive(false);
+        chooseModeLayer.SetActive(false);
+    }
+
     public void ExitBtnOnClick()
     {
+        settingLayer.SetActive(false);
         chooseModeLayer.SetActive(false);
         inGameLayer.SetActive(true);
     }

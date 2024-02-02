@@ -11,13 +11,16 @@ public class UIManager : MonoBehaviour
     public GameObject continueLayer;
     public GameObject musicSettingLayer;
     public GameObject quitLayer;
+    public GameObject deathLayer;
+    public GameObject storeLayer;
 
     private bool menuSwitch = false;
 
+    private hp PlayerHP;
+
     void Start()
     {
-        escMenuLayer.SetActive(false);
-        musicSettingLayer.SetActive(false);
+        
     }
     // Update is called once per frame
     void Update()
@@ -56,6 +59,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OpenStore()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            storeLayer.SetActive(true);
+        }
+    }
+
+    public void PlayerDead()
+    {
+        if(hp.Hp == 0)
+        {
+            deathLayer.SetActive(true);
+            escMenuLayer.SetActive(false);
+            gameUILayer.SetActive(false);
+            musicSettingLayer.SetActive(false);
+        }
+    }
+
     public void ContinueBtnOnClick()
     {
         Time.timeScale = 1f;
@@ -75,5 +97,11 @@ public class UIManager : MonoBehaviour
     public void QuitBtnOnClick()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void RetryBtnOnClick()
+    {
+        SceneManager.LoadScene("stage 1");
+        Time.timeScale = 1f;
     }
 }
