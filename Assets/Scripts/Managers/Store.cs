@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Store : MonoBehaviour
 {
-    private Dictionary<string, int> Skills = new Dictionary<string, int>;
+    private Dictionary<string, int> Skills = new Dictionary<string, int>();
 
     // Start is called before the first frame update
     void Start()
