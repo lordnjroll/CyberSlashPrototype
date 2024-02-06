@@ -59,13 +59,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void OpenStore()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            storeLayer.SetActive(true);
-        }
-    }
+    //public void OpenStore()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        storeLayer.SetActive(true);
+    //    }
+    //}
 
     public void PlayerDead()
     {

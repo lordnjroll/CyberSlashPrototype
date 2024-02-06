@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class Store : MonoBehaviour
 {
-    private Dictionary<string, int> Skills = new Dictionary<string, int>();
+    [SerializeField] private GameObject StoreLayer;
+    //3 different skills in 3 Dictionarty, 3 by 3
+    //private Dictionary<string, int> Skills1 = new Dictionary<string, int>();
+    //private Dictionary<string, int> Skills2 = new Dictionary<string, int>();
+    //private Dictionary<string, int> Skills3 = new Dictionary<string, int>();
 
     // Start is called before the first frame update
     void Start()
@@ -18,4 +22,14 @@ public class Store : MonoBehaviour
     {
         
     }
+
+    void StoreFunction()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+        }
+    }
+
+
 }

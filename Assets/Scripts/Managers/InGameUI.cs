@@ -7,7 +7,7 @@ using TMPro;
 
 public class InGameUI : MonoBehaviour
 {
-    [SerializeField] private GameObject inGameLayer;
+    [SerializeField] private GameObject MainLayer;
     [SerializeField] private GameObject startGamebtn;
     [SerializeField] private GameObject quitGamebtn;
     [SerializeField] private GameObject chooseModeLayer;
@@ -78,7 +78,7 @@ public class InGameUI : MonoBehaviour
 
     public void StartBtnOnClick()
     {
-        inGameLayer.SetActive(false);
+        MainLayer.SetActive(false);
         chooseModeLayer.SetActive(true);
         settingLayer.SetActive(false);
     }
@@ -95,7 +95,7 @@ public class InGameUI : MonoBehaviour
     public void SettingBtnOnClick()
     {
         settingLayer.SetActive(true);
-        inGameLayer.SetActive(false);
+        MainLayer.SetActive(false);
         chooseModeLayer.SetActive(false);
     }
 
@@ -103,6 +103,6 @@ public class InGameUI : MonoBehaviour
     {
         settingLayer.SetActive(false);
         chooseModeLayer.SetActive(false);
-        inGameLayer.SetActive(true);
+        MainLayer.SetActive(true);
     }
 }
