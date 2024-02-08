@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class hp : MonoBehaviour
 {
-    public static int Hp = 10;
+    [SerializeField] private GameObject HP1;
+    [SerializeField] private GameObject HP2;
+    [SerializeField] private GameObject HP3;
+    [SerializeField] private GameObject DeathLayer;
+    [SerializeField] private GameObject GameUILayer;
 
-    [SerializeField] GameObject Hpbar;
+    public static int Hp = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,122 +21,76 @@ public class hp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //you can set timeing the player can heal, type:
-        ModifyHp(1);
-        //you can set when player get hit , type:
-        ModifyHp(-1);
+        text();
         UpdateHpbar();
-        //hit();
+        EndGame();
     }
-
-    void ModifyHp(int num)
+    public void text()
     {
-        Hp += num;
-        if (Hp > 10)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            Hp = 10;
+            Hp--;
         }
-        else if(Hp < 0)
+        else if (Input.GetKeyDown(KeyCode.H))
         {
-            Hp = 0;
+            Hp++;
         }
     }
 
     void UpdateHpbar()
     {
-
-        /*for(int i = 0; i < Hpbar.transform.childCount; i += 2 )
+        switch (Hp)
         {
-            if(Hp > i)
-            {
-                Hpbar.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            else
-            {
-                Hpbar.transform.GetChild(i).gameObject.SetActive(false);
-            }
-        }*/
-
-        if(Hp <= 10 && Hp >= 8)
-        {
-            Hpbar.transform.GetChild(4).gameObject.SetActive(true);
-            Hpbar.transform.GetChild(3).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(2).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(1).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(0).gameObject.SetActive(false);
+            case 1:
+                HP1.SetActive(true);
+                HP2.SetActive(false);
+                HP3.SetActive(false);
+                break;
+            case 2:
+                HP1.SetActive(true);
+                HP2.SetActive(true);
+                HP3.SetActive(false);
+                break;
+            case 3:
+                HP1.SetActive(true);
+                HP2.SetActive(true);
+                HP3.SetActive(true);
+                break;
+            default:
+                HP1.SetActive(false);
+                HP2.SetActive(false);
+                HP3.SetActive(false);
+                break;
         }
-        
-        if(Hp <= 7 && Hp > 5)
-        {
-            Hpbar.transform.GetChild(3).gameObject.SetActive(true);
-            Hpbar.transform.GetChild(4).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(2).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(1).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-        if(Hp <= 5 && Hp > 3)
-        {
-            Hpbar.transform.GetChild(2).gameObject.SetActive(true);
-            Hpbar.transform.GetChild(3).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(4).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(1).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-        if(Hp <= 3 && Hp > 1)
-        {
-            Hpbar.transform.GetChild(1).gameObject.SetActive(true);
-            Hpbar.transform.GetChild(3).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(2).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(4).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-        if (Hp == 1)
-        {
-            Hpbar.transform.GetChild(0).gameObject.SetActive(true);
-            Hpbar.transform.GetChild(3).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(2).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(1).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(4).gameObject.SetActive(false);
-        }
-        else if(Hp == 0)
-        {
-            Hpbar.transform.GetChild(4).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(3).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(2).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(1).gameObject.SetActive(false);
-            Hpbar.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
     }
+
 
     void EndGame()
     {
         if(Hp == 0)
         {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene("SampleScene");
+            Time.timeScale = 0f;
+            GameUILayer.SetActive(false);
+            DeathLayer.SetActive(true);
         }
     }
 
-    public void hit()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ModifyHp(2);
-            Debug.Log("+1");
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            ModifyHp(-2);
-            Debug.Log("-1");
-        }
+    //public void hit()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //    {
+    //        ModifyHp(2);
+    //        Debug.Log("+1");
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.K))
+    //    {
+    //        ModifyHp(-2);
+    //        Debug.Log("-1");
+    //    }
 
 
-        ModifyHp(-2);
+    //    ModifyHp(-2);
 
-        Debug.Log("HP LOST");
-    }
+    //    Debug.Log("HP LOST");
+    //}
 }

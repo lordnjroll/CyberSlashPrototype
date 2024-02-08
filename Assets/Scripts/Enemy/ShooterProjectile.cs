@@ -42,7 +42,7 @@ public class ShooterProjectile : MonoBehaviour
 
         if(collision.collider.gameObject.tag == "Player")
         {
-            PlayerHealth.hit();
+            //PlayerHealth.hit();
             //Debug.Log("Player Hit");
 
             Destroy(gameObject);
