@@ -24,6 +24,7 @@ public class spwanenimy : MonoBehaviour
     [Header("Spawn Manager Credit Settings")]
     public float ManagerCredit;
     public float ManagerSpawnRate;
+    public float maxManagerCredit;
     private float HypeLevel;
     private int PresetSelector;
     private int SpawnPresets;
@@ -31,7 +32,8 @@ public class spwanenimy : MonoBehaviour
 
     void Start()
     {
-        ManagerCredit = 30;
+        maxManagerCredit = 30;
+        ManagerCredit = maxManagerCredit;
     }
     
     // Update is called once per frame
@@ -78,7 +80,5 @@ public class spwanenimy : MonoBehaviour
             SpawnCoolDown = 1;
         }
     }
-
-    
     
 }
