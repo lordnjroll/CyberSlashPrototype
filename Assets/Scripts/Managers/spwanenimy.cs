@@ -25,7 +25,7 @@ public class spwanenimy : MonoBehaviour
     public float ManagerCredit;
     public float ManagerSpawnRate;
     public float maxManagerCredit;
-    private float HypeLevel;
+    private float HypeDifficultyLevel;
     private int PresetSelector;
     private int SpawnPresets;
     
@@ -43,7 +43,7 @@ public class spwanenimy : MonoBehaviour
 
         RandomSpawnNumber = Random.Range(0, 5);
 
-        PresetSelector = Random.Range(0, 50);
+        
 
         EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length;
         ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
@@ -60,7 +60,41 @@ public class spwanenimy : MonoBehaviour
     {
         if (ManagerCredit < 15 && SpawnCoolDown <= 0)
         {
-                                   // X,Z
+            PresetSelector = Random.Range(0, 100) + HypeDifficultyLevel;
+            if(PresetSelector <=20)
+                {
+                    //Easy preset            
+                }
+            if(PresetSelector <=40 || PresetSelector >20)
+                {
+                    //Easy preset 2           
+                }
+            if(PresetSelector <=55 || PresetSelector >35)
+                {
+                    //Easy preset 3          
+                }
+
+            if(PresetSelector <=70 || PresetSelector >55)
+                {
+                    //Mid preset 1          
+                }
+            if(PresetSelector <=80 || PresetSelector >70)
+                {
+                    //Mid preset 2          
+                }    
+            if(PresetSelector <=90 || PresetSelector >80)
+                {
+                    //Hard preset 1            
+                }
+            if(PresetSelector <=100 || PresetSelector >90)
+                {
+                    //Hard preset 2           
+                }
+            if(PresetSelector > 100)
+                {
+                    //Hard preset 3           
+                }    
+            /*                       // X,Z
             //XPosition = Random.Range(0, 0);
             //ZPosition = Random.Range(0, 0);
             //                                  X ,     Y ,     Z
@@ -69,7 +103,7 @@ public class spwanenimy : MonoBehaviour
             Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
             EnemyCount += 1;
 
-            SpawnCoolDown = 1;
+            SpawnCoolDown = 15;*/
         }
 
         if(ShieldenemyCount < 10 && SpawnCoolDown <= 0)
