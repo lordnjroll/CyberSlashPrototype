@@ -26,7 +26,7 @@ public class spwanenimy : MonoBehaviour
     public float ManagerSpawnRate;
     public float maxManagerCredit;
     private float HypeDifficultyLevel;
-    private int PresetSelector;
+    private float PresetSelector;
     private int SpawnPresets;
     
 
