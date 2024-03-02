@@ -18,7 +18,8 @@ public class spwanenimy : MonoBehaviour
     public float ShieldenemyCount;
 
     private int RandomSpawnNumber;
-
+    
+    
     private float SpawnCoolDown;
 
     [Header("Spawn Manager Credit Settings")]
@@ -39,11 +40,7 @@ public class spwanenimy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemySpwan();
-
-        RandomSpawnNumber = Random.Range(0, 5);
-
-        
+        enemySpwan();        
 
         EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length;
         ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
@@ -60,10 +57,14 @@ public class spwanenimy : MonoBehaviour
     {
         if (ManagerCredit < 15 && SpawnCoolDown <= 0)
         {
+            RandomSpawnNumber = Random.Range(0, 5); //select the spawn position
+            
             PresetSelector = Random.Range(0, 100) + HypeDifficultyLevel;
             if(PresetSelector <=20)
                 {
-                    //Easy preset            
+                    //Easy preset
+                    Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                 }
             if(PresetSelector <=40 || PresetSelector >20)
                 {
