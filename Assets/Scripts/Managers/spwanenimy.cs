@@ -42,6 +42,7 @@ public class spwanenimy : MonoBehaviour
     {
         enemySpwan();        
 
+        //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
         EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length;
         ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
 
@@ -65,6 +66,9 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset
                     Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    
+
+                    SpawnCoolDown = 10; //set spawn cooldown;
                 }
             if(PresetSelector <=40 || PresetSelector >20)
                 {
@@ -109,10 +113,10 @@ public class spwanenimy : MonoBehaviour
 
         if(ShieldenemyCount < 10 && SpawnCoolDown <= 0)
         {
-            Instantiate(Shieldenemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+            /*Instantiate(Shieldenemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
             ShieldenemyCount += 1;
 
-            SpawnCoolDown = 1;
+            SpawnCoolDown = 1;*/
         }
     }
     
