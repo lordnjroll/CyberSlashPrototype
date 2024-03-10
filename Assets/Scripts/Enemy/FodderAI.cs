@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 public class FodderAI : MonoBehaviour
 {
+    private Vector3 PlayerLocation;
+    public Transform Fodderlocation;
+    public gameObject Player;
+
     public float enemyHp = 1f;
     private float enemyMoveSpeedX = 1f;
     private float enemyMoveSpeedY = 1f;
@@ -19,6 +23,7 @@ public class FodderAI : MonoBehaviour
     void Start()
     {
         attankRange = enemyManager.navMeshAgent.stoppingDistance;
+        Player = gameObject.FindWithTag("Player").gameObject;
     }
 
     // Update is called once per frame
