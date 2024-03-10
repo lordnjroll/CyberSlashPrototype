@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class GroupEnemy
+{
+    public float EnemySetGroup;
+}
+
 public class spwanenimy : MonoBehaviour
 {
     public GameObject enemy;
@@ -19,7 +25,6 @@ public class spwanenimy : MonoBehaviour
 
     private int RandomSpawnNumber;
     
-    
     private float SpawnCoolDown;
 
     [Header("Spawn Manager Credit Settings")]
@@ -28,13 +33,18 @@ public class spwanenimy : MonoBehaviour
     public float maxManagerCredit;
     private float HypeDifficultyLevel;
     private float PresetSelector;
-    private int SpawnPresets;
-    
+    //private int SpawnPresets;
+
+    [SerializeField]
+    private GameObject[] EnemySet;
+
+
 
     void Start()
     {
         maxManagerCredit = 30;
         ManagerCredit = maxManagerCredit;
+
     }
     
     // Update is called once per frame
@@ -121,3 +131,5 @@ public class spwanenimy : MonoBehaviour
     }
     
 }
+
+        

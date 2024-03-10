@@ -7053,6 +7053,8 @@ MonoBehaviour:
   ManagerCredit: 0
   ManagerSpawnRate: 0
   maxManagerCredit: 0
+  EnemySet:
+  - {fileID: 0}
 --- !u!4 &914142705
 Transform:
   m_ObjectHideFlags: 0

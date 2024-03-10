@@ -104,6 +104,6 @@ public class ScoreManager : MonoBehaviour
                               "\nTotal Score " + score1;
         }
     }
-        
+
     
 }
