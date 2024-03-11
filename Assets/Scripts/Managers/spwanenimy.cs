@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class GroupEnemy
-{
-    public float EnemySetGroup;
-}
-
 public class spwanenimy : MonoBehaviour
 {
+    [System.Serializable]
+    public class GroupEnemy
+    {
+        public GameObject[] EnemySetGroup;
+    }
+
     public GameObject enemy;
     public float EnemyCount;
     public float XPosition;
@@ -36,7 +36,7 @@ public class spwanenimy : MonoBehaviour
     //private int SpawnPresets;
 
     [SerializeField]
-    private GameObject[] EnemySet;
+    private GroupEnemy[] EnemySet;
 
 
 
@@ -45,6 +45,10 @@ public class spwanenimy : MonoBehaviour
         maxManagerCredit = 30;
         ManagerCredit = maxManagerCredit;
 
+        for (int i= 0; i < EnemySet.Length; i++)
+        {
+            //EnemySet[i];
+        }
     }
     
     // Update is called once per frame

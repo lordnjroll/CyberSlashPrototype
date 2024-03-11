@@ -6,89 +6,127 @@ using UnityEngine.AI;
 public class FodderAI : MonoBehaviour
 {
     private Vector3 PlayerLocation;
-    public Transform Fodderlocation;
-    public GameObject Player;
+    //public Transform ShooterLocation;
+    //public Transform ShootPoint;
+    private GameObject Player;
+    public LayerMask PlayerLayer;
 
-    public float enemyHp = 1f;
-    private float enemyMoveSpeedX = 1f;
-    private float enemyMoveSpeedY = 1f;
-    public Transform target;
-    public float test = 1f;
-    public float attankRange;
-    private float pathUpdateDeadline;
-    private EnemyManager enemyManager;
-    private ScoreManager scoreManager;
+    public Rigidbody rb;    
 
-    // Start is called before the first frame update
+    [Header("Fodder Stats")]
+    public float AttackRange = 5;
+    public GameObject ShooterProjectile;
+    public int FodderMoveSpeed;
+    public float ProjectileSpeed;
+    public float chargeSpeed;
+
+    [HideInInspector]
+    public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
+    private bool AttackWindingUp;
+    public LineRenderer laserLine;
+
+    RaycastHit PlayerHit;
+
+    //[SerializeField] private float ememyHP = 10f;
+    private void Awake()
+    {
+        // laserLine = GetComponent<LineRenderer>();
+    }
+
     void Start()
     {
-        attankRange = enemyManager.navMeshAgent.stoppingDistance;
         Player = GameObject.FindWithTag("Player").gameObject;
+
+        //Starting the chase
+        StartCoroutine(ChasePlayer());
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerLocation = Player.transform.position;
 
-        #region target
-        if (target != null)
+        if (AttackWindingUp)
         {
-            //Run to target(Player)
-            bool inRange = Vector3.Distance(transform.position, target.position) <= attankRange;
-
-            if (inRange)
-            {
-                LookAtTarget();
-            }
-            else
-            {
-                UpdatePath();
-            }
+            transform.LookAt(PlayerLocation);
+            //laserLine.SetPosition(0, laserOrigin.position);
+            //laserLine.SetPosition(1, PlayerLocation.position);
+            //Vector3 rayOrigin = playerLocation.position;
         }
-        #endregion
 
-        Death();
-    }
+        playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
 
-    private void Awake()
-    {
-        enemyManager = GetComponent<EnemyManager>();
-    }
-
-    public void LookAtTarget()
-    {
-        //Find Player
-        Vector3 lookPos = target.position - transform.position;
-        lookPos.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.2f);
-    }
-
-    public void UpdatePath()
-    {
-        enemyManager.navMeshAgent.SetDestination(target.position);
-
-        if (Time.time >= pathUpdateDeadline)
+        if (!playerInAttackRange && !IsAttacking || AttackCD)
         {
-            pathUpdateDeadline = Time.time + enemyManager.pathUpdateDelay;
-            enemyManager.navMeshAgent.SetDestination(target.position);
+            //ChasePlayer();
+            transform.LookAt(PlayerLocation);
+            GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
         }
-    }
-
-    
-
-    void attank()
-    {
-
-    }
-
-
-    void Death()
-    {
-        if (enemyHp == 0)
+        if (playerInAttackRange && !IsAttacking && !AttackCD)
         {
-            Destroy(gameObject);
-            scoreManager.score += 200;
+            AttackMode();
         }
+
+        
+    }
+
+    IEnumerator ChasePlayer()
+    {
+        
+        GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
+        yield return null;
+    }
+
+    public void AttackMode()
+    {
+        IsAttacking = true;
+        StartCoroutine("AttackWindUp");
+        AttackWindingUp = true;
+    }
+
+    IEnumerator AttackWindUp()
+    {
+        //Starts Charging
+        yield return new WaitForSeconds(.5f);
+
+        //Stop Looking at the player
+        AttackWindingUp = false;
+        yield return new WaitForSeconds(.1f);
+
+        //Charge at the Player
+        rb.AddForce(chargeSpeed, ForceMode.Impulse);
+
+        IsAttacking = false;
+        AttackCD = true;
+
+        //Laser effect
+      /*Instantiate(FireEffect, laserLine.GetPosition(0), Quaternion.identity);
+        Destroy(FireEffect, 1f);
+
+        Instantiate(FireEffect, laserLine.GetPosition(1), Quaternion.identity);
+        Destroy(FireEffect, 1f);*/
+
+        laserLine.enabled = false;
+
+        StartCoroutine("AttackCoolDown");
+        StopCoroutine("AttackWindUp");
+    }
+
+    //Flyer attack cool down
+    IEnumerator AttackCoolDown()
+    {
+        
+        yield return new WaitForSeconds(4f);
+        AttackCD = false;
+    }
+
+    public void Killed()
+    {
+        if(ememyHP == 0)
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }
+
