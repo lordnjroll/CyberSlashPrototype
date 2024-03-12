@@ -23,14 +23,14 @@ public class FodderAI : MonoBehaviour
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
-    public LineRenderer laserLine;
+    //public LineRenderer laserLine;
 
     RaycastHit PlayerHit;
 
     //[SerializeField] private float ememyHP = 10f;
     private void Awake()
     {
-        // laserLine = GetComponent<LineRenderer>();
+        
     }
 
     void Start()
@@ -94,7 +94,7 @@ public class FodderAI : MonoBehaviour
         yield return new WaitForSeconds(.1f);
 
         //Charge at the Player
-        rb.AddForce(chargeSpeed, ForceMode.Impulse);
+        rb.AddRelativeForce(rb.transform.forward * chargeSpeed, ForceMode.Impulse);
 
         IsAttacking = false;
         AttackCD = true;
@@ -106,7 +106,7 @@ public class FodderAI : MonoBehaviour
         Instantiate(FireEffect, laserLine.GetPosition(1), Quaternion.identity);
         Destroy(FireEffect, 1f);*/
 
-        laserLine.enabled = false;
+        //laserLine.enabled = false;
 
         StartCoroutine("AttackCoolDown");
         StopCoroutine("AttackWindUp");
@@ -116,16 +116,16 @@ public class FodderAI : MonoBehaviour
     IEnumerator AttackCoolDown()
     {
         
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(.5f);
         AttackCD = false;
     }
 
     public void Killed()
     {
-        if(ememyHP == 0)
+        /*if(ememyHP == 0)
         {
             Destroy(this.gameObject);
-        }
+        }*/
         
     }
 }
