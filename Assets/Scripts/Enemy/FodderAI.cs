@@ -94,7 +94,7 @@ public class FodderAI : MonoBehaviour
         yield return new WaitForSeconds(.1f);
 
         //Charge at the Player
-        rb.AddRelativeForce(rb.transform.forward * chargeSpeed, ForceMode.Impulse);
+        rb.AddForce(rb.transform.forward * chargeSpeed, ForceMode.Impulse);
 
         IsAttacking = false;
         AttackCD = true;

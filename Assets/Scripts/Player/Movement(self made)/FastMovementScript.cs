@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FastMovementScript : MonoBehaviour
 {
+    [Header("Player Object")]
+    public GameObject PlayerObject;
+
     [Header("Movement settings")]
     public float moveSpeed;
     public float defaultSpeed;
@@ -26,10 +29,12 @@ public class FastMovementScript : MonoBehaviour
     [Header("Slam settings")]
     public float slamSpeed;
     public KeyCode CroutchKey = KeyCode.LeftControl;
-    private Vector3 VelocityStorage;
+    private float VelocityStorage;
     private bool isSlaming;
-    private GameObject FloorObject;
+    private GameObject SlamRayCastObject; // store the information of the object the player is about to slam into
     private bool SlamFloorCheck;
+    public LayerMask WhatIsEnemyLayer;
+    private bool SlamEnemyHit = false;
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
@@ -191,7 +196,7 @@ public class FastMovementScript : MonoBehaviour
         if(!grounded && Input.GetKeyDown(CroutchKey))
         {
             //store the player's speed before slamming
-            VelocityStorage = rb.velocity;
+            VelocityStorage = rb.velocity.magnitude;
 
             InvokeRepeating("SlamDown", 0, 0.1f);
 
@@ -384,28 +389,56 @@ public class FastMovementScript : MonoBehaviour
 
     private void SlamDown()
     {
+        VelocityStorage = rb.velocity.magnitude;
+
         rb.velocity = new Vector3(0, slamSpeed, 0);
 
         var ray = new Ray(this.transform.position, -this.transform.up); // shoots a ray below the player
-        RaycastHit FloorHit; // stores the information of the object the player slammed down to
+        RaycastHit ObjectHit; // stores the information of the object the player slammed down to
+        RaycastHit EnemyHit; //same as above but for enemies
 
-        if(Physics.Raycast(ray, out FloorHit, playerHeight * 0.5f + 5f, whatIsGround))
-        {        
-            FloorObject = FloorHit.transform.gameObject;
-            if(verticalInput != 0)
+        if(Physics.Raycast(ray, out ObjectHit, playerHeight * 0.5f + 5f, whatIsGround + WhatIsEnemyLayer))
+        {
+            SlamRayCastObject = ObjectHit.transform.gameObject;
+            if (SlamRayCastObject.layer == 3)
             {
-                //add a small acceleration boost if holding w or s
-                rb.AddForce(moveDirection.normalized * moveSpeed , ForceMode.Impulse);
+                if(verticalInput != 0)
+                {
+                    //add a small acceleration boost if holding w or s
+                    rb.AddForce(rb.transform.forward * VelocityStorage , ForceMode.Impulse);
+                    CancelInvoke("SlamDown");
+                }
+                else
+                {
+                    CancelInvoke("SlamDown");
+                }
+            } else if (SlamRayCastObject.layer == 8)
+            {
+                
+                rb.transform.position = new Vector3(rb.transform.position.x, SlamRayCastObject.transform.position.y + 1.5f, rb.transform.position.z);
+                InvokeRepeating("SlammedEnemy", 0, 0.1f);
                 CancelInvoke("SlamDown");
             }
-            else
-            {
-                CancelInvoke("SlamDown");
-            }
-            
+              
         }
-        
-
-        
+     
+    }
+    private void SlammedEnemy()
+    {
+        float U = 0;
+        if (U >= 0.5)
+        {
+            //launch the player forward and upward
+            rb.AddForce(rb.transform.forward * VelocityStorage, ForceMode.Impulse);
+            U = 0;
+            CancelInvoke("SlamEnemy");
+        }
+        else
+        {
+            //keep the player still
+            rb.transform.position = new Vector3(rb.transform.position.x, SlamRayCastObject.transform.position.y + 1.5f, rb.transform.position.z);
+            U += 0.1f;
+        }
+               
     }
 }

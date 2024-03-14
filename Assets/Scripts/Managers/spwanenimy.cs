@@ -67,7 +67,7 @@ public class spwanenimy : MonoBehaviour
             SpawnCoolDown -= Time.deltaTime;
         }
     }
-
+    //debug
     void enemySpwan()
     {
         if (ManagerCredit < 15 && SpawnCoolDown <= 0)
