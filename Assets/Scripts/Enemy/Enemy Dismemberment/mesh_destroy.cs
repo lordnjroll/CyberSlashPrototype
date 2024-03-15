@@ -312,5 +312,13 @@ public class mesh_destroy : MonoBehaviour
     public void gothit()
     {
         hit = true;
+
+        StartCoroutine("Cleartimer");
+    }
+
+    public IEnumerator Cleartimer()
+    {
+        yield return new WaitForSeconds(3f);
+
     }
 }
