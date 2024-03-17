@@ -414,31 +414,25 @@ public class FastMovementScript : MonoBehaviour
                 }
             } else if (SlamRayCastObject.layer == 8)
             {
-                
-                rb.transform.position = new Vector3(rb.transform.position.x, SlamRayCastObject.transform.position.y + 1.5f, rb.transform.position.z);
-                InvokeRepeating("SlammedEnemy", 0, 0.1f);
-                CancelInvoke("SlamDown");
+                //rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y - 1f, rb.transform.position.z);
+                rb.constraints = RigidbodyConstraints.FreezePosition;
+                StartCoroutine("SlammedEnemy");
+                CancelInvoke("SlamkDown");
             }
               
         }
      
     }
-    private void SlammedEnemy()
+    IEnumerator SlammedEnemy()
     {
-        float U = 0;
-        if (U >= 0.5)
-        {
-            //launch the player forward and upward
-            rb.AddForce(rb.transform.forward * VelocityStorage, ForceMode.Impulse);
-            U = 0;
-            CancelInvoke("SlamEnemy");
-        }
-        else
-        {
-            //keep the player still
-            rb.transform.position = new Vector3(rb.transform.position.x, SlamRayCastObject.transform.position.y + 1.5f, rb.transform.position.z);
-            U += 0.1f;
-        }
-               
+        yield return new WaitForSeconds(.5f);
+
+        rb.velocity = new Vector3(0, 0, 0);
+        rb.constraints = RigidbodyConstraints.None;
+         //launch the player forward and upward
+        rb.AddForce(rb.transform.forward * VelocityStorage * 2.5f + (rb.transform.up * 2.5f), ForceMode.VelocityChange);
+            
+        CancelInvoke("SlamEnemy");
+        
     }
 }
