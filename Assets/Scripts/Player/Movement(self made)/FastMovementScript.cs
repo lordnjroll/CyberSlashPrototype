@@ -6,6 +6,8 @@ public class FastMovementScript : MonoBehaviour
 {
     [Header("Player Object")]
     public GameObject PlayerObject;
+    public Camera PlayerCam;
+    private Vector3 CamPosition;
 
     [Header("Movement settings")]
     public float moveSpeed;
@@ -45,7 +47,7 @@ public class FastMovementScript : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
 
     [Header("Wall Running")]
     public LayerMask whatIsWall;
@@ -89,6 +91,8 @@ public class FastMovementScript : MonoBehaviour
 
         OriginalDrag = groundDrag;
 
+        CamPosition = PlayerCam.transform.position;
+
         StartCoroutine(DragHandler());
     }
 
@@ -117,6 +121,8 @@ public class FastMovementScript : MonoBehaviour
         {
             StopCoroutine(DragingPlayerDown());
             airTime = 0;
+            rb.useGravity = true;
+            CancelInvoke("SlamDown");
         }
 
         if (isWallRunning)
@@ -237,7 +243,7 @@ public class FastMovementScript : MonoBehaviour
         {
             //moveSpeed += 0.5f;
 
-            moveSpeed = Mathf.SmoothDamp(moveSpeed, desiredSpeed, ref velocity0, 0.5f);
+            moveSpeed = Mathf.SmoothDamp(moveSpeed, desiredSpeed, ref velocity0, 1f);
         }
         
         if(grounded && verticalInput == 0)
@@ -389,49 +395,80 @@ public class FastMovementScript : MonoBehaviour
 
     private void SlamDown()
     {
+        isSlaming = true;
         VelocityStorage = rb.velocity.magnitude;
 
         rb.velocity = new Vector3(0, slamSpeed, 0);
 
         var ray = new Ray(this.transform.position, -this.transform.up); // shoots a ray below the player
         RaycastHit ObjectHit; // stores the information of the object the player slammed down to
-        RaycastHit EnemyHit; //same as above but for enemies
 
-        if(Physics.Raycast(ray, out ObjectHit, playerHeight * 0.5f + 5f, whatIsGround + WhatIsEnemyLayer))
+        if(Physics.Raycast(ray, out ObjectHit, playerHeight  , whatIsGround + WhatIsEnemyLayer))
         {
             SlamRayCastObject = ObjectHit.transform.gameObject;
             if (SlamRayCastObject.layer == 3)
             {
-                if(verticalInput != 0)
+                if(verticalInput == 0)
                 {
-                    //add a small acceleration boost if holding w or s
+                    //add a small acceleration boost if holding w 
                     rb.AddForce(rb.transform.forward * VelocityStorage , ForceMode.Impulse);
+                    isSlaming = false;
                     CancelInvoke("SlamDown");
                 }
                 else
                 {
+                    isSlaming = false;
                     CancelInvoke("SlamDown");
                 }
             } else if (SlamRayCastObject.layer == 8)
             {
-                //rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y - 1f, rb.transform.position.z);
-                rb.constraints = RigidbodyConstraints.FreezePosition;
-                StartCoroutine("SlammedEnemy");
-                CancelInvoke("SlamkDown");
+                //if the player hits an enemy
+                isSlaming = false;
+                CancelInvoke("SlamDown");
             }
               
         }
      
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject stompedEnemy = collision.transform.gameObject;
+
+        if (isSlaming && (stompedEnemy.layer == 8))
+        {
+            //freeze the enemy
+            stompedEnemy.transform.position = new Vector3(stompedEnemy.transform.position.x, stompedEnemy.transform.position.y, stompedEnemy.transform.position.z);
+
+            //freeze the player
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            StartCoroutine("SlammedEnemy");
+            isSlaming = false;
+            CancelInvoke("SlamDown");
+        }
+    }
+
     IEnumerator SlammedEnemy()
     {
-        yield return new WaitForSeconds(.5f);
+        CancelInvoke("SlamDown");
+
+        //push the player cam down
+        PlayerCam.transform.position = new Vector3(PlayerCam.transform.position.x,PlayerCam.transform.position.y +0.1f, PlayerCam.transform.position.z);
+        yield return new WaitForSeconds(.3f);  
 
         rb.velocity = new Vector3(0, 0, 0);
         rb.constraints = RigidbodyConstraints.None;
-         //launch the player forward and upward
-        rb.AddForce(rb.transform.forward * VelocityStorage * 2.5f + (rb.transform.up * 2.5f), ForceMode.VelocityChange);
-            
+        desiredSpeed += 0.45f;
+
+        //launch the player forward and upward
+        rb.useGravity = false;
+        rb.AddForce((rb.transform.forward * desiredSpeed * 5f ) + (rb.transform.up * jumpForce), ForceMode.Impulse);
+
+        //return the cam to it's original position
+        PlayerCam.transform.position = new Vector3(PlayerCam.transform.position.x, PlayerCam.transform.position.y - 0.1f, PlayerCam.transform.position.z);
+        yield return new WaitForSeconds(.2f);
+        ResetJump();
+        rb.useGravity = true;
         CancelInvoke("SlamEnemy");
         
     }

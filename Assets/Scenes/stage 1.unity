@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.18090063, a: 1}
+  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.1808995, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -328, y: 0}
+  m_AnchoredPosition: {x: -328.00006, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &75109339
@@ -9045,6 +9045,28 @@ MonoBehaviour:
   maxGeneration: 6
   cutPerHit: 2
   ExplodeForce: 200
+--- !u!114 &1465243502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465243472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644fa02c8c049b2488596da457ec161b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knifePrefab: {fileID: 4438154089097453830, guid: 188d725f9a8607947b1206ad2ff11cd3, type: 3}
+  knifeSpeed: 50
+  maxDistance: 100
+  attachLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  mainCamera: {fileID: 1331781610}
+  dashDistance: 5
+  acceleration: 10
+  teleportDistanceThreshold: 1
 --- !u!1 &1493231032
 GameObject:
   m_ObjectHideFlags: 0
@@ -13380,6 +13402,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: PlayerCam
+      value: 
+      objectReference: {fileID: 1331781610}
+    - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -13397,7 +13423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: bhopTimeLimit
-      value: 0.25
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: WallrunSpeedBoost
@@ -13413,7 +13439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: wallJumpDesireSpeedIncrease
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745118, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: shrinkSpeed

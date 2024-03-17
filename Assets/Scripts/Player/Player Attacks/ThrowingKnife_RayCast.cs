@@ -12,33 +12,84 @@ public class ThrowingKnife_RayCast : MonoBehaviour
 
     public Camera mainCamera;
 
-    private void Start()
-    {
+    public float dashDistance = 5f;
+    public float acceleration = 10f;
+    public float teleportDistanceThreshold = 1f;
 
-    }
+    private bool isDashing = false;
+    private bool isAccelerating = false;
+
+    private Transform markedObject;
+    private Vector3 destinationPosition;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1));
+        if (isDashing)
+            return;
+
+        // Check for mouse click to mark an object
+        if (Input.GetMouseButtonDown(1))
         {
-            ShootRaycast();
+            // Cast a ray from the mouse position to detect objects
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject RayCastHitObject = hit.transform.gameObject;
+                if(RayCastHitObject.layer == 8)
+                {
+                    markedObject = hit.transform;
+                    Debug.Log("Object marked: " + markedObject.name);
+                }
+                
+            }
+        }
+
+        // Check for dash input
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (markedObject != null)
+            {
+                isAccelerating = true;
+                isDashing = true;
+                destinationPosition = markedObject.position - markedObject.forward * dashDistance;
+            }
+            else
+            {
+                Debug.Log("No object marked!");
+            }
+        }
+
+        // Accelerate towards the marked object
+        if (isAccelerating)
+        {
+            Vector3 direction = markedObject.position - transform.position;
+            float distance = direction.magnitude;
+
+            if (distance <= teleportDistanceThreshold)
+            {
+                isAccelerating = false;
+                Dash();
+            }
+            else
+            {
+                direction.Normalize();
+                transform.position += direction * acceleration * Time.deltaTime;
+            }
         }
     }
 
-    private void ShootRaycast()
+    private void Dash()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, maxDistance))
-        {
-            if (((1 << hit.collider.gameObject.layer) & attachLayer) != 0)
-            {
-                GameObject knifeInstance = Instantiate(knifePrefab, transform.position + mainCamera.transform.forward, Quaternion.identity);
-                Rigidbody knifeRigidbody = knifeInstance.GetComponent<Rigidbody>();
-                knifeRigidbody.AddForce(mainCamera.transform.forward * knifeSpeed, ForceMode.Impulse);
-                knifeInstance.transform.LookAt(hit.point);
-                knifeInstance.GetComponent<Kunai>().AttachTo(hit.collider.gameObject, hit.point);
-            }
-        }
+        // Teleport the player behind the object
+        transform.position = destinationPosition;
+
+        // Reset the marked object and allow marking again
+        markedObject = null;
+        isDashing = false;
+
+        Debug.Log("Dashed behind the object!");
     }
 }
 
