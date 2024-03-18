@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
     {
         UpdateScore();
         ShowScoreBorad();
-        Debug.Log(scoreTime);
+        //Debug.Log(scoreTime);
     }
 
     public void UpdateScore()
