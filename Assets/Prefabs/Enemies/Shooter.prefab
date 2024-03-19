@@ -230,8 +230,8 @@ MonoBehaviour:
   forceToExplode: 0.5
   generation: 1
   maxGeneration: 1
-  cutPerHit: 8
-  ExplodeForce: 5000
+  cutPerHit: 3
+  ExplodeForce: 4000
 --- !u!1001 &1518096732265113895
 PrefabInstance:
   m_ObjectHideFlags: 0

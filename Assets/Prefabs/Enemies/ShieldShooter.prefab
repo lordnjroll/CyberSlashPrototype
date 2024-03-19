@@ -297,8 +297,8 @@ MonoBehaviour:
   forceToExplode: 1
   generation: 1
   maxGeneration: 4
-  cutPerHit: 5
-  ExplodeForce: 5000
+  cutPerHit: 3
+  ExplodeForce: 4000
 --- !u!1 &6970027488517963700
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.1808995, a: 1}
+  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.18090063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -328.00006, y: 0}
+  m_AnchoredPosition: {x: -328.00012, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &75109339
@@ -7079,6 +7079,7 @@ MonoBehaviour:
     - {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
     - {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
   - EnemySetGroup: []
+  - EnemySetGroup: []
 --- !u!4 &914142705
 Transform:
   m_ObjectHideFlags: 0
@@ -9045,7 +9046,7 @@ MonoBehaviour:
   maxGeneration: 6
   cutPerHit: 2
   ExplodeForce: 200
---- !u!114 &1465243502
+--- !u!114 &1465243512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9054,19 +9055,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1465243472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644fa02c8c049b2488596da457ec161b, type: 3}
+  m_Script: {fileID: 11500000, guid: 47d2bc0edfc7d7b4285a35fb4095bedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifePrefab: {fileID: 4438154089097453830, guid: 188d725f9a8607947b1206ad2ff11cd3, type: 3}
-  knifeSpeed: 50
-  maxDistance: 100
-  attachLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  mainCamera: {fileID: 1331781610}
-  dashDistance: 5
-  acceleration: 10
-  teleportDistanceThreshold: 1
+  dashSpeed: 0
+  DashCutthreshold: 0
+  secondarySkillbtn: 0
+  Kunai: {fileID: 0}
 --- !u!1 &1493231032
 GameObject:
   m_ObjectHideFlags: 0
@@ -13874,11 +13869,11 @@ PrefabInstance:
     - target: {fileID: 5973925676601669814, guid: 932c5b8264961d046bc2479ef06e7c3e, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1465243472}
     - target: {fileID: 5973925676601669814, guid: 932c5b8264961d046bc2479ef06e7c3e, type: 3}
       propertyPath: PlayerLocation
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1465243482}
     - target: {fileID: 5973925676726767814, guid: 932c5b8264961d046bc2479ef06e7c3e, type: 3}
       propertyPath: m_Mesh
       value: 

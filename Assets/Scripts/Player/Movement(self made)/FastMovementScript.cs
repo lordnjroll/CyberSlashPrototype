@@ -199,7 +199,7 @@ public class FastMovementScript : MonoBehaviour
 
 
         //air slam
-        if(!grounded && Input.GetKeyDown(CroutchKey))
+        if(!grounded && Input.GetKeyDown(CroutchKey) &&!isWallRunning)
         {
             //store the player's speed before slamming
             VelocityStorage = rb.velocity.magnitude;

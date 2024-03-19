@@ -34,9 +34,11 @@ public class ThrowingKnife_RayCast : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
+            Debug.Log("throw knife");
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject RayCastHitObject = hit.transform.gameObject;
+                Debug.Log("knife hit");
                 if(RayCastHitObject.layer == 8)
                 {
                     markedObject = hit.transform;
@@ -47,7 +49,7 @@ public class ThrowingKnife_RayCast : MonoBehaviour
         }
 
         // Check for dash input
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (markedObject != null)
             {

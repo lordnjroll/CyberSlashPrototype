@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 548725791215367458}
   - component: {fileID: 548725791215367461}
   - component: {fileID: 548725791215367487}
+  - component: {fileID: 1130560402968602725}
   m_Layer: 8
   m_Name: Fodder
   m_TagString: Untagged
@@ -163,3 +164,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &1130560402968602725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548725791215367460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feb784eb6fa7c340859352e44c42aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  forceToExplode: 1
+  generation: 1
+  maxGeneration: 6
+  cutPerHit: 3
+  ExplodeForce: 400
