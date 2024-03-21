@@ -337,9 +337,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1337497255731596828}
     m_Modifications:
+    - target: {fileID: 3614426299437871352, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614426299437871352, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_TagString
+      value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668792530973196868, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668792530973196868, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_TagString
+      value: Shooter
+      objectReference: {fileID: 0}
     - target: {fileID: 5031002765165812294, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
       propertyPath: m_Name
       value: human_yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031002765165812294, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031002765165812294, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_TagString
+      value: EnemyTag
       objectReference: {fileID: 0}
     - target: {fileID: 5663952664816713980, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
       propertyPath: m_RootOrder
@@ -387,6 +411,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+--- !u!1 &8354081181368245136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5031002765165812294, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+  m_PrefabInstance: {fileID: 3908595399158235606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3081163027113254884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354081181368245136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06, y: 0.18, z: -0.03}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!4 &8693205388457836842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5663952664816713980, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}

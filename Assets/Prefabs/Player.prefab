@@ -339,7 +339,6 @@ GameObject:
   - component: {fileID: 2607600040284745115}
   - component: {fileID: 2607600040284745114}
   - component: {fileID: 2607600040284745113}
-  - component: {fileID: 2607600040284745112}
   - component: {fileID: 2607600040284745119}
   - component: {fileID: 2607600040284745118}
   - component: {fileID: 2607600040284745117}
@@ -419,8 +418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe934916010c6174e9b4eb6d65963539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 10
-  Hpbar: {fileID: 0}
+  HP1: {fileID: 0}
+  HP2: {fileID: 0}
+  HP3: {fileID: 0}
+  DeathLayer: {fileID: 0}
+  GameUILayer: {fileID: 0}
 --- !u!114 &2607600040284745113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,27 +437,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorecount: {fileID: 0}
   score: 0
---- !u!114 &2607600040284745112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2607600040284745107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c439ef799ea823242af4ae25a1836709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemies:
-    serializedVersion: 2
-    m_Bits: 256
-  PlayerAttackStartPoint: {fileID: 2607600039561747071}
-  AttackRange: 5
-  fpcamera: {fileID: 2607600040195663493}
-  Score: {fileID: 2607600040284745113}
-  Shield: {fileID: 0}
-  ShieldHP: 10
+  scoreTime: 0
+  scoreBoradLayer: {fileID: 0}
+  mission_point: 0
+  totalscore: 0
+  scoreborad: {fileID: 0}
 --- !u!114 &2607600040284745119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +459,8 @@ MonoBehaviour:
   continueLayer: {fileID: 0}
   musicSettingLayer: {fileID: 0}
   quitLayer: {fileID: 0}
+  deathLayer: {fileID: 0}
+  storeLayer: {fileID: 0}
 --- !u!114 &2607600040284745118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,8 +475,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DomainSphere: {fileID: 6601986688438927682}
   DomainParticleEffect: {fileID: 8103605600238961340}
+  DomainParticleDuration: 0.75
+  EnemyMask:
+    serializedVersion: 2
+    m_Bits: 0
   ChargeUpSpeed: 0.07
   expandSpeed: 5
+  shrinkSpeed: 5
   ChargeUpMaxScale: 10
   minScale: 0.01
   maxScale: 30
@@ -496,6 +489,7 @@ MonoBehaviour:
   TimeToCharge: 3
   CoolDownTime: 5
   expandButton: 113
+  Score: {fileID: 0}
 --- !u!114 &2607600040284745117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +502,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe5e13a09062c74ca813ba5e76f034d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 0}
+  PlayerCam: {fileID: 0}
   moveSpeed: 15
+  defaultSpeed: 0
   groundDrag: 5
   OriginalDrag: 0
   jumpForce: 13
@@ -518,6 +515,11 @@ MonoBehaviour:
   remainingJump: 0
   Maxjumps: 2
   DownwardForce: 18.5
+  slamSpeed: 0
+  CroutchKey: 306
+  WhatIsEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   walkSpeed: 0
   sprintSpeed: 0
   jumpKey: 32
@@ -525,6 +527,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  grounded: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 64
@@ -532,6 +535,10 @@ MonoBehaviour:
   WallrunJumpSideBoost: 500
   WallrunJumpUpBoost: 500
   WallCheckDistance: 1
+  wallRunDesireSpeedIncrease: 0
+  wallJumpDesireSpeedIncrease: 0
+  DashDesireSpeedIncrease: 0
+  bhopTimeLimit: 0
   orientation: {fileID: 2607600040672893831}
 --- !u!1 &2607600040306778955
 GameObject:

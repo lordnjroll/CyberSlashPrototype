@@ -6,8 +6,6 @@ using UnityEngine.AI;
 public class FodderAI : MonoBehaviour
 {
     private Vector3 PlayerLocation;
-    //public Transform ShooterLocation;
-    //public Transform ShootPoint;
     private GameObject Player;
     public LayerMask PlayerLayer;
 
@@ -23,11 +21,8 @@ public class FodderAI : MonoBehaviour
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
-    //public LineRenderer laserLine;
 
     RaycastHit PlayerHit;
-
-    //[SerializeField] private float ememyHP = 10f;
     private void Awake()
     {
         
@@ -49,9 +44,6 @@ public class FodderAI : MonoBehaviour
         if (AttackWindingUp)
         {
             transform.LookAt(PlayerLocation);
-            //laserLine.SetPosition(0, laserOrigin.position);
-            //laserLine.SetPosition(1, PlayerLocation.position);
-            //Vector3 rayOrigin = playerLocation.position;
         }
 
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
@@ -94,19 +86,13 @@ public class FodderAI : MonoBehaviour
         yield return new WaitForSeconds(.1f);
 
         //Charge at the Player
-        rb.AddForce(rb.transform.forward * chargeSpeed, ForceMode.Impulse);
+        rb.AddForce(rb.transform.forward * chargeSpeed, ForceMode.VelocityChange);
+        Debug.Log("charged");
+
 
         IsAttacking = false;
         AttackCD = true;
 
-        //Laser effect
-      /*Instantiate(FireEffect, laserLine.GetPosition(0), Quaternion.identity);
-        Destroy(FireEffect, 1f);
-
-        Instantiate(FireEffect, laserLine.GetPosition(1), Quaternion.identity);
-        Destroy(FireEffect, 1f);*/
-
-        //laserLine.enabled = false;
 
         StartCoroutine("AttackCoolDown");
         StopCoroutine("AttackWindUp");

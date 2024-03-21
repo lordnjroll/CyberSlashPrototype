@@ -246,7 +246,7 @@ public class FastMovementScript : MonoBehaviour
             moveSpeed = Mathf.SmoothDamp(moveSpeed, desiredSpeed, ref velocity0, 1f);
         }
         
-        if(grounded && verticalInput == 0)
+        if(grounded && verticalInput == 0 && horizontalInput == 0)
         {
             desiredSpeed = defaultSpeed;
         }
@@ -435,7 +435,7 @@ public class FastMovementScript : MonoBehaviour
     {
         GameObject stompedEnemy = collision.transform.gameObject;
 
-        if (isSlaming && (stompedEnemy.layer == 8))
+        if (isSlaming && (stompedEnemy.layer == 8) && !grounded)
         {
             //freeze the enemy
             stompedEnemy.transform.position = new Vector3(stompedEnemy.transform.position.x, stompedEnemy.transform.position.y, stompedEnemy.transform.position.z);
@@ -469,6 +469,7 @@ public class FastMovementScript : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         ResetJump();
         rb.useGravity = true;
+        isSlaming = false;
         CancelInvoke("SlamEnemy");
         
     }

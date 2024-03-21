@@ -8,7 +8,7 @@ public class SwordSlash : MonoBehaviour
     public Transform PlayerAttackStartPoint;
     public float AttackRange;
 
-    public Camera fpcamera;
+    public Camera mainCamera;
     private GameObject Shooter;
     private ShooterAI ShooterScript;
     public ScoreManager Score;
@@ -42,7 +42,7 @@ public class SwordSlash : MonoBehaviour
             //anim.SetTrigger("AttackTrigger" );
             Debug.Log("clicked");
             RaycastHit hit;
-            if (Physics.Raycast(fpcamera.transform.position, fpcamera.transform.forward, out hit, AttackRange))
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, AttackRange))
             {
                 
                 if(hit.transform.tag == "Shooter")

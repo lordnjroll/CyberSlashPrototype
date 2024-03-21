@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.18090063, a: 1}
+  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.1808995, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -328.00012, y: 0}
+  m_AnchoredPosition: {x: -328.00003, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &75109339
@@ -2772,6 +2772,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438628758}
   m_CullTransparentMesh: 1
+--- !u!4 &457189422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2607600040672893831, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+  m_PrefabInstance: {fileID: 2607600040572946468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &459227136
 GameObject:
   m_ObjectHideFlags: 0
@@ -6293,6 +6298,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5973925675973402669, guid: 932c5b8264961d046bc2479ef06e7c3e, type: 3}
   m_PrefabInstance: {fileID: 5973925676545856758}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &815265965 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2607600039561747071, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+  m_PrefabInstance: {fileID: 2607600040572946468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &815970188
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,10 +9068,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d2bc0edfc7d7b4285a35fb4095bedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 0
-  DashCutthreshold: 0
-  secondarySkillbtn: 0
-  Kunai: {fileID: 0}
+  PlayerAttackStartPoint: {fileID: 815265965}
+  AttackRange: 5
+  dashSpeed: 50
+  DashDuration: 0
+  DashCutThreshold: 0
+  isDashing: 0
+  isDodging: 0
+  MovementBtn: 304
+  mainCamera: {fileID: 1331781610}
+  secondarySkillbtn: 324
+  Shield: {fileID: 0}
+  ShieldHP: 10
+  playerRB: {fileID: 1465243520}
+  PlayerTrans: {fileID: 457189422}
+--- !u!54 &1465243520 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2607600040284745188, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+  m_PrefabInstance: {fileID: 2607600040572946468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1493231032
 GameObject:
   m_ObjectHideFlags: 0
@@ -13107,6 +13132,18 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 548725791215367457, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0972
+      objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367457, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.217551
+      objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367457, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0972
+      objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367457, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.91697
       objectReference: {fileID: 0}
@@ -13150,9 +13187,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fodder
       objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367461, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: AttackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367461, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: chargeSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367486, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: m_Speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367486, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: m_Acceleration
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 548725791215367487, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
       propertyPath: m_Constraints
-      value: 14
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130560402968602725, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: ExplodeForce
+      value: 2500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
@@ -13221,7 +13278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
       propertyPath: m_TagString
-      value: Shooter
+      value: EnemyTag
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
