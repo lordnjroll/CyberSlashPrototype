@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Weapon_Skill_Katana : MonoBehaviour
 {
+    [HideInInspector]
+
     [Header("Attack setting")]
     public Transform PlayerAttackStartPoint;
     public float AttackRange;
 
     [Header("Dash settings")]
     public float dashSpeed;
+    public float SkillDashSpeed;
     public float DashDuration;
     public float DashCutThreshold; //how close can the player get before dashing into the enemy
+    public float DashRange;
     public bool isDashing;// Charging towards an enemy
     public bool isDodging;// Dodging to one direction
     public KeyCode MovementBtn = KeyCode.LeftShift;
@@ -25,7 +29,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public GameObject Shield;
     public int ShieldHP = 10;
 
-    private List<GameObject> MarkedTargetes;
+    private List<GameObject> MarkedTargetes = new List<GameObject>();
     private int TotalEnemiesMarked = 0;
 
     [Header("References")]
@@ -33,6 +37,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Transform PlayerTrans; //pog
     private mesh_destroy DismentleScript;
     private GameObject Enemy;
+    private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
+    private GameObject EnemyAimedAt;
     private ScoreManager ScoreScript;
     private FastMovementScript MoveScript;
     private hp hpScript;
@@ -109,6 +115,14 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void SecondaryInput()
     {
+        if(MarkedTargetes != null)
+        {
+            if(Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, DashRange))
+            {
+                EnemyAimedAt = RayEnemyAimedAt.transform.gameObject;
+            }
+        }
+
         if (Input.GetKeyDown(secondarySkillbtn))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -135,13 +149,16 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         Vector3 dashDirection = GetDirection(forwardT);
 
-        if (Input.GetKeyDown(MovementBtn))
+        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning)
         {
-            //if (MarkedTargetes.Count <= 0)
-            //{
-
-            //}
-            playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+            if (MarkedTargetes.Contains(EnemyAimedAt))
+            {
+                Vector3 EnemyDirection = (EnemyAimedAt.transform.position - PlayerTrans.position).normalized;
+            }
+            else
+            {
+                StartCoroutine("NormalDash", dashDirection);
+            }
         }           
     }
 
@@ -158,5 +175,27 @@ public class Weapon_Skill_Katana : MonoBehaviour
             direction = forwardT.forward;
         }
         return direction.normalized;
+    }
+
+    IEnumerator NormalDash(Vector3 dashDirection)
+    {
+        bool grounded = MoveScript.grounded;
+        if (grounded)
+        {
+            isDashing = true;
+            MoveScript.groundDrag = 0;
+            playerRB.AddForce(dashDirection * dashSpeed, ForceMode.Impulse);
+            yield return new WaitForSeconds(5f);
+            MoveScript.groundDrag = MoveScript.OriginalDrag;
+        }
+        else
+        {
+            playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+        }
+    }
+
+    void SkillDash()
+    {
+
     }
 }

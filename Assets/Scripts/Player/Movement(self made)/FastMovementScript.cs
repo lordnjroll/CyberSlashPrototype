@@ -59,7 +59,7 @@ public class FastMovementScript : MonoBehaviour
     private RaycastHit rightWallHit;
     private bool wallLeft;
     private bool wallRight;
-    private bool isWallRunning = false;
+    public bool isWallRunning = false;
     private bool iswallDoubleJumpOnCD;
 
     [Header("Desire speed increase settings")]
@@ -76,10 +76,13 @@ public class FastMovementScript : MonoBehaviour
 
     Vector3 moveDirection;
 
+    private Weapon_Skill_Katana KatanaScript;
+
     Rigidbody rb;
 
     private void Start()
     {
+        KatanaScript = GetComponent<Weapon_Skill_Katana>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -280,7 +283,7 @@ public class FastMovementScript : MonoBehaviour
     IEnumerator DragHandler()
     {
         // handle drag
-        if (grounded)
+        if (grounded && !KatanaScript.isDashing)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
