@@ -4093,6 +4093,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642044699}
   m_CullTransparentMesh: 1
+--- !u!1 &665793988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665793991}
+  - component: {fileID: 665793990}
+  - component: {fileID: 665793989}
+  m_Layer: 0
+  m_Name: TestCollision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &665793989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665793988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1269071d5299af249a6ad8e1e615b633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missiontxt: {fileID: 0}
+--- !u!65 &665793990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665793988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.343956, y: 2.3129425, z: 0.5103836}
+  m_Center: {x: -0.32133102, y: -0.054893494, z: -0.2448082}
+--- !u!4 &665793991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665793988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 57.19, y: 30.5, z: 118}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &676390977
 Mesh:
   m_ObjectHideFlags: 0
@@ -9071,8 +9130,10 @@ MonoBehaviour:
   PlayerAttackStartPoint: {fileID: 815265965}
   AttackRange: 5
   dashSpeed: 50
+  SkillDashSpeed: 0
   DashDuration: 0
   DashCutThreshold: 0
+  DashRange: 0
   isDashing: 0
   isDodging: 0
   MovementBtn: 304
@@ -13419,7 +13480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745116, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 120.401
+      value: 124.45
       objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745116, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: m_LocalRotation.w
