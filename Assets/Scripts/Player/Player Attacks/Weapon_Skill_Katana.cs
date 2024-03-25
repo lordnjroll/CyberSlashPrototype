@@ -15,7 +15,10 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public float SkillDashSpeed;
     public float DashDuration;
     public float DashCutThreshold; //how close can the player get before dashing into the enemy
-    public float DashRange;
+    public float SkillDashStoppingDistance; //how close will the player get to the enemy after skill dashing
+    public float SkillDashRange; //How far can the player skill dash into the enemy
+    public float DashCutRange; //How far can the player dash into the enemy
+    private RaycastHit DashCutDetector;
     public bool isDashing;// Charging towards an enemy
     public bool isDodging;// Dodging to one direction
     public KeyCode MovementBtn = KeyCode.LeftShift;
@@ -48,6 +51,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("looking at " + EnemyAimedAt);
+
         ScoreScript = GetComponent<ScoreManager>();
         MoveScript = GetComponent<FastMovementScript>();
         hpScript = GetComponent<hp>();
@@ -59,6 +64,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Looking at " + EnemyAimedAt); 
         //TotalEnemiesMarked = MarkedTargetes.Count;
         DashInput();
         SecondaryInput();
@@ -117,7 +123,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     {
         if(MarkedTargetes != null)
         {
-            if(Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, DashRange))
+            if(Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, SkillDashRange))
             {
                 EnemyAimedAt = RayEnemyAimedAt.transform.gameObject;
             }
@@ -132,10 +138,10 @@ public class Weapon_Skill_Katana : MonoBehaviour
             if (Physics.Raycast(ray, out knifehit))
             {
                 GameObject RayCastHitObject = knifehit.transform.gameObject;
-                Debug.Log("knife hit");
+                //Debug.Log("knife hit");
                 if (RayCastHitObject.layer == 8)
                 {                    
-                    Debug.Log("Object marked: " + RayCastHitObject.name);
+                    //Debug.Log("Object marked: " + RayCastHitObject.name);
                     MarkedTargetes.Add(RayCastHitObject);
                 }
 
@@ -149,11 +155,15 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         Vector3 dashDirection = GetDirection(forwardT);
 
-        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning)
+        //Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, DashCutRange);
+
+        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning && !isDashing)
         {
             if (MarkedTargetes.Contains(EnemyAimedAt))
             {
-                Vector3 EnemyDirection = (EnemyAimedAt.transform.position - PlayerTrans.position).normalized;
+                Vector3 EnemyLocation = EnemyAimedAt.transform.position;
+                isDashing = true;
+                SkillDash(EnemyLocation);
             }
             else
             {
@@ -184,8 +194,9 @@ public class Weapon_Skill_Katana : MonoBehaviour
         {
             isDashing = true;
             MoveScript.groundDrag = 0;
-            playerRB.AddForce(dashDirection * dashSpeed, ForceMode.Impulse);
-            yield return new WaitForSeconds(5f);
+            playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+            yield return new WaitForSeconds(.2f);
+            isDashing = false;
             MoveScript.groundDrag = MoveScript.OriginalDrag;
         }
         else
@@ -194,8 +205,19 @@ public class Weapon_Skill_Katana : MonoBehaviour
         }
     }
 
-    void SkillDash()
+    void SkillDash(Vector3 EnemyLocation)
     {
+        Vector3 EnemyDistance = EnemyLocation - PlayerTrans.position;
+        Vector3 EnemyDirection = (EnemyLocation - PlayerTrans.position).normalized;
 
+        Debug.Log(EnemyDistance.magnitude);
+
+        if(EnemyDistance.magnitude > SkillDashStoppingDistance)
+        {
+            playerRB.AddForce(EnemyDirection * dashSpeed, ForceMode.Impulse);
+            
+        }
+        playerRB.velocity = new Vector3(0, 0, 0);
+        playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
     }
 }
