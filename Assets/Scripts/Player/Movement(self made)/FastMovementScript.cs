@@ -40,6 +40,7 @@ public class FastMovementScript : MonoBehaviour
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
+    [HideInInspector] public bool isDashing;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -214,6 +215,8 @@ public class FastMovementScript : MonoBehaviour
 
     private void MovePlayer()
     {
+        isDashing = KatanaScript.isDashing;
+
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
