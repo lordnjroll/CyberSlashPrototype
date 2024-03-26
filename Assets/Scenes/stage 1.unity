@@ -9133,11 +9133,11 @@ MonoBehaviour:
   SkillDashSpeed: 0
   DashDuration: 0
   DashCutThreshold: 0
-  SkillDashStoppingDistance: 5
+  SkillDashStoppingDistance: 2
   SkillDashRange: 30
   DashCutRange: 0
   isDashing: 0
-  isDodging: 0
+  isSkillDashing: 0
   MovementBtn: 304
   mainCamera: {fileID: 1331781610}
   secondarySkillbtn: 324

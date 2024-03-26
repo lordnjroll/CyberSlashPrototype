@@ -20,7 +20,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public float DashCutRange; //How far can the player dash into the enemy
     private RaycastHit DashCutDetector;
     public bool isDashing;// Charging towards an enemy
-    public bool isDodging;// Dodging to one direction
+    public bool isSkillDashing;// Dodging to one direction
     public KeyCode MovementBtn = KeyCode.LeftShift;
 
     [Header("Knife throwing settings")]
@@ -162,7 +162,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             if (MarkedTargetes.Contains(EnemyAimedAt))
             {
                 Vector3 EnemyLocation = EnemyAimedAt.transform.position;
-                isDashing = true;
+                isSkillDashing = true;
                 SkillDash(EnemyLocation);
             }
             else
@@ -219,5 +219,6 @@ public class Weapon_Skill_Katana : MonoBehaviour
         }
         playerRB.velocity = new Vector3(0, 0, 0);
         playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
+        isDashing = false;
     }
 }
