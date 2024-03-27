@@ -29,7 +29,8 @@ public class Mission : MonoBehaviour
         if(other.gameObject.name == "Player")
         {
             Debug.Log("Hit Collision");
-            missiontxt.text = "";
+            missiontxt.text = "Collect Items " + m_collectcount + " / " + m_totalcollectcount;
+
         }
     }
 
