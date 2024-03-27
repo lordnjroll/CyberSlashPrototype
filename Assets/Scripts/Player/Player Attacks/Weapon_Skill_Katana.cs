@@ -32,7 +32,6 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public GameObject Shield;
     public int ShieldHP = 10;
     
-
     private List<GameObject> MarkedTargetes = new List<GameObject>();
     private int TotalEnemiesMarked = 0;
 
@@ -44,6 +43,9 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
     private GameObject EnemyAimedAt;
     private Vector3 SkillDashTarget;
+
+    public float DefaultFOV;
+    public float DashingFOV;
     private ScoreManager ScoreScript;
     private FastMovementScript MoveScript;
     private hp hpScript;
@@ -62,6 +64,9 @@ public class Weapon_Skill_Katana : MonoBehaviour
         Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
 
         MarkedTargetes.Clear();
+
+        DefaultFOV = MoveScript.DefaultFOV;
+        DashingFOV = DefaultFOV + 20f;
     }
 
     void Update()
@@ -72,6 +77,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         //DashInput();
         PlayerInput();
         PlayerAttack();
+        
     }
     private void FixedUpdate()
     {
@@ -241,23 +247,25 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void SkillDash()
     {
-        Debug.Log("Skill dash function called");
+        isSkillDashing = true;
+        //Debug.Log("Skill dash function called");
         float travelTime = 0.5f;
         float elapsedTime = 0f;
         Vector3 EnemyDistance = SkillDashTarget - PlayerTrans.position; //not used
         Vector3 EnemyDirection = (SkillDashTarget - PlayerTrans.position).normalized; //not used
 
-        elapsedTime += Time.deltaTime ;
+        elapsedTime += Time.deltaTime;
         float t = Mathf.SmoothStep(0.2f, 1f, (elapsedTime / travelTime));
 
         //Debug.Log(EnemyDistance.magnitude);
 
         if (EnemyDistance.magnitude > SkillDashStoppingDistance)
         {
-            Debug.Log("skill dashing");
+            //Debug.Log("skill dashing");
             playerRB.useGravity = false;
             PlayerTrans.position = Vector3.Lerp(PlayerTrans.transform.position, SkillDashTarget, t);
-            //playerRB.AddForce(EnemyDirection * dashSpeed, ForceMode.Impulse);
+            Debug.Log("skill dashing");
+            InvokeRepeating("SkillStartCameraEffects",0,0.05f);
 
         }
         else
@@ -272,8 +280,30 @@ public class Weapon_Skill_Katana : MonoBehaviour
             elapsedTime = 0;
             playerRB.useGravity = true;
             isSkillDashing = false;
+            SkillEndCameraEffects();
+
+            Debug.Log("exit skill dash");
             CancelInvoke("SkillDash");
         }
         
+    }
+
+    void SkillStartCameraEffects()
+    {
+        mainCamera.fieldOfView = Mathf.SmoothStep(DefaultFOV, DashingFOV, 0.05f);
+        if(!isSkillDashing)
+        {
+            InvokeRepeating("SkillEndCameraEffects", 0, 0.1f);
+            CancelInvoke("SkillStartCamerEffects");
+        }
+    }
+
+    void SkillEndCameraEffects()
+    {
+        mainCamera.fieldOfView = Mathf.SmoothStep(DashingFOV, DefaultFOV, 0.5f);
+        //if ()
+        {
+
+        }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.1808995, a: 1}
+  m_IndirectSpecularColor: {r: 0.17187205, g: 0, b: 0.18090063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -327.99997, y: 0}
+  m_AnchoredPosition: {x: -328, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &75109339
@@ -2845,11 +2845,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438628758}
   m_CullTransparentMesh: 1
---- !u!4 &457189422 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2607600040672893831, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
-  m_PrefabInstance: {fileID: 2607600040572946468}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &459227136
 GameObject:
   m_ObjectHideFlags: 0
@@ -9212,7 +9207,7 @@ MonoBehaviour:
   DashDuration: 0
   DashCutThreshold: 0
   SkillDashStoppingDistance: 2
-  SkillDashRange: 30
+  SkillDashRange: 100
   DashCutRange: 0
   isDashing: 0
   isSkillDashing: 0
@@ -9222,7 +9217,9 @@ MonoBehaviour:
   Shield: {fileID: 1094849798}
   ShieldHP: 10
   playerRB: {fileID: 1465243520}
-  PlayerTrans: {fileID: 457189422}
+  PlayerTrans: {fileID: 1465243482}
+  DefaultFOV: 0
+  DashingFOV: 0
 --- !u!54 &1465243520 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2607600040284745188, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
@@ -13291,7 +13288,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.72
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2134270480
 MeshRenderer:
@@ -13351,8 +13348,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134270478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.85, y: 35.98, z: 108.21737}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 56.85, y: 33.44, z: 70.49}
+  m_LocalScale: {x: 8.669351, y: 8.669351, z: 8.669351}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

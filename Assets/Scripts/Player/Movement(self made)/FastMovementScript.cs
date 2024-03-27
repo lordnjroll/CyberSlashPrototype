@@ -7,6 +7,7 @@ public class FastMovementScript : MonoBehaviour
     [Header("Player Object")]
     public GameObject PlayerObject;
     public Camera PlayerCam;
+    public float DefaultFOV = 90;
     private Vector3 CamPosition;
 
     [Header("Movement settings")]
@@ -86,6 +87,8 @@ public class FastMovementScript : MonoBehaviour
 
     private void Start()
     {
+        PlayerCam.fieldOfView = DefaultFOV;
+
         KatanaScript = GetComponent<Weapon_Skill_Katana>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
