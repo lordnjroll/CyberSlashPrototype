@@ -19,8 +19,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public float SkillDashRange; //How far can the player skill dash into the enemy
     public float DashCutRange; //How far can the player dash into the enemy
     private RaycastHit DashCutDetector;
-    public bool isDashing;// Charging towards an enemy
-    public bool isSkillDashing;// Dodging to one direction
+    public bool isDashing = false;// normal dash
+    public bool isSkillDashing = false;// skill dash
     public KeyCode MovementBtn = KeyCode.LeftShift;
 
     [Header("Knife throwing settings")]
@@ -31,6 +31,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     [Header("Enemy Settings")]
     public GameObject Shield;
     public int ShieldHP = 10;
+    
 
     private List<GameObject> MarkedTargetes = new List<GameObject>();
     private int TotalEnemiesMarked = 0;
@@ -42,6 +43,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private GameObject Enemy;
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
     private GameObject EnemyAimedAt;
+    private Vector3 SkillDashTarget;
     private ScoreManager ScoreScript;
     private FastMovementScript MoveScript;
     private hp hpScript;
@@ -59,16 +61,21 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
 
-
+        MarkedTargetes.Clear();
     }
 
     void Update()
     {
-        Debug.Log("Looking at " + EnemyAimedAt); 
+        //Debug.DrawLine(EnemyAimedAt);
+        Debug.Log("Looking at " + EnemyAimedAt);
         //TotalEnemiesMarked = MarkedTargetes.Count;
-        DashInput();
-        SecondaryInput();
+        //DashInput();
+        PlayerInput();
         PlayerAttack();
+    }
+    private void FixedUpdate()
+    {
+        
     }
 
     void PlayerAttack()
@@ -119,57 +126,82 @@ public class Weapon_Skill_Katana : MonoBehaviour
         }
     }
 
-    void SecondaryInput()
+    void PlayerInput()
     {
-        if(MarkedTargetes != null)
+        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning && !isDashing && !isSkillDashing)
         {
-            if(Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, SkillDashRange))
-            {
-                EnemyAimedAt = RayEnemyAimedAt.transform.gameObject;
-            }
+            Dash();
+            //Debug.Log("dash function called");
         }
+
 
         if (Input.GetKeyDown(secondarySkillbtn))
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit knifehit;
+            secondarySkill();
+        }
 
-            Debug.Log("throw knife");
-            if (Physics.Raycast(ray, out knifehit))
+        if (MarkedTargetes != null)
+        {
+            if (Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, SkillDashRange))
             {
-                GameObject RayCastHitObject = knifehit.transform.gameObject;
-                //Debug.Log("knife hit");
-                if (RayCastHitObject.layer == 8)
-                {                    
-                    //Debug.Log("Object marked: " + RayCastHitObject.name);
-                    MarkedTargetes.Add(RayCastHitObject);
+                if(RayEnemyAimedAt.transform.gameObject.layer == 8)
+                {
+                    EnemyAimedAt = RayEnemyAimedAt.transform.gameObject;
+                }
+                else 
+                {
+                    EnemyAimedAt = null;
                 }
 
+            }
+            else
+            {
+                EnemyAimedAt = null;
             }
         }
     }
 
-    void DashInput()
+    void secondarySkill()
     {
+        
+         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+         RaycastHit knifehit;
+
+         Debug.Log("throw knife");
+         if (Physics.Raycast(ray, out knifehit))
+         {
+             GameObject RayCastHitObject = knifehit.transform.gameObject;
+             //Debug.Log("knife hit");
+             if (RayCastHitObject.layer == 8)
+             {
+                 //Debug.Log("Object marked: " + RayCastHitObject.name);
+                 MarkedTargetes.Add(RayCastHitObject);
+             }
+
+         }
+        
+    }
+
+    void Dash()
+    {
+        
         Transform forwardT = PlayerTrans;
 
         Vector3 dashDirection = GetDirection(forwardT);
 
         //Physics.Raycast(PlayerTrans.position, mainCamera.transform.forward, out RayEnemyAimedAt, DashCutRange);
 
-        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning && !isDashing)
+        
+        if (MarkedTargetes.Contains(EnemyAimedAt))
         {
-            if (MarkedTargetes.Contains(EnemyAimedAt))
-            {
-                Vector3 EnemyLocation = EnemyAimedAt.transform.position;
-                isSkillDashing = true;
-                SkillDash(EnemyLocation);
-            }
-            else
-            {
-                StartCoroutine("NormalDash", dashDirection);
-            }
-        }           
+            SkillDashTarget = EnemyAimedAt.transform.position;
+            InvokeRepeating("SkillDash", 0, .025f);
+        }
+        else
+        {
+            StartCoroutine("NormalDash", dashDirection);
+        }
+                   
     }
 
     private Vector3 GetDirection(Transform forwardT)
@@ -201,24 +233,47 @@ public class Weapon_Skill_Katana : MonoBehaviour
         }
         else
         {
+            isDashing = true;
             playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+            isDashing = false;
         }
     }
 
-    void SkillDash(Vector3 EnemyLocation)
+    void SkillDash()
     {
-        Vector3 EnemyDistance = EnemyLocation - PlayerTrans.position;
-        Vector3 EnemyDirection = (EnemyLocation - PlayerTrans.position).normalized;
+        Debug.Log("Skill dash function called");
+        float travelTime = 0.5f;
+        float elapsedTime = 0f;
+        Vector3 EnemyDistance = SkillDashTarget - PlayerTrans.position; //not used
+        Vector3 EnemyDirection = (SkillDashTarget - PlayerTrans.position).normalized; //not used
 
-        Debug.Log(EnemyDistance.magnitude);
+        elapsedTime += Time.deltaTime ;
+        float t = Mathf.SmoothStep(0.2f, 1f, (elapsedTime / travelTime));
 
-        if(EnemyDistance.magnitude > SkillDashStoppingDistance)
+        //Debug.Log(EnemyDistance.magnitude);
+
+        if (EnemyDistance.magnitude > SkillDashStoppingDistance)
         {
-            playerRB.AddForce(EnemyDirection * dashSpeed, ForceMode.Impulse);
-            
+            Debug.Log("skill dashing");
+            playerRB.useGravity = false;
+            PlayerTrans.position = Vector3.Lerp(PlayerTrans.transform.position, SkillDashTarget, t);
+            //playerRB.AddForce(EnemyDirection * dashSpeed, ForceMode.Impulse);
+
         }
-        playerRB.velocity = new Vector3(0, 0, 0);
-        playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
-        isDashing = false;
+        else
+        {
+            //small upward force after reaching the target
+            playerRB.velocity = new Vector3(0, 0, 0);
+            playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
+
+            //reset all settings to normal
+            MoveScript.readyToJump = true;
+            MoveScript.remainingJump = MoveScript.Maxjumps;
+            elapsedTime = 0;
+            playerRB.useGravity = true;
+            isSkillDashing = false;
+            CancelInvoke("SkillDash");
+        }
+        
     }
 }

@@ -7848,6 +7848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c430c1b769584c43b9e729c7a774a3b, type: 3}
+--- !u!1 &1094849798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4414181334796845812, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
+  m_PrefabInstance: {fileID: 1325602770654876648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122002285
 GameObject:
   m_ObjectHideFlags: 0
@@ -9141,7 +9146,7 @@ MonoBehaviour:
   MovementBtn: 304
   mainCamera: {fileID: 1331781610}
   secondarySkillbtn: 324
-  Shield: {fileID: 0}
+  Shield: {fileID: 1094849798}
   ShieldHP: 10
   playerRB: {fileID: 1465243520}
   PlayerTrans: {fileID: 457189422}

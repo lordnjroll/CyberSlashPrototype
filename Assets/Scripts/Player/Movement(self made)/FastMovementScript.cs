@@ -14,6 +14,7 @@ public class FastMovementScript : MonoBehaviour
     public float defaultSpeed;
     public float groundDrag;
     public float OriginalDrag;
+    public bool isSkillDashing;
     private float desiredSpeed;
 
     [Header("Jump settings")]
@@ -26,7 +27,7 @@ public class FastMovementScript : MonoBehaviour
     public float DownwardForce = 17;
     private float airTime;
     private float jumpBuffer;
-    bool readyToJump;
+    public bool readyToJump;
 
     [Header("Slam settings")]
     public float slamSpeed;
@@ -69,16 +70,18 @@ public class FastMovementScript : MonoBehaviour
     private float groundedTime = 0;
     public float bhopTimeLimit; //how long is the player allowed on the ground before losinig desire speed
 
+    [Header("References")]
+    private Weapon_Skill_Katana KatanaScript;
     public Transform orientation;
+    Rigidbody rb;
 
     float horizontalInput;
     float verticalInput;
 
     Vector3 moveDirection;
 
-    private Weapon_Skill_Katana KatanaScript;
 
-    Rigidbody rb;
+    
 
     private void Start()
     {
@@ -103,45 +106,51 @@ public class FastMovementScript : MonoBehaviour
     {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
-
-        MyInput();
-        SpeedControl();
-        CheckForWall();
-        BhopTimer();
+        isSkillDashing = KatanaScript.isSkillDashing;
+        
+            MyInput();
+            SpeedControl();
+            CheckForWall();
+            BhopTimer();
+        
+        
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
-        //MyInput();
-        WallRunCheck();
-
-        if (!grounded)
+        if (!isSkillDashing)
         {
-            StartCoroutine(DragingPlayerDown());
-        }
-        else
-        {
-            StopCoroutine(DragingPlayerDown());
-            airTime = 0;
-            rb.useGravity = true;
-            CancelInvoke("SlamDown");
-        }
+            MovePlayer();
+            WallRunCheck();
 
-        if (isWallRunning)
-        {
-            //increase desired speed
-            desiredSpeed += wallRunDesireSpeedIncrease;
+            if (!grounded && !isSkillDashing)
+            {
+                StartCoroutine(DragingPlayerDown());
+            }
+            else
+            {
+                StopCoroutine(DragingPlayerDown());
+                airTime = 0;
+                rb.useGravity = true;
+                CancelInvoke("SlamDown");
+            }
 
-            WallRunningMovement();
+            if (isWallRunning)
+            {
+                //increase desired speed
+                desiredSpeed += wallRunDesireSpeedIncrease;
+
+                WallRunningMovement();
           
+            }
         }
+        
        
     }
 
     private void BhopTimer()
     {
-        if (grounded)
+        if (grounded && !isSkillDashing)
         {
             groundedTime += Time.deltaTime;
         }
@@ -207,7 +216,7 @@ public class FastMovementScript : MonoBehaviour
             //store the player's speed before slamming
             VelocityStorage = rb.velocity.magnitude;
 
-            InvokeRepeating("SlamDown", 0, 0.1f);
+            InvokeRepeating("SlamDown", 0, 0.05f);
 
         }
     }
@@ -305,7 +314,7 @@ public class FastMovementScript : MonoBehaviour
     {
 
         // drag the player down when they jump
-        if (!grounded)
+        if (!grounded && !isSkillDashing)
         {
             
             airTime += Time.deltaTime;
