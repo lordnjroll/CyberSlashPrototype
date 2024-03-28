@@ -10,6 +10,9 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private GameObject tipsLayer;
 
+    bool T_trigger = false;
+    bool Wall_Jumped = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,23 +27,35 @@ public class Tutorial : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.name == "Tutorial")
         {
             Debug.Log("Start Tutorial");
             tipsLayer.SetActive(true);
             m_WallJump.text = "Do Wall Jump";
             m_Dash.text = "Do Dash";
+            T_trigger = true;
+
+            if (T_trigger == true)
+            {
+                DoDash();
+
+                if (Wall_Jumped)
+                {
+                    m_WallJump.text = "Wall Jump Done";
+                }
+                
+            }
         }
     }
 
-
-    void DoWallJump(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer.Equals("Wall") && Input.GetKeyDown(KeyCode.Space))
         {
-            m_WallJump.text = "Wall Jump Done";
+            Wall_Jumped = true;
         }
     }
+
 
     void DoDash()
     {
