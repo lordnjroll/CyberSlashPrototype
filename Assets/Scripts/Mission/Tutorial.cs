@@ -9,9 +9,13 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private TMP_Text m_Dash;
 
     [SerializeField] private GameObject tipsLayer;
+    ScoreManager ScoreManager;
 
     bool T_trigger = false;
     bool Wall_Jumped = false;
+
+    bool Clear_Dash = false;
+    bool Clear_walljump = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +31,10 @@ public class Tutorial : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Tutorial")
+        if(other.gameObject.name == "StartTutorial")
         {
+            ScoreManager.isRunning = true;
+
             Debug.Log("Start Tutorial");
             tipsLayer.SetActive(true);
             m_WallJump.text = "Do Wall Jump";
@@ -42,9 +48,20 @@ public class Tutorial : MonoBehaviour
                 if (Wall_Jumped)
                 {
                     m_WallJump.text = "Wall Jump Done";
+                    Clear_walljump = true;
                 }
                 
             }
+
+            if(Clear_Dash == true && Clear_walljump == true)
+            {
+                //try kill enemy
+            }
+        }
+
+        if (other.gameObject.name == "FinishTutorial")
+        {
+            Destroy(this);
         }
     }
 
@@ -62,6 +79,9 @@ public class Tutorial : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             m_Dash.text = "Dash Done";
+            Clear_Dash = true;
         }
     }
+
+
 }

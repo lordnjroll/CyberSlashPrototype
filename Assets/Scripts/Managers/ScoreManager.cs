@@ -8,26 +8,47 @@ public class ScoreManager : MonoBehaviour
 {
 
     private int DesiredScore;
-    public Text scorecount;
     public int score;
     string score1;
 
-    public float scoreTime;
+    public float Timer;
+    public TMP_Text Timertxt;
+    public static bool isRunning = false;
+
     public GameObject scoreBoradLayer;
-    public int mission_point;
+
+    public static int mission_point;
     static public int deathcount;
     public int totalscore;
     public TMP_Text scoreborad;
-
-    bool isRunning = false;
-    float stopTime;
-
 
     // Update is called once per frame
     void Update()
     {
         UpdateScore();
         ShowScoreBorad();
+        CountDownTimer();
+    }
+
+    void CountDownTimer()
+    {
+        if (isRunning)
+        {
+            Debug.Log("Start CountDown");
+            if(Timer > 0)
+            {
+                Timer -= Time.deltaTime;
+                float minutes = Mathf.FloorToInt(Timer / 60);
+                float seconds = Mathf.FloorToInt(Timer % 60);
+
+                Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
+            }
+            else
+            {
+                Timer = 0;
+                isRunning = false;
+            }
+        }
     }
 
     public void UpdateScore()
@@ -40,11 +61,6 @@ public class ScoreManager : MonoBehaviour
         {
             score = DesiredScore;
         }
-        scoreTime += Time.deltaTime;
-        
-        
-        //scorecount.text = "Score: " + score.ToString();
-
         
     }
 
@@ -59,7 +75,7 @@ public class ScoreManager : MonoBehaviour
         
         
 
-        scoreCounter = score + mission_point * 5 + (int)scoreTime * 10;
+        scoreCounter = score + mission_point * 5 + (1800 - (int)Timer) * 10;
 
         if (deathcount == 0)
         {
@@ -85,9 +101,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Debug.Log("teleport");
             isRunning = false;
-            stopTime = Time.time;
+            Debug.Log("teleport");
 
             scoreBoradLayer.SetActive(true);
             scoreborad.text = "This Level you got \n"
@@ -96,7 +111,7 @@ public class ScoreManager : MonoBehaviour
                                             +
                               "\nMission Point " + mission_point + " \n"
                                             +
-                              "\nUse Time " + (int)scoreTime + " \n"
+                              "\nUse Time " + (1800 - (int)Timer) + " \n"
                                             +
                               "\nTotal Death " + deathcount + " \n"
                                             +
