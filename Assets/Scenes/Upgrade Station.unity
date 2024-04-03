@@ -190,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 148, y: 16}
+  m_AnchoredPosition: {x: 148, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &127493387
@@ -935,7 +935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &198747041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5412,6 +5412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1723641728}
+  - component: {fileID: 1723641729}
   m_Layer: 5
   m_Name: upgradeItem
   m_TagString: Untagged
@@ -5437,11 +5438,32 @@ RectTransform:
   m_Father: {fileID: 1578714971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 202.2, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1723641729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723641727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 0}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 0
 --- !u!1 &1724324848
 GameObject:
   m_ObjectHideFlags: 0
@@ -5971,6 +5993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoreLayer: {fileID: 198747040}
+  container: {fileID: 1578714971}
+  upgradeItem: {fileID: 1723641728}
 --- !u!114 &1843333434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6353,11 +6377,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1987162398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2607600040284745107, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
-  m_PrefabInstance: {fileID: 5312183133070682594}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2087810515
 GameObject:
   m_ObjectHideFlags: 0
@@ -6520,6 +6539,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2285690201359576248, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: HP1
+      value: 
+      objectReference: {fileID: 8676992289165186175}
+    - target: {fileID: 2285690201359576248, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: HP2
+      value: 
+      objectReference: {fileID: 8676992289654843175}
+    - target: {fileID: 2285690201359576248, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: HP3
+      value: 
+      objectReference: {fileID: 8676992289281620255}
+    - target: {fileID: 2285690201359576248, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: GameUILayer
+      value: 
+      objectReference: {fileID: 8676992289194222722}
     - target: {fileID: 2607600039790333749, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.247
@@ -6551,11 +6586,11 @@ PrefabInstance:
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: PlayerCam
       value: 
-      objectReference: {fileID: 5312183133070682595}
+      objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745117, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: PlayerObject
       value: 
-      objectReference: {fileID: 1987162398}
+      objectReference: {fileID: 0}
     - target: {fileID: 2607600040284745119, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: quitLayer
       value: 
@@ -6573,6 +6608,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 192752066}
     - target: {fileID: 2607600040284745119, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: musicSettingLayer
+      value: 
+      objectReference: {fileID: 930251971}
+    - target: {fileID: 3583269707480110774, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: quitLayer
+      value: 
+      objectReference: {fileID: 1493231032}
+    - target: {fileID: 3583269707480110774, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: storeLayer
+      value: 
+      objectReference: {fileID: 198747040}
+    - target: {fileID: 3583269707480110774, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: gameUILayer
+      value: 
+      objectReference: {fileID: 67350828}
+    - target: {fileID: 3583269707480110774, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: escMenuLayer
+      value: 
+      objectReference: {fileID: 257104153}
+    - target: {fileID: 3583269707480110774, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+      propertyPath: continueLayer
+      value: 
+      objectReference: {fileID: 192752066}
+    - target: {fileID: 3583269707480110774, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
       propertyPath: musicSettingLayer
       value: 
       objectReference: {fileID: 930251971}
@@ -6716,7 +6775,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
 --- !u!20 &5312183133070682595 stripped
 Camera:
-  m_CorrespondingSourceObject: {fileID: 2607600040195663493, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2265516948329297285, guid: 0f31b5709e86c064cb9d0c6df7ac4400, type: 3}
   m_PrefabInstance: {fileID: 5312183133070682594}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7936785017805777619

@@ -27,11 +27,6 @@ public class StoreItem : MonoBehaviour
         }
     }
 
-    internal static int GetCost(object itemType)
-    {
-        throw new NotImplementedException();
-    }
-
     public static Sprite GetSprite(ItemType itemType)
     {
         switch (itemType)

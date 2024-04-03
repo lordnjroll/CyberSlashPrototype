@@ -8,8 +8,8 @@ using CodeMonkey.Utils;
 public class Store : MonoBehaviour
 {
     [SerializeField] private GameObject StoreLayer;
-    private Transform container;
-    private Transform upgradeItem;
+    [SerializeField] private Transform container;
+    [SerializeField] private Transform upgradeItem;
 
     private IShopCustomer ishop;
 
@@ -24,8 +24,8 @@ public class Store : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("opened layer");
-            container = transform.Find("container");
-            upgradeItem = container.Find("upgradeItem");
+            //container = transform.Find("container");
+            //upgradeItem = container.Find("upgradeItem");
             StoreLayer.SetActive(true);
             CreateItemButton(StoreItem.ItemType.Potion1, StoreItem.GetSprite(StoreItem.ItemType.Potion1), "Postion 1", StoreItem.GetCost(StoreItem.ItemType.Potion1), 0);
             CreateItemButton(StoreItem.ItemType.Potion2, StoreItem.GetSprite(StoreItem.ItemType.Potion2), "Postion 2", StoreItem.GetCost(StoreItem.ItemType.Potion2), 1);
