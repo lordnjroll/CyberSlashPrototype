@@ -55,6 +55,10 @@ public class EventController : MonoBehaviour, IShopCustomer
         switch (itemType)
         {
             case StoreItem.ItemType.Potion1: BuyPotion1(); break;
+            case StoreItem.ItemType.Potion2: BuyPotion2(); break;
+            case StoreItem.ItemType.PowerUp: BuyPowerUp(); break;
+            case StoreItem.ItemType.Shield: BuyShield(); break;
+            case StoreItem.ItemType.SpeedUp: BuySpeedUp(); break;
         }
     }
 
