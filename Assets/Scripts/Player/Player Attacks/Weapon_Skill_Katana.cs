@@ -107,7 +107,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                     DismentleScript.gothit();
 
-                    ScoreScript.GetScore();
+                    //ScoreScript.GetScore();
                 }
 
                 if (meleehit.transform.tag == "Shield")
