@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] private TMP_Text m_WallJump;
     [SerializeField] private TMP_Text m_Dash;
+    [SerializeField] private TMP_Text m_SkillDash;
 
     [SerializeField] private GameObject tipsLayer;
     ScoreManager ScoreManager;
@@ -16,7 +17,7 @@ public class Tutorial : MonoBehaviour
 
     bool Clear_Dash = false;
     bool Clear_walljump = false;
-
+    bool Clear_skilldash = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,7 +82,11 @@ public class Tutorial : MonoBehaviour
             m_Dash.text = "Dash Done";
             Clear_Dash = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            m_SkillDash.text = "Skill Dash Donw";
+            Clear_skilldash = true;
+        }
     }
-
-
 }

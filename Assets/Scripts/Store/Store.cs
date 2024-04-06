@@ -3,64 +3,109 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using CodeMonkey.Utils;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Store : MonoBehaviour
 {
+    private StoreItem storeitem;
     [SerializeField] private GameObject StoreLayer;
-    [SerializeField] private Transform container;
-    [SerializeField] private Transform upgradeItem;
+    public static Store Instance;
+    public List<StoreItem> ItemList = new List<StoreItem>();
 
-    private IShopCustomer ishop;
+    public Transform itemcontent;
+    public GameObject InventoryItem;
+    int ItemCount = 0;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
-        StoreFunction();
-    }
-
-
-    void StoreFunction()
-    {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("opened layer");
-            //container = transform.Find("container");
-            //upgradeItem = container.Find("upgradeItem");
             StoreLayer.SetActive(true);
-            CreateItemButton(StoreItem.ItemType.Potion1, StoreItem.GetSprite(StoreItem.ItemType.Potion1), "Postion 1", StoreItem.GetCost(StoreItem.ItemType.Potion1), 0);
-            CreateItemButton(StoreItem.ItemType.Potion2, StoreItem.GetSprite(StoreItem.ItemType.Potion2), "Postion 2", StoreItem.GetCost(StoreItem.ItemType.Potion2), 1);
-            CreateItemButton(StoreItem.ItemType.PowerUp, StoreItem.GetSprite(StoreItem.ItemType.PowerUp), "PowerUp", StoreItem.GetCost(StoreItem.ItemType.PowerUp), 2);
-            CreateItemButton(StoreItem.ItemType.SpeedUp, StoreItem.GetSprite(StoreItem.ItemType.SpeedUp), "SpeedUp", StoreItem.GetCost(StoreItem.ItemType.SpeedUp), 3);
-            CreateItemButton(StoreItem.ItemType.Shield, StoreItem.GetSprite(StoreItem.ItemType.Shield), "Shield", StoreItem.GetCost(StoreItem.ItemType.Shield), 4);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            
         }
+
+        ListItem();
     }
 
-    void CreateItemButton(StoreItem.ItemType itemType, Sprite itemSprite, string itemName, int itemCost, int positionIndex)
+
+
+    public void ListItem()
     {
-        Transform upgradeItemTransform = Instantiate(upgradeItem, container);
-        RectTransform upgradeItemRectTransform = upgradeItemTransform.GetComponent<RectTransform>();
-
-        float upgradeItemHeight = 30f;
-        upgradeItemRectTransform.anchoredPosition = new Vector2(0, -upgradeItemHeight * positionIndex);
-
-        upgradeItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
-        upgradeItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
-
-        upgradeItemTransform.Find("itemImage").GetComponent<Image>().sprite = itemSprite;
-
-        upgradeItemTransform.GetComponent<Button_UI>().ClickFunc = () =>
+        if(ItemCount < ItemList.Count)
         {
-            TryBuyItem(itemType);
-        };
-    }
+            foreach (var item in ItemList)
+            {
+                GameObject obj = Instantiate(InventoryItem, itemcontent);
+                var itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
+                var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+                var itemlevel = obj.transform.Find("Leveltxt").GetComponent<TMP_Text>();
+                var itemvalue = obj.transform.Find("Valuetxt").GetComponent<TMP_Text>();
 
-    void TryBuyItem(StoreItem.ItemType itemType)
-    {
-        if (ishop.TrySpendGoldAmount(StoreItem.GetCost(itemType)))
-        {
-            ishop.BoughtItem(itemType);
+                Button plusbtn = obj.transform.Find("Plusbtn").GetComponent<Button>();
+                Button minusbtn = obj.transform.Find("Minusbtn").GetComponent<Button>();
+                plusbtn.onClick.AddListener(PlusBtnOnClick);
+                minusbtn.onClick.AddListener(MinusBtnOnClick);
+
+                itemName.text = item.itemName;
+                itemIcon.sprite = item.itemicon;
+                itemlevel.text = item.level + " / 10";
+                itemvalue.text = "$" + item.value;
+
+                ItemCount++;
+            }
         }
         
     }
+
+    public void HideCursor()
+    {
+        Cursor.visible = false;
+    }
+
+    public void PlusBtnOnClick()
+    {
+        if(ScoreManager.score > storeitem.value)
+        {
+            ScoreManager.score = ScoreManager.score - storeitem.value;
+            storeitem.level++;
+        }
+    }
+    
+    public void MinusBtnOnClick()
+    {
+        if(storeitem.level > 1)
+        {
+            ScoreManager.score = ScoreManager.score + storeitem.value;
+            storeitem.level--;
+        }
+    }
+
+    public void Save()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerdata.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        ScoreManager sc = new ScoreManager();
+
+        formatter.Serialize(stream, sc);
+        stream.Close();
+
+    }
+
+    public void Load()
+    {
+
+    }
+
 
 }

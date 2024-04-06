@@ -8,7 +8,8 @@ public class ScoreManager : MonoBehaviour
 {
 
     private int DesiredScore;
-    public int score;
+    public static int score;
+    public int bounsscore;
     string score1;
 
     public float Timer;
@@ -16,19 +17,36 @@ public class ScoreManager : MonoBehaviour
     public static bool isRunning = false;
 
     public GameObject scoreBoradLayer;
+    public TMP_Text scoretxt;
 
     public static int mission_point;
     static public int deathcount;
     public int totalscore;
     public TMP_Text scoreborad;
 
+
     // Update is called once per frame
     void Update()
     {
-        UpdateScore();
+        scoretxt.text = "Score : " + score;
+        
         ShowScoreBorad();
         CountDownTimer();
+        scorecontroll();
     }
+
+    void scorecontroll()
+    {
+        if (Input.GetKeyDown(KeyCode.Equals))
+        {
+            score += 1000;
+        }
+        else if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            score -= 1000;
+        }
+    }
+
 
     void CountDownTimer()
     {
@@ -75,26 +93,16 @@ public class ScoreManager : MonoBehaviour
         
         
 
-        scoreCounter = score + mission_point * 5 + (1800 - (int)Timer) * 10;
+        scoreCounter = score + mission_point + (1800 - (int)Timer) * 10;
 
         if (deathcount == 0)
         {
-            score1 = scoreCounter.ToString();
-            
+            score1 = (scoreCounter + bounsscore).ToString();
         }
-        else if (deathcount >= 1 && deathcount <= 40)
+        else if (deathcount >= 1 && deathcount <= 3)
         {
-            score1 = (scoreCounter / deathcount).ToString();
+            score1 = scoreCounter + (bounsscore - (1000 * deathcount)).ToString();
         }
-        else if(deathcount >= 41 && deathcount <= 80)
-        {
-
-        }
-        else if(deathcount >= 81)
-        {
-
-        }
-
     }
 
     public void OnCollisionEnter(Collision collision)

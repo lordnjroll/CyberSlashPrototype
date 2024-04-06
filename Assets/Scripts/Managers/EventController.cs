@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 
-public class EventController : MonoBehaviour, IShopCustomer
+public class EventController : MonoBehaviour
 {
     private ScoreManager scoreM;
     private event EventHandler OnGoldAmountChanged;
@@ -48,23 +48,11 @@ public class EventController : MonoBehaviour, IShopCustomer
 
     }
 
-    public void BoughtItem(StoreItem.ItemType itemType)
-    {
-        Debug.Log("Bought item: " + itemType);
-
-        switch (itemType)
-        {
-            case StoreItem.ItemType.Potion1: BuyPotion1(); break;
-            case StoreItem.ItemType.Potion2: BuyPotion2(); break;
-            case StoreItem.ItemType.PowerUp: BuyPowerUp(); break;
-            case StoreItem.ItemType.Shield: BuyShield(); break;
-            case StoreItem.ItemType.SpeedUp: BuySpeedUp(); break;
-        }
-    }
+    
 
     public bool TrySpendGoldAmount(int spendGoldAmount)
     {
-        if(scoreM.score >= spendGoldAmount)
+        if(ScoreManager.score >= spendGoldAmount)
         {
             goldAmount -= spendGoldAmount;
             OnGoldAmountChanged?.Invoke(this, EventArgs.Empty);

@@ -83,7 +83,7 @@ public class BaseEnemyScript : MonoBehaviour
         if (enemyHp == 0)
         {
             Destroy(gameObject);
-            scoreManager.score += 200;
+            ScoreManager.score += 200;
         }
     }
 }

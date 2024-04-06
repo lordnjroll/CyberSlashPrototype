@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
             escMenuLayer.SetActive(false);
             gameUILayer.SetActive(true);
             musicSettingLayer.SetActive(false);
+            Cursor.visible = false;
             menuSwitch = false;
             Debug.Log("EscMenu has close");
         }

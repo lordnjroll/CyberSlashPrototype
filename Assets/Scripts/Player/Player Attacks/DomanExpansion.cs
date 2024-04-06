@@ -146,7 +146,7 @@ public class DomanExpansion : MonoBehaviour
 
                 dismemberScript.gothit();
 
-                Score.GetScore();
+                ScoreManager.score += 150;
             }
 
             Invoke("DomainCD",CoolDownTime);
