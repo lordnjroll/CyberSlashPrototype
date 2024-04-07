@@ -82,18 +82,13 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    public void GetScore()
-    {
-        DesiredScore += 200;
-    }
-
     public void ShowScoreBorad()
     {
         float scoreCounter;
         
         
 
-        scoreCounter = score + mission_point + (1800 - (int)Timer) * 10;
+        scoreCounter = score + mission_point + (600 - (int)Timer) * 10;
 
         if (deathcount == 0)
         {

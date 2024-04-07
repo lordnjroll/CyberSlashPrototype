@@ -10,14 +10,21 @@ public class Store : MonoBehaviour
 {
     private StoreItem storeitem;
     [SerializeField] private GameObject StoreLayer;
+    [SerializeField] private GameObject itemPrefab;
     public static Store Instance;
+
     public List<StoreItem> ItemList = new List<StoreItem>();
+    public List<StoreItem> ItemKeeper = new List<StoreItem>();
 
     public Transform itemcontent;
     public GameObject InventoryItem;
     int ItemCount = 0;
 
-
+    public static int healthpotion = 0;
+    public static int bonuspotion = 0;
+    public static int powerup = 0;
+    public static int Skill1 = 0;
+    public static int Skill2 = 0;
     private void Awake()
     {
         Instance = this;
@@ -32,6 +39,7 @@ public class Store : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             
         }
+        itemPrefab.GetComponent<Button>().onClick.AddListener(PlusBtnOnClick);
 
         ListItem();
     }
@@ -73,16 +81,16 @@ public class Store : MonoBehaviour
 
     public void PlusBtnOnClick()
     {
-        if(ScoreManager.score > storeitem.value)
+        if (ScoreManager.score > storeitem.value)
         {
             ScoreManager.score = ScoreManager.score - storeitem.value;
             storeitem.level++;
         }
     }
-    
+
     public void MinusBtnOnClick()
     {
-        if(storeitem.level > 1)
+        if (storeitem.level > 1)
         {
             ScoreManager.score = ScoreManager.score + storeitem.value;
             storeitem.level--;
@@ -107,5 +115,28 @@ public class Store : MonoBehaviour
 
     }
 
+    void BuyHealthPotion()
+    {
+        
+    }
 
+    void BuyBonusPotion()
+    {
+
+    }
+
+    void BuyPowerUP()
+    {
+
+    }
+
+    void BuySkill1()
+    {
+        
+    }
+
+    void BuySkill2()
+    {
+
+    }
 }

@@ -11,7 +11,6 @@ public class SwordSlash : MonoBehaviour
     public Camera mainCamera;
     private GameObject Shooter;
     private ShooterAI ShooterScript;
-    public ScoreManager Score;
     public GameObject Shield;
     public int ShieldHP = 10;
 
@@ -21,8 +20,6 @@ public class SwordSlash : MonoBehaviour
 
     void Start()
     {
-        
-        Score = GetComponent<ScoreManager>();
 
         Shooter = GameObject.FindWithTag("Shooter").gameObject;
 
@@ -60,7 +57,7 @@ public class SwordSlash : MonoBehaviour
 
                     DismentleScript.gothit();
 
-                    Score.GetScore();
+                    ScoreManager.score += 300;
                 }
 
                 if(hit.transform.tag == "Shield")

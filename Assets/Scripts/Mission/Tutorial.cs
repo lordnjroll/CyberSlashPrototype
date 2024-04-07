@@ -15,9 +15,9 @@ public class Tutorial : MonoBehaviour
     bool T_trigger = false;
     bool Wall_Jumped = false;
 
-    bool Clear_Dash = false;
-    bool Clear_walljump = false;
-    bool Clear_skilldash = false;
+    static bool Clear_Dash = false;
+    static bool Clear_walljump = false;
+    static bool Clear_skilldash = false;
     // Start is called before the first frame update
     void Start()
     {
