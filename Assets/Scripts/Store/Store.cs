@@ -8,13 +8,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class Store : MonoBehaviour
 {
-    private StoreItem storeitem;
     [SerializeField] private GameObject StoreLayer;
     [SerializeField] private GameObject itemPrefab;
     public static Store Instance;
 
     public List<StoreItem> ItemList = new List<StoreItem>();
     public List<StoreItem> ItemKeeper = new List<StoreItem>();
+
+    public List<ItemUI> itemsList = new List<ItemUI>();
 
     public Transform itemcontent;
     public GameObject InventoryItem;
@@ -40,7 +41,6 @@ public class Store : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             ListItem();
         }
-        itemPrefab.GetComponent<Button>().onClick.AddListener(PlusBtnOnClick);
 
         
     }
@@ -53,21 +53,19 @@ public class Store : MonoBehaviour
         {
             foreach (var item in ItemList)
             {
-                GameObject obj = Instantiate(InventoryItem, itemcontent);
-                var itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
-                var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-                var itemlevel = obj.transform.Find("Leveltxt").GetComponent<TMP_Text>();
-                var itemvalue = obj.transform.Find("Valuetxt").GetComponent<TMP_Text>();
+                ItemUI obj = Instantiate(InventoryItem, itemcontent).GetComponent<ItemUI>();
 
-                Button plusbtn = obj.transform.Find("Plusbtn").GetComponent<Button>();
-                Button minusbtn = obj.transform.Find("Minusbtn").GetComponent<Button>();
-                plusbtn.onClick.AddListener(PlusBtnOnClick);
-                minusbtn.onClick.AddListener(MinusBtnOnClick);
+                obj.data = item;
 
-                itemName.text = item.itemName;
-                itemIcon.sprite = item.itemicon;
-                itemlevel.text = item.level + " / 10";
-                itemvalue.text = "$" + item.value;
+                obj.AddPlusEvent(PlusBtnOnClick);
+                obj.AddMinusEvent(MinusBtnOnClick);
+
+                obj.ItemName.text = item.itemName;
+                obj.ItemIcon.sprite = item.itemicon;
+                obj.LevelText.text = item.level + " / 10";
+                obj.ValueTxt.text = "$" + item.value;
+
+                itemsList.Add(obj);
 
                 ItemCount++;
             }
@@ -80,21 +78,21 @@ public class Store : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void PlusBtnOnClick()
+    public void PlusBtnOnClick (StoreItem data)
     {
-        if (ScoreManager.score > storeitem.value)
+        if (ScoreManager.score > data.value)
         {
-            ScoreManager.score = ScoreManager.score - storeitem.value;
-            storeitem.level++;
+            ScoreManager.score = ScoreManager.score - data.value;
+            data.level++;
         }
     }
 
-    public void MinusBtnOnClick()
+    public void MinusBtnOnClick(StoreItem data)
     {
-        if (storeitem.level > 1)
+        if (data.level > 1)
         {
-            ScoreManager.score = ScoreManager.score + storeitem.value;
-            storeitem.level--;
+            ScoreManager.score = ScoreManager.score + data.value;
+            data.level--;
         }
     }
 

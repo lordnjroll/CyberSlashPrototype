@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 939189568198080807}
   - component: {fileID: 939189568198080800}
   - component: {fileID: 939189568198080801}
+  - component: {fileID: 7133020492642820338}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -172,7 +173,7 @@ RectTransform:
   - {fileID: 8084893627293315683}
   - {fileID: 1723634233803662086}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -273,6 +274,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7133020492642820338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939189568198080803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4a7b6d01c1ef748b1cee8778db8572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemIcon: {fileID: 939189569068653024}
+  ItemName: {fileID: 939189569332272950}
+  PlusBtn: {fileID: 939189568114014324}
+  MinusBtn: {fileID: 939189568444724179}
+  LevelText: {fileID: 3387440421958788580}
+  ValueTxt: {fileID: 6993367135546189999}
 --- !u!1 &939189568444724173
 GameObject:
   m_ObjectHideFlags: 0
