@@ -28,6 +28,7 @@ public class Store : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
     }
 
     private void Update()
@@ -37,11 +38,11 @@ public class Store : MonoBehaviour
             StoreLayer.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            
+            ListItem();
         }
         itemPrefab.GetComponent<Button>().onClick.AddListener(PlusBtnOnClick);
 
-        ListItem();
+        
     }
 
 
@@ -115,28 +116,13 @@ public class Store : MonoBehaviour
 
     }
 
-    void BuyHealthPotion()
+    void BuyItem()
     {
-        
-    }
-
-    void BuyBonusPotion()
-    {
-
-    }
-
-    void BuyPowerUP()
-    {
-
-    }
-
-    void BuySkill1()
-    {
-        
-    }
-
-    void BuySkill2()
-    {
+        if(StoreItem.itemtag == "HealthPotion")
+        {
+            healthpotion++;
+            Debug.Log("count of " + healthpotion);
+        }
 
     }
 }

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e0a1e8bab7714e4c8b0982205320827, type: 3}
-  m_Name: EXPPotion
+  m_Name: 5Skill2
   m_EditorClassIdentifier: 
-  id: 2
-  itemName: EXPPotion
-  value: 200
-  itemicon: {fileID: 21300000, guid: ff1ee3413e7b8a942a2e51106a35b525, type: 3}
+  id: 5
+  itemName: Skill2
+  value: 550
+  itemicon: {fileID: 21300000, guid: db161dad12f3b9d4bb4c263705ed8b98, type: 3}
   level: 1
+  itemtag: Skill2

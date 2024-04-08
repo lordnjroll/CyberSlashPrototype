@@ -11,4 +11,5 @@ public class StoreItem : ScriptableObject
     public int value;
     public Sprite itemicon;
     public int level;
+    public static string itemtag;
 }

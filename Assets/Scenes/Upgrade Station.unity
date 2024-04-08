@@ -5950,7 +5950,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2e414db33a50d284f81710de288d40fd, type: 2}
   - {fileID: 11400000, guid: 7f6762ce633c8b54c9c75a2b29cc8f1e, type: 2}
   - {fileID: 11400000, guid: 559108b20e8f66148aa4f7aaab5dbb65, type: 2}
+  - {fileID: 11400000, guid: a9268b0b9f83bd946b3bea6dc36a4fcb, type: 2}
   - {fileID: 11400000, guid: b25e9848efb2de2489e3383ba32874a6, type: 2}
+  ItemKeeper: []
   itemcontent: {fileID: 40234062}
   InventoryItem: {fileID: 939189568198080803, guid: f280ac745ffcb76499aa7b269bed3b62, type: 3}
 --- !u!114 &1843333434
