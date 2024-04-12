@@ -39,12 +39,6 @@ public class InGameUI : MonoBehaviour
             case 2:
                 Stagetxt.text = "Stage 2";
                 break;
-            case 3:
-                Stagetxt.text = "Stage 3";
-                break;
-            case 4:
-                Stagetxt.text = "Stage 4";
-                break;
             default:
                 Stagenum = 0;
                 break;
@@ -64,14 +58,8 @@ public class InGameUI : MonoBehaviour
             case 2:
                 Stagetxt.text = "Stage 2";
                 break;
-            case 3:
-                Stagetxt.text = "Stage 3";
-                break;
-            case 4:
-                Stagetxt.text = "Stage 4";
-                break;
             default:
-                Stagenum = 5;
+                Stagenum = 3;
                 break;
         }
     }
@@ -85,9 +73,14 @@ public class InGameUI : MonoBehaviour
 
     public void GoBtnOnClick()
     {
-        if(Stagenum == 1)
+        switch (Stagenum)
         {
-            SceneManager.LoadScene("stage 1");
+            case 1:
+                SceneManager.LoadScene("stage 1");
+                break;
+            case 2:
+                SceneManager.LoadScene("stage 2");
+                break;
         }
         
     }

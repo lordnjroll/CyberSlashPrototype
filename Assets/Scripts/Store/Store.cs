@@ -57,8 +57,8 @@ public class Store : MonoBehaviour
 
                 obj.data = item;
 
-                obj.AddPlusEvent(PlusBtnOnClick);
-                obj.AddMinusEvent(MinusBtnOnClick);
+                
+                obj.AddItemEvent(MinusBtnOnClick);
 
                 obj.ItemName.text = item.itemName;
                 obj.ItemIcon.sprite = item.itemicon;
@@ -78,21 +78,34 @@ public class Store : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void PlusBtnOnClick (StoreItem data)
-    {
-        if (ScoreManager.score > data.value)
-        {
-            ScoreManager.score = ScoreManager.score - data.value;
-            data.level++;
-        }
-    }
 
     public void MinusBtnOnClick(StoreItem data)
     {
-        if (data.level > 1)
+        Debug.Log(data.itemName);
+
+        if (data.itemName.Equals("HealthPotion"))
         {
-            ScoreManager.score = ScoreManager.score + data.value;
-            data.level--;
+            healthpotion++;
+        }
+
+        if (data.itemName.Equals("EXPPotion"))
+        {
+            bonuspotion++;
+        }
+
+        if (data.itemName.Equals("PowerUp"))
+        {
+            powerup++;
+        }
+
+        if (data.itemName.Equals("Skill1"))
+        {
+            Skill1++;
+        }
+
+        if (data.itemName.Equals("Skill2"))
+        {
+            Skill2++;
         }
     }
 
@@ -111,16 +124,6 @@ public class Store : MonoBehaviour
 
     public void Load()
     {
-
-    }
-
-    void BuyItem()
-    {
-        if(StoreItem.itemtag == "HealthPotion")
-        {
-            healthpotion++;
-            Debug.Log("count of " + healthpotion);
-        }
 
     }
 }

@@ -8,6 +8,7 @@ public class ItemUI : MonoBehaviour
 {
     public StoreItem data;
 
+    public Button ItemPrefab;
     public Image ItemIcon;
     public TMP_Text ItemName;
     public Button PlusBtn;
@@ -15,15 +16,9 @@ public class ItemUI : MonoBehaviour
     public TMP_Text LevelText;
     public TMP_Text ValueTxt;
 
-    public void AddMinusEvent (UnityAction<StoreItem> _event)
+    public void AddItemEvent (UnityAction<StoreItem> _event)
     {
         Debug.Log("AddMinusEvent");
-        MinusBtn.onClick.AddListener(()=>_event(data));
-    }
-
-    public void AddPlusEvent (UnityAction<StoreItem> _event)
-    {
-        Debug.Log("AddPlusEvent");
-        PlusBtn.onClick.AddListener(() => _event(data));
+        ItemPrefab.onClick.AddListener(()=>_event(data));
     }
 }
