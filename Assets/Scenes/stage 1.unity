@@ -9664,6 +9664,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529387465}
   m_CullTransparentMesh: 1
+--- !u!4 &1529985721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6814015310557281499, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+  m_PrefabInstance: {fileID: 6814015310648208983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1542735292
 GameObject:
   m_ObjectHideFlags: 0
@@ -14546,6 +14551,18 @@ PrefabInstance:
       propertyPath: Shield
       value: 
       objectReference: {fileID: 1094849798}
+    - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: CamHolder
+      value: 
+      objectReference: {fileID: 1529985721}
+    - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: DashingFOV
+      value: 92
+      objectReference: {fileID: 0}
+    - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: SkillDashFOV
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: markerCanvas
       value: 

@@ -101,19 +101,16 @@ public class PlayerAiming : MonoBehaviour
 	public void DoTilt(float zTilt) // Function that tilts the camera
 	{
 		PlayerCam.transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
-		/*if (!isWallRunning)
-		{
-			StartCoroutine("resetTilt");
-		}*/
+		
 	}
 
-	/*IEnumerator resetTilt()
-	{
-		while (CamHolder.transform.rotation != new Quaternion(CamHolder.transform.rotation.x, CamHolder.transform.rotation.y, 0, CamHolder.transform.rotation.w))
-		{
-			CamHolder.DOLocalRotate(new Vector3(0, 0, 0), 0.25f);
-			yield return new WaitForSeconds(0.01f);
-		}
+	public void DoFOV(float targetFOV)
+    {
+		PlayerCam.DOFieldOfView(targetFOV, 0.25f);
+    }
 
-	}*/	
+	public void DoFOVQuick(float TargetFOV)
+    {
+		PlayerCam.DOFieldOfView(TargetFOV, 0.075f);
+    }
 }

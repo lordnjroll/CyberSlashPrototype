@@ -39,10 +39,12 @@ public class Weapon_Skill_Katana : MonoBehaviour
     [Header("References")]
     public Rigidbody playerRB;
     public Transform PlayerTrans; //pog
+    public Transform CamHolder;
     public Image markImg;
     public Canvas markerCanvas;
     public GameObject markerParent;
     private mesh_destroy DismentleScript;
+    private PlayerAiming camScript;
     private GameObject Enemy;
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
     private GameObject EnemyAimedAt;
@@ -50,6 +52,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     public float DefaultFOV;
     public float DashingFOV;
+    public float SkillDashFOV;
     private ScoreManager ScoreScript;
     private FastMovementScript MoveScript;
     private hp hpScript;
@@ -64,13 +67,15 @@ public class Weapon_Skill_Katana : MonoBehaviour
         ScoreScript = GetComponent<ScoreManager>();
         MoveScript = GetComponent<FastMovementScript>();
         hpScript = GetComponent<hp>();
+        camScript = CamHolder.GetComponent<PlayerAiming>();
 
         Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
 
         MarkedTargetes.Clear();
 
         DefaultFOV = MoveScript.DefaultFOV;
-        DashingFOV = DefaultFOV + 20f;
+        DashingFOV = DefaultFOV + 10f;
+        SkillDashFOV = DefaultFOV + 20f;
     }
 
     void Update()
@@ -210,6 +215,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         else
         {
             StartCoroutine("NormalDash", dashDirection);
+
         }
                    
     }
@@ -231,23 +237,29 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     IEnumerator NormalDash(Vector3 dashDirection)
     {
+        
         bool grounded = MoveScript.grounded;
         DashingCD = true;
         if (grounded)
         {
+            camScript.DoFOVQuick(DashingFOV);
             isDashing = true;
             MoveScript.groundDrag = 0;
             playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
             yield return new WaitForSeconds(.2f);
             isDashing = false;
             MoveScript.groundDrag = MoveScript.OriginalDrag;
+            camScript.DoFOVQuick(DefaultFOV);
             StartCoroutine("DashCDCounter");
         }
         else
         {
+            camScript.DoFOVQuick(DashingFOV);
             isDashing = true;
             playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
+            yield return new WaitForSeconds(.2f);
             isDashing = false;
+            camScript.DoFOVQuick(DefaultFOV);
             StartCoroutine("DashCDCounter");
         }
     }
@@ -265,7 +277,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
         float t = Mathf.SmoothStep(0.2f, 1f, (elapsedTime / travelTime));
 
         //Debug.Log(EnemyDistance.magnitude);
-        StartCoroutine("SkillStartCameraEffects");
+        //StartCoroutine("SkillStartCameraEffects");
+        camScript.DoFOV(SkillDashFOV);
         while (EnemyDistance.magnitude > SkillDashStoppingDistance)
         {
             EnemyDistance = SkillDashTarget - PlayerTrans.position;
@@ -279,6 +292,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         }
         Debug.Log(" skill dash end");
+
+        camScript.DoFOV(DefaultFOV);
 
         //small upward force after reaching the target
         playerRB.velocity = new Vector3(0, 0, 0);
@@ -299,7 +314,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     }
 
-    IEnumerator SkillStartCameraEffects()
+    /*IEnumerator SkillStartCameraEffects()
     {
         while(isSkillDashing)
         {
@@ -318,7 +333,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
-
+    */
     IEnumerator DashCDCounter()
     {
         yield return new WaitForSeconds(.5f);
