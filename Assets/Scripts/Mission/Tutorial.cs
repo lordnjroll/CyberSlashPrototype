@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private TMP_Text m_SkillDash;
 
     [SerializeField] private GameObject tipsLayer;
+    [SerializeField] private GameObject timetxt;
     ScoreManager ScoreManager;
 
     bool T_trigger = false;
@@ -34,12 +35,14 @@ public class Tutorial : MonoBehaviour
     {
         if(other.gameObject.name == "StartTutorial")
         {
+            timetxt.SetActive(true);
             ScoreManager.isRunning = true;
 
             Debug.Log("Start Tutorial");
             tipsLayer.SetActive(true);
             m_WallJump.text = "Do Wall Jump";
             m_Dash.text = "Do Dash";
+            m_SkillDash.text = "Do Skill Dash";
             T_trigger = true;
 
             if (T_trigger == true)

@@ -173,7 +173,7 @@ RectTransform:
   - {fileID: 8084893627293315683}
   - {fileID: 1723634233803662086}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -286,6 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4a7b6d01c1ef748b1cee8778db8572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
+  ItemPrefab: {fileID: 939189568198080801}
   ItemIcon: {fileID: 939189569068653024}
   ItemName: {fileID: 939189569332272950}
   PlusBtn: {fileID: 939189568114014324}
