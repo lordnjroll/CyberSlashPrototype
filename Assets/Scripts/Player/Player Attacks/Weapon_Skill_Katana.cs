@@ -251,20 +251,22 @@ public class Weapon_Skill_Katana : MonoBehaviour
         //Debug.Log("Skill dash function called");
         float travelTime = 0.5f;
         float elapsedTime = 0f;
-        Vector3 EnemyDistance = SkillDashTarget - PlayerTrans.position; //not used
-        Vector3 EnemyDirection = (SkillDashTarget - PlayerTrans.position).normalized; //not used
+        Vector3 EnemyDistance = SkillDashTarget - PlayerTrans.position;
+        Vector3 EnemyDirection = (SkillDashTarget - PlayerTrans.position).normalized;
 
         elapsedTime += Time.deltaTime;
         float t = Mathf.SmoothStep(0.2f, 1f, (elapsedTime / travelTime));
 
         //Debug.Log(EnemyDistance.magnitude);
 
-        if (EnemyDistance.magnitude > SkillDashStoppingDistance)
+        if (EnemyDistance.magnitude > SkillDashStoppingDistance && isSkillDashing)
         {
             //Debug.Log("skill dashing");
             playerRB.useGravity = false;
             PlayerTrans.position = Vector3.Lerp(PlayerTrans.transform.position, SkillDashTarget, t);
             Debug.Log("skill dashing");
+
+            isSkillDashing = false;
             InvokeRepeating("SkillStartCameraEffects",0,0.05f);
 
         }
