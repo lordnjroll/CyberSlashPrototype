@@ -201,7 +201,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         if (MarkedTargetes.Contains(EnemyAimedAt))
         {
             SkillDashTarget = EnemyAimedAt.transform.position;
-            InvokeRepeating("SkillDash", 0, .025f);
+            StartCoroutine("SkillDash");
         }
         else
         {
@@ -245,7 +245,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         }
     }
 
-    void SkillDash()
+    IEnumerator SkillDash()
     {
         isSkillDashing = true;
         //Debug.Log("Skill dash function called");
@@ -259,35 +259,38 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         //Debug.Log(EnemyDistance.magnitude);
 
-        if (EnemyDistance.magnitude > SkillDashStoppingDistance && isSkillDashing)
+        while (EnemyDistance.magnitude > SkillDashStoppingDistance)
         {
+            EnemyDistance = SkillDashTarget - PlayerTrans.position;
             //Debug.Log("skill dashing");
             playerRB.useGravity = false;
             PlayerTrans.position = Vector3.Lerp(PlayerTrans.transform.position, SkillDashTarget, t);
             Debug.Log("skill dashing");
 
-            isSkillDashing = false;
-            InvokeRepeating("SkillStartCameraEffects",0,0.05f);
+            yield return new WaitForSeconds(0.01f);
+            //InvokeRepeating("SkillStartCameraEffects",0,0.05f);
 
         }
-        else
-        {
-            //small upward force after reaching the target
-            playerRB.velocity = new Vector3(0, 0, 0);
-            playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
+        Debug.Log(" skill dash end");
 
-            //reset all settings to normal
-            MoveScript.readyToJump = true;
-            MoveScript.remainingJump = MoveScript.Maxjumps;
-            elapsedTime = 0;
-            playerRB.useGravity = true;
-            isSkillDashing = false;
-            SkillEndCameraEffects();
+        //small upward force after reaching the target
+        playerRB.velocity = new Vector3(0, 0, 0);
+        playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
 
-            Debug.Log("exit skill dash");
-            CancelInvoke("SkillDash");
-        }
-        
+        //reset all settings to normal
+        MoveScript.readyToJump = true;
+        MoveScript.remainingJump = MoveScript.Maxjumps;
+        elapsedTime = 0;
+        playerRB.useGravity = true;
+        isSkillDashing = false;
+        SkillEndCameraEffects();
+
+        Debug.Log("exit skill dash");
+        yield return null;
+
+        //CancelInvoke("SkillDash");
+
+
     }
 
     void SkillStartCameraEffects()
