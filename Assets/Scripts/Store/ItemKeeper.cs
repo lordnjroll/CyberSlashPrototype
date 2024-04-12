@@ -3,29 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ItemKeeper : MonoBehaviour
+public class ItemKeeper
 {
     hp hp;
-
+    Store store;
     [SerializeField] private TMP_Text Tipstxt;
-    [SerializeField] private TMP_Text KeepList;
-
-    private void Update()
-    {
-        UseHealthPotion();
-        UseBonusPotion();
-        UsePowerUp();
-        UseSkill1();
-        UseSkill2();
-        DisplayKeepList();
-    }
-
-    void DisplayKeepList()
-    {
-        KeepList.text = "Health Potion : " + Store.healthpotion.ToString() + "\n"
-                                                    +
-                        "\nBonus Potion : " + Store.bonuspotion.ToString() + "\n";
-    }
 
     void UseHealthPotion()
     {

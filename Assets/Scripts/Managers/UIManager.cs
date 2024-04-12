@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject musicSettingLayer;
     public GameObject quitLayer;
     public GameObject deathLayer;
+    public GameObject storeLayer;
 
     private bool menuSwitch = false;
 
@@ -46,11 +47,26 @@ public class UIManager : MonoBehaviour
             gameUILayer.SetActive(true);
             musicSettingLayer.SetActive(false);
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
             menuSwitch = false;
             Debug.Log("EscMenu has close");
         }
     }
+
+    void GoBackEscMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            
+        }
+    }
+
+    //public void OpenStore()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        storeLayer.SetActive(true);
+    //    }
+    //}
 
     public void PlayerDead()
     {
@@ -77,11 +93,6 @@ public class UIManager : MonoBehaviour
     {
         musicSettingLayer.SetActive(true);
         escMenuLayer.SetActive(false);
-    }
-
-    public void NextStage()
-    {
-        SceneManager.LoadScene("Upgrade Station");
     }
 
     public void QuitBtnOnClick()

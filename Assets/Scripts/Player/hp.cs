@@ -2,62 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class hp : MonoBehaviour
 {
-    public bool isdashing = false;
+    [SerializeField] private GameObject HP1;
+    [SerializeField] private GameObject HP2;
+    [SerializeField] private GameObject HP3;
     [SerializeField] private GameObject DeathLayer;
     [SerializeField] private GameObject GameUILayer;
-
-
-    public Image HealthHp3Bar;
-    public Image HealthHp2Bar;
-    public Image HealthHp1Bar;
-    public float Health;
-    public float MaxHealth;
 
     public static int Hp = 3;
     // Start is called before the first frame update
     void Start()
     {
-        MaxHealth = Health;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        text();
+        UpdateHpbar();
         EndGame();
-        SmoothHP();
-        if (Input.GetKeyDown(KeyCode.O))
+    }
+    public void text()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Hp--;
         }
+        else if (Input.GetKeyDown(KeyCode.H))
+        {
+            Hp++;
+        }
     }
 
-    public void SmoothHP()
+    void UpdateHpbar()
     {
         switch (Hp)
         {
-            case 2:
-                HealthHp3Bar.fillAmount = Mathf.Clamp(Health - MaxHealth, 0, 1);
-                break;
             case 1:
-                HealthHp2Bar.fillAmount = Mathf.Clamp(Health - MaxHealth, 0, 1);
+                HP1.SetActive(true);
+                HP2.SetActive(false);
+                HP3.SetActive(false);
                 break;
-            case 0:
-                HealthHp1Bar.fillAmount = Mathf.Clamp(Health - MaxHealth, 0, 1);
+            case 2:
+                HP1.SetActive(true);
+                HP2.SetActive(true);
+                HP3.SetActive(false);
+                break;
+            case 3:
+                HP1.SetActive(true);
+                HP2.SetActive(true);
+                HP3.SetActive(true);
+                break;
+            default:
+                HP1.SetActive(false);
+                HP2.SetActive(false);
+                HP3.SetActive(false);
                 break;
         }
-        
     }
 
-
-    public void ISdashing()
-    {
-
-    }
 
     void EndGame()
     {
@@ -68,4 +74,23 @@ public class hp : MonoBehaviour
             DeathLayer.SetActive(true);
         }
     }
+
+    //public void hit()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //    {
+    //        ModifyHp(2);
+    //        Debug.Log("+1");
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.K))
+    //    {
+    //        ModifyHp(-2);
+    //        Debug.Log("-1");
+    //    }
+
+
+    //    ModifyHp(-2);
+
+    //    Debug.Log("HP LOST");
+    //}
 }

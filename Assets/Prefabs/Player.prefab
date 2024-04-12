@@ -102,8 +102,6 @@ GameObject:
   - component: {fileID: 2265516948466957579}
   - component: {fileID: 2265516948466957591}
   - component: {fileID: 2265516948466957799}
-  - component: {fileID: -8658218028624067816}
-  - component: {fileID: -6589252406784931943}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -180,14 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe934916010c6174e9b4eb6d65963539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isdashing: 0
+  HP1: {fileID: 0}
+  HP2: {fileID: 0}
+  HP3: {fileID: 0}
   DeathLayer: {fileID: 0}
   GameUILayer: {fileID: 0}
-  HealthHp3Bar: {fileID: 0}
-  HealthHp2Bar: {fileID: 0}
-  HealthHp1Bar: {fileID: 0}
-  Health: 0
-  MaxHealth: 0
 --- !u!114 &3583269707480110774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +201,7 @@ MonoBehaviour:
   musicSettingLayer: {fileID: 0}
   quitLayer: {fileID: 0}
   deathLayer: {fileID: 0}
+  storeLayer: {fileID: 0}
 --- !u!114 &4366517918500651758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,46 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WallJump: {fileID: 0}
   m_Dash: {fileID: 0}
-  m_SkillDash: {fileID: 0}
   tipsLayer: {fileID: 0}
-  timetxt: {fileID: 0}
---- !u!114 &-8658218028624067816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265516948466957631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1269071d5299af249a6ad8e1e615b633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Boss: {fileID: 0}
-  BossSpawn: {fileID: 0}
-  BossSpawns: {fileID: 0}
-  killmissiontxt: {fileID: 0}
-  collectmissiontxt: {fileID: 0}
-  CPmissiontxt: {fileID: 0}
-  minimissiontxt: {fileID: 0}
-  surmissiontxt: {fileID: 0}
-  bossmissiontxt: {fileID: 0}
-  Timertxt: {fileID: 0}
-  Timer: 0
---- !u!114 &-6589252406784931943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265516948466957631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e89c36698694f47aadb1592bd39f36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tipstxt: {fileID: 0}
-  KeepList: {fileID: 0}
 --- !u!1 &2680957352999087514
 GameObject:
   m_ObjectHideFlags: 0

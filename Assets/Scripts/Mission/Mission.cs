@@ -5,10 +5,6 @@ using TMPro;
 
 public class Mission : MonoBehaviour
 {
-    [SerializeField] private GameObject Boss;
-    [SerializeField] private Transform BossSpawn;
-    [SerializeField] private Transform BossSpawns;
-    
     [SerializeField] private TMP_Text killmissiontxt;
     [SerializeField] private TMP_Text collectmissiontxt;
     [SerializeField] private TMP_Text CPmissiontxt;
@@ -47,6 +43,12 @@ public class Mission : MonoBehaviour
     bool Clearsur = false;
     ScoreManager ScoreManager;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -78,7 +80,7 @@ public class Mission : MonoBehaviour
 
         if (Startboss)
         {
-            FinishBoss();
+
         }
     }
 
@@ -235,11 +237,4 @@ public class Mission : MonoBehaviour
             }
         }
     }
-
-    void FinishBoss()
-    {
-        //Boss = Instantiate(BossSpawn, BossSpawns).GetComponent<>();
-    }
-
-
 }
