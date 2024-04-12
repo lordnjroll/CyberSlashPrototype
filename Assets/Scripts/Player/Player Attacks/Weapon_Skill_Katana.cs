@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon_Skill_Katana : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class Weapon_Skill_Katana : MonoBehaviour
     [Header("Dash settings")]
     public float dashSpeed;
     public float SkillDashSpeed;
-    public float DashDuration;
     public float DashCutThreshold; //how close can the player get before dashing into the enemy
     public float SkillDashStoppingDistance; //how close will the player get to the enemy after skill dashing
     public float SkillDashRange; //How far can the player skill dash into the enemy
@@ -21,6 +21,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private RaycastHit DashCutDetector;
     public bool isDashing = false;// normal dash
     public bool isSkillDashing = false;// skill dash
+    public bool DashingCD = false;
     public KeyCode MovementBtn = KeyCode.LeftShift;
 
     [Header("Knife throwing settings")]
@@ -38,6 +39,9 @@ public class Weapon_Skill_Katana : MonoBehaviour
     [Header("References")]
     public Rigidbody playerRB;
     public Transform PlayerTrans; //pog
+    public Image markImg;
+    public Canvas markerCanvas;
+    public GameObject markerParent;
     private mesh_destroy DismentleScript;
     private GameObject Enemy;
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
@@ -134,7 +138,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void PlayerInput()
     {
-        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning && !isDashing && !isSkillDashing)
+        if (Input.GetKeyDown(MovementBtn) && !MoveScript.isWallRunning && !isDashing && !isSkillDashing && !DashingCD)
         {
             Dash();
             //Debug.Log("dash function called");
@@ -228,6 +232,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     IEnumerator NormalDash(Vector3 dashDirection)
     {
         bool grounded = MoveScript.grounded;
+        DashingCD = true;
         if (grounded)
         {
             isDashing = true;
@@ -236,12 +241,14 @@ public class Weapon_Skill_Katana : MonoBehaviour
             yield return new WaitForSeconds(.2f);
             isDashing = false;
             MoveScript.groundDrag = MoveScript.OriginalDrag;
+            StartCoroutine("DashCDCounter");
         }
         else
         {
             isDashing = true;
             playerRB.AddForce(dashDirection * dashSpeed, ForceMode.VelocityChange);
             isDashing = false;
+            StartCoroutine("DashCDCounter");
         }
     }
 
@@ -258,7 +265,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         float t = Mathf.SmoothStep(0.2f, 1f, (elapsedTime / travelTime));
 
         //Debug.Log(EnemyDistance.magnitude);
-
+        StartCoroutine("SkillStartCameraEffects");
         while (EnemyDistance.magnitude > SkillDashStoppingDistance)
         {
             EnemyDistance = SkillDashTarget - PlayerTrans.position;
@@ -268,7 +275,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             Debug.Log("skill dashing");
 
             yield return new WaitForSeconds(0.01f);
-            //InvokeRepeating("SkillStartCameraEffects",0,0.05f);
+            
 
         }
         Debug.Log(" skill dash end");
@@ -283,8 +290,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         elapsedTime = 0;
         playerRB.useGravity = true;
         isSkillDashing = false;
-        SkillEndCameraEffects();
-
+        
         Debug.Log("exit skill dash");
         yield return null;
 
@@ -293,22 +299,34 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     }
 
-    void SkillStartCameraEffects()
+    IEnumerator SkillStartCameraEffects()
     {
-        mainCamera.fieldOfView = Mathf.SmoothStep(DefaultFOV, DashingFOV, 0.05f);
-        if(!isSkillDashing)
+        while(isSkillDashing)
         {
-            InvokeRepeating("SkillEndCameraEffects", 0, 0.1f);
-            CancelInvoke("SkillStartCamerEffects");
+            mainCamera.fieldOfView = Mathf.Lerp(DefaultFOV, DashingFOV, 0.1f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        StartCoroutine("SkillEndCameraEffects");
+    }
+
+    IEnumerator SkillEndCameraEffects()
+    {
+        
+        while(mainCamera.fieldOfView != DefaultFOV)
+        {
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, DefaultFOV, 0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
-    void SkillEndCameraEffects()
+    IEnumerator DashCDCounter()
     {
-        mainCamera.fieldOfView = Mathf.SmoothStep(DashingFOV, DefaultFOV, 0.5f);
-        //if ()
-        {
-
-        }
+        yield return new WaitForSeconds(.5f);
+        DashingCD = false;
     }
+
+    /*IEnumerator MarkerTracker()
+    {
+
+    }*/
 }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FastMovementScript : MonoBehaviour
 {
     [Header("Player Object")]
     public GameObject PlayerObject;
     public Camera PlayerCam;
+    public Transform CamHolder;
     public float DefaultFOV = 90;
     private Vector3 CamPosition;
 
@@ -74,6 +76,7 @@ public class FastMovementScript : MonoBehaviour
 
     [Header("References")]
     private Weapon_Skill_Katana KatanaScript;
+    private PlayerAiming camScript;
     public Transform orientation;
     Rigidbody rb;
 
@@ -89,6 +92,7 @@ public class FastMovementScript : MonoBehaviour
     {
         PlayerCam.fieldOfView = DefaultFOV;
 
+        camScript = CamHolder.GetComponent<PlayerAiming>();
         KatanaScript = GetComponent<Weapon_Skill_Katana>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -352,6 +356,7 @@ public class FastMovementScript : MonoBehaviour
         else
         {
             isWallRunning = false;
+            camScript.DoTilt(0f);
         }
     }
 
@@ -366,7 +371,16 @@ public class FastMovementScript : MonoBehaviour
 
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
 
-        if((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
+        if (wallLeft)
+        {
+            camScript.DoTilt(-5f);
+        }
+        if (wallRight)
+        {
+            camScript.DoTilt(5f);
+        }
+
+        if ((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
         {
             wallForward = -wallForward;
         }
@@ -384,6 +398,7 @@ public class FastMovementScript : MonoBehaviour
 
     private void WallJump()
    {
+        
         //increase desireSpeed
         desiredSpeed += wallJumpDesireSpeedIncrease;
 
@@ -491,4 +506,6 @@ public class FastMovementScript : MonoBehaviour
         CancelInvoke("SlamEnemy");
         
     }
+
+    
 }

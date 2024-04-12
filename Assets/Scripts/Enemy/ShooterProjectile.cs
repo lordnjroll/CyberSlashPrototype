@@ -47,6 +47,10 @@ public class ShooterProjectile : MonoBehaviour
 
             Destroy(gameObject);
         }
+        else
+        {
+            Destroy(this);
+        }
 
         
 
