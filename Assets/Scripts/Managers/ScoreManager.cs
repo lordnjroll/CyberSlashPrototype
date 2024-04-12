@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text Timertxt;
     public static bool isRunning = false;
 
+    public GameObject GameUILayer;
     public GameObject scoreBoradLayer;
     public TMP_Text scoretxt;
 
@@ -104,6 +105,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            Time.timeScale = 0;
+            GameUILayer.SetActive(false);
             isRunning = false;
             Debug.Log("teleport");
 
