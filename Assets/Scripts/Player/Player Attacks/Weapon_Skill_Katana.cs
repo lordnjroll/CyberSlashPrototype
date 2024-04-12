@@ -74,7 +74,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         MarkedTargetes.Clear();
 
         DefaultFOV = MoveScript.DefaultFOV;
-        DashingFOV = DefaultFOV + 10f;
+        DashingFOV = DefaultFOV + 5f;
         SkillDashFOV = DefaultFOV + 20f;
     }
 

@@ -57,11 +57,10 @@ public class Store : MonoBehaviour
 
                 obj.data = item;
 
-                obj.AddItemEvent(PlusBtnOnClick);
+                obj.AddItemEvent(AdItemOnClick);
 
                 obj.ItemName.text = item.itemName;
                 obj.ItemIcon.sprite = item.itemicon;
-                obj.LevelText.text = item.level + " / 10";
                 obj.ValueTxt.text = "$" + item.value;
 
                 itemsList.Add(obj);
@@ -77,7 +76,7 @@ public class Store : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void PlusBtnOnClick (StoreItem data)
+    public void AdItemOnClick (StoreItem data)
     {
         if (data.itemName.Equals("HealthPotion"))
         {
