@@ -7,7 +7,11 @@ public class ShooterProjectile : MonoBehaviour
     private GameObject Player;
     private hp PlayerHealth;
     private float DespawnTime = 3;
-    
+    private Rigidbody ProRB;
+    private bool isReflected = false;
+    public ParticleSystem ExplosionEffect;
+
+    private mesh_destroy ShatterScript;
 
     private void Awake()
     {
@@ -17,6 +21,7 @@ public class ShooterProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ProRB = this.GetComponent<Rigidbody>();
         Player = GameObject.FindWithTag("Player").gameObject;
 
         PlayerHealth = Player.GetComponent<hp>();
@@ -39,23 +44,52 @@ public class ShooterProjectile : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-
-        if(collision.collider.gameObject.tag == "Player")
+        if (!isReflected)
         {
-            //PlayerHealth.hit();
-            //Debug.Log("Player Hit");
+            if (collision.collider.gameObject.tag == "Player")
+            {
+                //PlayerHealth.hit();
+                //Debug.Log("Player Hit");
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(this);
+            }
+
         }
         else
         {
+            Instantiate(ExplosionEffect, this.transform.position, this.transform.rotation);
+            Collider[] colliders = Physics.OverlapSphere(this.transform.position, 10f, 8 | 7);
+            foreach (Collider c in colliders)
+            {
+
+                if (c.transform.gameObject.layer == 8)
+                {
+                    ShatterScript = c.GetComponent<mesh_destroy>();
+                    ShatterScript.gothit();
+                    
+                }
+
+                if (c.transform.gameObject.layer == 7)
+                {
+                    c.attachedRigidbody.AddExplosionForce(20f, this.transform.position, 7f);
+                }
+            }
             Destroy(this);
         }
-
-        
-
-        
+            
+     
     }
 
+    public void OnPlayerParry(Vector3 AimDirection)
+    {
+        this.gameObject.layer = 11;
+        isReflected = true;
+        ProRB.AddForce(AimDirection * 75f, ForceMode.VelocityChange);
+        
+    }
 
 }

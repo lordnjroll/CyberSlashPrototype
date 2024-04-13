@@ -7,6 +7,7 @@ TagManager:
   - Shooter
   - Shield
   - EnemyTag
+  - EnemyProjectileTag
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemies
   - Decore
   - EnemyProjectile
-  - 
+  - ReflectedProjectile
   - 
   - 
   - 

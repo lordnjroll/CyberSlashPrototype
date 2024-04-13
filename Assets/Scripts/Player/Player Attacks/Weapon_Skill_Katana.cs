@@ -24,6 +24,12 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public bool DashingCD = false;
     public KeyCode MovementBtn = KeyCode.LeftShift;
 
+    [Header("Camera Effects")]
+    public float DefaultFOV;
+    public float DashingFOV;
+    public float SkillDashFOV;
+    public float wallrunFOV;
+
     [Header("Knife throwing settings")]
     //public GameObject Kunai;
     public Camera mainCamera;
@@ -43,16 +49,15 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Image markImg;
     public Canvas markerCanvas;
     public GameObject markerParent;
-    private mesh_destroy DismentleScript;
-    private PlayerAiming camScript;
     private GameObject Enemy;
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
     private GameObject EnemyAimedAt;
     private Vector3 SkillDashTarget;
 
-    public float DefaultFOV;
-    public float DashingFOV;
-    public float SkillDashFOV;
+    //Script references
+    private mesh_destroy DismentleScript;
+    private PlayerAiming camScript;
+    private ShooterProjectile ReflectScript;
     private ScoreManager ScoreScript;
     private FastMovementScript MoveScript;
     private hp hpScript;
@@ -68,20 +73,22 @@ public class Weapon_Skill_Katana : MonoBehaviour
         MoveScript = GetComponent<FastMovementScript>();
         hpScript = GetComponent<hp>();
         camScript = CamHolder.GetComponent<PlayerAiming>();
+        ReflectScript = GetComponent<ShooterProjectile>();
 
         Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
 
         MarkedTargetes.Clear();
 
         DefaultFOV = MoveScript.DefaultFOV;
-        DashingFOV = DefaultFOV + 5f;
+        DashingFOV = DefaultFOV - 1f;
         SkillDashFOV = DefaultFOV + 20f;
+        wallrunFOV = DefaultFOV + 5f;
     }
 
     void Update()
     {
         //Debug.DrawLine(EnemyAimedAt);
-        Debug.Log("Looking at " + EnemyAimedAt);
+        //Debug.Log("Looking at " + EnemyAimedAt);
         //TotalEnemiesMarked = MarkedTargetes.Count;
         //DashInput();
         PlayerInput();
@@ -131,6 +138,13 @@ public class Weapon_Skill_Katana : MonoBehaviour
                     {
                         Destroy(this.Shield);
                     }
+                }
+
+                if (meleehit.transform.tag == "EnemyProjectileTag")
+                {
+                    StartCoroutine("HitStop");
+                    ReflectScript = meleehit.transform.GetComponent<ShooterProjectile>();
+                    ReflectScript.OnPlayerParry(mainCamera.transform.forward);
                 }
             }
             else
@@ -182,7 +196,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
          Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
          RaycastHit knifehit;
 
-         Debug.Log("throw knife");
+         //Debug.Log("throw knife");
          if (Physics.Raycast(ray, out knifehit))
          {
              GameObject RayCastHitObject = knifehit.transform.gameObject;
@@ -285,19 +299,19 @@ public class Weapon_Skill_Katana : MonoBehaviour
             //Debug.Log("skill dashing");
             playerRB.useGravity = false;
             PlayerTrans.position = Vector3.Lerp(PlayerTrans.transform.position, SkillDashTarget, t);
-            Debug.Log("skill dashing");
+            //Debug.Log("skill dashing");
 
             yield return new WaitForSeconds(0.01f);
             
 
         }
-        Debug.Log(" skill dash end");
+        //Debug.Log(" skill dash end");
 
         camScript.DoFOV(DefaultFOV);
 
         //small upward force after reaching the target
         playerRB.velocity = new Vector3(0, 0, 0);
-        playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 3f);
+        playerRB.AddForce(EnemyDirection * 2f + playerRB.transform.up * 8f, ForceMode.Impulse);
 
         //reset all settings to normal
         MoveScript.readyToJump = true;
@@ -306,7 +320,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         playerRB.useGravity = true;
         isSkillDashing = false;
         
-        Debug.Log("exit skill dash");
+        //Debug.Log("exit skill dash");
         yield return null;
 
         //CancelInvoke("SkillDash");
@@ -314,34 +328,22 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     }
 
-    /*IEnumerator SkillStartCameraEffects()
-    {
-        while(isSkillDashing)
-        {
-            mainCamera.fieldOfView = Mathf.Lerp(DefaultFOV, DashingFOV, 0.1f);
-            yield return new WaitForSeconds(0.01f);
-        }
-        StartCoroutine("SkillEndCameraEffects");
-    }
-
-    IEnumerator SkillEndCameraEffects()
-    {
-        
-        while(mainCamera.fieldOfView != DefaultFOV)
-        {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, DefaultFOV, 0.1f);
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-    */
     IEnumerator DashCDCounter()
     {
         yield return new WaitForSeconds(.5f);
         DashingCD = false;
     }
 
-    /*IEnumerator MarkerTracker()
+    IEnumerator HitStop()
     {
-
-    }*/
+        bool waiting = false;
+        if (!waiting)
+        {
+            waiting = true;
+            Time.timeScale = 0.01f;
+            yield return new WaitForSeconds(0.0035f);
+            Time.timeScale = 1f;
+            waiting = false;
+        }
+    }
 }

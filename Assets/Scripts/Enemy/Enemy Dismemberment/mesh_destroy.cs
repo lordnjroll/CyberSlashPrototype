@@ -318,7 +318,7 @@ public class mesh_destroy : MonoBehaviour
 
     public IEnumerator Cleartimer()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
     }
 }

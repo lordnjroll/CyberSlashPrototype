@@ -296,7 +296,7 @@ MonoBehaviour:
   hit: 0
   forceToExplode: 1
   generation: 1
-  maxGeneration: 4
+  maxGeneration: 1
   cutPerHit: 3
   ExplodeForce: 4000
 --- !u!1 &6970027488517963700

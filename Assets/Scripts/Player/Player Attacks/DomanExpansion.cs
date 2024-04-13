@@ -130,7 +130,7 @@ public class DomanExpansion : MonoBehaviour
         if (Input.GetKeyUp(expandButton))
         {
             OnCoolDown = true;
-            Debug.Log("Domain Activate");
+            //Debug.Log("Domain Activate");
             DomainParticleEffect.Play();
             FullyExpanded = false;
 
@@ -140,11 +140,11 @@ public class DomanExpansion : MonoBehaviour
             Collider[] trappedTargets = Physics.OverlapSphere(DomainSphere.transform.position, maxScale, EnemyMask);
             foreach(Collider hit in trappedTargets)
             {
-                Debug.Log("slashed");
+                //Debug.Log("slashed");
 
                 dismemberScript = hit.GetComponent<mesh_destroy>();
 
-                dismemberScript.gothit();
+                dismemberScript.hit = true;
 
                 ScoreManager.score += 150;
             }

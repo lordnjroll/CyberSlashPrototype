@@ -77,6 +77,7 @@ public class FastMovementScript : MonoBehaviour
     [Header("References")]
     private Weapon_Skill_Katana KatanaScript;
     private PlayerAiming camScript;
+    private LaunchWave LaunchScript;
     public Transform orientation;
     Rigidbody rb;
 
@@ -92,6 +93,7 @@ public class FastMovementScript : MonoBehaviour
     {
         PlayerCam.fieldOfView = DefaultFOV;
 
+        LaunchScript = GetComponent<LaunchWave>();
         camScript = CamHolder.GetComponent<PlayerAiming>();
         KatanaScript = GetComponent<Weapon_Skill_Katana>();
         rb = GetComponent<Rigidbody>();
@@ -349,7 +351,7 @@ public class FastMovementScript : MonoBehaviour
 
             if (Input.GetKey(jumpKey)) //wall jump
             {
-                Debug.Log("wall jumped");
+                //Debug.Log("wall jumped");
                 WallJump();
             }
         }
@@ -446,11 +448,13 @@ public class FastMovementScript : MonoBehaviour
                     //add a small acceleration boost if holding w 
                     rb.AddForce(rb.transform.forward * VelocityStorage , ForceMode.Impulse);
                     isSlaming = false;
+                    //LaunchScript.PlayerIniatedLaunch(); //launches the enemies around the player
                     CancelInvoke("SlamDown");
                 }
                 else
                 {
                     isSlaming = false;
+                    //LaunchScript.PlayerIniatedLaunch(); //launches the enemies around the player
                     CancelInvoke("SlamDown");
                 }
             } else if (SlamRayCastObject.layer == 8)

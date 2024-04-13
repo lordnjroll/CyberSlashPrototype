@@ -45,10 +45,7 @@ public class spwanenimy : MonoBehaviour
         maxManagerCredit = 30;
         ManagerCredit = maxManagerCredit;
 
-        for (int i= 0; i < EnemySet.Length; i++)
-        {
-            //EnemySet[i];
-        }
+        InvokeRepeating("CreditBuildUp", 0 ,2);
     }
     
     // Update is called once per frame
@@ -57,7 +54,7 @@ public class spwanenimy : MonoBehaviour
         enemySpwan();        
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
-        EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length;
+        EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
         ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
 
         //Debug.Log(RandomSpawnNumber);
@@ -67,73 +64,146 @@ public class spwanenimy : MonoBehaviour
             SpawnCoolDown -= Time.deltaTime;
         }
     }
-    //debug
+
     void enemySpwan()
     {
-        if (ManagerCredit < 15 && SpawnCoolDown <= 0)
+        if (ManagerCredit > 20 && SpawnCoolDown <= 0 && EnemyCount < 30)
         {
             RandomSpawnNumber = Random.Range(0, 5); //select the spawn position
-            
             PresetSelector = Random.Range(0, 100) + HypeDifficultyLevel;
-            if(PresetSelector <=20)
+            //Debug.Log("The difficulty is " + PresetSelector);
+            if (PresetSelector <=20)
+            {
+                if(ManagerCredit >= 15)
                 {
+                    ManagerCredit -= 15;
                     //Easy preset
-                    Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
-                    Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    for (int i = 0; i < EnemySet[0].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[0].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15; //set spawn cooldown;
+                }
                     
-
-                    SpawnCoolDown = 10; //set spawn cooldown;
-                }
+            }
             if(PresetSelector <=40 || PresetSelector >20)
+            {
+                if(ManagerCredit >= 16)
                 {
-                    //Easy preset 2           
+                    ManagerCredit -= 16;
+                    //Easy preset 2
+                    for (int i = 0; i < EnemySet[1].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[1].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;   
                 }
-            if(PresetSelector <=55 || PresetSelector >35)
+                            
+            }
+            if(PresetSelector <=65 || PresetSelector >40)
+            {
+                if (ManagerCredit >= 18)
                 {
-                    //Easy preset 3          
-                }
+                    ManagerCredit -= 18;
+                    //Easy preset 3
+                    for (int i = 0; i < EnemySet[2].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[2].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;  
 
-            if(PresetSelector <=70 || PresetSelector >55)
-                {
-                    //Mid preset 1          
                 }
-            if(PresetSelector <=80 || PresetSelector >70)
+                        
+            }
+
+            if(PresetSelector <=80 || PresetSelector > 65)
+            {
+                if (ManagerCredit >= 20)
                 {
-                    //Mid preset 2          
-                }    
+                    ManagerCredit -= 20;
+                    //Mid preset 1
+                    for (int i = 0; i < EnemySet[3].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[3].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;
+                }
+                
+            }
             if(PresetSelector <=90 || PresetSelector >80)
+            {
+                if (ManagerCredit >= 22)
                 {
-                    //Hard preset 1            
+                    ManagerCredit -= 22;
+                    //Mid preset 2
+                    for (int i = 0; i < EnemySet[4].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[4].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;
                 }
-            if(PresetSelector <=100 || PresetSelector >90)
+                
+            }    
+            if(PresetSelector <=95 || PresetSelector >90)
+            {
+                if (ManagerCredit >= 30)
                 {
-                    //Hard preset 2           
+                    ManagerCredit -= 30;
+                    //Hard preset 1
+                    for (int i = 0; i < EnemySet[5].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[5].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;
                 }
+                
+            }
+            if(PresetSelector <=100 || PresetSelector >95)
+            {
+                if (ManagerCredit >= 30)
+                {
+                    ManagerCredit -= 30;
+                    //Hard preset 2
+                    for (int i = 0; i < EnemySet[6].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[6].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;
+                }
+                
+            }
             if(PresetSelector > 100)
+            {
+                if (ManagerCredit >= 40)
                 {
-                    //Hard preset 3           
-                }    
-            /*                       // X,Z
-            //XPosition = Random.Range(0, 0);
-            //ZPosition = Random.Range(0, 0);
-            //                                  X ,     Y ,     Z
-            //Instantiate(enemy, new Vector3(XPosition, 0, ZPosition), new Quaternion(0, 90, 0, 0));
-
-            Instantiate(enemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
-            EnemyCount += 1;
-
-            SpawnCoolDown = 15;*/
+                    ManagerCredit -= 40;
+                    //Hard preset 3
+                    for (int i = 0; i < EnemySet[7].EnemySetGroup.Length; i++)
+                    {
+                        Instantiate(EnemySet[7].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                    }
+                    SpawnCoolDown = 15;
+                }
+                
+            } 
+            
         }
 
-        if(ShieldenemyCount < 10 && SpawnCoolDown <= 0)
-        {
-            /*Instantiate(Shieldenemy, SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
-            ShieldenemyCount += 1;
-
-            SpawnCoolDown = 1;*/
-        }
     }
     
+    IEnumerator MaxCreditBuildUp()
+    {
+        yield return new WaitForSeconds(10f);
+        maxManagerCredit += 1;
+    }
+
+    void CreditBuildUp()
+    {
+        while(ManagerCredit <= maxManagerCredit)
+        {
+            ManagerCredit += 1;
+        }
+    }
 }
 
         
