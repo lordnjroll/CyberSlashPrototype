@@ -22,6 +22,9 @@ public class FodderAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
 
+    [Header("References")]
+    public hp HPscript;
+
     RaycastHit PlayerHit;
     private void Awake()
     {
@@ -31,6 +34,8 @@ public class FodderAI : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindWithTag("Player").gameObject;
+
+        HPscript = Player.GetComponent<hp>();
 
         //Starting the chase
         StartCoroutine(ChasePlayer());
@@ -113,6 +118,14 @@ public class FodderAI : MonoBehaviour
             Destroy(this.gameObject);
         }*/
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.gameObject.layer == 8 && IsAttacking)
+        {
+            hp.Hp--;
+        }
     }
 }
 

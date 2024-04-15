@@ -16,6 +16,7 @@ public class TurretAI : MonoBehaviour
 
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
+    private hp HpScript;
 
     //public ParticleSystem FireEffect, HitEffect;
 
@@ -27,6 +28,7 @@ public class TurretAI : MonoBehaviour
 
     void Start()
     {
+        HpScript = ThePlayer.GetComponent<hp>();
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         AttackCD = false;
     }
@@ -74,9 +76,13 @@ public class TurretAI : MonoBehaviour
         RaycastHit TurretTarget;
         if(Physics.Raycast(TurretBarrel.transform.position, TurretBarrel.transform.forward, out TurretTarget, FlyerAttackRange))
         {
-            if(TurretTarget.transform.gameObject.layer == 8)
+            Debug.Log("turret shot " + TurretTarget.transform.gameObject);
+
+            if(TurretTarget.transform.gameObject.layer == 7)
             {
+                Debug.Log("player hit");
                 //hp lost here
+                hp.Hp--;
             }
         }
 
