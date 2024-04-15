@@ -13,12 +13,11 @@ public class TurretAI : MonoBehaviour
     public LayerMask PlayerLayer;
 
     public int FlyerAttackRange;
-    public int FlyerMoveSpeed;
 
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
 
-    public ParticleSystem FireEffect, HitEffect;
+    //public ParticleSystem FireEffect, HitEffect;
 
     RaycastHit PlayerHit;
     private void Awake()
@@ -32,12 +31,6 @@ public class TurretAI : MonoBehaviour
         AttackCD = false;
     }
 
-    public void FlyerChasingPlayer()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, ThePlayer.transform.position, FlyerMoveSpeed * Time.deltaTime);
-        transform.LookAt(ThePlayer.transform.position);
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -46,15 +39,10 @@ public class TurretAI : MonoBehaviour
         //To Look at the player when winding up an attack
         if (AttackWindingUp)
         {
-            transform.LookAt(ThePlayer.transform.position);
-            laserLine.SetPosition(0, laserOrigin.position);
+            TurretBarrel.transform.LookAt(ThePlayer.transform.position);
+            laserLine.SetPosition(0, laserOrigin.transform.position);
             laserLine.SetPosition(1, ThePlayer.transform.position);
             //Vector3 rayOrigin = playerLocation.position;
-        }
-
-        if (!playerInAttackRange && !IsAttacking || AttackCD)
-        {
-            FlyerChasingPlayer();
         }
 
         if (playerInAttackRange && !IsAttacking && !AttackCD)
@@ -78,19 +66,29 @@ public class TurretAI : MonoBehaviour
 
         //Debug.Log("Stop Looking at the player");
         AttackWindingUp = false;
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(.3f);
 
         //Debug.Log("Flyer fire");
+        
+        //shoot raycast
+        RaycastHit TurretTarget;
+        if(Physics.Raycast(TurretBarrel.transform.position, TurretBarrel.transform.forward, out TurretTarget, FlyerAttackRange))
+        {
+            if(TurretTarget.transform.gameObject.layer == 8)
+            {
+                //hp lost here
+            }
+        }
 
         IsAttacking = false;
         AttackCD = true;
 
         //Laser effect
-        Instantiate(FireEffect, laserLine.GetPosition(0), Quaternion.identity);
+        /*Instantiate(FireEffect, laserLine.GetPosition(0), Quaternion.identity);
         Destroy(FireEffect, 1f);
 
         Instantiate(FireEffect, laserLine.GetPosition(1), Quaternion.identity);
-        Destroy(FireEffect, 1f);
+        Destroy(FireEffect, 1f);*/
 
         laserLine.enabled = false;
 
@@ -101,7 +99,7 @@ public class TurretAI : MonoBehaviour
     //Flyer attack cool down
     IEnumerator AttackCoolDown()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         AttackCD = false;
     }
 }
