@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject musicSettingLayer;
     public GameObject quitLayer;
     public GameObject deathLayer;
+    public GameObject tipsLayer;
 
     private bool menuSwitch = false;
 
@@ -32,8 +33,9 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && menuSwitch == false)
         {
             Time.timeScale = 0f;
-            escMenuLayer.SetActive(true);
             gameUILayer.SetActive(false);
+            tipsLayer.SetActive(false);
+            escMenuLayer.SetActive(true);
             menuSwitch = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -43,8 +45,8 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
             escMenuLayer.SetActive(false);
-            gameUILayer.SetActive(true);
             musicSettingLayer.SetActive(false);
+            gameUILayer.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             menuSwitch = false;
@@ -56,10 +58,14 @@ public class UIManager : MonoBehaviour
     {
         if(hp.Hp == 0)
         {
-            deathLayer.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            
             escMenuLayer.SetActive(false);
             gameUILayer.SetActive(false);
             musicSettingLayer.SetActive(false);
+            tipsLayer.SetActive(false);
+            deathLayer.SetActive(true);
         }
     }
 
@@ -67,26 +73,31 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         escMenuLayer.SetActive(false);
+        musicSettingLayer.SetActive(false);
         gameUILayer.SetActive(true);
+        tipsLayer.SetActive(true);
         menuSwitch = false;
         Cursor.visible = false;
-        Debug.Log("Clicked");
     }
 
     public void MusicBtnOnClick()
     {
-        musicSettingLayer.SetActive(true);
         escMenuLayer.SetActive(false);
+        gameUILayer.SetActive(false);
+        tipsLayer.SetActive(false);
+        musicSettingLayer.SetActive(true);
     }
 
     public void NextStage()
     {
         SceneManager.LoadScene("Upgrade Station");
+        Time.timeScale = 1f;
     }
 
     public void QuitBtnOnClick()
     {
         SceneManager.LoadScene("MenuScene");
+        Time.timeScale = 1f;
     }
 
     public void RetryBtnOnClick()
