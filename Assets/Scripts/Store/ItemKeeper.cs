@@ -8,6 +8,14 @@ public class ItemKeeper : MonoBehaviour
     hp hp;
     [SerializeField] private TMP_Text Tipstxt;
     [SerializeField] private TMP_Text KeepList;
+    private Weapon_Skill_Katana WSK;
+
+    [SerializeField] private float PowerHoldTime;
+    [SerializeField] private int PowerBuff;
+    private void Start()
+    {
+        DisplayKeepList();
+    }
 
     private void Update()
     {
@@ -16,26 +24,25 @@ public class ItemKeeper : MonoBehaviour
         UsePowerUp();
         UseSkill1();
         UseSkill2();
-        DisplayKeepList();
     }
 
     void DisplayKeepList()
     {
         KeepList.text = "Health Potion : " + Store.healthpotion.ToString() + "\n"
                                                     +
-                        "\nBonus Potion : " + Store.bonuspotion.ToString() + "\n";
+                        "\nBonus Potion : " + Store.bonuspotion.ToString() + "\n" 
+                                                    +
+                        "\nPower Buff : " + Store.powerup.ToString() + "\n";
     }
 
     void UseHealthPotion()
     {
-        if(Store.healthpotion > 0)
+        if(Input.GetKeyDown(KeyCode.H) && Store.healthpotion > 0)
         {
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                hp.Hp += 1;
-            }
+            hp.Hp += 1;
+            Store.healthpotion--;
         }
-        else
+        else if(Input.GetKeyDown(KeyCode.H) && Store.healthpotion == 0)
         {
             Tipstxt.text = "You dont have any health potion.";
         }
@@ -43,14 +50,11 @@ public class ItemKeeper : MonoBehaviour
 
     void UseBonusPotion()
     {
-        if(Store.bonuspotion > 0)
+        if(Input.GetKeyDown(KeyCode.B) && Store.bonuspotion > 0)
         {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                ScoreManager.score += 2500;
-            }
+            ScoreManager.score += 2500;
         }
-        else
+        else if(Input.GetKeyDown(KeyCode.B) && Store.bonuspotion == 0)
         {
             Tipstxt.text = "You dont have any bonus potion.";
         }
@@ -58,7 +62,23 @@ public class ItemKeeper : MonoBehaviour
 
     void UsePowerUp()
     {
-        
+        if(Input.GetKeyDown(KeyCode.V) && Store.powerup > 0)
+        {
+            WSK.PlayerDamage += PowerBuff;
+            if (PowerHoldTime > 0)
+            {
+                PowerHoldTime -= Time.deltaTime;
+            }
+            else
+            {
+                PowerHoldTime = 0;
+                WSK.PlayerDamage -= PowerBuff;
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.V) && Store.powerup == 0)
+        {
+            Tipstxt.text = "You cant power up.";
+        }
     }
 
     void UseSkill1()

@@ -10,6 +10,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     [Header("Attack setting")]
     public Transform PlayerAttackStartPoint;
     public float AttackRange;
+    public int PlayerDamage;
 
     [Header("Dash settings")]
     public float dashSpeed;
@@ -36,8 +37,9 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public KeyCode secondarySkillbtn = KeyCode.Mouse1;
 
     [Header("Enemy Settings")]
-    public GameObject Shield;
-    public int ShieldHP = 10;
+    public int BaseEnemyHP;
+    public int ShieldEnemyHP;
+    public int MuscleEnemyHP;
     
     private List<GameObject> MarkedTargetes = new List<GameObject>();
     private int TotalEnemiesMarked = 0;
@@ -50,6 +52,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Canvas markerCanvas;
     public GameObject markerParent;
     private GameObject Enemy;
+    private GameObject ShieldEnemy;
+    private GameObject MuscleEnemy;
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
     private GameObject EnemyAimedAt;
     private Vector3 SkillDashTarget;
@@ -118,6 +122,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                     Debug.Log("Hit enemy");
 
+                    BaseEnemyHP = BaseEnemyHP - PlayerDamage;
+
                     //EnemyScript.Killed();
                     //Destroy(Enemy);
 
@@ -126,18 +132,19 @@ public class Weapon_Skill_Katana : MonoBehaviour
                     //ScoreScript.GetScore();
                 }
 
-                if (meleehit.transform.tag == "Shield")
+                if (meleehit.transform.tag == "ShieldEnemy")
                 {
-                    Shield = meleehit.transform.gameObject;
 
-                    ShieldHP--;
-
+                    ShieldEnemyHP = ShieldEnemyHP - PlayerDamage;
+                    DismentleScript = ShieldEnemy.GetComponent<mesh_destroy>();
                     Debug.Log("Hit Shield");
 
-                    if (ShieldHP == 0)
-                    {
-                        Destroy(this.Shield);
-                    }
+                }
+
+                if(meleehit.transform.tag == "MuscleEnemy")
+                {
+                    MuscleEnemyHP = MuscleEnemyHP - PlayerDamage;
+                    DismentleScript = MuscleEnemy.GetComponent<mesh_destroy>();
                 }
 
                 if (meleehit.transform.tag == "EnemyProjectileTag")
