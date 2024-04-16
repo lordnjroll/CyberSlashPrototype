@@ -448,13 +448,13 @@ public class FastMovementScript : MonoBehaviour
                     //add a small acceleration boost if holding w 
                     rb.AddForce(rb.transform.forward * VelocityStorage , ForceMode.Impulse);
                     isSlaming = false;
-                    //LaunchScript.PlayerIniatedLaunch(); //launches the enemies around the player
+                    LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
                     CancelInvoke("SlamDown");
                 }
                 else
                 {
                     isSlaming = false;
-                    //LaunchScript.PlayerIniatedLaunch(); //launches the enemies around the player
+                    LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
                     CancelInvoke("SlamDown");
                 }
             } else if (SlamRayCastObject.layer == 8)

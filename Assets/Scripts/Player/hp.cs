@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class hp : MonoBehaviour
 {
-    public bool isdashing = false;
+    public bool Godmode = false;
 
     public Image HealthHp3Bar;
     public Image HealthHp2Bar;
@@ -36,6 +36,10 @@ public class hp : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.H))
         {
             Hp++;
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Godmode = true;
         }
     }
 
@@ -69,5 +73,22 @@ public class hp : MonoBehaviour
             GameUILayer.SetActive(false);
             DeathLayer.SetActive(true);
         }
+    }
+
+    public void HealthLost()
+    {
+        if (!Godmode)
+        {
+            Hp--;
+            StartCoroutine("GodmodeTimer");
+            Godmode = true;
+        }
+        
+    }
+
+    IEnumerator GodmodeTimer()
+    {
+        yield return new WaitForSeconds(1f);
+        Godmode = false;
     }
 }

@@ -51,6 +51,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Image markImg;
     public Canvas markerCanvas;
     public GameObject markerParent;
+    public LayerMask EnemyHitboxLayer;
     private GameObject Enemy;
     private GameObject ShieldEnemy;
     private GameObject MuscleEnemy;

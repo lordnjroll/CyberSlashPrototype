@@ -35,7 +35,7 @@ public class DomanExpansion : MonoBehaviour
 
     //Script references
     public ScoreManager Score;
-    private mesh_destroy dismemberScript;
+    public mesh_destroy dismemberScript;
 
     // Start is called before the first frame update
     void Start()
@@ -146,7 +146,7 @@ public class DomanExpansion : MonoBehaviour
 
                 dismemberScript.hit = true;
 
-                ScoreManager.score += 150;
+                //ScoreManager.score += 150;
             }
 
             Invoke("DomainCD",CoolDownTime);

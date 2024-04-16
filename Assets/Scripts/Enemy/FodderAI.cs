@@ -122,9 +122,14 @@ public class FodderAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.gameObject.layer == 8 && IsAttacking)
+        if(collision.transform.gameObject.layer == 7 && IsAttacking)
         {
-            hp.Hp--;
+            HPscript.HealthLost();
+        }
+
+        if(collision.transform.gameObject.layer == 3)
+        {
+
         }
     }
 }

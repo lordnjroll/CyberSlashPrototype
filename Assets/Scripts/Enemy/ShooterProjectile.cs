@@ -51,6 +51,7 @@ public class ShooterProjectile : MonoBehaviour
                 //PlayerHealth.hit();
                 //Debug.Log("Player Hit");
 
+                PlayerHealth.HealthLost();
                 Destroy(gameObject);
             }
             else

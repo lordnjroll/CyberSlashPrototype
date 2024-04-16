@@ -246,6 +246,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   IsAttacking: 0
   AttackCD: 0
+  HPscript: {fileID: 0}
 --- !u!54 &548725791215367487
 Rigidbody:
   m_ObjectHideFlags: 0

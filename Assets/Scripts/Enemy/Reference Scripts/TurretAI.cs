@@ -82,7 +82,7 @@ public class TurretAI : MonoBehaviour
             {
                 Debug.Log("player hit");
                 //hp lost here
-                hp.Hp--;
+                HpScript.HealthLost();
             }
         }
 

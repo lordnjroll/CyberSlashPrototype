@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1358888026}
   - component: {fileID: 1358888025}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1358888023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.45, z: 0}
-  m_LocalScale: {x: 1.4331, y: 3.1574874, z: 1.1820209}
+  m_LocalScale: {x: 1.916198, y: 3.1574874, z: 1.5631044}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3492876334676278114}
@@ -302,7 +302,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 128
-  ShootRange: 15
+  ShootRange: 45
   ShooterProjectile: {fileID: 8742687741155778042, guid: 2b49f074317703e47bae6e6814eb11a7, type: 3}
   ShooterMoveSpeed: 0
   ProjectileSpeed: 5
