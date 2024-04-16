@@ -12,20 +12,16 @@ public class UIManager : MonoBehaviour
     public GameObject musicSettingLayer;
     public GameObject quitLayer;
     public GameObject deathLayer;
-    public GameObject tipsLayer;
 
     private bool menuSwitch = false;
 
     private hp PlayerHP;
 
-    void Start()
-    {
-        
-    }
     // Update is called once per frame
     void Update()
     {
         OpenEscMenu();
+        PlayerDead();
     }
 
     void OpenEscMenu()
@@ -34,7 +30,6 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             gameUILayer.SetActive(false);
-            tipsLayer.SetActive(false);
             escMenuLayer.SetActive(true);
             menuSwitch = true;
             Cursor.visible = true;
@@ -64,7 +59,6 @@ public class UIManager : MonoBehaviour
             escMenuLayer.SetActive(false);
             gameUILayer.SetActive(false);
             musicSettingLayer.SetActive(false);
-            tipsLayer.SetActive(false);
             deathLayer.SetActive(true);
         }
     }
@@ -75,7 +69,6 @@ public class UIManager : MonoBehaviour
         escMenuLayer.SetActive(false);
         musicSettingLayer.SetActive(false);
         gameUILayer.SetActive(true);
-        tipsLayer.SetActive(true);
         menuSwitch = false;
         Cursor.visible = false;
     }
@@ -84,7 +77,6 @@ public class UIManager : MonoBehaviour
     {
         escMenuLayer.SetActive(false);
         gameUILayer.SetActive(false);
-        tipsLayer.SetActive(false);
         musicSettingLayer.SetActive(true);
     }
 

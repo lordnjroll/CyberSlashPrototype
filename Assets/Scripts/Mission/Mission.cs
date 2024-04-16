@@ -201,6 +201,7 @@ public class Mission : MonoBehaviour
         if(m_CPcount == m_totalCPcount)
         {
             ScoreManager.mission_point += 600;
+            StartCP = false;
         }
     }
 
@@ -210,7 +211,10 @@ public class Mission : MonoBehaviour
         if(m_minicount == m_totalminicount)
         {
             ScoreManager.mission_point += 600;
+            Startminigame = false;
         }
+
+
     }
 
     void FinishSurvive()
@@ -227,11 +231,12 @@ public class Mission : MonoBehaviour
 
                 Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
             }
-            else
+            else if(Timer <= 0)
             {
                 Timer = 0;
                 timecount = false;
                 ScoreManager.mission_point += 600;
+                Startsur = false;
             }
         }
     }

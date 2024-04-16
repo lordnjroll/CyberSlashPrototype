@@ -10,6 +10,7 @@ public class Store : MonoBehaviour
 {
     [SerializeField] private GameObject StoreLayer;
     [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private TMP_Text Tipstxt;
     public static Store Instance;
 
     public List<StoreItem> ItemList = new List<StoreItem>();
@@ -29,7 +30,7 @@ public class Store : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
+
     }
 
     private void Update()
@@ -42,14 +43,14 @@ public class Store : MonoBehaviour
             ListItem();
         }
 
-        
+
     }
 
 
 
     public void ListItem()
     {
-        if(ItemCount < ItemList.Count)
+        if (ItemCount < ItemList.Count)
         {
             foreach (var item in ItemList)
             {
@@ -68,7 +69,7 @@ public class Store : MonoBehaviour
                 ItemCount++;
             }
         }
-        
+
     }
 
     public void HideCursor()
@@ -76,31 +77,61 @@ public class Store : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void AdItemOnClick (StoreItem data)
+    public void AdItemOnClick(StoreItem data)
     {
-        if (data.itemName.Equals("HealthPotion"))
+        if (data.itemName.Equals("HealthPotion") && ScoreManager.score >= data.value)
         {
+            ScoreManager.score -= data.value;
             healthpotion++;
         }
-
-        if (data.itemName.Equals("EXPPotion"))
+        else if (data.itemName.Equals("HealthPotion") && ScoreManager.score < data.value)
         {
+            Tipstxt.text = "You don't have enough score to buy this item.";
+            StartCoroutine(ClearText());
+        }
+
+        if (data.itemName.Equals("EXPPotion") && ScoreManager.score >= data.value)
+        {
+            ScoreManager.score -= data.value;
             bonuspotion++;
         }
-
-        if (data.itemName.Equals("PowerUp"))
+        else if (data.itemName.Equals("EXPPotion") && ScoreManager.score < data.value)
         {
+            Tipstxt.text = "You don't have enough score to buy this item.";
+            StartCoroutine(ClearText());
+        }
+
+        if (data.itemName.Equals("PowerUp") && ScoreManager.score >= data.value)
+        {
+            ScoreManager.score -= data.value;
             powerup++;
         }
-
-        if (data.itemName.Equals("Skill1"))
+        else if (data.itemName.Equals("PowerUp") && ScoreManager.score < data.value)
         {
-            Skill1++;
+            Tipstxt.text = "You don't have enough score to buy this item.";
+            StartCoroutine(ClearText());
         }
 
-        if (data.itemName.Equals("Skill2"))
+        if (data.itemName.Equals("Skill1") && ScoreManager.score >= data.value)
         {
+            ScoreManager.score -= data.value;
+            Skill1++;
+        }
+        else if (data.itemName.Equals("Skill1") && ScoreManager.score < data.value)
+        {
+            Tipstxt.text = "You don't have enough score to buy this item.";
+            StartCoroutine(ClearText());
+        }
+
+        if (data.itemName.Equals("Skill2") && ScoreManager.score >= data.value)
+        {
+            ScoreManager.score -= data.value;
             Skill2++;
+        }
+        else if (data.itemName.Equals("Skill2") && ScoreManager.score < data.value)
+        {
+            Tipstxt.text = "You don't have enough score to buy this item.";
+            StartCoroutine(ClearText());
         }
     }
 
@@ -120,5 +151,11 @@ public class Store : MonoBehaviour
     public void Load()
     {
 
+    }
+
+    IEnumerator ClearText()
+    {
+        yield return new WaitForSeconds(2f);
+        Tipstxt.text = " ";
     }
 }
