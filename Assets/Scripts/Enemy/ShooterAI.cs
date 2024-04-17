@@ -57,7 +57,7 @@ public class ShooterAI : MonoBehaviour
 
         playerInAttackRange = Physics.CheckSphere(transform.position, ShootRange, PlayerLayer);
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched)
+        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched && GetComponent<UnityEngine.AI.NavMeshAgent>().enabled == true)
         {
             //ChasePlayer();
             transform.LookAt(PlayerLocation);

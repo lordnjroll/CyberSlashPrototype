@@ -59,6 +59,12 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private GameObject EnemyAimedAt;
     private Vector3 SkillDashTarget;
 
+    [Header("Audio")]
+    public AudioClip Sword_Swing;
+    public AudioClip Kunai_Throw;
+    public AudioClip Target_Marked;
+    public AudioSource Source;
+
     //Script references
     private mesh_destroy DismentleScript;
     private PlayerAiming camScript;
@@ -114,7 +120,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             RaycastHit meleehit;
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
             {
-
+                Source.PlayOneShot(Sword_Swing);
                 if (meleehit.transform.tag == "EnemyTag")
                 {
                     Enemy = meleehit.transform.gameObject;
@@ -200,8 +206,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void secondarySkill()
     {
-        
-         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Source.PlayOneShot(Kunai_Throw);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
          RaycastHit knifehit;
 
          //Debug.Log("throw knife");
@@ -213,7 +219,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
              {
                  //Debug.Log("Object marked: " + RayCastHitObject.name);
                  MarkedTargetes.Add(RayCastHitObject);
-             }
+                Source.PlayOneShot(Target_Marked);
+            }
 
          }
         
