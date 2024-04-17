@@ -65,6 +65,7 @@ public class Tutorial : MonoBehaviour
 
         if (other.gameObject.name == "FinishTutorial")
         {
+            tipsLayer.SetActive(false);
             Destroy(this);
         }
     }
