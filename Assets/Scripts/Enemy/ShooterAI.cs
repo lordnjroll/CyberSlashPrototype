@@ -20,7 +20,9 @@ public class ShooterAI : MonoBehaviour
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
+    public bool isLaunched = false;
     public LineRenderer laserLine;
+    public Rigidbody shooterRB;
 
     RaycastHit PlayerHit;
 
@@ -33,6 +35,8 @@ public class ShooterAI : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindWithTag("Player").gameObject;
+        shooterRB = this.GetComponent<Rigidbody>();
+        shooterRB.isKinematic = true;
 
         //Starting the chase
         StartCoroutine(ChasePlayer());
@@ -43,7 +47,7 @@ public class ShooterAI : MonoBehaviour
     {
         PlayerLocation = Player.transform.position;
 
-        if (AttackWindingUp)
+        if (AttackWindingUp && !isLaunched && !isLaunched)
         {
             transform.LookAt(PlayerLocation);
             //laserLine.SetPosition(0, laserOrigin.position);
@@ -53,18 +57,25 @@ public class ShooterAI : MonoBehaviour
 
         playerInAttackRange = Physics.CheckSphere(transform.position, ShootRange, PlayerLayer);
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD)
+        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched)
         {
             //ChasePlayer();
             transform.LookAt(PlayerLocation);
             GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
         }
-        if (playerInAttackRange && !IsAttacking && !AttackCD)
+        if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched)
         {
             AttackMode();
         }
 
-        
+        if (shooterRB.velocity.y > 7.5)
+        {
+            Debug.Log("shooter launched");
+            //this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            shooterRB.isKinematic = false;
+            isLaunched = true;            
+        }
+
     }
 
     IEnumerator ChasePlayer()
@@ -128,5 +139,19 @@ public class ShooterAI : MonoBehaviour
             Destroy(this.gameObject);
         }
         
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.gameObject.layer == 3 && isLaunched)
+        {
+            this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            shooterRB.isKinematic = true;
+            isLaunched = false;
+        }
+
+        if (collision.transform.gameObject.layer == 13)
+        {
+            Destroy(this);
+        }
     }
 }

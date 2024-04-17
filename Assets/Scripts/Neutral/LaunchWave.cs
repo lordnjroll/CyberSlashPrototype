@@ -21,15 +21,18 @@ public class LaunchWave : MonoBehaviour
 
     public IEnumerator PlayerIniatedLaunch()
     {
-        Collider[] colliders = Physics.OverlapSphere(playerTrans.position, 10f);
+        Collider[] colliders = Physics.OverlapSphere(playerTrans.position, 7f);
         foreach (Collider c in colliders)
         {
             if (c.transform.gameObject.layer == 8)
             {
-                c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-                c.attachedRigidbody.AddForce(c.transform.up * 10f, ForceMode.VelocityChange);
-                yield return new WaitForSeconds(0.2f);
-                c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+                if(c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled == true)
+                {
+                    c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                    c.attachedRigidbody.velocity = new Vector3(0, launchForce, 0);
+                    yield return null;
+                }
+                
             }
         }
     }

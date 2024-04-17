@@ -448,22 +448,24 @@ public class FastMovementScript : MonoBehaviour
                     //add a small acceleration boost if holding w 
                     rb.AddForce(rb.transform.forward * VelocityStorage , ForceMode.Impulse);
                     isSlaming = false;
-                    LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
-                    CancelInvoke("SlamDown");
+                    //LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
+                    //CancelInvoke("SlamDown");
                 }
                 else
                 {
                     isSlaming = false;
-                    LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
-                    CancelInvoke("SlamDown");
+                    //LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
+                    //CancelInvoke("SlamDown");
                 }
             } else if (SlamRayCastObject.layer == 8)
             {
                 //if the player hits an enemy
                 isSlaming = false;
-                CancelInvoke("SlamDown");
+                
+                
             }
-              
+            LaunchScript.StartCoroutine("PlayerIniatedLaunch"); //launches the enemies around the player
+            CancelInvoke("SlamDown");
         }
      
     }
@@ -472,7 +474,7 @@ public class FastMovementScript : MonoBehaviour
     {
         GameObject stompedEnemy = collision.transform.gameObject;
 
-        if (isSlaming && (stompedEnemy.layer == 8) && !grounded)
+        /*if (isSlaming && (stompedEnemy.layer == 8) && !grounded)
         {
             //freeze the enemy
             stompedEnemy.transform.position = new Vector3(stompedEnemy.transform.position.x, stompedEnemy.transform.position.y, stompedEnemy.transform.position.z);
@@ -482,7 +484,7 @@ public class FastMovementScript : MonoBehaviour
             StartCoroutine("SlammedEnemy");
             isSlaming = false;
             CancelInvoke("SlamDown");
-        }
+        }*/
     }
 
     IEnumerator SlammedEnemy()

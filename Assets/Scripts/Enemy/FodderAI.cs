@@ -21,6 +21,7 @@ public class FodderAI : MonoBehaviour
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
+    public bool isLaunched = false;
 
     [Header("References")]
     public hp HPscript;
@@ -46,22 +47,28 @@ public class FodderAI : MonoBehaviour
     {
         PlayerLocation = Player.transform.position;
 
-        if (AttackWindingUp)
+        if (AttackWindingUp && !isLaunched)
         {
             transform.LookAt(PlayerLocation);
         }
 
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD)
+        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched)
         {
             //ChasePlayer();
             transform.LookAt(PlayerLocation);
             GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
         }
-        if (playerInAttackRange && !IsAttacking && !AttackCD)
+        if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched)
         {
             AttackMode();
+        }
+
+        if(rb.velocity.y > 5)
+        {
+            Debug.Log("fodder launched");
+            isLaunched = true;
         }
 
         
@@ -127,9 +134,15 @@ public class FodderAI : MonoBehaviour
             HPscript.HealthLost();
         }
 
-        if(collision.transform.gameObject.layer == 3)
+        if(collision.transform.gameObject.layer == 3 && isLaunched)
         {
+            this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            isLaunched = false;
+        }
 
+        if(collision.transform.gameObject.layer == 13)
+        {
+            Destroy(this);
         }
     }
 }

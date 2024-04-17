@@ -246,6 +246,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   IsAttacking: 0
   AttackCD: 0
+  isLaunched: 0
   HPscript: {fileID: 0}
 --- !u!54 &548725791215367487
 Rigidbody:
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 0
-  forceToExplode: 0.5
+  forceToExplode: 100
   generation: 0
   maxGeneration: 1
   cutPerHit: 3

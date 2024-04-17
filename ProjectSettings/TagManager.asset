@@ -22,7 +22,7 @@ TagManager:
   - EnemyProjectile
   - ReflectedProjectile
   - Barrier
-  - 
+  - ArenaBorder
   - HitboxForPlayer
   - 
   - 

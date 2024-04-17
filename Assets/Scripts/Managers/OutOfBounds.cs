@@ -28,6 +28,10 @@ public class OutOfBounds : MonoBehaviour
         {
             Player.transform.position = RespawnPoint.transform.position;
         }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
 
         ScoreManager.deathcount++;
         //Debug.Log("you dead" + scoreManager.deathcount);
