@@ -99,4 +99,9 @@ public class InGameUI : MonoBehaviour
         chooseModeLayer.SetActive(false);
         MainLayer.SetActive(true);
     }
+
+    public void QuitBtnOnClick()
+    {
+        Application.Quit();
+    }
 }
