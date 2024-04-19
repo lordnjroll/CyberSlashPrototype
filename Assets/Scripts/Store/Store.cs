@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 public class Store : MonoBehaviour
 {
+    [SerializeField] private GameObject GameUILayer;
     [SerializeField] private GameObject StoreLayer;
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private TMP_Text Tipstxt;
+
+    private UIManager uiManager;
     public static Store Instance;
 
     public List<StoreItem> ItemList = new List<StoreItem>();
-    public List<StoreItem> ItemKeeper = new List<StoreItem>();
-
     public List<ItemUI> itemsList = new List<ItemUI>();
 
     public Transform itemcontent;
@@ -35,18 +35,31 @@ public class Store : MonoBehaviour
 
     private void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    StoreLayer.SetActive(true);
+        //    Cursor.visible = true;
+        //    Cursor.lockState = CursorLockMode.None;
+        //    ListItem();
+        //}
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SceneManager.LoadScene("stage 2");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            GameUILayer.SetActive(false);
             StoreLayer.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             ListItem();
         }
-
-
     }
-
-
 
     public void ListItem()
     {
@@ -75,6 +88,7 @@ public class Store : MonoBehaviour
     public void HideCursor()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void AdItemOnClick(StoreItem data)
@@ -135,27 +149,15 @@ public class Store : MonoBehaviour
         }
     }
 
-    public void Save()
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/playerdata.dat";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        ScoreManager sc = new ScoreManager();
-
-        formatter.Serialize(stream, sc);
-        stream.Close();
-
-    }
-
-    public void Load()
-    {
-
-    }
-
     IEnumerator ClearText()
     {
         yield return new WaitForSeconds(2f);
         Tipstxt.text = " ";
+    }
+
+    public void CloseBtnOnClick()
+    {
+        StoreLayer.SetActive(false);
+        GameUILayer.SetActive(true);
     }
 }
