@@ -8,9 +8,10 @@ public class UIManager : MonoBehaviour
 {
     public GameObject escMenuLayer;
     public GameObject gameUILayer;
-    public GameObject continueLayer;
-    public GameObject musicSettingLayer;
-    public GameObject quitLayer;
+    public GameObject SettingLayer;
+    public GameObject DisplayLayer;
+    public GameObject VolumeLayer;
+    public GameObject ClearLayer;
     public GameObject deathLayer;
 
     private bool menuSwitch = false;
@@ -40,7 +41,7 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
             escMenuLayer.SetActive(false);
-            musicSettingLayer.SetActive(false);
+            SettingLayer.SetActive(false);
             gameUILayer.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -58,7 +59,7 @@ public class UIManager : MonoBehaviour
             
             escMenuLayer.SetActive(false);
             gameUILayer.SetActive(false);
-            musicSettingLayer.SetActive(false);
+            SettingLayer.SetActive(false);
             deathLayer.SetActive(true);
         }
     }
@@ -67,7 +68,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         escMenuLayer.SetActive(false);
-        musicSettingLayer.SetActive(false);
+        SettingLayer.SetActive(false);
         gameUILayer.SetActive(true);
         menuSwitch = false;
         Cursor.visible = false;
@@ -77,7 +78,7 @@ public class UIManager : MonoBehaviour
     {
         escMenuLayer.SetActive(false);
         gameUILayer.SetActive(false);
-        musicSettingLayer.SetActive(true);
+        SettingLayer.SetActive(true);
     }
 
     public void NextStage()
@@ -96,5 +97,17 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("stage 1");
         Time.timeScale = 1f;
+    }
+
+    public void DisplayBtnOnClick()
+    {
+        VolumeLayer.SetActive(false);
+        DisplayLayer.SetActive(true);
+    }
+
+    public void VolumeBtnOnClick()
+    {
+        DisplayLayer.SetActive(false);
+        VolumeLayer.SetActive(true);
     }
 }

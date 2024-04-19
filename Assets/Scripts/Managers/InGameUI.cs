@@ -8,10 +8,10 @@ using TMPro;
 public class InGameUI : MonoBehaviour
 {
     [SerializeField] private GameObject MainLayer;
-    [SerializeField] private GameObject startGamebtn;
-    [SerializeField] private GameObject quitGamebtn;
     [SerializeField] private GameObject chooseModeLayer;
     [SerializeField] private GameObject settingLayer;
+    [SerializeField] private GameObject DisplayLayer;
+    [SerializeField] private GameObject VolumeLayer;
 
     public int Stagenum = 1;
     //Stage Text
@@ -103,5 +103,17 @@ public class InGameUI : MonoBehaviour
     public void QuitBtnOnClick()
     {
         Application.Quit();
+    }
+
+    public void DisplayBtnOnClick()
+    {
+        VolumeLayer.SetActive(false);
+        DisplayLayer.SetActive(true);
+    }
+
+    public void VolumeBtnOnClick()
+    {
+        DisplayLayer.SetActive(false);
+        VolumeLayer.SetActive(true);
     }
 }
