@@ -14,7 +14,7 @@ public class DroneAI : MonoBehaviour
     public Transform CubeSpawnPoint;
     public LayerMask PlayerLayer;
     public Rigidbody DroneRB;
-    public LayerMask GroupLayer;
+    public LayerMask GrounpLayer;
 
     public int FlyerAttackRange;
     public int FlyerMoveSpeed;
@@ -58,7 +58,7 @@ public class DroneAI : MonoBehaviour
             
         }
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD)
+        if ((!playerInAttackRange && !IsAttacking || AttackCD) || (DroneHead.transform.position - ThePlayer.transform.position).magnitude > 20)
         {
             FlyerChasingPlayer();
         }
@@ -112,7 +112,7 @@ public class DroneAI : MonoBehaviour
 
     public void KeepDroneAboveAir()
     {
-        if(Physics.Raycast(DroneHead.transform.position, -DroneHead.transform.up, 7f, GroupLayer))
+        if(Physics.Raycast(DroneHead.transform.position, -DroneHead.transform.up, 7f, GrounpLayer))
         {
             Debug.Log("Flying up");
             DroneRB.AddForce(DroneRB.transform.up * 2, ForceMode.Force);
