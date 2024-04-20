@@ -67,7 +67,7 @@ public class FodderAI : MonoBehaviour
 
         if(rb.velocity.y > 5)
         {
-            Debug.Log("fodder launched");
+            //Debug.Log("fodder launched");
             isLaunched = true;
         }
 
@@ -99,7 +99,7 @@ public class FodderAI : MonoBehaviour
 
         //Charge at the Player
         rb.AddForce(rb.transform.forward * chargeSpeed, ForceMode.VelocityChange);
-        Debug.Log("charged");
+        //Debug.Log("charged");
 
 
         IsAttacking = false;

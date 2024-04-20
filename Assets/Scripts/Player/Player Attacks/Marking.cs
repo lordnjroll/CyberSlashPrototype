@@ -12,7 +12,7 @@ public class Marking : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player").gameObject;
-        playerCam = player.GetComponent<Camera>();
+        //playerCam = player.GetComponent<Camera>();
     }
     private void LateUpdate()
     {

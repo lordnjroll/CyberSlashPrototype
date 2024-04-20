@@ -70,7 +70,7 @@ public class ShooterAI : MonoBehaviour
 
         if (shooterRB.velocity.y > 7.5)
         {
-            Debug.Log("shooter launched");
+            //Debug.Log("shooter launched");
             //this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             shooterRB.isKinematic = false;
             isLaunched = true;            
