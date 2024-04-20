@@ -7,6 +7,8 @@ using TMPro;
 
 public class SettingManager : MonoBehaviour
 {
+    public AudioMixerSnapshot whenPaused, whenStarted;
+    private bool paused;
     public AudioMixer audioMixer;
 
     public TMP_Dropdown resolutionDropdown;
@@ -38,6 +40,11 @@ public class SettingManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
+    private void Update()
+    {
+        StartPauseBGM();
+    }
+
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
@@ -46,7 +53,7 @@ public class SettingManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("BGMusic", Mathf.Log10(volume) * 32);
     }
 
     public void SetQuality(int qualityIndex)
@@ -57,5 +64,27 @@ public class SettingManager : MonoBehaviour
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+    }
+
+    public void StartPauseBGM()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+
+            if (paused)
+            {
+                whenPaused.TransitionTo(2);
+            }
+            else
+            {
+                whenStarted.TransitionTo(2);
+            }
+        }
+    }
+
+    public void WalkSFX()
+    {
+
     }
 }
