@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44516158, g: 0.49477398, b: 0.57383245, a: 1}
+  m_IndirectSpecularColor: {r: 0.44516492, g: 0.4947796, b: 0.5738371, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -835,6 +835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PURPLE_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 39a5af0987a818c42a5aa7fad0303778, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9f8e888b1dfd97047a87f43a33e4fc17, type: 2}
     - target: {fileID: 5866666021909216657, guid: 39a5af0987a818c42a5aa7fad0303778, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
