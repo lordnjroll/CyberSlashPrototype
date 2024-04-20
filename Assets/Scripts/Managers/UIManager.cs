@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             gameUILayer.SetActive(false);
+            SettingLayer.SetActive(false);
             escMenuLayer.SetActive(true);
             menuSwitch = true;
             Cursor.visible = true;
@@ -74,11 +75,17 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void MusicBtnOnClick()
+    public void SettingBtnOnClick()
     {
         escMenuLayer.SetActive(false);
         gameUILayer.SetActive(false);
         SettingLayer.SetActive(true);
+    }
+
+    public void BackESCMenu()
+    {
+        SettingLayer.SetActive(false);
+        escMenuLayer.SetActive(true);
     }
 
     public void NextStage()
