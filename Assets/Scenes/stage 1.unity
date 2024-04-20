@@ -9729,45 +9729,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6814015311937255693, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
   m_PrefabInstance: {fileID: 6814015310648208983}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1465243495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465243472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e89c36698694f47aadb1592bd39f36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tipstxt: {fileID: 0}
-  KeepList: {fileID: 0}
-  PowerHoldTime: 0
-  PowerBuff: 0
---- !u!114 &1465243496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465243472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1269071d5299af249a6ad8e1e615b633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Boss: {fileID: 0}
-  BossSpawn: {fileID: 0}
-  BossSpawns: {fileID: 0}
-  killmissiontxt: {fileID: 0}
-  collectmissiontxt: {fileID: 0}
-  CPmissiontxt: {fileID: 0}
-  minimissiontxt: {fileID: 0}
-  surmissiontxt: {fileID: 0}
-  bossmissiontxt: {fileID: 0}
-  Timertxt: {fileID: 0}
-  Timer: 0
 --- !u!1 &1493231032
 GameObject:
   m_ObjectHideFlags: 0
