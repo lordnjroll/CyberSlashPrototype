@@ -5609,6 +5609,8 @@ GameObject:
   - component: {fileID: 4577545782716576722}
   - component: {fileID: 1465243493}
   - component: {fileID: 1465243494}
+  - component: {fileID: 1685699370092061528}
+  - component: {fileID: 1101700974810018550}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -5709,9 +5711,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escMenuLayer: {fileID: 0}
   gameUILayer: {fileID: 0}
-  continueLayer: {fileID: 0}
-  musicSettingLayer: {fileID: 0}
-  quitLayer: {fileID: 0}
+  SettingLayer: {fileID: 0}
+  DisplayLayer: {fileID: 0}
+  VolumeLayer: {fileID: 0}
+  ClearLayer: {fileID: 0}
   deathLayer: {fileID: 0}
 --- !u!114 &3335493333375565002
 MonoBehaviour:
@@ -5991,6 +5994,45 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1685699370092061528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814015311937255687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1269071d5299af249a6ad8e1e615b633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boss: {fileID: 0}
+  BossSpawn: {fileID: 0}
+  BossSpawns: {fileID: 0}
+  killmissiontxt: {fileID: 0}
+  collectmissiontxt: {fileID: 0}
+  CPmissiontxt: {fileID: 0}
+  minimissiontxt: {fileID: 0}
+  surmissiontxt: {fileID: 0}
+  bossmissiontxt: {fileID: 0}
+  Timertxt: {fileID: 0}
+  Timer: 0
+--- !u!114 &1101700974810018550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814015311937255687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e89c36698694f47aadb1592bd39f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tipstxt: {fileID: 0}
+  KeepList: {fileID: 0}
+  PowerHoldTime: 0
+  PowerBuff: 0
 --- !u!1 &7489861462567149868
 GameObject:
   m_ObjectHideFlags: 0
