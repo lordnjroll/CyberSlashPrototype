@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     private bool menuSwitch = false;
 
     private hp PlayerHP;
+    public AudioSource gameover;
 
     // Update is called once per frame
     void Update()
@@ -96,8 +97,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitBtnOnClick()
     {
-        SceneManager.LoadScene("MenuScene");
-        Time.timeScale = 1f;
+        StartCoroutine("GAMEOVER");
     }
 
     public void RetryBtnOnClick()
@@ -116,5 +116,13 @@ public class UIManager : MonoBehaviour
     {
         DisplayLayer.SetActive(false);
         VolumeLayer.SetActive(true);
+    }
+
+    IEnumerator GAMEOVER()
+    {
+        gameover.Play();
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("MenuScene");
+        Time.timeScale = 1f;
     }
 }

@@ -27,6 +27,7 @@ public class FodderAI : MonoBehaviour
     public hp HPscript;
 
     RaycastHit PlayerHit;
+    public Animator enemyANIM;
     private void Awake()
     {
         
@@ -56,12 +57,14 @@ public class FodderAI : MonoBehaviour
 
         if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched)
         {
+            enemyANIM.SetTrigger("isRunning");
             //ChasePlayer();
             transform.LookAt(PlayerLocation);
             GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
         }
         if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched)
         {
+            enemyANIM.SetTrigger("isAttacking");
             AttackMode();
         }
 

@@ -25,6 +25,7 @@ public class ShooterAI : MonoBehaviour
     public Rigidbody shooterRB;
 
     RaycastHit PlayerHit;
+    public Animator enemyANIM;
 
     [SerializeField] private float ememyHP = 10f;
     private void Awake()
@@ -59,12 +60,14 @@ public class ShooterAI : MonoBehaviour
 
         if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched && GetComponent<UnityEngine.AI.NavMeshAgent>().enabled == true)
         {
+            enemyANIM.SetTrigger("isRunning");
             //ChasePlayer();
             transform.LookAt(PlayerLocation);
             GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
         }
         if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched)
         {
+            enemyANIM.SetTrigger("isAttacking");
             AttackMode();
         }
 
