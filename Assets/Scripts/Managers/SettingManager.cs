@@ -10,6 +10,7 @@ public class SettingManager : MonoBehaviour
     public AudioMixerSnapshot whenPaused, whenStarted;
     private bool paused;
     public AudioMixer audioMixer;
+    public AudioSource buttonSFX;
 
     public TMP_Dropdown resolutionDropdown;
 
@@ -83,8 +84,8 @@ public class SettingManager : MonoBehaviour
         }
     }
 
-    public void WalkSFX()
+    public void ButtonSFX()
     {
-
+        buttonSFX.Play();
     }
 }

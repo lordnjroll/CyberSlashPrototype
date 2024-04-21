@@ -8,6 +8,8 @@ TagManager:
   - Shield
   - EnemyTag
   - EnemyProjectileTag
+  - BaseEnemytag
+  - Muscletag
   layers:
   - Default
   - TransparentFX
