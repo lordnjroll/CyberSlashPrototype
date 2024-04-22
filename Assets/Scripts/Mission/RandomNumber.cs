@@ -8,11 +8,13 @@ public class RandomNumber : MonoBehaviour
     [SerializeField] private TMP_Text targetNumberText;
     private int targetNumber;
     private Calculator calculator;
+    bool corrent = false;
 
     // Start is called before the first frame update
     void Start()
     {
         calculator = FindObjectOfType<Calculator>();
+        corrent = true;
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class RandomNumber : MonoBehaviour
     {
         if(calculator.Total == targetNumber)
         {
+            Mission.m_minicount++;
             ChooseNewNumber();
         }
     }

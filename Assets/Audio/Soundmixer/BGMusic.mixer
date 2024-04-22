@@ -20,7 +20,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Environment
+  m_Name: Button
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f9f080dde283a4b49a1fe146516d3c53
   m_Children: []
@@ -50,6 +50,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 2ab4133348d100c4b800a5f8e03a6d6c
+    name: Button
   - guid: e60774572ca81e3458a44befaaf68b87
     name: BGMusic
   m_AudioMixerGroupViews:

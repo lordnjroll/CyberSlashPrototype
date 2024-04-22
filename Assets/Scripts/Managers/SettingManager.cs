@@ -57,6 +57,11 @@ public class SettingManager : MonoBehaviour
         audioMixer.SetFloat("BGMusic", Mathf.Log10(volume) * 32);
     }
 
+    public void SetButton(float volume)
+    {
+        audioMixer.SetFloat("Button", Mathf.Log10(volume) * 32);
+    }
+
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);

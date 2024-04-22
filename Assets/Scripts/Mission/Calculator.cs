@@ -13,7 +13,7 @@ public class Calculator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<BitToggle> allToggles = new List<BitToggle>();
+        var allToggles = FindObjectsOfType<BitToggle>();
         foreach(var toggle in allToggles)
         {
             toggle.OnToggleChanged += Toggle_OnToggleChanged;

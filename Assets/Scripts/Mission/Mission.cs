@@ -16,10 +16,12 @@ public class Mission : MonoBehaviour
     [SerializeField] private TMP_Text surmissiontxt;
     [SerializeField] private TMP_Text bossmissiontxt;
 
+    [SerializeField] private GameObject GameUILayer;
+    
 
     private int m_killcount;
     private int m_totalkillcount = 30;
-    bool Startkill = false;
+    public static bool Startkill = false;
     bool Clearkill = false;
 
     private int m_collectcount;
@@ -35,7 +37,8 @@ public class Mission : MonoBehaviour
     bool Startboss = false;
     bool Clearboos = false;
 
-    private int m_minicount;
+    [SerializeField] private GameObject miniLayer;
+    public static int m_minicount;
     private int m_totalminicount = 5;
     bool Startminigame = false;
     bool Clearminigame = false;
@@ -43,7 +46,7 @@ public class Mission : MonoBehaviour
     bool timecount = false;
     [SerializeField] private TMP_Text Timertxt;
     public float Timer;
-    bool Startsur = false;
+    public static bool Startsur = false;
     bool Clearsur = false;
     ScoreManager ScoreManager;
 
@@ -67,6 +70,8 @@ public class Mission : MonoBehaviour
 
         if (Startminigame)
         {
+            GameUILayer.SetActive(false);
+            miniLayer.SetActive(true);
             FinishMini();
         }
 
@@ -175,6 +180,7 @@ public class Mission : MonoBehaviour
             Clearkill = true;
             if (Clearkill)
             {
+
                 ScoreManager.mission_point += 600;
                 Startkill = false;
             }
@@ -210,6 +216,8 @@ public class Mission : MonoBehaviour
         minimissiontxt.text = "Finish Hacking Mini Game " + m_minicount + " / " + m_totalminicount;
         if(m_minicount == m_totalminicount)
         {
+            miniLayer.SetActive(false);
+            GameUILayer.SetActive(true);
             ScoreManager.mission_point += 600;
             Startminigame = false;
         }
