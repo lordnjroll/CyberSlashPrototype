@@ -11,6 +11,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Transform PlayerAttackStartPoint;
     public float AttackRange;
     public int PlayerDamage;
+    public float AttackCD = 1f;
+    public bool isAttackCD = false;
 
     [Header("Dash settings")]
     public float dashSpeed;
@@ -35,6 +37,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
     //public GameObject Kunai;
     public Camera mainCamera;
     public KeyCode secondarySkillbtn = KeyCode.Mouse1;
+    public float secondarySkillCD = 0.5F;
+    public bool isSecondarySkillCD = false;
 
     [Header("Enemy Settings")]
     public int BaseEnemyHP;
@@ -65,6 +69,11 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public AudioClip Target_Marked;
     public AudioSource Source;
 
+    [Header("Animation")]
+    public GameObject katanaModel;
+    public Animator katanaAnimator;
+    public GameObject SwordTrail;
+
     //Script references
     private mesh_destroy DismentleScript;
     private PlayerAiming camScript;
@@ -80,6 +89,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     {
         Debug.Log("looking at " + EnemyAimedAt);
 
+        katanaAnimator = katanaModel.GetComponent<Animator>();
         ScoreScript = GetComponent<ScoreManager>();
         MoveScript = GetComponent<FastMovementScript>();
         hpScript = GetComponent<hp>();
@@ -113,11 +123,15 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void PlayerAttack()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttackCD)
         {
-            //anim.SetTrigger("AttackTrigger" );
+            Source.PlayOneShot(Sword_Swing);
             Debug.Log("clicked");
             RaycastHit meleehit;
+            isAttackCD = true;
+            SwordTrail.SetActive(true);
+            katanaAnimator.SetBool("isAttacking", true);
+            StartCoroutine("AttackCDCountDown");
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
             {
                 Source.PlayOneShot(Sword_Swing);
@@ -178,7 +192,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(secondarySkillbtn))
+        if (Input.GetKeyDown(secondarySkillbtn) && !isSecondarySkillCD)
         {
             secondarySkill();
         }
@@ -206,12 +220,14 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void secondarySkill()
     {
-        Source.PlayOneShot(Kunai_Throw);
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+         Source.PlayOneShot(Kunai_Throw);
+         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
          RaycastHit knifehit;
 
-         //Debug.Log("throw knife");
-         if (Physics.Raycast(ray, out knifehit))
+        isSecondarySkillCD = true;
+        StartCoroutine("SkillCDCountDown");
+        //Debug.Log("throw knife");
+        if (Physics.Raycast(ray, out knifehit))
          {
              GameObject RayCastHitObject = knifehit.transform.gameObject;
              //Debug.Log("knife hit");
@@ -360,5 +376,29 @@ public class Weapon_Skill_Katana : MonoBehaviour
             Time.timeScale = 1f;
             waiting = false;
         }
+    }
+
+    IEnumerator AttackCDCountDown()
+    {
+        yield return new WaitForSeconds(0.01f);
+        katanaAnimator.SetBool("isAttacking", false);
+        yield return new WaitForSeconds(AttackCD);
+        StartCoroutine("SwordSwingAnimation2");
+        SwordTrail.SetActive(false);
+        isAttackCD = false;
+        
+    }
+
+    IEnumerator SwordSwingAnimation2()
+    {
+        katanaAnimator.SetBool("HasAttacked", true);
+        yield return new WaitForSeconds(0.7f);
+        katanaAnimator.SetBool("HasAttacked", false);
+    }
+
+    IEnumerator SkillCDCountDown()
+    {
+        yield return new WaitForSeconds(secondarySkillCD);
+        isSecondarySkillCD = false;
     }
 }
