@@ -28,6 +28,7 @@ public class FodderAI : MonoBehaviour
 
     RaycastHit PlayerHit;
     public Animator enemyANIM;
+    //public GameObject Fodder;
     private void Awake()
     {
         
@@ -38,23 +39,23 @@ public class FodderAI : MonoBehaviour
         Player = GameObject.FindWithTag("Player").gameObject;
 
         HPscript = Player.GetComponent<hp>();
-        enemyANIM = GetComponent<Animator>();
-        if(this.gameObject.tag == "EnemyTag")
-        {
-            enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/BaseEnemyAnimation/BaseIdle", typeof(RuntimeAnimatorController)));
-        }
-        else if(this.gameObject.tag == "Shield")
-        {
-            enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/ShieldEnemyAnimation/ShieldIdle", typeof(RuntimeAnimatorController)));
-        }
-        else if(this.gameObject.tag == "Shooter")
-        {
-            enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/ShooterEnemyAnimation/ShooterIdle", typeof(RuntimeAnimatorController)));
-        }
-        else if(this.gameObject.tag == "Muscletag")
-        {
-            enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/MuscleEnemyAnimation/MuscleIdle", typeof(RuntimeAnimatorController)));
-        }
+        //enemyANIM = Fodder.GetComponent<Animator>();
+        //if(this.gameObject.tag == "EnemyTag")
+        //{
+        //    enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/BaseEnemyAnimation/BaseIdle", typeof(RuntimeAnimatorController)));
+        //}
+        //else if(this.gameObject.tag == "Shield")
+        //{
+        //    enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/ShieldEnemyAnimation/ShieldIdle", typeof(RuntimeAnimatorController)));
+        //}
+        //else if(this.gameObject.tag == "Shooter")
+        //{
+        //    enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/ShooterEnemyAnimation/ShooterIdle", typeof(RuntimeAnimatorController)));
+        //}
+        //else if(this.gameObject.tag == "Muscletag")
+        //{
+        //    enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/MuscleEnemyAnimation/MuscleIdle", typeof(RuntimeAnimatorController)));
+        //}
         //Starting the chase
         StartCoroutine(ChasePlayer());
     }

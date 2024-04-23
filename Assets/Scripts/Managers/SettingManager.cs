@@ -43,7 +43,7 @@ public class SettingManager : MonoBehaviour
 
     private void Update()
     {
-        StartPauseBGM();
+        //StartPauseBGM();
     }
 
     public void SetResolution(int resolutionIndex)
