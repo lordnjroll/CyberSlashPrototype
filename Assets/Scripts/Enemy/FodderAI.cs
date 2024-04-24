@@ -17,25 +17,18 @@ public class FodderAI : MonoBehaviour
     public int FodderMoveSpeed;
     public float ProjectileSpeed;
     public float chargeSpeed;
-    public GameObject FodderHead;
-    public GameObject FodderModel;
 
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
     public bool isLaunched = false;
-    public bool isDead = false;
 
     [Header("References")]
     public hp HPscript;
 
     RaycastHit PlayerHit;
-<<<<<<< Updated upstream
     public Animator enemyANIM;
     //public GameObject Fodder;
-=======
-    public Animator FodderANIM;
->>>>>>> Stashed changes
     private void Awake()
     {
         
@@ -43,13 +36,9 @@ public class FodderAI : MonoBehaviour
 
     void Start()
     {
-        setRigidbodyState(true);
-        setColliderState(true);
-
         Player = GameObject.FindWithTag("Player").gameObject;
 
         HPscript = Player.GetComponent<hp>();
-<<<<<<< Updated upstream
         //enemyANIM = Fodder.GetComponent<Animator>();
         //if(this.gameObject.tag == "EnemyTag")
         //{
@@ -67,14 +56,6 @@ public class FodderAI : MonoBehaviour
         //{
         //    enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/MuscleEnemyAnimation/MuscleIdle", typeof(RuntimeAnimatorController)));
         //}
-=======
-        FodderANIM = GetComponentInChildren<Animator>();
-        if(this.gameObject.tag == "FodderTag")
-        {
-            //FodderANIM.runtimeAnimatorController = (RuntimeAnimatorController)RuntimeAnimatorController.Instantiate(Resources.Load("Assets/Animation/BaseEnemyAnimation/BaseIdle", typeof(RuntimeAnimatorController)));
-        }
-        
->>>>>>> Stashed changes
         //Starting the chase
         StartCoroutine(ChasePlayer());
     }
@@ -82,27 +63,26 @@ public class FodderAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //enemyANIM.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("Assets/Animation/BaseEnemyAnimation/BaseIdle", typeof(RuntimeAnimatorController));
         PlayerLocation = Player.transform.position;
 
-        if (AttackWindingUp && !isLaunched && !isDead)
+        if (AttackWindingUp && !isLaunched)
         {
-            FodderHead.transform.LookAt(PlayerLocation);
+            transform.LookAt(PlayerLocation);
         }
 
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched && !isDead)
+        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched)
         {
-            FodderANIM.SetBool("isRunning", true);
+            enemyANIM.SetTrigger("isRunning");
             //ChasePlayer();
             transform.LookAt(PlayerLocation);
-            GetComponent<NavMeshAgent>().destination = PlayerLocation;
+            GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
         }
-        if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched && !isDead)
+        if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched)
         {
-            FodderANIM.SetBool("isRunning", false);
-            FodderANIM.SetBool("isAttacking", true);
+            enemyANIM.SetTrigger("isAttacking");
             AttackMode();
         }
 
@@ -117,11 +97,9 @@ public class FodderAI : MonoBehaviour
 
     IEnumerator ChasePlayer()
     {
-        if (!isDead)
-        {
-            GetComponent<NavMeshAgent>().destination = PlayerLocation;
-            yield return null;
-        }
+        
+        GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
+        yield return null;
     }
 
     public void AttackMode()
@@ -133,35 +111,31 @@ public class FodderAI : MonoBehaviour
 
     IEnumerator AttackWindUp()
     {
-        if (!isDead)
-        {
-            //Starts Charging
-            yield return new WaitForSeconds(.5f);
+        //Starts Charging
+        yield return new WaitForSeconds(.5f);
 
-            //Stop Looking at the player
-            AttackWindingUp = false;
-            yield return new WaitForSeconds(.1f);
+        //Stop Looking at the player
+        AttackWindingUp = false;
+        yield return new WaitForSeconds(.1f);
 
-            //Charge at the Player
-            rb.AddForce(rb.transform.forward * chargeSpeed, ForceMode.VelocityChange);
-            //Debug.Log("charged");
+        //Charge at the Player
+        rb.AddForce(rb.transform.forward * chargeSpeed, ForceMode.VelocityChange);
+        //Debug.Log("charged");
 
 
-            IsAttacking = false;
-            AttackCD = true;
+        IsAttacking = false;
+        AttackCD = true;
 
 
-            StartCoroutine("AttackCoolDown");
-            StopCoroutine("AttackWindUp");
+        StartCoroutine("AttackCoolDown");
+        StopCoroutine("AttackWindUp");
     }
-        }
-            
 
     //Flyer attack cool down
     IEnumerator AttackCoolDown()
-    {        
+    {
+        
         yield return new WaitForSeconds(.5f);
-        FodderANIM.SetBool("isAttacking", false);
         AttackCD = false;
     }
 
@@ -191,43 +165,6 @@ public class FodderAI : MonoBehaviour
         {
             Destroy(this);
         }
-    }
-
-    void setRigidbodyState(bool state)
-    {
-        Rigidbody[] rigidbodies = FodderModel.GetComponentsInChildren<Rigidbody>();
-
-        foreach(Rigidbody rigidbody in rigidbodies)
-        {
-            rigidbody.isKinematic = state;
-        }
-
-        GetComponent<Rigidbody>().isKinematic = !state;
-    }
-
-    void setColliderState(bool state)
-    {
-        Collider[] colliders = GetComponentsInChildren<Collider>();
-
-        foreach (Collider collider in colliders)
-        {
-            collider.enabled = state;
-        }
-
-        GetComponent<Collider>().enabled = !state;
-    }
-
-    public void OnDeath()
-    {
-        setRigidbodyState(false);
-        setColliderState(true);
-        isDead = true;
-        this.GetComponent<NavMeshAgent>().enabled = false;
-        this.GetComponentInChildren<BoxCollider>().enabled = false;
-        FodderModel.GetComponent<Animator>().enabled = false;
-        FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50)), ForceMode.VelocityChange);
-
-        Destroy(gameObject, 2f);
     }
 }
 
