@@ -15,6 +15,5 @@ MonoBehaviour:
   id: 4
   itemName: Skill1
   value: 500
-  itemicon: {fileID: 0}
-  level: 1
+  itemicon: {fileID: 21300000, guid: 11c1bf2fe44e8aa458af8a334e3d759b, type: 3}
   itemtag: Skill1

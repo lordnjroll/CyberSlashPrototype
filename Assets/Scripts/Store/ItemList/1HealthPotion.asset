@@ -15,6 +15,5 @@ MonoBehaviour:
   id: 1
   itemName: HealthPotion
   value: 200
-  itemicon: {fileID: 21300000, guid: d5e89da85bf7f4440ac21533789c69da, type: 3}
-  level: 1
+  itemicon: {fileID: 21300000, guid: efee0ece75cc5b84d893a5e214a0ac00, type: 3}
   itemtag: HealthPotion
