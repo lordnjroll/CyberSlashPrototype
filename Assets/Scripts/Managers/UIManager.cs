@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
 
     private hp PlayerHP;
     public AudioSource gameover;
+    public AudioMixerSnapshot whenPaused, whenStarted;
 
     // Update is called once per frame
     void Update()
@@ -37,6 +39,7 @@ public class UIManager : MonoBehaviour
             menuSwitch = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            whenPaused.TransitionTo(2);
             Debug.Log("EscMenu has open");
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && menuSwitch == true)
@@ -48,6 +51,7 @@ public class UIManager : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             menuSwitch = false;
+            whenStarted.TransitionTo(2);
             Debug.Log("EscMenu has close");
         }
     }
@@ -102,6 +106,8 @@ public class UIManager : MonoBehaviour
 
     public void RetryBtnOnClick()
     {
+        deathLayer.SetActive(false);
+        gameUILayer.SetActive(true);
         SceneManager.LoadScene("stage 1");
         Time.timeScale = 1f;
     }
@@ -120,6 +126,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator GAMEOVER()
     {
+        yield return new WaitForSeconds(1f);
         gameover.Play();
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MenuScene");
