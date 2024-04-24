@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
             menuSwitch = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            whenPaused.TransitionTo(2);
             Debug.Log("EscMenu has open");
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && menuSwitch == true)
@@ -51,7 +50,6 @@ public class UIManager : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             menuSwitch = false;
-            whenStarted.TransitionTo(2);
             Debug.Log("EscMenu has close");
         }
     }
