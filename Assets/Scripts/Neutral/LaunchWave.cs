@@ -6,6 +6,7 @@ public class LaunchWave : MonoBehaviour
 {
     public Transform playerTrans;
     public float launchForce;
+    public ParticleSystem StompEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class LaunchWave : MonoBehaviour
 
     public IEnumerator PlayerIniatedLaunch()
     {
+        Instantiate(StompEffect,new Vector3(this.transform.position.x, this.transform.position.y -0.5f, this.transform.position.z), this.transform.rotation);
+
         Collider[] colliders = Physics.OverlapSphere(playerTrans.position, 7f);
         foreach (Collider c in colliders)
         {

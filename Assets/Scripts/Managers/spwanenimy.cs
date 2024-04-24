@@ -51,10 +51,10 @@ public class spwanenimy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Mission.Startkill == true || Mission.Startsur == true)
-        {
+        //if(Mission.Startkill == true || Mission.Startsur == true)
+        //{
             enemySpwan();
-        }
+        //}
        
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;

@@ -283,6 +283,7 @@ MonoBehaviour:
   isLaunched: 0
   laserLine: {fileID: 7466099997991774759, guid: 1e907082ec4ab6b4ca0d9c33426f58d4, type: 3}
   shooterRB: {fileID: 0}
+  enemyANIM: {fileID: 0}
   ememyHP: 10
 --- !u!114 &864705859296476193
 MonoBehaviour:

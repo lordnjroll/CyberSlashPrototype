@@ -56,9 +56,14 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Canvas markerCanvas;
     public GameObject markerParent;
     public LayerMask EnemyHitboxLayer;
+
+    [Header("Enemy Refernences")]
     private GameObject Enemy;
-    private GameObject ShieldEnemy;
-    private GameObject MuscleEnemy;
+    public GameObject FodderEnemy;
+    public GameObject ShieldEnemy;
+    public GameObject MuscleEnemy;
+    public GameObject TurretEnemy;
+    public GameObject DroneEnemy;
     private RaycastHit RayEnemyAimedAt; // the enemy that the player is looking at
     private GameObject EnemyAimedAt;
     private Vector3 SkillDashTarget;
@@ -81,14 +86,16 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private ScoreManager ScoreScript;
     private FastMovementScript MoveScript;
     private hp hpScript;
+    private FodderAI fodderScript;
 
     float horizontalInput;
     float verticalInput;
 
     void Start()
     {
-        Debug.Log("looking at " + EnemyAimedAt);
+        //Debug.Log("looking at " + EnemyAimedAt);
 
+        #region Inistialize references
         katanaAnimator = katanaModel.GetComponent<Animator>();
         ScoreScript = GetComponent<ScoreManager>();
         MoveScript = GetComponent<FastMovementScript>();
@@ -96,6 +103,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
         camScript = CamHolder.GetComponent<PlayerAiming>();
         ReflectScript = GetComponent<ShooterProjectile>();
 
+        fodderScript = FodderEnemy.GetComponent<FodderAI>();
+        #endregion
         Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
 
         MarkedTargetes.Clear();
@@ -126,7 +135,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttackCD)
         {
             Source.PlayOneShot(Sword_Swing);
-            Debug.Log("clicked");
+            //Debug.Log("clicked");
             RaycastHit meleehit;
             isAttackCD = true;
             SwordTrail.SetActive(true);
@@ -135,20 +144,15 @@ public class Weapon_Skill_Katana : MonoBehaviour
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
             {
                 Source.PlayOneShot(Sword_Swing);
-                if (meleehit.transform.tag == "EnemyTag")
+                if (meleehit.transform.gameObject.layer == 8)
                 {
                     Enemy = meleehit.transform.gameObject;
+                    fodderScript = Enemy.GetComponent<FodderAI>();
+                    fodderScript.OnDeath();
 
-                    DismentleScript = Enemy.GetComponent<mesh_destroy>();
-
-                    Debug.Log("Hit enemy");
-
-                    BaseEnemyHP = BaseEnemyHP - PlayerDamage;
-
-                    //EnemyScript.Killed();
-                    //Destroy(Enemy);
-
-                    DismentleScript.gothit();
+                    //Rigidbody EnemyRB = Enemy.GetComponent<Rigidbody>();
+                    //EnemyRB.isKinematic = true;
+                    //DismentleScript = Enemy.GetComponent<mesh_destroy>();
 
                     //ScoreScript.GetScore();
                 }
@@ -158,7 +162,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                     ShieldEnemyHP = ShieldEnemyHP - PlayerDamage;
                     DismentleScript = ShieldEnemy.GetComponent<mesh_destroy>();
-                    Debug.Log("Hit Shield");
+                    //Debug.Log("Hit Shield");
 
                 }
 

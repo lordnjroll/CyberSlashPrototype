@@ -10,6 +10,8 @@ TagManager:
   - EnemyProjectileTag
   - BaseEnemytag
   - Muscletag
+  - TurretTag
+  - FodderTag
   layers:
   - Default
   - TransparentFX
