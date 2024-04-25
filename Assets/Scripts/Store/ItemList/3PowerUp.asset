@@ -15,6 +15,5 @@ MonoBehaviour:
   id: 3
   itemName: PowerUp
   value: 400
-  itemicon: {fileID: 21300000, guid: 3bf2e9dccdad2a74a9a6d1b9b3a5509b, type: 3}
-  level: 1
+  itemicon: {fileID: 21300000, guid: 84c0fffd74a98f748ad90907299f64d1, type: 3}
   itemtag: PowerUp

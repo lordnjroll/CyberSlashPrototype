@@ -243,14 +243,17 @@ MonoBehaviour:
   FodderMoveSpeed: 0
   ProjectileSpeed: 0
   chargeSpeed: 12
+  FodderHead: {fileID: 0}
+  FodderModel: {fileID: 0}
   playerInSightRange: 0
   playerInAttackRange: 0
   IsAttacking: 0
   AttackCD: 0
   isLaunched: 0
+  isDead: 0
   HPscript: {fileID: 0}
   enemyANIM: {fileID: 0}
-  Fodder: {fileID: 0}
+  FodderANIM: {fileID: 0}
 --- !u!54 &548725791215367487
 Rigidbody:
   m_ObjectHideFlags: 0
