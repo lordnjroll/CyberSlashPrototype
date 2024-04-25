@@ -8,14 +8,20 @@ public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem Instance { get; private set; }
 
-    public int savehp;
-    public int savescore;
-    public int keep_health;
-    public int keep_exp;
-    public int keep_power;
+    public static int savehp;
+    public static int savescore;
+    public static int keep_health;
+    public static int keep_exp;
+    public static int keep_power;
 
     void Save()
     {
+        hp.Hp += savehp;
+        ScoreManager.score += savescore;
+        Store.healthpotion += keep_health;
+        Store.bonuspotion += keep_exp;
+        Store.powerup += keep_power;
+
         savehp = hp.Hp;
         savescore = ScoreManager.score;
         keep_health = Store.healthpotion;
@@ -34,6 +40,11 @@ public class SaveSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        Debug.Log(hp.Hp);
         savehp = hp.Hp;
         savescore = ScoreManager.score;
         keep_health = Store.healthpotion;
@@ -41,18 +52,13 @@ public class SaveSystem : MonoBehaviour
         keep_power = Store.powerup;
     }
 
-    private void Start()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    static void OnAfterSceneLoad()
     {
-        hp.Hp += savehp;
-        ScoreManager.score += savescore;
-        Store.healthpotion += keep_health;
-        Store.bonuspotion += keep_exp;
-        Store.powerup += keep_power;
-        Debug.Log(hp.Hp);
-        //savehp = hp.Hp;
-        //savescore = ScoreManager.score;
-        //keep_health = Store.healthpotion;
-        //keep_exp = Store.bonuspotion;
-        //keep_power = Store.powerup;
+        hp.Hp = savehp;
+        ScoreManager.score = savescore;
+        Store.healthpotion = keep_health;
+        Store.bonuspotion = keep_exp;
+        Store.powerup = keep_power;
     }
 }

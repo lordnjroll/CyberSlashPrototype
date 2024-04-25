@@ -12,6 +12,7 @@ TagManager:
   - Muscletag
   - TurretTag
   - FodderTag
+  - CollectItem
   layers:
   - Default
   - TransparentFX

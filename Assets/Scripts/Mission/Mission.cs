@@ -48,7 +48,10 @@ public class Mission : MonoBehaviour
     public float Timer;
     public static bool Startsur = false;
     bool Clearsur = false;
+
+    int bosshp;
     ScoreManager ScoreManager;
+    UIManager uIManager;
 
 
     void Update()
@@ -165,7 +168,7 @@ public class Mission : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Collectitem")
+        if (collision.gameObject.tag == "CollectItem")
         {
             Debug.Log("Hit Collision");
             m_collectcount++;
@@ -252,5 +255,10 @@ public class Mission : MonoBehaviour
     void FinishBoss()
     {
         //Boss = Instantiate(BossSpawn, BossSpawns).GetComponent<>();
+        if(bosshp == 0)
+        {
+            uIManager.gameUILayer.SetActive(false);
+            uIManager.ClearLayer.SetActive(true);
+        }
     }
 }
