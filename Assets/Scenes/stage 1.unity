@@ -25538,8 +25538,12 @@ PrefabInstance:
       value: 49.256
       objectReference: {fileID: 0}
     - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: MaxHealth
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: DeathLayer
