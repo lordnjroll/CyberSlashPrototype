@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoretxt.text = "Score : " + score;
+        scoretxt.text = "Score : " + (score + mission_point);
         
         ShowScoreBorad();
         CountDownTimer();
@@ -68,19 +68,6 @@ public class ScoreManager : MonoBehaviour
                 isRunning = false;
             }
         }
-    }
-
-    public void UpdateScore()
-    {
-        
-        if(DesiredScore - score > 10)
-        {
-            score += 1;
-        }else if(DesiredScore != score)
-        {
-            score = DesiredScore;
-        }
-        
     }
 
     public void ShowScoreBorad()

@@ -17,7 +17,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private TMP_Text bossmissiontxt;
 
     [SerializeField] private GameObject GameUILayer;
-    
+    [SerializeField] private GameObject miniLayer;
 
     private int m_killcount;
     private int m_totalkillcount = 30;
@@ -37,7 +37,6 @@ public class Mission : MonoBehaviour
     bool Startboss = false;
     bool Clearboos = false;
 
-    [SerializeField] private GameObject miniLayer;
     public static int m_minicount;
     private int m_totalminicount = 5;
     bool Startminigame = false;
@@ -58,6 +57,7 @@ public class Mission : MonoBehaviour
     {
         if (Startcollect)
         {
+            collectmissiontxt.text = "Collect Items " + m_collectcount + " / " + m_totalcollectcount;
             FinishCollectMission();
         }
 
@@ -75,6 +75,8 @@ public class Mission : MonoBehaviour
         {
             GameUILayer.SetActive(false);
             miniLayer.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             FinishMini();
         }
 
@@ -198,6 +200,7 @@ public class Mission : MonoBehaviour
             Clearcollect = true;
             if (Clearcollect)
             {
+                collectmissiontxt.text = "Collect Items " + "<color=yellow>" + m_collectcount + " / " + m_totalcollectcount + "</color>";
                 ScoreManager.mission_point += 600;
                 Startcollect = false;
             }
@@ -241,6 +244,10 @@ public class Mission : MonoBehaviour
                 float seconds = Mathf.FloorToInt(Timer % 60);
 
                 Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
+                if(Timer > 0 && Timer <= 31)
+                {
+                    Timertxt.text = "<color=red>" + minutes.ToString() + ":" + seconds.ToString() + "</color>";
+                }
             }
             else if(Timer <= 0)
             {
