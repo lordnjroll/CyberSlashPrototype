@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
     {
         if(hp.Hp == 0)
         {
+            Time.timeScale = 1f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             
