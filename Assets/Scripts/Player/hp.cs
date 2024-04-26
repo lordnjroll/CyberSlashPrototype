@@ -20,7 +20,8 @@ public class hp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MaxHealth = Health;
+        Health = MaxHealth;
+        Hp = 3;
     }
 
     // Update is called once per frame
@@ -28,6 +29,8 @@ public class hp : MonoBehaviour
     {
         EndGame();
         SmoothHP();
+
+        Debug.Log("The player has " + Hp);
 
         if (Input.GetKeyDown(KeyCode.O))
         {

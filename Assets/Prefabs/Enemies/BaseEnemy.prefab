@@ -1234,15 +1234,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   rb: {fileID: 3748821137867304519}
   AttackRange: 5
   ShooterProjectile: {fileID: 0}
   FodderMoveSpeed: 0
   ProjectileSpeed: 0
   chargeSpeed: 0
-  FodderHead: {fileID: 0}
-  FodderModel: {fileID: 0}
+  FodderHead: {fileID: 5999117316776874401}
+  FodderModel: {fileID: 7053987710458487426}
   playerInSightRange: 0
   playerInAttackRange: 0
   IsAttacking: 0
