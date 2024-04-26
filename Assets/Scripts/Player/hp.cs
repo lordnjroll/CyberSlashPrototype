@@ -27,7 +27,6 @@ public class hp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EndGame();
         SmoothHP();
 
         Debug.Log("The player has " + Hp);
@@ -66,16 +65,6 @@ public class hp : MonoBehaviour
     public void ISdashing()
     {
 
-    }
-
-    void EndGame()
-    {
-        if(Hp == 0)
-        {
-            Time.timeScale = 0f;
-            GameUILayer.SetActive(false);
-            DeathLayer.SetActive(true);
-        }
     }
 
     public void HealthLost()
