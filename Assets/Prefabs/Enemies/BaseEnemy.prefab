@@ -900,7 +900,6 @@ GameObject:
   - component: {fileID: 3748821136208166920}
   - component: {fileID: 3748821136208166919}
   - component: {fileID: 3748821136208166918}
-  - component: {fileID: 3748821136208166921}
   m_Layer: 8
   m_Name: HitBox
   m_TagString: Untagged
@@ -973,20 +972,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3748821136208166921
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3748821136208166923}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.33690834
-  m_Height: 1.857029
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0.012189865, z: 0.09780693}
 --- !u!1 &3757948117987089468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1126,6 @@ GameObject:
   - component: {fileID: 3714560995085219118}
   - component: {fileID: 7308472893404262228}
   - component: {fileID: 3748821137867304519}
-  - component: {fileID: 3748821137867304520}
   - component: {fileID: 3748821137867304521}
   - component: {fileID: 3748821137867304518}
   m_Layer: 8
@@ -1205,21 +1189,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!64 &3748821137867304520
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4091262047933902740}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_CollisionDetection: 2
 --- !u!114 &3748821137867304521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,7 +1210,7 @@ MonoBehaviour:
   ShooterProjectile: {fileID: 0}
   FodderMoveSpeed: 0
   ProjectileSpeed: 0
-  chargeSpeed: 0
+  chargeSpeed: 12
   FodderHead: {fileID: 5999117316776874401}
   FodderModel: {fileID: 7053987710458487426}
   playerInSightRange: 0
@@ -1250,7 +1220,6 @@ MonoBehaviour:
   isLaunched: 0
   isDead: 0
   HPscript: {fileID: 0}
-  enemyANIM: {fileID: 0}
   FodderANIM: {fileID: 7308472893404262228}
 --- !u!195 &3748821137867304518
 NavMeshAgent:
@@ -1262,8 +1231,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 8
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

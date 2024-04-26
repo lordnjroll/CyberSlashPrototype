@@ -28,25 +28,26 @@ public class FodderAI : MonoBehaviour
 
     [Header("References")]
     public hp HPscript;
+    public ParticleSystem DeathEffect;
 
     RaycastHit PlayerHit;
-    public Animator enemyANIM;
     //public GameObject Fodder;
     public Animator FodderANIM;
 
     private void Awake()
     {
-        
+        Player = GameObject.FindWithTag("Player").gameObject;
     }
 
     void Start()
     {
         setRigidbodyState(true);
-        setColliderState(true);
-        Player = GameObject.FindWithTag("Player").gameObject;
+        setColliderState(false);
+
+        rb = transform.gameObject.GetComponent<Rigidbody>();
 
         HPscript = Player.GetComponent<hp>();
-        FodderANIM = GetComponentInChildren<Animator>();
+        FodderANIM = transform.GetComponentInChildren<Animator>();
         //enemyANIM = Fodder.GetComponent<Animator>();
         if (this.gameObject.tag == "FodderTag")
         {
@@ -65,29 +66,29 @@ public class FodderAI : MonoBehaviour
 
         if (AttackWindingUp && !isLaunched && !isDead)
         {
-            FodderHead.transform.LookAt(PlayerLocation);
+            transform.LookAt(PlayerLocation);
         }
 
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched && !isDead)
+        if (!playerInAttackRange && (!IsAttacking || AttackCD) && !isLaunched && !isDead)
         {
             FodderANIM.SetBool("isRunning", true);
-            //ChasePlayer();
+            ChasePlayer();
             transform.LookAt(PlayerLocation);
             GetComponent<NavMeshAgent>().destination = PlayerLocation;
         }
         if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched && !isDead)
         {
-            FodderANIM.SetBool("isRunning", false);
-            FodderANIM.SetBool("isAttacking", true);
+            
             AttackMode();
         }
 
         if(rb.velocity.y > 5)
         {
             //Debug.Log("fodder launched");
-            isLaunched = true;
+            //isLaunched = true;
+            //transform.gameObject.GetComponent<Animator>().enabled = false;
         }
 
         
@@ -116,6 +117,8 @@ public class FodderAI : MonoBehaviour
             //Starts Charging
             yield return new WaitForSeconds(.5f);
 
+            FodderANIM.SetBool("isRunning", false);
+            FodderANIM.SetBool("isAttacking", true);
             //Stop Looking at the player
             AttackWindingUp = false;
             yield return new WaitForSeconds(.1f);
@@ -160,8 +163,9 @@ public class FodderAI : MonoBehaviour
         }
 
         if(collision.transform.gameObject.layer == 3 && isLaunched)
-        {
-            this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        {   
+            transform.GetComponent<NavMeshAgent>().enabled = true;
+            transform.gameObject.GetComponent<Animator>().enabled = true;
             isLaunched = false;
         }
 
@@ -185,14 +189,14 @@ public class FodderAI : MonoBehaviour
 
     void setColliderState(bool state)
     {
-        Collider[] colliders = GetComponentsInChildren<Collider>();
+        Collider[] colliders = FodderModel.GetComponentsInChildren<Collider>();
 
         foreach (Collider collider in colliders)
         {
             collider.enabled = state;
         }
 
-        GetComponent<Collider>().enabled = !state;
+        //GetComponent<Collider>().enabled = !state;
     }
 
     public void OnDeath()
@@ -202,10 +206,20 @@ public class FodderAI : MonoBehaviour
         isDead = true;
         this.GetComponent<NavMeshAgent>().enabled = false;
         this.GetComponentInChildren<BoxCollider>().enabled = false;
-        FodderModel.GetComponent<Animator>().enabled = false;
+        FodderModel.GetComponentInParent<Animator>().enabled = false;
         FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50)), ForceMode.VelocityChange);
 
+        Instantiate(DeathEffect, transform.position, transform.rotation);
         Destroy(gameObject, 2f);
+    }
+
+    public IEnumerator GotLaunched(float launchForce)
+    {
+        isLaunched = true;
+        transform.gameObject.GetComponent<Animator>().enabled = false;
+        transform.GetComponentInParent<NavMeshAgent>().enabled = false;
+        rb.velocity = new Vector3(0, launchForce, 0);
+        yield return null;
     }
 }
 

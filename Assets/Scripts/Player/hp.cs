@@ -30,7 +30,7 @@ public class hp : MonoBehaviour
         EndGame();
         SmoothHP();
 
-        Debug.Log("The player has " + Hp);
+        //Debug.Log("The player has " + Hp);
 
         if (Input.GetKeyDown(KeyCode.O))
         {

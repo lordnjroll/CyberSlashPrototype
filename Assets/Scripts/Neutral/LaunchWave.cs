@@ -8,10 +8,14 @@ public class LaunchWave : MonoBehaviour
     public float launchForce;
     public ParticleSystem StompEffect;
 
+    private FodderAI fodderScript;
     // Start is called before the first frame update
     void Start()
     {
+        #region Inistialize references
         
+        
+        #endregion
     }
 
     // Update is called once per frame
@@ -29,6 +33,12 @@ public class LaunchWave : MonoBehaviour
         {
             if (c.transform.gameObject.layer == 8)
             {
+                if(c.transform.tag == "FodderTag")
+                {
+                    fodderScript = c.GetComponentInParent<FodderAI>();
+                    fodderScript.GotLaunched(launchForce);
+                    yield return null;
+                }
                 if(c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled == true)
                 {
                     c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;

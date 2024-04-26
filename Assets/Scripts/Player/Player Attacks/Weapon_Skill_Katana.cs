@@ -144,7 +144,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
             {
                 Source.PlayOneShot(Sword_Swing);
-                if (meleehit.transform.gameObject.layer == 8)
+                if (meleehit.transform.tag == "FodderTag")
                 {
                     Enemy = meleehit.transform.gameObject;
                     fodderScript = Enemy.GetComponent<FodderAI>();
