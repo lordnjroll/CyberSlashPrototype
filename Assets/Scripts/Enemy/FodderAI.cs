@@ -201,6 +201,7 @@ public class FodderAI : MonoBehaviour
 
     public void OnDeath()
     {
+        Debug.Log("dead");
         setRigidbodyState(false);
         setColliderState(true);
         isDead = true;
@@ -209,7 +210,7 @@ public class FodderAI : MonoBehaviour
         FodderModel.GetComponentInParent<Animator>().enabled = false;
         FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50)), ForceMode.VelocityChange);
 
-        Instantiate(DeathEffect, transform.position, transform.rotation);
+        Instantiate(DeathEffect,new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
         Destroy(gameObject, 2f);
     }
 
