@@ -107,6 +107,7 @@ public class PlayerAiming : MonoBehaviour
 	public void DoFOV(float targetFOV)
     {
 		PlayerCam.DOFieldOfView(targetFOV, 0.25f);
+		
     }
 
 	public void DoFOVQuick(float TargetFOV)

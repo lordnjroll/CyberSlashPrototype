@@ -25,6 +25,17 @@ public class ScoreManager : MonoBehaviour
     public int totalscore;
     public TMP_Text scoreborad;
 
+    [Header("Hype Settings")]
+    public int HypeLevel;
+    public float HypeTimer;
+    public int HypeLevelThreshold;
+    public int CurrentKS = 0;
+    public float KSDuration = 10;
+
+    private void Start()
+    {
+        InvokeRepeating("HypeLevelSelector", 0, 0.07f);
+    }
 
     // Update is called once per frame
     void Update()
@@ -53,7 +64,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (isRunning)
         {
-            Debug.Log("Start CountDown");
+            //Debug.Log("Start CountDown");
             if(Timer > 0)
             {
                 Timer -= Time.deltaTime;
@@ -112,5 +123,23 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    
+    public void HypeLevelSelector()
+    {
+        switch (HypeLevel)
+        {
+            case 1:
+                break;
+
+        }
+    }
+
+    public void OnEnemyKilled()
+    {
+        CurrentKS += 1;
+    }
+
+    public void KillStreakCountDown()
+    {
+
+    }
 }
