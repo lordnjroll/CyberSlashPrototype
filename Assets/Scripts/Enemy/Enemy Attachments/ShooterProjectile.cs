@@ -69,14 +69,13 @@ public class ShooterProjectile : MonoBehaviour
 
                 if (c.transform.gameObject.layer == 8)
                 {
-                    ShatterScript = c.GetComponent<mesh_destroy>();
-                    ShatterScript.gothit();
+                    
                     
                 }
 
                 if (c.transform.gameObject.layer == 7)
                 {
-                    c.attachedRigidbody.AddExplosionForce(20f, this.transform.position, 7f);
+                    c.attachedRigidbody.AddExplosionForce(20f, transform.position, 7f);
                 }
             }
             Destroy(this);

@@ -900,9 +900,10 @@ GameObject:
   - component: {fileID: 3748821136208166920}
   - component: {fileID: 3748821136208166919}
   - component: {fileID: 3748821136208166918}
+  - component: {fileID: 1983690712}
   m_Layer: 8
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: FodderTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -915,8 +916,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3748821136208166923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.899, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.193, z: 0}
+  m_LocalScale: {x: 1.5814, y: 1.1734487, z: 1.4235787}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3714560995085219118}
@@ -972,6 +973,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1983690712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748821136208166923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3757948117987089468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,8 +1143,8 @@ GameObject:
   - component: {fileID: 3748821137867304521}
   - component: {fileID: 3748821137867304518}
   m_Layer: 8
-  m_Name: BaseEnemy
-  m_TagString: BaseEnemytag
+  m_Name: FodderEnemy
+  m_TagString: FodderTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1144,7 +1158,7 @@ Transform:
   m_GameObject: {fileID: 4091262047933902740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 52.867, y: 25, z: -39.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3712, y: 1.3712, z: 1.3712}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3610193255069797143}
@@ -1206,13 +1220,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   rb: {fileID: 3748821137867304519}
-  AttackRange: 5
+  AttackRange: 7
   ShooterProjectile: {fileID: 0}
   FodderMoveSpeed: 0
   ProjectileSpeed: 0
-  chargeSpeed: 12
+  chargeSpeed: 20
   FodderHead: {fileID: 5999117316776874401}
-  FodderModel: {fileID: 7053987710458487426}
+  FodderModel: {fileID: 4252379270665653455}
   playerInSightRange: 0
   playerInAttackRange: 0
   IsAttacking: 0
@@ -1220,6 +1234,7 @@ MonoBehaviour:
   isLaunched: 0
   isDead: 0
   HPscript: {fileID: 0}
+  DeathEffect: {fileID: 5059728159953396917, guid: c926f35ec0a2df440aad0c9d633858f8, type: 3}
   FodderANIM: {fileID: 7308472893404262228}
 --- !u!195 &3748821137867304518
 NavMeshAgent:
@@ -1256,7 +1271,7 @@ GameObject:
   - component: {fileID: 3748821137200464078}
   m_Layer: 8
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: FodderTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1953,7 +1968,7 @@ GameObject:
   - component: {fileID: 6634249727032344346}
   m_Layer: 8
   m_Name: __0
-  m_TagString: Untagged
+  m_TagString: FodderTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1993,7 +2008,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1548137359316315261, guid: 926038ac577e46d4199e18b316abdc16, type: 3}
+  - {fileID: 2100000, guid: cf76d593160b8c6419f5fb6f2b8cc897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

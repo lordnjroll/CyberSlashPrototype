@@ -208,19 +208,20 @@ public class FodderAI : MonoBehaviour
         this.GetComponent<NavMeshAgent>().enabled = false;
         this.GetComponentInChildren<BoxCollider>().enabled = false;
         FodderModel.GetComponentInParent<Animator>().enabled = false;
-        FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50)), ForceMode.VelocityChange);
+        FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
 
         Instantiate(DeathEffect,new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
         Destroy(gameObject, 2f);
     }
 
-    public IEnumerator GotLaunched(float launchForce)
+    public void GotLaunched(float launchForce)
     {
+        Debug.Log("got launched");
         isLaunched = true;
         transform.gameObject.GetComponent<Animator>().enabled = false;
         transform.GetComponentInParent<NavMeshAgent>().enabled = false;
         rb.velocity = new Vector3(0, launchForce, 0);
-        yield return null;
+        
     }
 }
 

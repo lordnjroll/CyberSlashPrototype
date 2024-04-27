@@ -87,6 +87,9 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private FastMovementScript MoveScript;
     private hp hpScript;
     private FodderAI fodderScript;
+    private ShooterAI shooterScript;
+    private TurretAI turretScript;
+    private DroneAI droneScript;
 
     float horizontalInput;
     float verticalInput;
@@ -101,7 +104,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         MoveScript = GetComponent<FastMovementScript>();
         hpScript = GetComponent<hp>();
         camScript = CamHolder.GetComponent<PlayerAiming>();
-        ReflectScript = GetComponent<ShooterProjectile>();
+        //ReflectScript = GetComponent<ShooterProjectile>();
 
         fodderScript = FodderEnemy.GetComponent<FodderAI>();
         #endregion
@@ -150,9 +153,13 @@ public class Weapon_Skill_Katana : MonoBehaviour
                     fodderScript = Enemy.GetComponent<FodderAI>();
                     fodderScript.OnDeath();
 
-                    //Rigidbody EnemyRB = Enemy.GetComponent<Rigidbody>();
-                    //EnemyRB.isKinematic = true;
-                    //DismentleScript = Enemy.GetComponent<mesh_destroy>();
+                    //ScoreScript.GetScore();
+                }
+                if (meleehit.transform.tag == "Shooter")
+                {
+                    Enemy = meleehit.transform.gameObject;
+                    shooterScript = Enemy.GetComponent<ShooterAI>();
+                    fodderScript.OnDeath();
 
                     //ScoreScript.GetScore();
                 }
@@ -174,9 +181,12 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                 if (meleehit.transform.tag == "EnemyProjectileTag")
                 {
+                    katanaAnimator.SetBool("isParrying", true);
                     StartCoroutine("HitStop");
-                    ReflectScript = meleehit.transform.GetComponent<ShooterProjectile>();
+                    GameObject EnemyProjectile = meleehit.transform.gameObject;
+                    ReflectScript = EnemyProjectile.GetComponent<ShooterProjectile>();
                     ReflectScript.OnPlayerParry(mainCamera.transform.forward);
+                    
                 }
             }
             else
@@ -380,6 +390,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             Time.timeScale = 1f;
             waiting = false;
         }
+        katanaAnimator.SetBool("isParrying", false);
     }
 
     IEnumerator AttackCDCountDown()

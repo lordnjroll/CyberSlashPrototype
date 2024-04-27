@@ -16,11 +16,14 @@ public class ShooterAI : MonoBehaviour
     public GameObject ShooterProjectile;
     public int ShooterMoveSpeed;
     public float ProjectileSpeed;
+    public GameObject ShooterModel;
+    public GameObject ShooterHead;
 
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
     public bool isLaunched = false;
+    public bool isDead = false;
     public LineRenderer laserLine;
     public Rigidbody shooterRB;
 
@@ -35,6 +38,9 @@ public class ShooterAI : MonoBehaviour
 
     void Start()
     {
+        setRigidbodyState(true);
+        setColliderState(false);
+
         Player = GameObject.FindWithTag("Player").gameObject;
         shooterRB = this.GetComponent<Rigidbody>();
         shooterRB.isKinematic = true;
@@ -47,37 +53,35 @@ public class ShooterAI : MonoBehaviour
     void Update()
     {
         PlayerLocation = Player.transform.position;
-
-        if (AttackWindingUp && !isLaunched && !isLaunched)
+        if(!isLaunched || !isDead)
         {
-            transform.LookAt(PlayerLocation);
-            //laserLine.SetPosition(0, laserOrigin.position);
-            //laserLine.SetPosition(1, PlayerLocation.position);
-            //Vector3 rayOrigin = playerLocation.position;
-        }
+            if (AttackWindingUp)
+            {
+                ShooterHead.transform.LookAt(PlayerLocation);
+                //laserLine.SetPosition(0, laserOrigin.position);
+                //laserLine.SetPosition(1, PlayerLocation.position);
+                //Vector3 rayOrigin = playerLocation.position;
+            }
 
-        playerInAttackRange = Physics.CheckSphere(transform.position, ShootRange, PlayerLayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, ShootRange, PlayerLayer);
 
-        if (!playerInAttackRange && !IsAttacking || AttackCD && !isLaunched && GetComponent<UnityEngine.AI.NavMeshAgent>().enabled == true)
-        {
-            enemyANIM.SetTrigger("isRunning");
-            //ChasePlayer();
-            transform.LookAt(PlayerLocation);
-            GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
+            if (!playerInAttackRange && !IsAttacking || AttackCD  && GetComponent<UnityEngine.AI.NavMeshAgent>().enabled == true)
+            {
+                enemyANIM.SetTrigger("isRunning");
+                //ChasePlayer();
+                ShooterHead.transform.LookAt(PlayerLocation);
+                transform.LookAt(new Vector3(PlayerLocation.x, transform.position.y, PlayerLocation.z));
+                GetComponent<UnityEngine.AI.NavMeshAgent>().destination = PlayerLocation;
+            }
+            if (playerInAttackRange && !IsAttacking && !AttackCD )
+            {
+                enemyANIM.SetTrigger("isAttacking");
+                AttackMode();
+            }
         }
-        if (playerInAttackRange && !IsAttacking && !AttackCD && !isLaunched)
-        {
-            enemyANIM.SetTrigger("isAttacking");
-            AttackMode();
-        }
+        
 
-        if (shooterRB.velocity.y > 7.5)
-        {
-            //Debug.Log("shooter launched");
-            //this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            shooterRB.isKinematic = false;
-            isLaunched = true;            
-        }
+        
 
     }
 
@@ -97,31 +101,18 @@ public class ShooterAI : MonoBehaviour
 
     IEnumerator AttackWindUp()
     {
-        //laserLine.enabled = true;
-        //Debug.Log("Starts Charging");
-        yield return new WaitForSeconds(2.5f);
+        
+        yield return new WaitForSeconds(2f);
 
-        //Debug.Log("Stop Looking at the player");
         AttackWindingUp = false;
         yield return new WaitForSeconds(.1f);
 
-        //Debug.Log("Shooter fire");
         //Shooting the projectile
         var projectile = Instantiate(ShooterProjectile, ShootPoint.position, ShootPoint.rotation);
-        projectile.GetComponent<Rigidbody>().velocity = ShootPoint.forward * ProjectileSpeed;
-
+        projectile.GetComponent<Rigidbody>().velocity = (PlayerLocation - transform.position ).normalized * ProjectileSpeed;
 
         IsAttacking = false;
         AttackCD = true;
-
-        //Laser effect
-      /*Instantiate(FireEffect, laserLine.GetPosition(0), Quaternion.identity);
-        Destroy(FireEffect, 1f);
-
-        Instantiate(FireEffect, laserLine.GetPosition(1), Quaternion.identity);
-        Destroy(FireEffect, 1f);*/
-
-        laserLine.enabled = false;
 
         StartCoroutine("AttackCoolDown");
         StopCoroutine("AttackWindUp");
@@ -131,17 +122,24 @@ public class ShooterAI : MonoBehaviour
     IEnumerator AttackCoolDown()
     {
         
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         AttackCD = false;
     }
 
     public void Killed()
     {
-        if(ememyHP == 0)
-        {
-            Destroy(this.gameObject);
-        }
-        
+        Debug.Log("dead");
+        setRigidbodyState(false);
+        setColliderState(true);
+        isDead = true;
+        this.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        this.GetComponentInChildren<BoxCollider>().enabled = false;
+        ShooterModel.GetComponentInParent<Animator>().enabled = false;
+        ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+
+        //Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
+        Destroy(gameObject, 2f);
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -156,5 +154,40 @@ public class ShooterAI : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    public void GotLaunched(float launchForce)
+    {
+        Debug.Log("got launched");
+        isLaunched = true;
+        shooterRB.isKinematic = false;
+        transform.gameObject.GetComponent<Animator>().enabled = false;
+        transform.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        shooterRB.velocity = new Vector3(0, launchForce, 0);
+
+    }
+
+    void setRigidbodyState(bool state)
+    {
+        Rigidbody[] rigidbodies = ShooterModel.GetComponentsInChildren<Rigidbody>();
+
+        foreach (Rigidbody rigidbody in rigidbodies)
+        {
+            rigidbody.isKinematic = state;
+        }
+
+        GetComponent<Rigidbody>().isKinematic = !state;
+    }
+
+    void setColliderState(bool state)
+    {
+        Collider[] colliders = ShooterModel.GetComponentsInChildren<Collider>();
+
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = state;
+        }
+
+        //GetComponent<Collider>().enabled = !state;
     }
 }
