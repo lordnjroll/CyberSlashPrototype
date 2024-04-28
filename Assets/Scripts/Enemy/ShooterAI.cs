@@ -129,12 +129,12 @@ public class ShooterAI : MonoBehaviour
     public void Killed()
     {
         Debug.Log("dead");
+        isDead = true;
         setRigidbodyState(false);
         setColliderState(true);
-        isDead = true;
-        this.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-        this.GetComponentInChildren<BoxCollider>().enabled = false;
-        ShooterModel.GetComponentInParent<Animator>().enabled = false;
+        transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        transform.GetComponentInChildren<Collider>().enabled = false;
+        transform.GetComponent<Animator>().enabled = false;
         ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
 
         //Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);

@@ -252,6 +252,7 @@ MonoBehaviour:
   isLaunched: 0
   isDead: 0
   HPscript: {fileID: 0}
+  DeathEffect: {fileID: 0}
   FodderANIM: {fileID: 0}
 --- !u!54 &548725791215367487
 Rigidbody:

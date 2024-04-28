@@ -56,29 +56,30 @@ public class ShooterProjectile : MonoBehaviour
             }
             else
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
 
         }
         else
         {
             Instantiate(ExplosionEffect, this.transform.position, this.transform.rotation);
-            Collider[] colliders = Physics.OverlapSphere(this.transform.position, 10f, 8 | 7);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, 8);
             foreach (Collider c in colliders)
             {
 
                 if (c.transform.gameObject.layer == 8)
                 {
-                    
+                    Debug.Log("hit layer 8");
                     
                 }
 
-                if (c.transform.gameObject.layer == 7)
-                {
-                    c.attachedRigidbody.AddExplosionForce(20f, transform.position, 7f);
-                }
+                //if (c.transform.gameObject.layer == 7)
+                //{
+                //    Debug.Log("hit layer 7");
+                //    c.attachedRigidbody.AddExplosionForce(20f, transform.position, 7f);
+                //}
             }
-            Destroy(this);
+            Destroy(gameObject);
         }
             
      

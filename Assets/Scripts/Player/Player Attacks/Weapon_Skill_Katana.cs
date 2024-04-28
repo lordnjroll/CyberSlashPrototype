@@ -144,6 +144,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             SwordTrail.SetActive(true);
             katanaAnimator.SetBool("isAttacking", true);
             StartCoroutine("AttackCDCountDown");
+            meleehit = new RaycastHit();
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
             {
                 Source.PlayOneShot(Sword_Swing);
@@ -153,12 +154,13 @@ public class Weapon_Skill_Katana : MonoBehaviour
                     fodderScript = Enemy.GetComponent<FodderAI>();
                     fodderScript.OnDeath();
 
+                    
                     //ScoreScript.GetScore();
                 }
                 if (meleehit.transform.tag == "Shooter")
                 {
                     Enemy = meleehit.transform.gameObject;
-                    shooterScript = Enemy.GetComponent<ShooterAI>();
+                    shooterScript = Enemy.GetComponentInParent<ShooterAI>();
                     fodderScript.OnDeath();
 
                     //ScoreScript.GetScore();
