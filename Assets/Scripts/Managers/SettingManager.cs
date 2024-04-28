@@ -52,6 +52,11 @@ public class SettingManager : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    public void SetAllVolume(float volume)
+    {
+        audioMixer.SetFloat("ALLMusic", Mathf.Log10(volume) * 32);
+    }
+
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("BGMusic", Mathf.Log10(volume) * 32);
@@ -60,6 +65,11 @@ public class SettingManager : MonoBehaviour
     public void SetButton(float volume)
     {
         audioMixer.SetFloat("Button", Mathf.Log10(volume) * 32);
+    }
+    
+    public void SetCheering(float volume)
+    {
+        audioMixer.SetFloat("Cheering", Mathf.Log10(volume) * 32);
     }
 
     public void SetQuality(int qualityIndex)

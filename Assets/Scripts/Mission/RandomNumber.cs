@@ -14,7 +14,7 @@ public class RandomNumber : MonoBehaviour
     private Calculator calculator;
     private Mission mission;
     bool corrent = false;
-    private int questionnum;
+    private int questionnum = -1;
     private int maxquestionnum = 3;
 
     // Start is called before the first frame update

@@ -22,8 +22,8 @@ public class ItemKeeper : MonoBehaviour
         UseHealthPotion();
         UseBonusPotion();
         UsePowerUp();
-        UseSkill1();
-        UseSkill2();
+        UnlockSkill1();
+        UnlockSkill2();
     }
 
     void DisplayKeepList()
@@ -81,7 +81,7 @@ public class ItemKeeper : MonoBehaviour
         }
     }
 
-    void UseSkill1()
+    void UnlockSkill1()
     {
         if (Store.Skill1 > 0)
         {
@@ -89,7 +89,7 @@ public class ItemKeeper : MonoBehaviour
         }
     }
 
-    void UseSkill2()
+    void UnlockSkill2()
     {
         if(Store.Skill2 > 0)
         {
