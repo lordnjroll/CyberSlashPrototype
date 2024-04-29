@@ -8,19 +8,16 @@ public class hp : MonoBehaviour
 {
     public bool Godmode = false;
 
-    public Image HealthHp3Bar;
-    public Image HealthHp2Bar;
-    public Image HealthHp1Bar;
+    public GameObject HealthHp3Bar;
+    public GameObject HealthHp2Bar;
+    public GameObject HealthHp1Bar;
     [SerializeField] private GameObject DeathLayer;
     [SerializeField] private GameObject GameUILayer;
 
-    public float Health;
-    public float MaxHealth;
     public static int Hp = 3;
     // Start is called before the first frame update
     void Start()
     {
-        Health = MaxHealth;
         Hp = 3;
     }
 
@@ -33,11 +30,11 @@ public class hp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Hp--;
+            Hp -= 2;
         }
-        else if (Input.GetKeyDown(KeyCode.H))
+        else if (Input.GetKeyDown(KeyCode.L))
         {
-            Hp++;
+            Hp += 2;
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -50,14 +47,20 @@ public class hp : MonoBehaviour
     {
         switch (Hp)
         {
+            case 3:
+                HealthHp3Bar.SetActive(true);
+                HealthHp2Bar.SetActive(true);
+                HealthHp1Bar.SetActive(true);
+                break;
             case 2:
-                HealthHp3Bar.fillAmount = Mathf.Clamp(Health - MaxHealth, 0, 1);
+                HealthHp3Bar.SetActive(false);
+                HealthHp2Bar.SetActive(true);
+                HealthHp1Bar.SetActive(true);
                 break;
             case 1:
-                HealthHp2Bar.fillAmount = Mathf.Clamp(Health - MaxHealth, 0, 1);
-                break;
-            case 0:
-                HealthHp1Bar.fillAmount = Mathf.Clamp(Health - MaxHealth, 0, 1);
+                HealthHp3Bar.SetActive(false);
+                HealthHp2Bar.SetActive(false);
+                HealthHp1Bar.SetActive(true);
                 break;
         }
     }

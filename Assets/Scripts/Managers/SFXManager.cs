@@ -14,15 +14,15 @@ public class SFXManager : MonoBehaviour
             walk.Play();
 
             //Dash sound
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                dash.Play();
-            }
+            //if (Input.GetKeyDown(KeyCode.LeftShift))
+            //{
+            //    dash.Play();
+            //}
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                jump.Play();
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    jump.Play();
+            //}
         }
     }
 }

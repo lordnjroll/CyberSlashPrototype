@@ -17,21 +17,18 @@ public class MuscleAI : MonoBehaviour
     bool alreadyAttacked;
 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange, hugPlayer;
 
     public Animator enemyANIM;
     public GameObject Fist;
-    private void Awake()
-    {
-        PlayerLocation = GameObject.FindWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-        enemyANIM = GetComponent<Animator>();
-    }
+   
 
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        enemyANIM = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,51 +42,46 @@ public class MuscleAI : MonoBehaviour
         //    Destroy(this.gameObject, 2f);
         //}
 
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInSightRange && !playerInAttackRange) 
+        {
+            Debug.Log("Chasing Player");
+            agent.SetDestination(PlayerLocation.position);
+            enemyANIM.SetBool("isRunning", true);
+        }
 
         if (playerInSightRange && playerInAttackRange)
         {
+            Debug.Log("Finded Player");
             int ran = Random.Range(0, 2);
 
             switch (ran)
             {
-                case 1: AttackPlayer();
+                case 0: AttackPlayer();
                     break;
-                case 2: HugPlayer();
+                case 1: HugPlayer();
                     break;
             }
         }
     }
 
-    void ChasePlayer()
-    {
-        agent.SetDestination(PlayerLocation.position);
-        enemyANIM.SetBool("isRunning", true);
-    }
+    //void ChasePlayer()
+    //{
+    //    agent.SetDestination(PlayerLocation.position);
+    //    enemyANIM.SetBool("isRunning", true);
+    //}
 
     void AttackPlayer()
     {
-        agent.SetDestination(transform.position);
+        agent.SetDestination(PlayerLocation.position);
 
-        transform.LookAt(PlayerLocation);
         enemyANIM.SetBool("isMuscle_Trebuchet", true);
     }
 
     void HugPlayer()
     {
-        agent.SetDestination(transform.position);
+        agent.SetDestination(PlayerLocation.position);
 
-        transform.LookAt(PlayerLocation);
         enemyANIM.SetBool("isMuscle_Hughug", true);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        other = Fist.GetComponent<SphereCollider>();
-
-        if(other.gameObject.tag == "Player")
-        {
-            hp.Hp -= 2;
-        }
+        hugPlayer = true;
     }
 }

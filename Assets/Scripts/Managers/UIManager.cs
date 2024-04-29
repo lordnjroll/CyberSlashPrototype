@@ -56,9 +56,9 @@ public class UIManager : MonoBehaviour
 
     public void PlayerDead()
     {
-        if(hp.Hp == 0)
+        if(hp.Hp <= 0)
         {
-            Time.timeScale = 1f;
+            Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             
@@ -100,7 +100,8 @@ public class UIManager : MonoBehaviour
 
     public void QuitBtnOnClick()
     {
-        StartCoroutine("GAMEOVER");
+        gameover.Play();
+        Invoke("GAMEOVER", 4f);
     }
 
     public void RetryBtnOnClick()
@@ -123,11 +124,8 @@ public class UIManager : MonoBehaviour
         VolumeLayer.SetActive(true);
     }
 
-    IEnumerator GAMEOVER()
+    public void GAMEOVER()
     {
-        yield return new WaitForSeconds(1f);
-        gameover.Play();
-        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MenuScene");
         Time.timeScale = 1f;
     }
