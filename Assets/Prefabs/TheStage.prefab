@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.96592605, z: -0, w: -0.25881842}
   m_LocalPosition: {x: -15.225231, y: 3.4559994, z: 64.6702}
   m_LocalScale: {x: 0.70875, y: 0.27168, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 7
@@ -265,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 49.238358, y: 5.9197354, z: -8.623669}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -275,9 +276,11 @@ MonoBehaviour:
     m_Center: {x: 24.619179, y: 2.9598677, z: -4.3118324}
     m_Extent: {x: 24.619179, y: 2.9598677, z: 4.3118343}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803753648268605
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -368,6 +371,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 50.675785, y: 17.1, z: -33.808132}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7647803755113118765}
   - {fileID: 7647803755422997050}
@@ -416,6 +420,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.9659258, z: -0, w: 0.25881922}
   m_LocalPosition: {x: -45.150585, y: 0, z: 35.037933}
   m_LocalScale: {x: 0.70874995, y: 0.3822, z: 0.71402997}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 2
@@ -650,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 15.2881775, y: 13.417049, z: 15.720161}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -660,9 +665,11 @@ MonoBehaviour:
     m_Center: {x: 7.6440887, y: 6.7085247, z: 7.860077}
     m_Extent: {x: 7.6440887, y: 6.7085247, z: 7.8600807}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803753915994298
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -758,6 +765,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.70710665, z: -0, w: 0.70710695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.70875, y: 0.3822, z: 0.71403}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 12
@@ -992,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 15.2881775, y: 13.417049, z: 15.720161}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -1002,9 +1010,11 @@ MonoBehaviour:
     m_Center: {x: 7.6440887, y: 6.7085247, z: 7.860077}
     m_Extent: {x: 7.6440887, y: 6.7085247, z: 7.8600807}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754219550204
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1100,6 +1110,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.9659259, z: -0, w: -0.2588189}
   m_LocalPosition: {x: -38.075783, y: 0, z: 90.70813}
   m_LocalScale: {x: 0.70875, y: 0.3822, z: 0.7140301}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 8
@@ -1334,7 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 15.2881775, y: 13.417049, z: 15.720161}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -1344,9 +1355,11 @@ MonoBehaviour:
     m_Center: {x: 7.6440887, y: 6.7085247, z: 7.860077}
     m_Extent: {x: 7.6440887, y: 6.7085247, z: 7.8600807}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754287138537
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1442,6 +1455,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.25882006, z: -0, w: -0.9659256}
   m_LocalPosition: {x: 23.724216, y: 3.4559994, z: 72.808136}
   m_LocalScale: {x: 0.70875007, y: 0.27168, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 3
@@ -1676,7 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 49.238358, y: 5.9197354, z: -8.623669}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -1686,9 +1700,11 @@ MonoBehaviour:
     m_Center: {x: 24.619179, y: 2.9598677, z: -4.3118324}
     m_Extent: {x: 24.619179, y: 2.9598677, z: 4.3118343}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754327290135
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1784,6 +1800,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.70710623, z: -0, w: 0.7071074}
   m_LocalPosition: {x: 11.124214, y: 3.4559994, z: 32.808132}
   m_LocalScale: {x: 0.70874995, y: 0.27168, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 11
@@ -2018,7 +2035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 49.238358, y: 5.9197354, z: -8.623669}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -2028,9 +2045,11 @@ MonoBehaviour:
     m_Center: {x: 24.619179, y: 2.9598677, z: -4.3118324}
     m_Extent: {x: 24.619179, y: 2.9598677, z: 4.3118343}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754421349978
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2126,6 +2145,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.25881884, z: -0, w: 0.96592593}
   m_LocalPosition: {x: 51.02421, y: 0, z: 23.108131}
   m_LocalScale: {x: 0.70875, y: 0.3822, z: 0.71403}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 10
@@ -2360,7 +2380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 15.2881775, y: 13.417049, z: 15.720161}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -2370,9 +2390,11 @@ MonoBehaviour:
     m_Center: {x: 7.6440887, y: 6.7085247, z: 7.860077}
     m_Extent: {x: 7.6440887, y: 6.7085247, z: 7.8600807}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754590898732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2468,6 +2490,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.7071073, z: -0, w: -0.7071063}
   m_LocalPosition: {x: 13.148449, y: 0, z: 114.31627}
   m_LocalScale: {x: 0.70875, y: 0.3822, z: 0.71403}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 6
@@ -2702,7 +2725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 15.2881775, y: 13.417049, z: 15.720161}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -2712,9 +2735,11 @@ MonoBehaviour:
     m_Center: {x: 7.6440887, y: 6.7085247, z: 7.860077}
     m_Extent: {x: 7.6440887, y: 6.7085247, z: 7.8600807}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754751218374
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2810,6 +2835,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.2588182, z: -0, w: 0.96592605}
   m_LocalPosition: {x: 28.173626, y: 3.4559994, z: 49.146038}
   m_LocalScale: {x: 0.70875, y: 0.27168, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 9
@@ -3044,7 +3070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 49.238358, y: 5.9197354, z: -8.623669}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -3054,9 +3080,11 @@ MonoBehaviour:
     m_Center: {x: 24.619179, y: 2.9598677, z: -4.3118324}
     m_Extent: {x: 24.619179, y: 2.9598677, z: 4.3118343}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803754927256766
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3152,6 +3180,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 32.814213, y: 4.3169994, z: 85.614136}
   m_LocalScale: {x: 1.6405, y: 0.05811046, z: 1.6405}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 0
@@ -3704,7 +3733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: -32.08539, y: 16.797037, z: -34.64517}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -3714,8 +3743,9 @@ MonoBehaviour:
     m_Center: {x: -16.042694, y: 8.398519, z: -17.322584}
     m_Extent: {x: 16.042694, y: 8.398519, z: 16.042694}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cylinder, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_AxisDivisions: 6
@@ -3816,6 +3846,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.25881967, z: -0, w: -0.9659257}
   m_LocalPosition: {x: 57.699017, y: 0, z: 79.57831}
   m_LocalScale: {x: 0.70875007, y: 0.3822, z: 0.7140301}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 4
@@ -4050,7 +4081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 15.2881775, y: 13.417049, z: 15.720161}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -4060,9 +4091,11 @@ MonoBehaviour:
     m_Center: {x: 7.6440887, y: 6.7085247, z: 7.860077}
     m_Extent: {x: 7.6440887, y: 6.7085247, z: 7.8600807}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803755252758521
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4158,6 +4191,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.9659257, z: -0, w: 0.25881955}
   m_LocalPosition: {x: -11.175785, y: 3.4559994, z: 41.808132}
   m_LocalScale: {x: 0.70874995, y: 0.27168, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 1
@@ -4392,7 +4426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 49.238358, y: 5.9197354, z: -8.623669}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -4402,9 +4436,11 @@ MonoBehaviour:
     m_Center: {x: 24.619179, y: 2.9598677, z: -4.3118324}
     m_Extent: {x: 24.619179, y: 2.9598677, z: 4.3118343}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803755422997055
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4500,6 +4536,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.70710766, z: -0, w: -0.707106}
   m_LocalPosition: {x: 2.0242157, y: 3.4559994, z: 81.50813}
   m_LocalScale: {x: 0.70874995, y: 0.27168, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7647803753742506767}
   m_RootOrder: 5
@@ -4734,7 +4771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 49.238358, y: 5.9197354, z: -8.623669}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -4744,9 +4781,11 @@ MonoBehaviour:
     m_Center: {x: 24.619179, y: 2.9598677, z: -4.3118324}
     m_Extent: {x: 24.619179, y: 2.9598677, z: 4.3118343}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!23 &7647803755668204243
 MeshRenderer:
   m_ObjectHideFlags: 0
