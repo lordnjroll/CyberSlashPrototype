@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class SettingManager : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class SettingManager : MonoBehaviour
     public AudioSource buttonSFX;
 
     public TMP_Dropdown resolutionDropdown;
+
+    public float fadeTime = 1f;
+    public CanvasGroup canvasGroup;
+    public RectTransform rectTransform;
+    public float topPosY, middlePosY;
+    public float tweenDuration;
+
 
     Resolution[] resolutions;
 
@@ -102,5 +110,21 @@ public class SettingManager : MonoBehaviour
     public void ButtonSFX()
     {
         buttonSFX.Play();
+    }
+
+    public void PanelFadeIn()
+    {
+        canvasGroup.alpha = 0f;
+        rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.OutElastic);
+        canvasGroup.DOFade(1, fadeTime);
+    }
+
+    public void PanelFadeOut()
+    {
+        canvasGroup.alpha = 1f;
+        rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup.DOFade(0, fadeTime);
     }
 }
