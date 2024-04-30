@@ -2210,12 +2210,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8311830008192237351}
   PlayerLocation: {fileID: 0}
+  FistGrabPoint: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   timeBetweenAttacks: 0
@@ -2223,5 +2224,8 @@ MonoBehaviour:
   attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
+  resetAttack: 0
+  hugPlayer: 0
+  smashPlayer: 0
   enemyANIM: {fileID: 2464340853988552083}
   Fist: {fileID: 7674365123893629549}

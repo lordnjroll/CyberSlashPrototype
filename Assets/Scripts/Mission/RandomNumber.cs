@@ -13,7 +13,7 @@ public class RandomNumber : MonoBehaviour
     private int targetNumber;
     private Calculator calculator;
     private Mission mission;
-    bool corrent = false;
+    public bool corrent;
     private int questionnum = -1;
     private int maxquestionnum = 3;
 
@@ -21,6 +21,7 @@ public class RandomNumber : MonoBehaviour
     void Start()
     {
         calculator = FindObjectOfType<Calculator>();
+        corrent = false;
     }
 
     // Update is called once per frame
@@ -52,5 +53,6 @@ public class RandomNumber : MonoBehaviour
         targetNumber = UnityEngine.Random.Range(0, 255);
         targetNumberText.text = targetNumber.ToString();
         corrent = true;
+        Debug.Log(corrent);
     }
 }

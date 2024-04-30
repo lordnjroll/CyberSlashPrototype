@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class MuscleAI : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Transform PlayerLocation;
+    public Transform PlayerLocation, FistGrabPoint;
     public LayerMask whatIsGround, whatIsPlayer;
 
     public Vector3 walkPoint;
@@ -17,18 +17,19 @@ public class MuscleAI : MonoBehaviour
     bool alreadyAttacked;
 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange, hugPlayer;
-
+    public bool playerInSightRange, playerInAttackRange, resetAttack;
+    public bool hugPlayer, smashPlayer = false;
     public Animator enemyANIM;
     public GameObject Fist;
-   
 
+    private GrabPlayer grabPlayer;
     // Start is called before the first frame update
     void Start()
     {
         PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         enemyANIM = GetComponent<Animator>();
+        resetAttack = true;
     }
 
     // Update is called once per frame
@@ -47,11 +48,14 @@ public class MuscleAI : MonoBehaviour
             Debug.Log("Chasing Player");
             agent.SetDestination(PlayerLocation.position);
             enemyANIM.SetBool("isRunning", true);
+            enemyANIM.SetBool("isMuscle_Trebuchet", false);
+            enemyANIM.SetBool("isMuscle_Hughug", false);
         }
 
         if (playerInSightRange && playerInAttackRange)
         {
             Debug.Log("Finded Player");
+            resetAttack = false;
             int ran = Random.Range(0, 2);
 
             switch (ran)
@@ -64,23 +68,20 @@ public class MuscleAI : MonoBehaviour
         }
     }
 
-    //void ChasePlayer()
-    //{
-    //    agent.SetDestination(PlayerLocation.position);
-    //    enemyANIM.SetBool("isRunning", true);
-    //}
-
     void AttackPlayer()
     {
         agent.SetDestination(PlayerLocation.position);
-
+        enemyANIM.SetBool("isRunning", false);
         enemyANIM.SetBool("isMuscle_Trebuchet", true);
+        enemyANIM.SetBool("isMuscle_Hughug", false);
+        smashPlayer = true;
     }
 
     void HugPlayer()
     {
         agent.SetDestination(PlayerLocation.position);
-
+        enemyANIM.SetBool("isRunning", false);
+        enemyANIM.SetBool("isMuscle_Trebuchet", false);
         enemyANIM.SetBool("isMuscle_Hughug", true);
         hugPlayer = true;
     }

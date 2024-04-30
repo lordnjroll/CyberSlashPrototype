@@ -35,7 +35,7 @@ public class Mission : MonoBehaviour
     bool ClearCP = false;
 
     bool Startboss = false;
-    bool Clearboos = false;
+    bool Clearboss = false;
 
     public static int m_minicount;
     private int m_totalminicount = 5;
@@ -222,10 +222,14 @@ public class Mission : MonoBehaviour
         minimissiontxt.text = "Finish Hacking Mini Game " + m_minicount + " / " + m_totalminicount;
         if(m_minicount == m_totalminicount)
         {
-            miniLayer.SetActive(false);
-            GameUILayer.SetActive(true);
-            ScoreManager.mission_point += 600;
-            Startminigame = false;
+            Clearminigame = true;
+            if (Clearminigame)
+            {
+                miniLayer.SetActive(false);
+                GameUILayer.SetActive(true);
+                ScoreManager.mission_point += 600;
+                Startminigame = false;
+            }
         }
 
 
@@ -251,6 +255,7 @@ public class Mission : MonoBehaviour
             }
             else if(Timer <= 0)
             {
+                Clearsur = true;
                 Timer = 0;
                 timecount = false;
                 ScoreManager.mission_point += 600;

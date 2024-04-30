@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3204928260056213394}
   - component: {fileID: 2005767391917500471}
   - component: {fileID: 4337280459292351741}
-  m_Layer: 0
+  - component: {fileID: 7533605048215452106}
+  m_Layer: 3
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2824286833220959528}
   m_LocalRotation: {x: -0, y: -0.7156052, z: -0, w: 0.698505}
-  m_LocalPosition: {x: 68.306595, y: 37.80474, z: -103.62747}
+  m_LocalPosition: {x: 80, y: 37.80474, z: -103.6}
   m_LocalScale: {x: 1757.334, y: 1757.3337, z: 1757.334}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7533605048215452106
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2824286833220959528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1226817584057097758, guid: 9a885b57f8b8a32459ec05b1f8d119af, type: 3}
 --- !u!1 &3053105196336220668
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +109,8 @@ GameObject:
   - component: {fileID: 3053105196336220659}
   - component: {fileID: 3053105196336220657}
   - component: {fileID: 3053105196336220658}
-  m_Layer: 0
+  - component: {fileID: 1440671233716154284}
+  m_Layer: 6
   m_Name: Wall (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105196336220668}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: -134.3, y: 44.145496, z: -100.5}
+  m_LocalPosition: {x: -151.4, y: 44.145496, z: -95.7}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,6 +182,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1440671233716154284
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105196336220668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105196391219240
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +207,7 @@ GameObject:
   - component: {fileID: 3053105196391219247}
   - component: {fileID: 3053105196391219245}
   - component: {fileID: 3053105196391219246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +290,8 @@ GameObject:
   - component: {fileID: 3053105196392964436}
   - component: {fileID: 3053105196392964458}
   - component: {fileID: 3053105196392964459}
-  m_Layer: 0
+  - component: {fileID: 6279540232954874238}
+  m_Layer: 3
   m_Name: Basement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,6 +363,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6279540232954874238
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105196392964437}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8011428536980071720, guid: 65524f0989e73954bb70b401fc3330ae, type: 3}
 --- !u!1 &3053105196522605723
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3053105196522605722}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stand (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105196522605723}
   m_LocalRotation: {x: -0, y: -0.4053443, z: -0, w: 0.9141641}
-  m_LocalPosition: {x: 39.8, y: 28.875498, z: -81.32762}
+  m_LocalPosition: {x: 51.5, y: 28.875498, z: -81.3}
   m_LocalScale: {x: 1.5663831, y: 1.566383, z: 1.5663831}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -378,7 +423,7 @@ GameObject:
   - component: {fileID: 3053105196546400082}
   - component: {fileID: 3053105196546400080}
   - component: {fileID: 3053105196546400081}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +507,7 @@ GameObject:
   - component: {fileID: 3053105196548589363}
   - component: {fileID: 3053105196548589361}
   - component: {fileID: 3053105196548589362}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +590,7 @@ GameObject:
   - component: {fileID: 3053105196652580082}
   - component: {fileID: 3053105196652580080}
   - component: {fileID: 3053105196652580081}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +673,8 @@ GameObject:
   - component: {fileID: 3053105196702676648}
   - component: {fileID: 3053105196702676654}
   - component: {fileID: 3053105196702676655}
-  m_Layer: 0
+  - component: {fileID: 4048728711554926882}
+  m_Layer: 6
   m_Name: Wall (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105196702676649}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: 13.4, y: 44.145496, z: -98.7}
+  m_LocalPosition: {x: 25.1, y: 44.145496, z: -98.7}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -700,6 +746,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4048728711554926882
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105196702676649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105196874424748
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +771,7 @@ GameObject:
   - component: {fileID: 3053105196874424739}
   - component: {fileID: 3053105196874424737}
   - component: {fileID: 3053105196874424738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +902,7 @@ GameObject:
   - component: {fileID: 3053105196928574433}
   - component: {fileID: 3053105196928574439}
   - component: {fileID: 3053105196928574432}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +985,8 @@ GameObject:
   - component: {fileID: 3053105196930407830}
   - component: {fileID: 3053105196930407828}
   - component: {fileID: 3053105196930407829}
-  m_Layer: 0
+  - component: {fileID: 4587095998828963979}
+  m_Layer: 6
   m_Name: Wall (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +1001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105196930407831}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: -134.3, y: 44.145496, z: -106.4}
+  m_LocalPosition: {x: -151.4, y: 44.145496, z: -111.3}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -997,6 +1058,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4587095998828963979
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105196930407831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105196944070208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1083,8 @@ GameObject:
   - component: {fileID: 3053105196944070215}
   - component: {fileID: 3053105196944070213}
   - component: {fileID: 3053105196944070214}
-  m_Layer: 0
+  - component: {fileID: 4126144762319406832}
+  m_Layer: 6
   m_Name: Wall (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1099,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105196944070208}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: 13.4, y: 44.145496, z: -106.9}
+  m_LocalPosition: {x: 25.1, y: 44.145496, z: -106.9}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1080,6 +1156,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4126144762319406832
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105196944070208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105197079185873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1181,7 @@ GameObject:
   - component: {fileID: 3053105197079185872}
   - component: {fileID: 3053105197079185878}
   - component: {fileID: 3053105197079185879}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3053105197143989125}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: platform2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105197143989126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.6, y: 40.666443, z: -104.8}
+  m_LocalPosition: {x: -21.9, y: 40.666443, z: -104.8}
   m_LocalScale: {x: 3.4395003, y: 3.4395, z: 3.4395003}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1211,7 +1301,7 @@ GameObject:
   - component: {fileID: 3053105197213911573}
   - component: {fileID: 3053105197213911595}
   - component: {fileID: 3053105197213911572}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1384,8 @@ GameObject:
   - component: {fileID: 3053105197325365052}
   - component: {fileID: 3053105197325365042}
   - component: {fileID: 3053105197325365043}
-  m_Layer: 0
+  - component: {fileID: 4209707201442166772}
+  m_Layer: 3
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,6 +1457,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4209707201442166772
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105197325365053}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8803937527578110353, guid: 90849b37ca87f4b4eb93014d84c10e02, type: 3}
 --- !u!1 &3053105197495112392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1482,8 @@ GameObject:
   - component: {fileID: 3053105197495112399}
   - component: {fileID: 3053105197495112397}
   - component: {fileID: 3053105197495112398}
-  m_Layer: 0
+  - component: {fileID: 1889525895678571359}
+  m_Layer: 6
   m_Name: Wall (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105197495112392}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: 0.7, y: 44.145496, z: -103.2}
+  m_LocalPosition: {x: 12.4, y: 44.145496, z: -103.2}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1449,6 +1555,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1889525895678571359
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105197495112392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105197567650856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1580,7 @@ GameObject:
   - component: {fileID: 3053105197567650863}
   - component: {fileID: 3053105197567650861}
   - component: {fileID: 3053105197567650862}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1543,7 +1663,7 @@ GameObject:
   - component: {fileID: 3053105197594938496}
   - component: {fileID: 3053105197594938502}
   - component: {fileID: 3053105197594938503}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,7 +1746,8 @@ GameObject:
   - component: {fileID: 3053105197653046831}
   - component: {fileID: 3053105197653046829}
   - component: {fileID: 3053105197653046830}
-  m_Layer: 0
+  - component: {fileID: 565063357104027263}
+  m_Layer: 3
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1698,6 +1819,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &565063357104027263
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105197653046824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8803937527578110353, guid: 90849b37ca87f4b4eb93014d84c10e02, type: 3}
 --- !u!1 &3053105197693758541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,7 +1844,8 @@ GameObject:
   - component: {fileID: 3053105197693758540}
   - component: {fileID: 3053105197693758530}
   - component: {fileID: 3053105197693758531}
-  m_Layer: 0
+  - component: {fileID: 1639723692311446241}
+  m_Layer: 6
   m_Name: Wall (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1724,7 +1860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105197693758541}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: 25.9, y: 44.145496, z: -110.9}
+  m_LocalPosition: {x: 37.6, y: 44.145496, z: -110.9}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1781,6 +1917,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1639723692311446241
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105197693758541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105197770110589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1942,7 @@ GameObject:
   - component: {fileID: 3053105197770110588}
   - component: {fileID: 3053105197770110578}
   - component: {fileID: 3053105197770110579}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1876,7 +2026,7 @@ GameObject:
   - component: {fileID: 3053105197810312771}
   - component: {fileID: 3053105197810312769}
   - component: {fileID: 3053105197810312770}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1959,7 +2109,7 @@ GameObject:
   - component: {fileID: 3053105197824799248}
   - component: {fileID: 3053105197824799254}
   - component: {fileID: 3053105197824799255}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2040,7 +2190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3053105197856475237}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stand (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105197856475238}
   m_LocalRotation: {x: -0, y: -0.4053443, z: -0, w: 0.9141641}
-  m_LocalPosition: {x: -9.552483, y: 28.875498, z: -81.32762}
+  m_LocalPosition: {x: 2.1, y: 28.875498, z: -81.3}
   m_LocalScale: {x: 1.5663831, y: 1.566383, z: 1.5663831}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2077,7 +2227,8 @@ GameObject:
   - component: {fileID: 3053105197868344632}
   - component: {fileID: 3053105197868344638}
   - component: {fileID: 3053105197868344639}
-  m_Layer: 0
+  - component: {fileID: 1400658032960824087}
+  m_Layer: 6
   m_Name: Wall (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2092,7 +2243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105197868344633}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: 25.9, y: 44.145496, z: -94.9}
+  m_LocalPosition: {x: 37.6, y: 44.145496, z: -94.9}
   m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2149,6 +2300,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1400658032960824087
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105197868344633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105197901037731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3053105197901037730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: road (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2173,7 +2338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105197901037731}
   m_LocalRotation: {x: -0, y: 0.0032292306, z: -0, w: 0.9999949}
-  m_LocalPosition: {x: -166.89, y: 40.9, z: -103.2}
+  m_LocalPosition: {x: -184, y: 40.9, z: -103.2}
   m_LocalScale: {x: 2.9887004, y: 2.9887, z: 2.9887004}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2196,7 +2361,8 @@ GameObject:
   - component: {fileID: 3053105198011008171}
   - component: {fileID: 3053105198011008169}
   - component: {fileID: 3053105198011008170}
-  m_Layer: 0
+  - component: {fileID: 2776085294627023390}
+  m_Layer: 3
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2268,6 +2434,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2776085294627023390
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105198011008148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8803937527578110353, guid: 90849b37ca87f4b4eb93014d84c10e02, type: 3}
 --- !u!1 &3053105198079629689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,7 +2459,8 @@ GameObject:
   - component: {fileID: 3053105198079629688}
   - component: {fileID: 3053105198079629694}
   - component: {fileID: 3053105198079629695}
-  m_Layer: 0
+  - component: {fileID: 5469550310354447424}
+  m_Layer: 6
   m_Name: Wall (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2294,8 +2475,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105198079629689}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: -65.4, y: 44.145496, z: -108.1}
-  m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
+  m_LocalPosition: {x: -53.7, y: 44.145496, z: -110}
+  m_LocalScale: {x: 460.32925, y: 21.585611, z: 317.9283}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3053105196907764334}
@@ -2351,6 +2532,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5469550310354447424
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105198079629689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105198195974841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,7 +2555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3053105198195974840}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2375,8 +2570,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105198195974841}
   m_LocalRotation: {x: -0, y: -0.0202429, z: -0, w: 0.99979514}
-  m_LocalPosition: {x: -115, y: 33.86644, z: -104.2}
-  m_LocalScale: {x: 7.9728184, y: 7.9728174, z: 7.9728184}
+  m_LocalPosition: {x: -115, y: 22.5, z: -104.2}
+  m_LocalScale: {x: 16.077188, y: 16.077187, z: 16.077188}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3053105197770110588}
@@ -2398,7 +2593,7 @@ GameObject:
   - component: {fileID: 3053105198223034619}
   - component: {fileID: 3053105198223034617}
   - component: {fileID: 3053105198223034618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2482,7 +2677,8 @@ GameObject:
   - component: {fileID: 3053105198225683717}
   - component: {fileID: 3053105198225683739}
   - component: {fileID: 3053105198225683716}
-  m_Layer: 0
+  - component: {fileID: 7168743647121720841}
+  m_Layer: 6
   m_Name: Wall (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2497,8 +2693,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105198225683718}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: -82, y: 44.145496, z: -108.1}
-  m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
+  m_LocalPosition: {x: -70.3, y: 44.145496, z: -115.4}
+  m_LocalScale: {x: 460.32925, y: 21.585611, z: 317.9283}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3053105196907764334}
@@ -2554,6 +2750,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7168743647121720841
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105198225683718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105198274296474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2775,7 @@ GameObject:
   - component: {fileID: 3053105198274296473}
   - component: {fileID: 3053105198274296479}
   - component: {fileID: 3053105198274296472}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2648,7 +2858,7 @@ GameObject:
   - component: {fileID: 3053105198300248052}
   - component: {fileID: 3053105198300247818}
   - component: {fileID: 3053105198300247819}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2731,7 +2941,7 @@ GameObject:
   - component: {fileID: 3053105198307130755}
   - component: {fileID: 3053105198307130753}
   - component: {fileID: 3053105198307130754}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2815,7 +3025,8 @@ GameObject:
   - component: {fileID: 3053105198309440327}
   - component: {fileID: 3053105198309440325}
   - component: {fileID: 3053105198309440326}
-  m_Layer: 0
+  - component: {fileID: 691803720818782785}
+  m_Layer: 6
   m_Name: Wall (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2830,8 +3041,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105198309440320}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: -93.7, y: 44.145496, z: -100.5}
-  m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
+  m_LocalPosition: {x: -82, y: 44.145496, z: -95.1}
+  m_LocalScale: {x: 460.32925, y: 21.585611, z: 317.9283}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3053105196907764334}
@@ -2887,6 +3098,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &691803720818782785
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105198309440320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105198344794984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,7 +3123,7 @@ GameObject:
   - component: {fileID: 3053105198344794991}
   - component: {fileID: 3053105198344794989}
   - component: {fileID: 3053105198344794990}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2981,7 +3206,8 @@ GameObject:
   - component: {fileID: 3053105198347456703}
   - component: {fileID: 3053105198347456701}
   - component: {fileID: 3053105198347456702}
-  m_Layer: 0
+  - component: {fileID: 6019335153860116328}
+  m_Layer: 6
   m_Name: Wall (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2996,8 +3222,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053105198347456696}
   m_LocalRotation: {x: -0.7071068, y: 0.00008279085, z: 0.00008279085, w: 0.7071068}
-  m_LocalPosition: {x: -65.4, y: 44.145496, z: -100.4}
-  m_LocalScale: {x: 460.32925, y: 21.585611, z: 196.11008}
+  m_LocalPosition: {x: -53.7, y: 44.145496, z: -91.8}
+  m_LocalScale: {x: 460.32925, y: 21.585611, z: 317.92828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3053105196907764334}
@@ -3053,6 +3279,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6019335153860116328
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105198347456696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: 4066d577e48e8f240838a0b927b6f829, type: 3}
 --- !u!1 &3053105198364282323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,7 +3304,7 @@ GameObject:
   - component: {fileID: 3053105198364282322}
   - component: {fileID: 3053105198364282320}
   - component: {fileID: 3053105198364282321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3147,7 +3387,8 @@ GameObject:
   - component: {fileID: 3053105198433446217}
   - component: {fileID: 3053105198433446223}
   - component: {fileID: 3053105198433446216}
-  m_Layer: 0
+  - component: {fileID: 4671220769108767097}
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3219,3 +3460,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4671220769108767097
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053105198433446218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 90849b37ca87f4b4eb93014d84c10e02, type: 3}
