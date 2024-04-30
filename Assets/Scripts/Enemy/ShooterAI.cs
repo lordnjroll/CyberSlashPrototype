@@ -18,6 +18,7 @@ public class ShooterAI : MonoBehaviour
     public float ProjectileSpeed;
     public GameObject ShooterModel;
     public GameObject ShooterHead;
+    public GameObject HitboxObject;
 
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
@@ -129,13 +130,14 @@ public class ShooterAI : MonoBehaviour
     public void Killed()
     {
         Debug.Log("dead");
+        HitboxObject.GetComponent<Collider>().isTrigger = true;
         isDead = true;
         setRigidbodyState(false);
         setColliderState(true);
         transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         transform.GetComponentInChildren<Collider>().enabled = false;
         transform.GetComponent<Animator>().enabled = false;
-        ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+        ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
 
         //Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
         Destroy(gameObject, 2f);

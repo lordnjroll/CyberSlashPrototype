@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 669361296}
   m_Layer: 8
   m_Name: ShootPoint
-  m_TagString: Untagged
+  m_TagString: Shooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669361295}
   m_LocalRotation: {x: -0.50051224, y: -0.50051075, z: 0.49948862, w: -0.49948728}
-  m_LocalPosition: {x: -0, y: 1.46, z: 0.57}
+  m_LocalPosition: {x: -0, y: 1.459, z: 0.935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -438,6 +438,7 @@ MonoBehaviour:
   ProjectileSpeed: 15
   ShooterModel: {fileID: 1468439316968651996}
   ShooterHead: {fileID: 8944897385918734770}
+  HitboxObject: {fileID: 6553339468514112763}
   playerInSightRange: 0
   playerInAttackRange: 0
   IsAttacking: 0
@@ -1654,9 +1655,9 @@ GameObject:
   - component: {fileID: 7903859635381056599}
   - component: {fileID: 762983474699342793}
   - component: {fileID: 7970692354743753471}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: HitBox
+  m_TagString: Shooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

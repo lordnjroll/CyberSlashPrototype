@@ -108,7 +108,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         fodderScript = FodderEnemy.GetComponent<FodderAI>();
         #endregion
-        Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
+        //Enemy = GameObject.FindWithTag("EnemyTag").gameObject;
 
         MarkedTargetes.Clear();
 
@@ -145,6 +145,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             katanaAnimator.SetBool("isAttacking", true);
             StartCoroutine("AttackCDCountDown");
             meleehit = new RaycastHit();
+            fodderScript = null;
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
             {
                 Source.PlayOneShot(Sword_Swing);
@@ -161,7 +162,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
                 {
                     Enemy = meleehit.transform.gameObject;
                     shooterScript = Enemy.GetComponentInParent<ShooterAI>();
-                    fodderScript.OnDeath();
+                    shooterScript.Killed();
 
                     //ScoreScript.GetScore();
                 }

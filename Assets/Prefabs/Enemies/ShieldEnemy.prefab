@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 5344003012730363318}
   m_Layer: 8
   m_Name: ShieldEnemy
-  m_TagString: Shield
+  m_TagString: Shooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1002,7 +1002,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5109579779566359376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 2ba19a5e1ca2a81459ca3843a71f8199, type: 3}
   m_Controller: {fileID: 9100000, guid: a2216705baeb6194a92c883e8c95fa46, type: 2}
   m_CullingMode: 1
@@ -2271,6 +2271,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8caceea1737c0824fb4c2119121d9f45, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8caceea1737c0824fb4c2119121d9f45, type: 3}
+      propertyPath: m_TagString
+      value: Shield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8caceea1737c0824fb4c2119121d9f45, type: 3}

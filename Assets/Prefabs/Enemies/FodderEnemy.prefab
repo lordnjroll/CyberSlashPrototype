@@ -1227,6 +1227,7 @@ MonoBehaviour:
   chargeSpeed: 20
   FodderHead: {fileID: 5999117316776874401}
   FodderModel: {fileID: 4252379270665653455}
+  HitboxObject: {fileID: 3748821136208166923}
   playerInSightRange: 0
   playerInAttackRange: 0
   IsAttacking: 0

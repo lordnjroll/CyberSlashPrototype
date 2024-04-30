@@ -19,6 +19,7 @@ public class FodderAI : MonoBehaviour
     public float chargeSpeed;
     public GameObject FodderHead;
     public GameObject FodderModel;
+    public GameObject HitboxObject;
 
     [HideInInspector]
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
@@ -202,13 +203,14 @@ public class FodderAI : MonoBehaviour
     public void OnDeath()
     {
         Debug.Log("dead");
+        HitboxObject.GetComponent<Collider>().isTrigger = true;
         setRigidbodyState(false);
         setColliderState(true);
         isDead = true;
         this.GetComponent<NavMeshAgent>().enabled = false;
         this.GetComponentInChildren<BoxCollider>().enabled = false;
         FodderModel.GetComponentInParent<Animator>().enabled = false;
-        FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 50) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+        FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
 
         Instantiate(DeathEffect,new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
         Destroy(gameObject, 2f);
