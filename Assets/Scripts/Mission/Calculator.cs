@@ -25,17 +25,13 @@ public class Calculator : MonoBehaviour
         if (enabled)
         {
             Total += number;
+            Debug.Log("Plus");
         }
         else
         {
             Total -= number;
+            Debug.Log("Minus");
         }
         Totaltxt.text = Total.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

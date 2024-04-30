@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class Fist : MonoBehaviour
 {
+    private GrabPlayer grabPlayer;
     private MuscleAI muscleAI;
-    [SerializeField] private Transform grabPlayer;
-
-    private Rigidbody objrb;
-
-    private void Start()
-    {
-        objrb = GetComponent<Rigidbody>();
-    }
+    public Transform FistGrabPoint;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && muscleAI.smashPlayer)
         {
-            hp.Hp = hp.Hp - 2;
+            //hp.Hp = hp.Hp - 2;
             Debug.Log("Fist Hit");
+            muscleAI.smashPlayer = false;
+            muscleAI.resetAttack = true;
         }
 
-        if(other.gameObject.tag == "Player" && muscleAI.hugPlayer == true)
+        if (other.gameObject.tag == "Player" && muscleAI.hugPlayer)
         {
-            HugPlayer(grabPlayer);
+            if (grabPlayer == null)
+            {
+                grabPlayer.HugPlayer(FistGrabPoint);
+            }
+            else
+            {
+                grabPlayer.DropPlayer();
+                grabPlayer = null;
+            }
             Debug.Log("Grab");
+            muscleAI.hugPlayer = false;
+            muscleAI.resetAttack = true;
         }
     }
-
-    void HugPlayer(Transform objectGrab)
-    {
-        this.grabPlayer = objectGrab;
-    }
-
 }
