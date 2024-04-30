@@ -12,13 +12,11 @@ public class ItemKeeper : MonoBehaviour
 
     [SerializeField] private float PowerHoldTime;
     [SerializeField] private int PowerBuff;
-    private void Start()
-    {
-        DisplayKeepList();
-    }
+
 
     private void Update()
     {
+        DisplayKeepList();
         UseHealthPotion();
         UseBonusPotion();
         UsePowerUp();

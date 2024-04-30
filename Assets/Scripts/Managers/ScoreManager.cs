@@ -6,7 +6,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-
+    private Mission mission;
     private int DesiredScore;
     public static int score;
     public int bounsscore;
@@ -24,6 +24,12 @@ public class ScoreManager : MonoBehaviour
     static public int deathcount;
     public int totalscore;
     public TMP_Text scoreborad;
+    public TMP_Text Clearcollect;
+    public TMP_Text Clearkill;
+    public TMP_Text ClearCP;
+    public TMP_Text Clearsur;
+    public TMP_Text Clearmini;
+    public TMP_Text Clearboss;
 
     [Header("Hype Settings")]
     public int HypeLevel;
@@ -120,6 +126,60 @@ public class ScoreManager : MonoBehaviour
                               "\nTotal Death " + deathcount + " \n"
                                             +
                               "\nTotal Score " + score1;
+
+            if (Mission.Clearcollect)
+            {
+                Clearcollect.text = "<color=yellow>Collection</color>";
+            }
+            else
+            {
+                Clearcollect.text = "<color=red>Collection</color>";
+            }
+
+            if (Mission.Clearkill)
+            {
+                Clearkill.text = "<color=yellow>Kill</color>";
+            }
+            else
+            {
+                Clearkill.text = "<color=red>Kill</color>";
+            }
+
+            if (Mission.ClearCP)
+            {
+                ClearCP.text = "<color=yellow>Check Point</color>";
+            }
+            else
+            {
+                ClearCP.text = "<color=red>Check Point</color>";
+            }
+
+            if (Mission.Clearminigame)
+            {
+                Clearmini.text = "<color=yellow>Mini Game</color>";
+            }
+            else
+            {
+                Clearmini.text = "<color=red>Mini Game</color>";
+            }
+
+            if (Mission.Clearsur)
+            {
+                Clearsur.text = "<color=yellow>Survive</color>";
+            }
+            else
+            {
+                Clearsur.text = "<color=red>Survive</color>";
+            }
+
+            if (Mission.Clearboss)
+            {
+                Clearboss.text = "<color=yellow>Boss</color>";
+            }
+            else
+            {
+                Clearboss.text = "<color=red>Boss</color>";
+            }
         }
     }
 

@@ -18,37 +18,44 @@ public class Mission : MonoBehaviour
 
     [SerializeField] private GameObject GameUILayer;
     [SerializeField] private GameObject miniLayer;
+    [SerializeField] private GameObject Endcollect;
+    [SerializeField] private GameObject Endkill;
+    [SerializeField] private GameObject EndCP;
+    [SerializeField] private GameObject Endmini;
+    [SerializeField] private GameObject Endsur;
+    [SerializeField] private GameObject Endboss;
 
     private int m_killcount;
     private int m_totalkillcount = 30;
-    public static bool Startkill = false;
-    bool Clearkill = false;
+    public static bool Startkill;
+    public static bool Clearkill;
 
     private int m_collectcount;
     private int m_totalcollectcount = 5;
-    bool Startcollect = false;
-    bool Clearcollect = false;
+    public bool Startcollect;
+    public static bool Clearcollect;
 
     private int m_CPcount;
     private int m_totalCPcount = 3;
-    bool StartCP = false;
-    bool ClearCP = false;
+    public bool StartCP;
+    public static bool ClearCP;
 
-    bool Startboss = false;
-    bool Clearboss = false;
+    int bosshp;
+    public bool Startboss;
+    public static bool Clearboss;
 
     public static int m_minicount;
     private int m_totalminicount = 5;
-    bool Startminigame = false;
-    bool Clearminigame = false;
+    public bool Startminigame;
+    public static bool Clearminigame;
 
-    bool timecount = false;
+    public bool timecount = false;
     [SerializeField] private TMP_Text Timertxt;
     public float Timer;
-    public static bool Startsur = false;
-    bool Clearsur = false;
+    public static bool Startsur;
+    public static bool Clearsur;
 
-    int bosshp;
+    
     ScoreManager ScoreManager;
     UIManager uIManager;
 
@@ -188,6 +195,7 @@ public class Mission : MonoBehaviour
 
                 ScoreManager.mission_point += 600;
                 Startkill = false;
+                Endkill.SetActive(true);
             }
         }
     }
@@ -203,6 +211,7 @@ public class Mission : MonoBehaviour
                 collectmissiontxt.text = "Collect Items " + "<color=yellow>" + m_collectcount + " / " + m_totalcollectcount + "</color>";
                 ScoreManager.mission_point += 600;
                 Startcollect = false;
+                Endcollect.SetActive(true);
             }
         }
     }
@@ -214,6 +223,7 @@ public class Mission : MonoBehaviour
         {
             ScoreManager.mission_point += 600;
             StartCP = false;
+            EndCP.SetActive(true);
         }
     }
 
@@ -229,6 +239,7 @@ public class Mission : MonoBehaviour
                 GameUILayer.SetActive(true);
                 ScoreManager.mission_point += 600;
                 Startminigame = false;
+                Endmini.SetActive(true);
             }
         }
 
@@ -260,6 +271,7 @@ public class Mission : MonoBehaviour
                 timecount = false;
                 ScoreManager.mission_point += 600;
                 Startsur = false;
+                Endsur.SetActive(true);
             }
         }
     }
