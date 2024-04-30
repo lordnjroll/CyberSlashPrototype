@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -58,7 +59,6 @@ public class UIManager : MonoBehaviour
     {
         if(hp.Hp <= 0)
         {
-            Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             
@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
     public void QuitBtnOnClick()
     {
         gameover.Play();
-        Invoke("GAMEOVER", 4f);
+        StartCoroutine(GAMEOVER());
     }
 
     public void RetryBtnOnClick()
@@ -124,8 +124,10 @@ public class UIManager : MonoBehaviour
         VolumeLayer.SetActive(true);
     }
 
-    public void GAMEOVER()
+    public IEnumerator GAMEOVER()
     {
+        Time.timeScale = 1f;
+        yield return new WaitForSeconds(4);
         SceneManager.LoadScene("MenuScene");
         Time.timeScale = 1f;
     }
