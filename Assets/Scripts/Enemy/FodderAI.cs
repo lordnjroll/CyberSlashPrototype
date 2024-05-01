@@ -30,6 +30,7 @@ public class FodderAI : MonoBehaviour
     [Header("References")]
     public hp HPscript;
     public ParticleSystem DeathEffect;
+    public GameObject Marking;
 
     RaycastHit PlayerHit;
     //public GameObject Fodder;

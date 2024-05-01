@@ -25,6 +25,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public bool isDashing = false;// normal dash
     public bool isSkillDashing = false;// skill dash
     public bool DashingCD = false;
+    public bool isStrongAttackOn = false;
     public KeyCode MovementBtn = KeyCode.LeftShift;
 
     [Header("Camera Effects")]
@@ -56,6 +57,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public Canvas markerCanvas;
     public GameObject markerParent;
     public LayerMask EnemyHitboxLayer;
+    public GameObject MarkingObject;
 
     [Header("Enemy Refernences")]
     private GameObject Enemy;
@@ -137,64 +139,79 @@ public class Weapon_Skill_Katana : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttackCD)
         {
-            Source.PlayOneShot(Sword_Swing);
-            //Debug.Log("clicked");
-            RaycastHit meleehit;
-            isAttackCD = true;
-            SwordTrail.SetActive(true);
-            katanaAnimator.SetBool("isAttacking", true);
-            StartCoroutine("AttackCDCountDown");
-            meleehit = new RaycastHit();
-            fodderScript = null;
-            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
+            if (!isStrongAttackOn)
             {
                 Source.PlayOneShot(Sword_Swing);
-                if (meleehit.transform.tag == "FodderTag")
+                //Debug.Log("clicked");
+                RaycastHit meleehit;
+                isAttackCD = true;
+                SwordTrail.SetActive(true);
+                katanaAnimator.SetBool("isAttacking", true);
+                StartCoroutine("AttackCDCountDown");
+                if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out meleehit, AttackRange))
                 {
-                    Enemy = meleehit.transform.gameObject;
-                    fodderScript = Enemy.GetComponent<FodderAI>();
-                    fodderScript.OnDeath();
+                    Source.PlayOneShot(Sword_Swing);
+                    if (meleehit.transform.tag == "FodderTag")
+                    {
+                        Enemy = meleehit.transform.gameObject;
+                        fodderScript = Enemy.GetComponent<FodderAI>();
+                        fodderScript.OnDeath();
 
-                    
-                    //ScoreScript.GetScore();
+
+                        //ScoreScript.GetScore();
+                    }
+                    if (meleehit.transform.tag == "Shooter")
+                    {
+                        Enemy = meleehit.transform.gameObject;
+                        shooterScript = Enemy.GetComponentInParent<ShooterAI>();
+                        shooterScript.Killed();
+
+                        //ScoreScript.GetScore();
+                    }
+
+                    if (meleehit.transform.tag == "ShieldEnemy")
+                    {
+
+                        ShieldEnemyHP = ShieldEnemyHP - PlayerDamage;
+                        DismentleScript = ShieldEnemy.GetComponent<mesh_destroy>();
+                        //Debug.Log("Hit Shield");
+
+                    }
+
+                    if (meleehit.transform.tag == "MuscleEnemy")
+                    {
+                        MuscleEnemyHP = MuscleEnemyHP - PlayerDamage;
+                        DismentleScript = MuscleEnemy.GetComponent<mesh_destroy>();
+                    }
+
+                    if (meleehit.transform.tag == "TurretTag")
+                    {
+                        Enemy = meleehit.transform.gameObject;
+                        turretScript = Enemy.GetComponentInParent<TurretAI>();
+                        turretScript.OnDeath();
+                    }
+
+                    if (meleehit.transform.tag == "EnemyProjectileTag")
+                    {
+                        katanaAnimator.SetBool("isParrying", true);
+                        StartCoroutine("HitStop");
+                        GameObject EnemyProjectile = meleehit.transform.gameObject;
+                        ReflectScript = EnemyProjectile.GetComponent<ShooterProjectile>();
+                        ReflectScript.OnPlayerParry(mainCamera.transform.forward);
+
+                    }
                 }
-                if (meleehit.transform.tag == "Shooter")
-                {
-                    Enemy = meleehit.transform.gameObject;
-                    shooterScript = Enemy.GetComponentInParent<ShooterAI>();
-                    shooterScript.Killed();
-
-                    //ScoreScript.GetScore();
-                }
-
-                if (meleehit.transform.tag == "ShieldEnemy")
-                {
-
-                    ShieldEnemyHP = ShieldEnemyHP - PlayerDamage;
-                    DismentleScript = ShieldEnemy.GetComponent<mesh_destroy>();
-                    //Debug.Log("Hit Shield");
-
-                }
-
-                if(meleehit.transform.tag == "MuscleEnemy")
-                {
-                    MuscleEnemyHP = MuscleEnemyHP - PlayerDamage;
-                    DismentleScript = MuscleEnemy.GetComponent<mesh_destroy>();
-                }
-
-                if (meleehit.transform.tag == "EnemyProjectileTag")
-                {
-                    katanaAnimator.SetBool("isParrying", true);
-                    StartCoroutine("HitStop");
-                    GameObject EnemyProjectile = meleehit.transform.gameObject;
-                    ReflectScript = EnemyProjectile.GetComponent<ShooterProjectile>();
-                    ReflectScript.OnPlayerParry(mainCamera.transform.forward);
-                    
-                }
+                
             }
-            else
+            else if(isStrongAttackOn)
             {
-                //Debug.Log("missed");
+                Source.PlayOneShot(Sword_Swing);
+                //Debug.Log("clicked");
+                RaycastHit meleehit;
+                isAttackCD = true;
+                SwordTrail.SetActive(true);
+                katanaAnimator.SetBool("isParrying", true);
+                StartCoroutine("AttackCDCountDown");
             }
 
         }
@@ -250,9 +267,11 @@ public class Weapon_Skill_Katana : MonoBehaviour
              //Debug.Log("knife hit");
              if (RayCastHitObject.layer == 8)
              {
-                 //Debug.Log("Object marked: " + RayCastHitObject.name);
-                 MarkedTargetes.Add(RayCastHitObject);
+                //Debug.Log("Object marked: " + RayCastHitObject.name);
+                MarkedTargetes.Add(RayCastHitObject);
                 Source.PlayOneShot(Target_Marked);
+                Instantiate(MarkingObject, new Vector3(0, 1, 0), Quaternion.identity, RayCastHitObject.transform);
+                //RayCastHitObject.AddComponent<GameObject>(MarkingObject);
             }
 
          }
@@ -354,6 +373,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
         }
         //Debug.Log(" skill dash end");
+        StartCoroutine("ToggleStrongAttack");
 
         camScript.DoFOV(DefaultFOV);
 
@@ -389,7 +409,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         {
             waiting = true;
             Time.timeScale = 0.01f;
-            yield return new WaitForSeconds(0.0035f);
+            yield return new WaitForSeconds(0.0015f);
             Time.timeScale = 1f;
             waiting = false;
         }
@@ -418,5 +438,12 @@ public class Weapon_Skill_Katana : MonoBehaviour
     {
         yield return new WaitForSeconds(secondarySkillCD);
         isSecondarySkillCD = false;
+    }
+
+    IEnumerator ToggleStrongAttack()
+    {
+        isStrongAttackOn = true;
+        yield return new WaitForSeconds(1f);
+        isStrongAttackOn = false;
     }
 }

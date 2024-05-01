@@ -13,12 +13,15 @@ public class Marking : MonoBehaviour
     private void Awake()
     {
         StartCoroutine("MarkAnimation");
+        playerCam = Camera.main;
+        transform.localPosition = new Vector3(0, 1.5f, 0);
     }
 
     private void Start()
     {
+        playerCam = Camera.main;
         player = GameObject.FindWithTag("Player").gameObject;
-        //playerCam = player.GetComponent<Camera>();
+        playerCam = player.GetComponentInChildren<Camera>();
     }
     private void LateUpdate()
     {
@@ -27,7 +30,8 @@ public class Marking : MonoBehaviour
 
     IEnumerator MarkAnimation()
     {
-        transform.DORotate(new Vector3(transform.rotation.x , transform.rotation.y , transform.rotation.z + 360f), 2.5f, RotateMode.Fast);
+        transform.DOScale(1.516014f, 0.1f);
+        transform.DORotateQuaternion(Quaternion.Euler(transform.rotation.x , transform.rotation.y , transform.rotation.z + 180f), 0.5f);
         yield return null;
     }
 }

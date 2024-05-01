@@ -9,6 +9,7 @@ public class TurretAI : MonoBehaviour
     public GameObject TurretBarrel;
     public Transform laserOrigin;
     public LineRenderer laserLine;
+    public ParticleSystem DeathEffect;
 
     public LayerMask PlayerLayer;
 
@@ -17,6 +18,7 @@ public class TurretAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
     private hp HpScript;
+    private bool isDead;
 
     //public ParticleSystem FireEffect, HitEffect;
 
@@ -37,20 +39,23 @@ public class TurretAI : MonoBehaviour
     void Update()
     {
         playerInAttackRange = Physics.CheckSphere(transform.position, FlyerAttackRange, PlayerLayer);
-
-        //To Look at the player when winding up an attack
-        if (AttackWindingUp)
+        if (!isDead)
         {
-            TurretBarrel.transform.LookAt(ThePlayer.transform.position);
-            laserLine.SetPosition(0, laserOrigin.transform.position);
-            laserLine.SetPosition(1, ThePlayer.transform.position);
-            //Vector3 rayOrigin = playerLocation.position;
-        }
+            //To Look at the player when winding up an attack
+            if (AttackWindingUp)
+            {
+                TurretBarrel.transform.LookAt(ThePlayer.transform.position);
+                laserLine.SetPosition(0, laserOrigin.transform.position);
+                laserLine.SetPosition(1, ThePlayer.transform.position);
+                //Vector3 rayOrigin = playerLocation.position;
+            }
 
-        if (playerInAttackRange && !IsAttacking && !AttackCD)
-        {
-            AttackMode();
+            if (playerInAttackRange && !IsAttacking && !AttackCD)
+            {
+                AttackMode();
+            }
         }
+            
     }
 
     public void AttackMode()
@@ -107,5 +112,11 @@ public class TurretAI : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         AttackCD = false;
+    }
+
+    public void OnDeath()
+    {
+        isDead = true;
+        Destroy(gameObject);
     }
 }

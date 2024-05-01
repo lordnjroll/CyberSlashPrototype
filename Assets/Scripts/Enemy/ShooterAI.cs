@@ -10,6 +10,7 @@ public class ShooterAI : MonoBehaviour
     private GameObject Player;
     //public Transform laserOrigin;
     public LayerMask PlayerLayer;
+    public GameObject Marking;
 
     [Header("Shooter Stats")]
     public float ShootRange = 15;
@@ -25,7 +26,6 @@ public class ShooterAI : MonoBehaviour
     private bool AttackWindingUp;
     public bool isLaunched = false;
     public bool isDead = false;
-    public LineRenderer laserLine;
     public Rigidbody shooterRB;
 
     RaycastHit PlayerHit;

@@ -13,6 +13,8 @@ TagManager:
   - TurretTag
   - FodderTag
   - CollectItem
+  - GroundedSP
+  - TurrentSP
   layers:
   - Default
   - TransparentFX
