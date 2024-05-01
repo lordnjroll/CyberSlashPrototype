@@ -23,8 +23,6 @@ public class MuscleAI : MonoBehaviour
     public static bool resetAttack;
     public Animator enemyANIM;
     public GameObject Fist;
-
-    private GrabPlayer grabPlayer;
     // Start is called before the first frame update
     void Start()
     {

@@ -24,7 +24,6 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject EndCP;
     [SerializeField] private GameObject Endmini;
     [SerializeField] private GameObject Endsur;
-    [SerializeField] private GameObject Endboss;
     [SerializeField] private GameObject failMission;
 
     [SerializeField] private List<GameObject> checkpoint = new List<GameObject>();
@@ -169,7 +168,7 @@ public class Mission : MonoBehaviour
         #endregion
 
         #region Fail
-        if (other.gameObject.name == "Fail")
+        if (other.gameObject.tag == "Fail")
         {
             Startcollect = false;
             collectmissiontxt.text = " ";
@@ -305,6 +304,7 @@ public class Mission : MonoBehaviour
                 Timer = 0;
                 timecount = false;
                 ScoreManager.mission_point += 600;
+                surmissiontxt.text = "<color=yellow>" + "Survive" + "</color>";
                 Startsur = false;
                 failMission.SetActive(false);
                 Endsur.SetActive(true);

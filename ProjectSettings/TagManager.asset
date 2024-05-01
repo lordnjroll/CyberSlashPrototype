@@ -15,6 +15,9 @@ TagManager:
   - CollectItem
   - GroundedSP
   - TurrentSP
+  - Fail
+  - CheckPoint
+  - MiniGame
   layers:
   - Default
   - TransparentFX
