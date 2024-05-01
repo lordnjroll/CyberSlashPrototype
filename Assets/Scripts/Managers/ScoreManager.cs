@@ -38,6 +38,12 @@ public class ScoreManager : MonoBehaviour
     public int CurrentKS = 0;
     public float KSDuration = 10;
 
+    [Header("Level Bar Setting")]
+    [SerializeField] private Image _LevelBarSprite;
+    public float LevelBarValue = 120;
+    public float LevelBarMin = 0;
+    public float LevelBarMax = 120;
+
     private void Start()
     {
         InvokeRepeating("HypeLevelSelector", 0, 0.07f);
@@ -202,4 +208,9 @@ public class ScoreManager : MonoBehaviour
     {
 
     }
+
+    public void LevelBarFill(float LevelBarCurrentValue, float LevelBarMin, float LevelBarMax)
+    {
+        _LevelBarSprite.fillAmount = Mathf.Clamp(LevelBarCurrentValue, LevelBarMin, LevelBarMax);
+    } 
 }

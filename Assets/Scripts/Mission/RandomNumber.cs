@@ -17,14 +17,12 @@ public class RandomNumber : MonoBehaviour
     private int questionnum = -1;
     private int maxquestionnum = 3;
 
-    // Start is called before the first frame update
     void Start()
     {
         calculator = FindObjectOfType<Calculator>();
         corrent = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(calculator.Total == targetNumber)

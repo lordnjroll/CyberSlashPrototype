@@ -15,6 +15,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private TMP_Text minimissiontxt;
     [SerializeField] private TMP_Text surmissiontxt;
     [SerializeField] private TMP_Text bossmissiontxt;
+    [SerializeField] private TMP_Text tipstxt;
 
     [SerializeField] private GameObject GameUILayer;
     [SerializeField] private GameObject miniLayer;
@@ -24,6 +25,8 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject Endmini;
     [SerializeField] private GameObject Endsur;
     [SerializeField] private GameObject Endboss;
+
+    [SerializeField] private List<GameObject> checkpoint = new List<GameObject>();
 
     private int m_killcount;
     private int m_totalkillcount = 30;
@@ -175,6 +178,15 @@ public class Mission : MonoBehaviour
         #endregion
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "CheckPoint")
+        {
+            m_CPcount++;
+            Destroy(gameObject);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "CollectItem")
@@ -192,7 +204,7 @@ public class Mission : MonoBehaviour
             Clearkill = true;
             if (Clearkill)
             {
-
+                killmissiontxt.text = "Kill Shooters " + "<color=yellow>" + m_killcount + " / " + m_totalkillcount + "</color>";
                 ScoreManager.mission_point += 600;
                 Startkill = false;
                 Endkill.SetActive(true);
@@ -221,6 +233,7 @@ public class Mission : MonoBehaviour
         CPmissiontxt.text = "Go Check Point " + m_CPcount + " / " + m_totalCPcount;
         if(m_CPcount == m_totalCPcount)
         {
+            CPmissiontxt.text = "Go Check Point " + "<color=yellow>" + m_CPcount + " / " + m_totalCPcount + "</color>";
             ScoreManager.mission_point += 600;
             StartCP = false;
             EndCP.SetActive(true);
@@ -235,6 +248,7 @@ public class Mission : MonoBehaviour
             Clearminigame = true;
             if (Clearminigame)
             {
+                minimissiontxt.text = "Finish Hacking Mini Game " + "<color=yellow>" + m_minicount + " / " + m_totalminicount + "</color>";
                 miniLayer.SetActive(false);
                 GameUILayer.SetActive(true);
                 ScoreManager.mission_point += 600;
@@ -242,8 +256,6 @@ public class Mission : MonoBehaviour
                 Endmini.SetActive(true);
             }
         }
-
-
     }
 
     void FinishSurvive()

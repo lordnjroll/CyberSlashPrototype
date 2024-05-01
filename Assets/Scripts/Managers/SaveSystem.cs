@@ -34,11 +34,11 @@ public class SaveSystem : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 

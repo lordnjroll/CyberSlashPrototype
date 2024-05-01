@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DomanExpansion : MonoBehaviour
 {
@@ -36,6 +37,12 @@ public class DomanExpansion : MonoBehaviour
     //Script references
     public ScoreManager Score;
     public mesh_destroy dismemberScript;
+
+    [Header("Level Bar Setting")]
+    [SerializeField] private Image _SkillBarSprite;
+    public float SkillBarValue = 120;
+    public float SkillBarMin = 0;
+    public float SkillBarMax = 120;
 
     // Start is called before the first frame update
     void Start()
@@ -167,5 +174,10 @@ public class DomanExpansion : MonoBehaviour
 
         ////Slowly decrease the size
         DomainSphere.transform.localScale = Vector3.Lerp(DomainSphere.transform.localScale, initialScale, shrinkSpeed * Time.deltaTime * 2);
+    }
+
+    public void SkillBarFill(float SkillBarCurrentValue, float SkillBarMin, float SkillBarMax)
+    {
+        _SkillBarSprite.fillAmount = Mathf.Clamp(SkillBarCurrentValue, SkillBarMin, SkillBarMax);
     }
 }
