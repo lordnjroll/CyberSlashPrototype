@@ -13,6 +13,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private GameObject CreditLayer;
     [SerializeField] private GameObject DisplayLayer;
     [SerializeField] private GameObject VolumeLayer;
+    [SerializeField] private GameObject HTPLayer;
 
     public int CurrentStageNum = 1;
     public int maxStageNum = 2;
@@ -123,13 +124,22 @@ public class InGameUI : MonoBehaviour
 
     public void DisplayBtnOnClick()
     {
+        HTPLayer.SetActive(false);
         VolumeLayer.SetActive(false);
         DisplayLayer.SetActive(true);
     }
 
     public void VolumeBtnOnClick()
     {
+        HTPLayer.SetActive(false);
         DisplayLayer.SetActive(false);
         VolumeLayer.SetActive(true);
+    }
+
+    public void HTPBtnOnClick()
+    {
+        HTPLayer.SetActive(true);
+        VolumeLayer.SetActive(false);
+        DisplayLayer.SetActive(false);
     }
 }

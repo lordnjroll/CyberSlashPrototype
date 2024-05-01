@@ -15,6 +15,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private TMP_Text minimissiontxt;
     [SerializeField] private TMP_Text surmissiontxt;
     [SerializeField] private TMP_Text bossmissiontxt;
+    [SerializeField] private TMP_Text tipstxt;
 
     [SerializeField] private GameObject GameUILayer;
     [SerializeField] private GameObject miniLayer;
@@ -24,6 +25,8 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject Endmini;
     [SerializeField] private GameObject Endsur;
     [SerializeField] private GameObject Endboss;
+
+    [SerializeField] private List<GameObject> checkpoint = new List<GameObject>();
 
     private int m_killcount;
     private int m_totalkillcount = 30;
@@ -173,6 +176,15 @@ public class Mission : MonoBehaviour
             surmissiontxt.text = " ";
         }
         #endregion
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "CheckPoint")
+        {
+            m_CPcount++;
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
