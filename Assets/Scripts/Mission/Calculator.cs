@@ -14,10 +14,8 @@ public class Calculator : MonoBehaviour
     void Start()
     {
         var allToggles = FindObjectsOfType<BitToggle>();
-        foreach(var toggle in allToggles)
-        {
+        foreach (var toggle in allToggles)
             toggle.OnToggleChanged += Toggle_OnToggleChanged;
-        }
     }
 
     void Toggle_OnToggleChanged(int number, bool enabled)
@@ -25,12 +23,10 @@ public class Calculator : MonoBehaviour
         if (enabled)
         {
             Total += number;
-            Debug.Log("Plus");
         }
         else
         {
             Total -= number;
-            Debug.Log("Minus");
         }
         Totaltxt.text = Total.ToString();
     }
