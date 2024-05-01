@@ -420,6 +420,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         katanaAnimator.SetBool("isAttacking", false);
+        katanaAnimator.SetBool("isParrying", false);
         yield return new WaitForSeconds(AttackCD);
         StartCoroutine("SwordSwingAnimation2");
         SwordTrail.SetActive(false);
