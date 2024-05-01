@@ -8,17 +8,17 @@ public class Fist : MonoBehaviour
     private MuscleAI muscleAI;
     public Transform FistGrabPoint;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Player" && muscleAI.smashPlayer)
+        if (collision.gameObject.tag == "Player" && MuscleAI.smashPlayer)
         {
             //hp.Hp = hp.Hp - 2;
             Debug.Log("Fist Hit");
-            muscleAI.smashPlayer = false;
-            muscleAI.resetAttack = true;
+            MuscleAI.smashPlayer = false;
+            MuscleAI.resetAttack = true;
         }
 
-        if (other.gameObject.tag == "Player" && muscleAI.hugPlayer)
+        if (collision.gameObject.tag == "Player" && MuscleAI.hugPlayer)
         {
             if (grabPlayer == null)
             {
@@ -30,8 +30,8 @@ public class Fist : MonoBehaviour
                 grabPlayer = null;
             }
             Debug.Log("Grab");
-            muscleAI.hugPlayer = false;
-            muscleAI.resetAttack = true;
+            MuscleAI.hugPlayer = false;
+            MuscleAI.resetAttack = true;
         }
     }
 }

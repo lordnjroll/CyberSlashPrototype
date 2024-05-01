@@ -7829,6 +7829,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 8311830008192237350, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8311830008192237351, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
       propertyPath: m_Speed
       value: 8
@@ -7867,7 +7871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8418129473580677097, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.37
+      value: 50.14
       objectReference: {fileID: 0}
     - target: {fileID: 8418129473580677097, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7875,7 +7879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8418129473580677097, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.6
+      value: -38.33
       objectReference: {fileID: 0}
     - target: {fileID: 8418129473580677097, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7945,7 +7949,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465204594}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
@@ -7963,6 +7967,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FistGrabPoint: {fileID: 465204593}
+--- !u!54 &465204603
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465204594}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &467457568
 GameObject:
   m_ObjectHideFlags: 0
@@ -17056,7 +17076,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3174297856188595177, guid: db1a12c0861d9ab43971ae8cb752cb87, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 35797bb44ff3ff54085ce50307e583b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 56f11e652a1156543a4f7beffef645d7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -30045,6 +30065,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fodder
       objectReference: {fileID: 0}
+    - target: {fileID: 548725791215367460, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 548725791215367461, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
       propertyPath: Enemy
       value: 
@@ -30194,6 +30218,10 @@ PrefabInstance:
       value: ShieldShooter
       objectReference: {fileID: 0}
     - target: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
       propertyPath: m_TagString
       value: Shield
       objectReference: {fileID: 0}
@@ -30296,6 +30324,10 @@ PrefabInstance:
     - target: {fileID: 5031002765165812294, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
       propertyPath: m_Name
       value: human_yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031002765165812294, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5663952664816713980, guid: ba2705ce7725038479624d7f0ce18c19, type: 3}
       propertyPath: m_RootOrder
@@ -30955,6 +30987,10 @@ PrefabInstance:
     - target: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
       propertyPath: m_Name
       value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
       propertyPath: m_TagString

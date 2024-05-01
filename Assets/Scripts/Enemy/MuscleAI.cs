@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class MuscleAI : MonoBehaviour
 {
+    public int MuscleHP;
     public NavMeshAgent agent;
     public Transform PlayerLocation, FistGrabPoint;
     public LayerMask whatIsGround, whatIsPlayer;
@@ -17,8 +18,9 @@ public class MuscleAI : MonoBehaviour
     bool alreadyAttacked;
 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange, resetAttack;
-    public bool hugPlayer, smashPlayer = false;
+    public bool playerInSightRange, playerInAttackRange;
+    public static bool hugPlayer, smashPlayer = false;
+    public static bool resetAttack;
     public Animator enemyANIM;
     public GameObject Fist;
 
