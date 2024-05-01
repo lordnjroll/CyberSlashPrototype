@@ -25,6 +25,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject Endmini;
     [SerializeField] private GameObject Endsur;
     [SerializeField] private GameObject Endboss;
+    [SerializeField] private GameObject failMission;
 
     [SerializeField] private List<GameObject> checkpoint = new List<GameObject>();
 
@@ -79,15 +80,6 @@ public class Mission : MonoBehaviour
         if (StartCP)
         {
             FinishCheckPoint();
-        }
-
-        if (Startminigame)
-        {
-            GameUILayer.SetActive(false);
-            miniLayer.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            FinishMini();
         }
 
         if (Startsur)
@@ -149,7 +141,6 @@ public class Mission : MonoBehaviour
         }
         #endregion
 
-
         #region Mini Game
         if (other.gameObject.name == "Startmini")
         {
@@ -176,6 +167,22 @@ public class Mission : MonoBehaviour
             surmissiontxt.text = " ";
         }
         #endregion
+
+        #region Fail
+        if (other.gameObject.name == "Fail")
+        {
+            Startcollect = false;
+            collectmissiontxt.text = " ";
+            Startkill = false;
+            killmissiontxt.text = " ";
+            StartCP = false;
+            CPmissiontxt.text = " ";
+            Startminigame = false;
+            minimissiontxt.text = " ";
+            Startsur = false;
+            surmissiontxt.text = " ";
+        }
+        #endregion
     }
 
     private void OnTriggerStay(Collider other)
@@ -194,6 +201,18 @@ public class Mission : MonoBehaviour
             Debug.Log("Hit Collision");
             m_collectcount++;
         }
+
+        if(collision.gameObject.tag == "MiniGame")
+        {
+            if (Startminigame)
+            {
+                GameUILayer.SetActive(false);
+                miniLayer.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                FinishMini();
+            }
+        }
     }
 
     void FinishKillMission()
@@ -207,6 +226,7 @@ public class Mission : MonoBehaviour
                 killmissiontxt.text = "Kill Shooters " + "<color=yellow>" + m_killcount + " / " + m_totalkillcount + "</color>";
                 ScoreManager.mission_point += 600;
                 Startkill = false;
+                failMission.SetActive(false);
                 Endkill.SetActive(true);
             }
         }
@@ -223,6 +243,7 @@ public class Mission : MonoBehaviour
                 collectmissiontxt.text = "Collect Items " + "<color=yellow>" + m_collectcount + " / " + m_totalcollectcount + "</color>";
                 ScoreManager.mission_point += 600;
                 Startcollect = false;
+                failMission.SetActive(false);
                 Endcollect.SetActive(true);
             }
         }
@@ -236,6 +257,7 @@ public class Mission : MonoBehaviour
             CPmissiontxt.text = "Go Check Point " + "<color=yellow>" + m_CPcount + " / " + m_totalCPcount + "</color>";
             ScoreManager.mission_point += 600;
             StartCP = false;
+            failMission.SetActive(false);
             EndCP.SetActive(true);
         }
     }
@@ -253,6 +275,7 @@ public class Mission : MonoBehaviour
                 GameUILayer.SetActive(true);
                 ScoreManager.mission_point += 600;
                 Startminigame = false;
+                failMission.SetActive(false);
                 Endmini.SetActive(true);
             }
         }
@@ -283,6 +306,7 @@ public class Mission : MonoBehaviour
                 timecount = false;
                 ScoreManager.mission_point += 600;
                 Startsur = false;
+                failMission.SetActive(false);
                 Endsur.SetActive(true);
             }
         }
