@@ -115,7 +115,6 @@ public class ScoreManager : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Time.timeScale = 0;
             GameUILayer.SetActive(false);
             isRunning = false;
             Debug.Log(SaveSystem.savescore);
@@ -188,6 +187,7 @@ public class ScoreManager : MonoBehaviour
             {
                 Clearboss.text = "<color=red>Boss</color>";
             }
+            Time.timeScale = 0;
         }
     }
 
