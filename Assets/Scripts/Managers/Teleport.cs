@@ -1,28 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Teleport : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    float Timer;
+    private TMP_Text tipstxt;
 
-    // Update is called once per frame
-    void Update()
+    public void OnCollisionStay(Collision collision)
     {
-        
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Upgrade Station");
-            Debug.Log("teleport");
+            if(Timer > 0)
+            {
+                Timer -= Time.deltaTime;
+            }
+            else if(Timer == 0)
+            {
+                SceneManager.LoadScene("stage 2");
+            }
+
+            if(Timer <= 3)
+            {
+                tipstxt.text = "You teleport to next stage in " + Timer;
+            }
+
+
         }
     }
 }
