@@ -14,7 +14,8 @@ public class spwanenimy : MonoBehaviour
     public float EnemyCount;
     public float XPosition;
     public float ZPosition;
-    public Transform[] SpawnPoints;
+    public Transform[] GroundedSpawnPoints;
+    public Transform[] TurretSpawnPoint;
 
     [Header("Enemy Objects")]
     public GameObject Shooterenemy;
@@ -84,7 +85,10 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset
                     for (int i = 0; i < EnemySet[0].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[0].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (EnemySet[0].EnemySetGroup[i]) 
+                        {
+                            Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15; //set spawn cooldown;
                 }
@@ -98,7 +102,7 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset 2
                     for (int i = 0; i < EnemySet[1].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[1].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[1].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;   
                 }
@@ -112,7 +116,7 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset 3
                     for (int i = 0; i < EnemySet[2].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[2].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[2].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;  
 
@@ -128,7 +132,7 @@ public class spwanenimy : MonoBehaviour
                     //Mid preset 1
                     for (int i = 0; i < EnemySet[3].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[3].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[3].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;
                 }
@@ -142,7 +146,7 @@ public class spwanenimy : MonoBehaviour
                     //Mid preset 2
                     for (int i = 0; i < EnemySet[4].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[4].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[4].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;
                 }
@@ -156,7 +160,7 @@ public class spwanenimy : MonoBehaviour
                     //Hard preset 1
                     for (int i = 0; i < EnemySet[5].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[5].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[5].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;
                 }
@@ -170,7 +174,7 @@ public class spwanenimy : MonoBehaviour
                     //Hard preset 2
                     for (int i = 0; i < EnemySet[6].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[6].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[6].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;
                 }
@@ -184,7 +188,7 @@ public class spwanenimy : MonoBehaviour
                     //Hard preset 3
                     for (int i = 0; i < EnemySet[7].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[7].EnemySetGroup[i], SpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        Instantiate(EnemySet[7].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                     }
                     SpawnCoolDown = 15;
                 }

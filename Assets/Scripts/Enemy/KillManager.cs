@@ -54,12 +54,12 @@ public class KillManager : MonoBehaviour
             case "FodderTag":
                 Debug.Log("FodderHit");
                 fodderScript = Target.GetComponentInParent<FodderAI>();
-                fodderScript.OnDeath();
+                fodderScript.StrongOnDeath();
                 break;
             case "Shooter":
                 Debug.Log("shooterHit");
                 shooterScript = Target.GetComponentInParent<ShooterAI>();
-                shooterScript.OnDeath();
+                shooterScript.StrongOnDeath();
                 break;
             case "TurretTag":
                 turretScript = Target.GetComponentInParent<TurretAI>();

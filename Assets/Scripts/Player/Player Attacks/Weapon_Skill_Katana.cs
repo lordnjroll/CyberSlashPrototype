@@ -225,11 +225,11 @@ public class Weapon_Skill_Katana : MonoBehaviour
                             KillScript.StrongAttack(c.transform.gameObject);            
 
                         }
+
                     }
                         
                 }
                 
-
             }
 
         }
@@ -462,7 +462,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     IEnumerator ToggleStrongAttack()
     {
         isStrongAttackOn = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         isStrongAttackOn = false;
     }
 }

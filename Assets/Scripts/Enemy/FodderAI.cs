@@ -167,7 +167,7 @@ public class FodderAI : MonoBehaviour
         if(collision.transform.gameObject.layer == 3 && isLaunched)
         {   
             transform.GetComponent<NavMeshAgent>().enabled = true;
-            transform.gameObject.GetComponent<Animator>().enabled = true;
+            transform.gameObject.GetComponentInParent<Animator>().enabled = true;
             isLaunched = false;
         }
 
@@ -217,11 +217,27 @@ public class FodderAI : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
+    public void StrongOnDeath()
+    {
+        Debug.Log("dead");
+        HitboxObject.GetComponent<Collider>().isTrigger = true;
+        setRigidbodyState(false);
+        setColliderState(true);
+        isDead = true;
+        this.GetComponent<NavMeshAgent>().enabled = false;
+        this.GetComponentInChildren<BoxCollider>().enabled = false;
+        FodderModel.GetComponentInParent<Animator>().enabled = false;
+        FodderModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+
+        Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
+        Destroy(gameObject, 0.2f);
+    }
+
     public void GotLaunched(float launchForce)
     {
         Debug.Log("got launched");
         isLaunched = true;
-        transform.gameObject.GetComponent<Animator>().enabled = false;
+        transform.gameObject.GetComponentInParent<Animator>().enabled = false;
         transform.GetComponentInParent<NavMeshAgent>().enabled = false;
         rb.velocity = new Vector3(0, launchForce, 0);
         

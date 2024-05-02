@@ -37,6 +37,7 @@ public class DomanExpansion : MonoBehaviour
     //Script references
     public ScoreManager Score;
     public mesh_destroy dismemberScript;
+    private KillManager KillScript;
 
     [Header("Level Bar Setting")]
     [SerializeField] private Image _SkillBarSprite;
@@ -144,15 +145,12 @@ public class DomanExpansion : MonoBehaviour
             InvokeRepeating("QuickDecreaseCharge", DomainParticleDuration, 0.1f);
 
             //domain effects here, also still missing the collision check
-            Collider[] trappedTargets = Physics.OverlapSphere(DomainSphere.transform.position, maxScale, EnemyMask);
+            Collider[] trappedTargets = Physics.OverlapSphere(DomainSphere.transform.position, maxScale, 1 << 8);
             foreach(Collider hit in trappedTargets)
             {
-                //Debug.Log("slashed");
-
-                dismemberScript = hit.GetComponent<mesh_destroy>();
-
-                dismemberScript.hit = true;
-
+                GameObject TrappedObject = hit.transform.gameObject;
+                KillScript = TrappedObject.GetComponentInParent<KillManager>();
+                KillScript.StrongAttack(TrappedObject);
                 //ScoreManager.score += 150;
             }
 

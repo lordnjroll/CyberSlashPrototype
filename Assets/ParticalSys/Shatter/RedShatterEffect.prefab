@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5059728159953396917}
   - component: {fileID: 7127133400166768902}
   m_Layer: 0
-  m_Name: YellowShatterEffect 1
+  m_Name: RedShatterEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4819,7 +4819,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf76d593160b8c6419f5fb6f2b8cc897, type: 2}
+  - {fileID: 2100000, guid: c97096d8ad927dc42befafc0d5505e0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -245,6 +245,7 @@ MonoBehaviour:
   chargeSpeed: 12
   FodderHead: {fileID: 0}
   FodderModel: {fileID: 0}
+  HitboxObject: {fileID: 0}
   playerInSightRange: 0
   playerInAttackRange: 0
   IsAttacking: 0
@@ -253,6 +254,7 @@ MonoBehaviour:
   isDead: 0
   HPscript: {fileID: 0}
   DeathEffect: {fileID: 0}
+  Marking: {fileID: 0}
   FodderANIM: {fileID: 0}
 --- !u!54 &548725791215367487
 Rigidbody:

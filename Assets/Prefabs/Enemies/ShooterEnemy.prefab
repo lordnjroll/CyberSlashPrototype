@@ -435,6 +435,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   Marking: {fileID: 1635111941921392363}
+  DeathEffect: {fileID: 5059728159953396917, guid: 8331b93f69f466a428d17692eb4b8ba7, type: 3}
   ShootRange: 45
   ShooterProjectile: {fileID: 8742687741155778042, guid: 2b49f074317703e47bae6e6814eb11a7, type: 3}
   ShooterMoveSpeed: 0

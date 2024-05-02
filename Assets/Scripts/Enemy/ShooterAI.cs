@@ -11,6 +11,7 @@ public class ShooterAI : MonoBehaviour
     //public Transform laserOrigin;
     public LayerMask PlayerLayer;
     public GameObject Marking;
+    public ParticleSystem DeathEffect;
 
     [Header("Shooter Stats")]
     public float ShootRange = 15;
@@ -139,8 +140,25 @@ public class ShooterAI : MonoBehaviour
         transform.GetComponent<Animator>().enabled = false;
         ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
 
-        //Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
+        Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
         Destroy(gameObject, 2f);
+
+    }
+
+    public void StrongOnDeath()
+    {
+        Debug.Log("dead");
+        HitboxObject.GetComponent<Collider>().isTrigger = true;
+        isDead = true;
+        setRigidbodyState(false);
+        setColliderState(true);
+        transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        transform.GetComponentInChildren<Collider>().enabled = false;
+        transform.GetComponent<Animator>().enabled = false;
+        ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+
+        Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
+        Destroy(gameObject, 0.2f);
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -148,6 +166,7 @@ public class ShooterAI : MonoBehaviour
         if (collision.transform.gameObject.layer == 3 && isLaunched)
         {
             this.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            transform.gameObject.GetComponent<Animator>().enabled = true;
             shooterRB.isKinematic = true;
             isLaunched = false;
         }

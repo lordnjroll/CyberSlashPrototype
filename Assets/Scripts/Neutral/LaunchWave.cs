@@ -40,6 +40,12 @@ public class LaunchWave : MonoBehaviour
                     fodderScript.GotLaunched(launchForce);
                     yield return null;
                 }
+                if(c.transform.gameObject.tag == "Shooter")
+                {
+                    shooterScript = c.GetComponentInParent<ShooterAI>();
+                    shooterScript.GotLaunched(launchForce);
+                    yield return null;
+                }
                 /*if(c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled == true)
                 {
                     c.GetComponentInParent<UnityEngine.AI.NavMeshAgent>().enabled = false;

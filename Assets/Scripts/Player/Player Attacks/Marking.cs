@@ -30,7 +30,7 @@ public class Marking : MonoBehaviour
 
     IEnumerator MarkAnimation()
     {
-        transform.DOScale(1.516014f, 0.1f);
+        transform.DOScale(1.516014f, 0.2f);
         transform.DORotateQuaternion(Quaternion.Euler(transform.rotation.x , transform.rotation.y , transform.rotation.z + 180f), 0.5f);
         yield return null;
     }
