@@ -5834,8 +5834,6 @@ MonoBehaviour:
   HealthHp1Bar: {fileID: 0}
   DeathLayer: {fileID: 0}
   GameUILayer: {fileID: 0}
-  Health: 100
-  MaxHealth: 100
 --- !u!114 &1525951680513988629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5855,9 +5853,11 @@ MonoBehaviour:
   VolumeLayer: {fileID: 0}
   ClearLayer: {fileID: 0}
   deathLayer: {fileID: 0}
+  Player: {fileID: 0}
   gameover: {fileID: 0}
   whenPaused: {fileID: 0}
   whenStarted: {fileID: 0}
+  respawnPoint: []
 --- !u!114 &3335493333375565002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5888,6 +5888,10 @@ MonoBehaviour:
   expandButton: 113
   Score: {fileID: 0}
   dismemberScript: {fileID: 0}
+  _SkillBarSprite: {fileID: 0}
+  SkillBarValue: 120
+  SkillBarMin: 0
+  SkillBarMax: 120
 --- !u!114 &5295489961429571546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5988,9 +5992,10 @@ MonoBehaviour:
   isDashing: 0
   isSkillDashing: 0
   DashingCD: 0
+  isStrongAttackOn: 0
   MovementBtn: 304
   DefaultFOV: 90
-  DashingFOV: 92
+  DashingFOV: 95
   SkillDashFOV: 120
   wallrunFOV: 0
   mainCamera: {fileID: 6814015311803789757}
@@ -6009,6 +6014,7 @@ MonoBehaviour:
   EnemyHitboxLayer:
     serializedVersion: 2
     m_Bits: 16384
+  MarkingObject: {fileID: 996673199028072977, guid: c993423d47254ce43866be7b1e2e5a58, type: 3}
   FodderEnemy: {fileID: 548725791215367460, guid: 6dad3912cd3bb7f4ea0d328056531031, type: 3}
   ShieldEnemy: {fileID: 0}
   MuscleEnemy: {fileID: 0}
@@ -6170,8 +6176,20 @@ MonoBehaviour:
   minimissiontxt: {fileID: 0}
   surmissiontxt: {fileID: 0}
   bossmissiontxt: {fileID: 0}
+  tipstxt: {fileID: 0}
   GameUILayer: {fileID: 0}
   miniLayer: {fileID: 0}
+  Endcollect: {fileID: 0}
+  Endkill: {fileID: 0}
+  EndCP: {fileID: 0}
+  Endmini: {fileID: 0}
+  Endsur: {fileID: 0}
+  failMission: {fileID: 0}
+  Startcollect: 0
+  StartCP: 0
+  Startboss: 0
+  Startminigame: 0
+  timecount: 0
   Timertxt: {fileID: 0}
   Timer: 0
 --- !u!114 &1101700974810018550
