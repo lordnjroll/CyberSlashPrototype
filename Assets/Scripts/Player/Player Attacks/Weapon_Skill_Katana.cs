@@ -92,6 +92,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private ShooterAI shooterScript;
     private TurretAI turretScript;
     private DroneAI droneScript;
+    private KillManager KillScript;
 
     float horizontalInput;
     float verticalInput;
@@ -207,11 +208,33 @@ public class Weapon_Skill_Katana : MonoBehaviour
             {
                 Source.PlayOneShot(Sword_Swing);
                 //Debug.Log("clicked");
-                RaycastHit meleehit;
+                RaycastHit Strongmeleehit;
                 isAttackCD = true;
                 SwordTrail.SetActive(true);
                 katanaAnimator.SetBool("isParrying", true);
                 StartCoroutine("AttackCDCountDown");
+
+                if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out Strongmeleehit, AttackRange))
+                {
+                    if(Strongmeleehit.transform.gameObject.layer == 8)
+                    {
+                        KillScript.StrongAttack(Strongmeleehit.transform.gameObject);
+                        Collider[] colliders = Physics.OverlapSphere(Strongmeleehit.transform.position, 5f, 8);
+                        foreach (Collider c in colliders)
+                        {
+                            if (c.transform.gameObject.layer == 8)
+                            {
+                                Debug.Log("hit layer 8");
+                                KillScript = Strongmeleehit.transform.GetComponent<KillManager>();
+                                KillScript.StrongAttack(c.transform.gameObject);
+                            }
+
+                        }
+                    }
+                        
+                }
+                
+
             }
 
         }
