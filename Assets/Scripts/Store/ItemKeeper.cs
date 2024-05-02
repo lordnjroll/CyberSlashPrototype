@@ -43,6 +43,7 @@ public class ItemKeeper : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.H) && Store.healthpotion == 0)
         {
             Tipstxt.text = "You dont have any health potion.";
+            StartCoroutine(ClearText());
         }
     }
 
@@ -55,6 +56,7 @@ public class ItemKeeper : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.B) && Store.bonuspotion == 0)
         {
             Tipstxt.text = "You dont have any bonus potion.";
+            StartCoroutine(ClearText());
         }
     }
 
@@ -76,6 +78,7 @@ public class ItemKeeper : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.V) && Store.powerup == 0)
         {
             Tipstxt.text = "You cant power up.";
+            StartCoroutine(ClearText());
         }
     }
 
@@ -93,6 +96,12 @@ public class ItemKeeper : MonoBehaviour
         {
 
         }
+    }
+
+    IEnumerator ClearText()
+    {
+        yield return new WaitForSeconds(2f);
+        Tipstxt.text = " ";
     }
 }
 

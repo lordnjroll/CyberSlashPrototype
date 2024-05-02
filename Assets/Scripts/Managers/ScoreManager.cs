@@ -118,8 +118,10 @@ public class ScoreManager : MonoBehaviour
             Time.timeScale = 0;
             GameUILayer.SetActive(false);
             isRunning = false;
-            Debug.Log("teleport");
+            //Debug.Log(600 - Timer);
 
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             scoreBoradLayer.SetActive(true);
             scoreborad.text = "This Level you got \n"
                                             +
@@ -127,7 +129,7 @@ public class ScoreManager : MonoBehaviour
                                             +
                               "\nMission Point " + mission_point + " \n"
                                             +
-                              "\nUse Time " + (1800 - (int)Timer) + " \n"
+                              "\nUse Time " + (600 - (int)Timer) + " \n"
                                             +
                               "\nTotal Death " + deathcount + " \n"
                                             +

@@ -108,10 +108,14 @@ public class UIManager : MonoBehaviour
 
     public void RetryBtnOnClick()
     {
+        Time.timeScale = 1f;
+        Respawn();
+        hp.Hp = 3;
         deathLayer.SetActive(false);
         gameUILayer.SetActive(true);
-        SceneManager.LoadScene("stage 1");
-        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log("Retry");
     }
 
     public void DisplayBtnOnClick()

@@ -18,6 +18,9 @@ TagManager:
   - Fail
   - CheckPoint
   - MiniGame
+  - Plat1
+  - Plat2
+  - Plat3
   layers:
   - Default
   - TransparentFX
