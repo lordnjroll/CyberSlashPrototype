@@ -81,13 +81,13 @@ public class Tutorial : MonoBehaviour
 
     void DoDash()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             m_Dash.text = "Dash Done";
             Clear_Dash = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Mouse0))
         {
             m_SkillDash.text = "Skill Dash Donw";
             Clear_skilldash = true;

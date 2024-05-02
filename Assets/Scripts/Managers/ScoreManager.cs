@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     private int DesiredScore;
     public static int score;
     public int bounsscore;
-    string score1;
+    public static int score1;
 
     public float Timer;
     public TMP_Text Timertxt;
@@ -95,19 +95,19 @@ public class ScoreManager : MonoBehaviour
 
     public void ShowScoreBorad()
     {
-        float scoreCounter;
+        int scoreCounter;
         
         
 
-        scoreCounter = score + mission_point + (600 - (int)Timer) * 10;
+        scoreCounter = score + mission_point + ((int)Timer * 10);
 
         if (deathcount == 0)
         {
-            score1 = (scoreCounter + bounsscore).ToString();
+            score1 = (scoreCounter + bounsscore);
         }
         else if (deathcount >= 1 && deathcount <= 3)
         {
-            score1 = scoreCounter + (bounsscore - (1000 * deathcount)).ToString();
+            score1 = scoreCounter + (bounsscore - (1000 * deathcount));
         }
     }
 
@@ -118,7 +118,7 @@ public class ScoreManager : MonoBehaviour
             Time.timeScale = 0;
             GameUILayer.SetActive(false);
             isRunning = false;
-            //Debug.Log(600 - Timer);
+            Debug.Log(SaveSystem.savescore);
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -134,7 +134,7 @@ public class ScoreManager : MonoBehaviour
                               "\nTotal Death " + deathcount + " \n"
                                             +
                               "\nTotal Score " + score1;
-
+            
             if (Mission.Clearcollect)
             {
                 Clearcollect.text = "<color=yellow>Collection</color>";

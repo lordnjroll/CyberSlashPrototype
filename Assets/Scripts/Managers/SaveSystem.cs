@@ -16,14 +16,8 @@ public class SaveSystem : MonoBehaviour
 
     void Save()
     {
-        hp.Hp += savehp;
-        ScoreManager.score += savescore;
-        Store.healthpotion += keep_health;
-        Store.bonuspotion += keep_exp;
-        Store.powerup += keep_power;
-
         savehp = hp.Hp;
-        savescore = ScoreManager.score;
+        savescore = ScoreManager.score1;
         keep_health = Store.healthpotion;
         keep_exp = Store.bonuspotion;
         keep_power = Store.powerup;
@@ -46,7 +40,7 @@ public class SaveSystem : MonoBehaviour
     {
         Debug.Log(hp.Hp);
         savehp = hp.Hp;
-        savescore = ScoreManager.score;
+        savescore = ScoreManager.score1;
         keep_health = Store.healthpotion;
         keep_exp = Store.bonuspotion;
         keep_power = Store.powerup;
@@ -56,9 +50,14 @@ public class SaveSystem : MonoBehaviour
     static void OnAfterSceneLoad()
     {
         hp.Hp = savehp;
-        ScoreManager.score = savescore;
+        ScoreManager.score1 = savescore;
         Store.healthpotion = keep_health;
         Store.bonuspotion = keep_exp;
         Store.powerup = keep_power;
+    }
+
+    private void Update()
+    {
+        Save();
     }
 }
