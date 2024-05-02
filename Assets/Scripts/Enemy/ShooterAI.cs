@@ -127,7 +127,7 @@ public class ShooterAI : MonoBehaviour
         AttackCD = false;
     }
 
-    public void Killed()
+    public void OnDeath()
     {
         Debug.Log("dead");
         HitboxObject.GetComponent<Collider>().isTrigger = true;

@@ -40,6 +40,7 @@ public class hp : MonoBehaviour
         {
             Godmode = true;
         }
+        
     }
 
 

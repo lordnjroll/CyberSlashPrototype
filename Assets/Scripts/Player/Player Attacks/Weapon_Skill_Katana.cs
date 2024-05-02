@@ -165,7 +165,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
                     {
                         Enemy = meleehit.transform.gameObject;
                         shooterScript = Enemy.GetComponentInParent<ShooterAI>();
-                        shooterScript.Killed();
+                        shooterScript.OnDeath();
 
                         //ScoreScript.GetScore();
                     }
@@ -207,7 +207,6 @@ public class Weapon_Skill_Katana : MonoBehaviour
             else if(isStrongAttackOn)
             {
                 Source.PlayOneShot(Sword_Swing);
-                //Debug.Log("clicked");
                 RaycastHit Strongmeleehit;
                 isAttackCD = true;
                 SwordTrail.SetActive(true);
@@ -216,18 +215,14 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                 if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out Strongmeleehit, AttackRange))
                 {
-                    if(Strongmeleehit.transform.gameObject.layer == 8)
+                    if (Strongmeleehit.transform.gameObject.layer == 8)
                     {
-                        KillScript.StrongAttack(Strongmeleehit.transform.gameObject);
-                        Collider[] colliders = Physics.OverlapSphere(Strongmeleehit.transform.position, 5f, 8);
+                        StartCoroutine("HitStop");
+                        Collider[] colliders = Physics.OverlapSphere(Strongmeleehit.transform.position, 3f, 1<<8);
                         foreach (Collider c in colliders)
                         {
-                            if (c.transform.gameObject.layer == 8)
-                            {
-                                Debug.Log("hit layer 8");
-                                KillScript = Strongmeleehit.transform.GetComponent<KillManager>();
-                                KillScript.StrongAttack(c.transform.gameObject);
-                            }
+                            KillScript = Strongmeleehit.transform.GetComponent<KillManager>();
+                            KillScript.StrongAttack(c.transform.gameObject);            
 
                         }
                     }
@@ -432,7 +427,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         {
             waiting = true;
             Time.timeScale = 0.01f;
-            yield return new WaitForSeconds(0.0015f);
+            yield return new WaitForSeconds(0.0035f);
             Time.timeScale = 1f;
             waiting = false;
         }

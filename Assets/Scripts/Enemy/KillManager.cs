@@ -23,19 +23,50 @@ public class KillManager : MonoBehaviour
 
     public void NormalAttacked(GameObject Target)
     {
-
+        Debug.Log("KM function called");
+        switch (Target.transform.gameObject.tag)
+        {
+            case "FodderTag":
+                Debug.Log("FodderHit");
+                fodderScript = Target.GetComponentInParent<FodderAI>();
+                fodderScript.OnDeath();
+                break;
+            case "Shooter":
+                Debug.Log("shooterHit");
+                shooterScript = Target.GetComponentInParent<ShooterAI>();
+                shooterScript.OnDeath();
+                break;
+            case "TurretTag":
+                turretScript = Target.GetComponentInParent<TurretAI>();
+                turretScript.OnDeath();
+                break;
+            default:
+                Debug.Log("default " + Target);
+                break;
+        }
     }
 
     public void StrongAttack(GameObject Target)
     {
-        switch (Target.tag)
+        Debug.Log("KM function called");
+        switch (Target.transform.gameObject.tag)
         {
             case "FodderTag":
-                fodderScript = Target.GetComponent<FodderAI>();
+                Debug.Log("FodderHit");
+                fodderScript = Target.GetComponentInParent<FodderAI>();
                 fodderScript.OnDeath();
                 break;
             case "Shooter":
-                shooterScript = Target.GetComponent<ShooterAI>();
+                Debug.Log("shooterHit");
+                shooterScript = Target.GetComponentInParent<ShooterAI>();
+                shooterScript.OnDeath();
+                break;
+            case "TurretTag":
+                turretScript = Target.GetComponentInParent<TurretAI>();
+                turretScript.OnDeath();
+                break;
+            default:
+                Debug.Log("default " + Target);
                 break;
         }
     }
