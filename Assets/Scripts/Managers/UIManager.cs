@@ -15,12 +15,14 @@ public class UIManager : MonoBehaviour
     public GameObject VolumeLayer;
     public GameObject ClearLayer;
     public GameObject deathLayer;
+    public GameObject Player;
 
     private bool menuSwitch = false;
 
     private hp PlayerHP;
     public AudioSource gameover;
     public AudioMixerSnapshot whenPaused, whenStarted;
+    [SerializeField] private List<Transform> respawnPoint = new List<Transform>();
 
     // Update is called once per frame
     void Update()
@@ -130,5 +132,21 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         SceneManager.LoadScene("MenuScene");
         Time.timeScale = 1f;
+    }
+
+    void Respawn()
+    {
+        if (Mission.plat1)
+        {
+            Player.transform.position = respawnPoint[0].transform.position;
+        }
+        else if (Mission.plat2)
+        {
+            Player.transform.position = respawnPoint[1].transform.position;
+        }
+        else if (Mission.plat3)
+        {
+            Player.transform.position = respawnPoint[2].transform.position;
+        }
     }
 }
