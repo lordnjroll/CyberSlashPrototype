@@ -15,7 +15,7 @@ public class Fist : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Grab");
-            //hp.Hp = hp.Hp - 2;
+            //hp.Hp = hp.Hp - 1;
             PlayerTransform.parent = FistTransform;
             Playerrigidbody.useGravity = false;
             Player.GetComponent<FastMovementScript>().enabled = false;

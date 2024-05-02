@@ -26,7 +26,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject Endsur;
     [SerializeField] private GameObject failMission;
 
-    [SerializeField] private List<GameObject> checkpoint = new List<GameObject>();
+    public static bool plat1, plat2, plat3;
 
     private int m_killcount;
     private int m_totalkillcount = 30;
@@ -146,7 +146,7 @@ public class Mission : MonoBehaviour
             Startminigame = true;
         }
 
-        if(other.gameObject.name == "Endmini")
+        if (other.gameObject.name == "Endmini")
         {
             Startminigame = false;
             minimissiontxt.text = " ";
@@ -159,7 +159,7 @@ public class Mission : MonoBehaviour
             Startsur = true;
         }
 
-        if(other.gameObject.name == "EndSur")
+        if (other.gameObject.name == "EndSur")
         {
             timecount = false;
             Startsur = false;
@@ -182,6 +182,27 @@ public class Mission : MonoBehaviour
             surmissiontxt.text = " ";
         }
         #endregion
+
+        if (other.gameObject.tag == "Plat1")
+        {
+            plat1 = true;
+            plat2 = false;
+            plat3 = false;
+        }
+
+        if (other.gameObject.tag == "Plat2")
+        {
+            plat1 = false;
+            plat2 = true;
+            plat3 = false;
+        }
+
+        if(other.gameObject.tag == "Plat3")
+        {
+            plat1 = false;
+            plat2 = false;
+            plat3 = true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
