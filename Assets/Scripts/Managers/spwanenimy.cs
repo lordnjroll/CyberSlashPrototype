@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class spwanenimy : MonoBehaviour
 {
@@ -24,8 +25,10 @@ public class spwanenimy : MonoBehaviour
     
     public float ShieldenemyCount;
 
-    private int RandomSpawnNumber;
-    
+    private int GroundedRandomSpawnNumber;
+    private int TurretRandomSpawnNumber;
+
+
     private float SpawnCoolDown;
 
     [Header("Spawn Manager Credit Settings")]
@@ -34,12 +37,17 @@ public class spwanenimy : MonoBehaviour
     public float maxManagerCredit;
     private float HypeDifficultyLevel;
     private float PresetSelector;
+    string[] GroundedEnemyTags = { "Shooter", "FodderTag", "MuscleTag" };
+    string[] SpecialEnemyTags = { "TurretTag", "DroneTag" };
     //private int SpawnPresets;
 
     [SerializeField]
     private GroupEnemy[] EnemySet;
 
-
+    private void Awake()
+    {
+        InvokeRepeating("enemySpwan", 0, 0.5f);
+    }
 
     void Start()
     {
@@ -54,15 +62,13 @@ public class spwanenimy : MonoBehaviour
     {
         //if(Mission.Startkill == true || Mission.Startsur == true)
         //{
-            enemySpwan();
+            
         //}
        
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
         EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
         ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
-
-        //Debug.Log(RandomSpawnNumber);
 
         if(SpawnCoolDown != 0)
         {
@@ -74,7 +80,8 @@ public class spwanenimy : MonoBehaviour
     {
         if (ManagerCredit > 20 && SpawnCoolDown <= 0 && EnemyCount < 30)
         {
-            RandomSpawnNumber = Random.Range(0, 5); //select the spawn position
+            GroundedRandomSpawnNumber = Random.Range(0, GroundedSpawnPoints.Length); //select the spawn position
+            TurretRandomSpawnNumber = Random.Range(0, TurretSpawnPoint.Length);
             PresetSelector = Random.Range(0, 100) + HypeDifficultyLevel;
             //Debug.Log("The difficulty is " + PresetSelector);
             if (PresetSelector <=20)
@@ -85,10 +92,15 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset
                     for (int i = 0; i < EnemySet[0].EnemySetGroup.Length; i++)
                     {
-                        if (EnemySet[0].EnemySetGroup[i].transform.gameObject.tag == "Shooter" || EnemySet[0].EnemySetGroup[i].transform.gameObject.tag == "Muscle")  
+                        if(GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        } else if (SpecialEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[0].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
+                                                
                     }
                     SpawnCoolDown = 15; //set spawn cooldown;
                 }
@@ -102,7 +114,15 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset 2
                     for (int i = 0; i < EnemySet[1].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[1].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[1].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[1].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[1].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[1].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;   
                 }
@@ -116,7 +136,15 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset 3
                     for (int i = 0; i < EnemySet[2].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[2].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[2].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[2].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[2].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[2].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;  
 
@@ -132,7 +160,15 @@ public class spwanenimy : MonoBehaviour
                     //Mid preset 1
                     for (int i = 0; i < EnemySet[3].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[3].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[3].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[3].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[3].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[3].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;
                 }
@@ -146,7 +182,15 @@ public class spwanenimy : MonoBehaviour
                     //Mid preset 2
                     for (int i = 0; i < EnemySet[4].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[4].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[4].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[4].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[4].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[4].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;
                 }
@@ -160,7 +204,15 @@ public class spwanenimy : MonoBehaviour
                     //Hard preset 1
                     for (int i = 0; i < EnemySet[5].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[5].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[5].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[5].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[5].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[5].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;
                 }
@@ -174,7 +226,15 @@ public class spwanenimy : MonoBehaviour
                     //Hard preset 2
                     for (int i = 0; i < EnemySet[6].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[6].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[6].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[6].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[6].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[6].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;
                 }
@@ -188,7 +248,15 @@ public class spwanenimy : MonoBehaviour
                     //Hard preset 3
                     for (int i = 0; i < EnemySet[7].EnemySetGroup.Length; i++)
                     {
-                        Instantiate(EnemySet[7].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        if (GroundedEnemyTags.Contains(EnemySet[7].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[7].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+
+                        }
+                        else if (SpecialEnemyTags.Contains(EnemySet[7].EnemySetGroup[i].gameObject.tag))
+                        {
+                            Instantiate(EnemySet[7].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                        }
                     }
                     SpawnCoolDown = 15;
                 }

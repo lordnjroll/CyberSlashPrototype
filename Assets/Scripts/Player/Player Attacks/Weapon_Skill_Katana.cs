@@ -222,7 +222,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
                         Collider[] colliders = Physics.OverlapSphere(Strongmeleehit.transform.position, 3f, 1<<8);
                         foreach (Collider c in colliders)
                         {
-                            KillScript = Strongmeleehit.transform.GetComponent<KillManager>();
+                            KillScript = Strongmeleehit.transform.GetComponentInParent<KillManager>();
                             KillScript.StrongAttack(c.transform.gameObject);            
 
                         }

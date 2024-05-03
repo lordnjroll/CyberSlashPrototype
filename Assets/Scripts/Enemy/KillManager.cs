@@ -63,7 +63,7 @@ public class KillManager : MonoBehaviour
                 break;
             case "TurretTag":
                 turretScript = Target.GetComponentInParent<TurretAI>();
-                turretScript.OnDeath();
+                turretScript.StrongOnDeath();
                 break;
             default:
                 Debug.Log("default " + Target);

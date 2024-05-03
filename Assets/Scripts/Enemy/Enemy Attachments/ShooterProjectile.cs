@@ -12,7 +12,7 @@ public class ShooterProjectile : MonoBehaviour
     public ParticleSystem ExplosionEffect;
 
     private mesh_destroy ShatterScript;
-
+    private KillManager KillScript;
     private void Awake()
     {
         Destroy(gameObject, DespawnTime);
@@ -63,15 +63,15 @@ public class ShooterProjectile : MonoBehaviour
         else
         {
             Instantiate(ExplosionEffect, this.transform.position, this.transform.rotation);
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, 8);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, 1 << 8);
             foreach (Collider c in colliders)
             {
+                Debug.Log("hit layer 8");
+                GameObject HitTarget = c.transform.gameObject;
+                KillScript = HitTarget.transform.GetComponentInParent<KillManager>();
+                KillScript.StrongAttack(HitTarget.transform.gameObject);
 
-                if (c.transform.gameObject.layer == 8)
-                {
-                    Debug.Log("hit layer 8");
-                    
-                }
+                
 
                 //if (c.transform.gameObject.layer == 7)
                 //{

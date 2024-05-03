@@ -26,6 +26,7 @@ public class TurretAI : MonoBehaviour
     private void Awake()
     {
         laserLine = GetComponent<LineRenderer>();
+        ThePlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Start()
@@ -118,5 +119,11 @@ public class TurretAI : MonoBehaviour
     {
         isDead = true;
         Destroy(gameObject);
+    }
+
+    public void StrongOnDeath()
+    {
+        isDead = true;
+        Destroy(gameObject, 0.1f);
     }
 }
