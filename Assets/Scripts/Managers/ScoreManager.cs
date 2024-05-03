@@ -39,10 +39,23 @@ public class ScoreManager : MonoBehaviour
     public float KSDuration = 10;
 
     [Header("Level Bar Setting")]
-    [SerializeField] private Image _LevelBarSprite;
-    public float LevelBarValue = 120;
-    public float LevelBarMin = 0;
-    public float LevelBarMax = 120;
+    [SerializeField] private Image LevelBarSprite;
+    [Range(0, 6)]
+    [SerializeField] private int LevelBarLevel = 0;
+    [SerializeField] private float LevelBarCurrentValue;
+    [SerializeField] private float LevelBarDevideValue = 20f;
+    [SerializeField] private int LevelBarMin = 0;
+    [SerializeField] private int LevelBarMax = 120;
+    [SerializeField] private Gradient LevelBarGradient;
+
+    [Header("Skill Bar Setting")]
+    [SerializeField] private Image SkillBarSprite;
+    [Range(0, 6)]
+    [SerializeField] private int SkillBarLevel = 0;
+    [SerializeField] private float SkillBarCurrentValue;
+    [SerializeField] private float SkillBarDevideValue = 20f;
+    [SerializeField] private int SkillBarMin = 0;
+    [SerializeField] private int SkillBarMax = 120;
 
     private void Start()
     {
@@ -57,6 +70,8 @@ public class ScoreManager : MonoBehaviour
         ShowScoreBorad();
         CountDownTimer();
         scorecontroll();
+        LevelBarFill();
+        SkillBarFill();
     }
 
     void scorecontroll()
@@ -113,7 +128,7 @@ public class ScoreManager : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Portal")
         {
             GameUILayer.SetActive(false);
             isRunning = false;
@@ -211,8 +226,23 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public void LevelBarFill(float LevelBarCurrentValue, float LevelBarMin, float LevelBarMax)
+    //public void LevelBarFill(float LevelBarCurrentValue, float LevelBarMin, float LevelBarMax)
+    //{
+    //    _LevelBarSprite.fillAmount = Mathf.Clamp(LevelBarCurrentValue, LevelBarMin, LevelBarMax);
+    //}
+
+    public void LevelBarFill()
     {
-        _LevelBarSprite.fillAmount = Mathf.Clamp(LevelBarCurrentValue, LevelBarMin, LevelBarMax);
-    } 
+        LevelBarCurrentValue = (float)LevelBarLevel * LevelBarDevideValue;
+        LevelBarCurrentValue = Mathf.Clamp(LevelBarCurrentValue, LevelBarMin, LevelBarMax);
+        LevelBarSprite.fillAmount = LevelBarCurrentValue / LevelBarMax;
+        LevelBarSprite.color = LevelBarGradient.Evaluate(LevelBarSprite.fillAmount);
+    }
+
+    public void SkillBarFill()
+    {
+        SkillBarCurrentValue = (float)SkillBarLevel * SkillBarDevideValue;
+        SkillBarCurrentValue = Mathf.Clamp(SkillBarCurrentValue, SkillBarMin, SkillBarMax);
+        SkillBarSprite.fillAmount = SkillBarCurrentValue / SkillBarMax;
+    }
 }

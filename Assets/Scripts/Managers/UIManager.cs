@@ -22,7 +22,9 @@ public class UIManager : MonoBehaviour
     private hp PlayerHP;
     public AudioSource gameover;
     public AudioMixerSnapshot whenPaused, whenStarted;
-    [SerializeField] private List<Transform> respawnPoint = new List<Transform>();
+    public List<Transform> respawnPoint = new List<Transform>();
+
+
 
     // Update is called once per frame
     void Update()
@@ -140,15 +142,15 @@ public class UIManager : MonoBehaviour
 
     void Respawn()
     {
-        if (Mission.plat1)
+        if (Mission.plat1 == true)
         {
             Player.transform.position = respawnPoint[0].transform.position;
         }
-        else if (Mission.plat2)
+        else if (Mission.plat2 == true)
         {
             Player.transform.position = respawnPoint[1].transform.position;
         }
-        else if (Mission.plat3)
+        else if (Mission.plat3 == true)
         {
             Player.transform.position = respawnPoint[2].transform.position;
         }

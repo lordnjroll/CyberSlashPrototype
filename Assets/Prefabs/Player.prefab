@@ -5740,6 +5740,7 @@ GameObject:
   - component: {fileID: 6296510906332332716}
   - component: {fileID: 4519226180698198712}
   - component: {fileID: 2452330091975573878}
+  - component: {fileID: 4639350221203295381}
   - component: {fileID: 5054067995470302974}
   - component: {fileID: 1525951680513988629}
   - component: {fileID: 3335493333375565002}
@@ -5816,6 +5817,41 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4639350221203295381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814015311937255687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98492564fbe38414e9aaa38ff9997422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounsscore: 0
+  Timer: 0
+  Timertxt: {fileID: 0}
+  GameUILayer: {fileID: 0}
+  scoreBoradLayer: {fileID: 0}
+  scoretxt: {fileID: 0}
+  totalscore: 0
+  scoreborad: {fileID: 0}
+  Clearcollect: {fileID: 0}
+  Clearkill: {fileID: 0}
+  ClearCP: {fileID: 0}
+  Clearsur: {fileID: 0}
+  Clearmini: {fileID: 0}
+  Clearboss: {fileID: 0}
+  HypeLevel: 0
+  HypeTimer: 0
+  HypeLevelThreshold: 0
+  CurrentKS: 0
+  KSDuration: 10
+  _LevelBarSprite: {fileID: 0}
+  LevelBarValue: 120
+  LevelBarMin: 0
+  LevelBarMax: 120
 --- !u!114 &5054067995470302974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6027,6 +6063,7 @@ MonoBehaviour:
   katanaModel: {fileID: 4671817529754835332}
   katanaAnimator: {fileID: 148140073}
   SwordTrail: {fileID: 1277782159}
+  DaggerObject: {fileID: 0}
 --- !u!114 &4577545782716576722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6185,6 +6222,9 @@ MonoBehaviour:
   Endmini: {fileID: 0}
   Endsur: {fileID: 0}
   failMission: {fileID: 0}
+  checkPoint: []
+  miniGame: []
+  letter: []
   Startcollect: 0
   StartCP: 0
   Startboss: 0
@@ -6204,6 +6244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e89c36698694f47aadb1592bd39f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   Tipstxt: {fileID: 0}
   KeepList: {fileID: 0}
   PowerHoldTime: 0

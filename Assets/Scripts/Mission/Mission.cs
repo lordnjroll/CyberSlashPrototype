@@ -30,7 +30,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private List<Transform> checkPoint = new List<Transform>();
     [SerializeField] private List<Transform> miniGame = new List<Transform>();
     [SerializeField] private List<Transform> letter = new List<Transform>();
-    private GameObject obj_checkPoint, obj_mini, obj_Letter;
+    [SerializeField] private GameObject obj_checkPoint, obj_mini, obj_Letter;
 
 
     private int m_killcount;
@@ -103,12 +103,11 @@ public class Mission : MonoBehaviour
         #region Collect Mission
         if (other.gameObject.name == "StartCollectMission")
         {
-            Instantiate(obj_Letter, letter[0]);
-            Instantiate(obj_Letter, letter[1]);
-            Instantiate(obj_Letter, letter[2]);
-            Instantiate(obj_Letter, letter[3]);
-            Instantiate(obj_Letter, letter[4]);
-
+            Instantiate(obj_Letter, letter[0].position, Quaternion.identity);
+            Instantiate(obj_Letter, letter[1].position, Quaternion.identity);
+            Instantiate(obj_Letter, letter[2].position, Quaternion.identity);
+            Instantiate(obj_Letter, letter[3].position, Quaternion.identity);
+            Instantiate(obj_Letter, letter[4].position, Quaternion.identity);
             Startcollect = true;
         }
 
@@ -135,9 +134,9 @@ public class Mission : MonoBehaviour
 
         if (other.gameObject.name == "StartCheckPoint")
         {
-            Instantiate(obj_checkPoint, checkPoint[0]);
-            Instantiate(obj_checkPoint, checkPoint[1]);
-            Instantiate(obj_checkPoint, checkPoint[2]);
+            Instantiate(obj_checkPoint, checkPoint[0].position, Quaternion.identity);
+            Instantiate(obj_checkPoint, checkPoint[1].position, Quaternion.identity);
+            Instantiate(obj_checkPoint, checkPoint[2].position, Quaternion.identity);
 
             StartCP = true;
         }
@@ -160,10 +159,10 @@ public class Mission : MonoBehaviour
         #region Mini Game
         if (other.gameObject.name == "Startmini")
         {
-            Instantiate(obj_mini, miniGame[0]);
-            Instantiate(obj_mini, miniGame[1]);
-            Instantiate(obj_mini, miniGame[2]);
-            Instantiate(obj_mini, miniGame[3]);
+            Instantiate(obj_mini, miniGame[0].position, Quaternion.identity);
+            Instantiate(obj_mini, miniGame[1].position, Quaternion.identity);
+            Instantiate(obj_mini, miniGame[2].position, Quaternion.identity);
+            Instantiate(obj_mini, miniGame[3].position, Quaternion.identity);
             Startminigame = true;
         }
 
@@ -210,6 +209,7 @@ public class Mission : MonoBehaviour
             plat1 = true;
             plat2 = false;
             plat3 = false;
+            Debug.Log(plat1);
         }
 
         if (other.gameObject.tag == "Plat2")
@@ -217,6 +217,7 @@ public class Mission : MonoBehaviour
             plat1 = false;
             plat2 = true;
             plat3 = false;
+            Debug.Log(plat2);
         }
 
         if(other.gameObject.tag == "Plat3")
@@ -224,6 +225,7 @@ public class Mission : MonoBehaviour
             plat1 = false;
             plat2 = false;
             plat3 = true;
+            Debug.Log(plat3);
         }
     }
 

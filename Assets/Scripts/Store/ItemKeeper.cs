@@ -85,7 +85,7 @@ public class ItemKeeper : MonoBehaviour
     {
         if (Store.Skill1 == true)
         {
-            Player.GetComponent<DomanExpansion>().enabled = false;
+            Player.GetComponent<DomanExpansion>().enabled = true;
         }
     }
 
