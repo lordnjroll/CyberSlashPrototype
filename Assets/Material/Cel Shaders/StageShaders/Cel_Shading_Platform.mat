@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cel_Shading_Grid
-  m_Shader: {fileID: -6465566751694194690, guid: b50ab60d60551224a95cc76cb31d38d9, type: 3}
+  m_Name: Cel_Shading_Platform
+  m_Shader: {fileID: -6465566751694194690, guid: e3aba1b0b82d389409cc5467a9becaea, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_F2DF5A70:
-        m_Texture: {fileID: 2800000, guid: 1b50ee1700420074f839ee3aba02e5c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc3e9692ad06ca488b59c2645389aa3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -66,10 +66,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_348CF9D1: 0.504
-    - Vector1_949078F6: 1
-    - Vector1_CE379CC7: 0.13
-    - Vector1_FF13F2E1: 0.632
+    - Vector1_348CF9D1: 0.55
+    - Vector1_949078F6: 0.32
+    - Vector1_CE379CC7: 0.36
+    - Vector1_FF13F2E1: 0.39
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -93,10 +93,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_87C67AC1: {r: 0.5372549, g: 0.09411764, b: 0.20044218, a: 0}
-    - Color_EDF55453: {r: 1, g: 0.5896226, b: 0.5896226, a: 0}
+    - Color_87C67AC1: {r: 0.5176471, g: 0, b: 0.09629636, a: 0}
+    - Color_EDF55453: {r: 1, g: 0.6179246, b: 0.7054295, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7830189, g: 0.7423906, b: 0.7423906, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

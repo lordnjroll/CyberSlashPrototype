@@ -21,6 +21,7 @@ TagManager:
   - Plat1
   - Plat2
   - Plat3
+  - DroneTag
   layers:
   - Default
   - TransparentFX
