@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
     private Mission mission;
     private int DesiredScore;
-    public static int score;
+    public static int score = 0;
     public int bounsscore;
     public static int score1;
 
@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject scoreBoradLayer;
     public TMP_Text scoretxt;
 
-    public static int mission_point;
+    public static int mission_point = 0;
     static public int deathcount;
     public int totalscore;
     public TMP_Text scoreborad;

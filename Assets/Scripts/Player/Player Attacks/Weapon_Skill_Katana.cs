@@ -80,6 +80,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public GameObject katanaModel;
     public Animator katanaAnimator;
     public GameObject SwordTrail;
+    public GameObject DaggerObject;
 
     //Script references
     private mesh_destroy DismentleScript;
@@ -272,9 +273,12 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     void secondarySkill()
     {
-         Source.PlayOneShot(Kunai_Throw);
-         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-         RaycastHit knifehit;
+        Source.PlayOneShot(Kunai_Throw);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit knifehit;
+
+        var projectile = Instantiate(DaggerObject, PlayerTrans.position, mainCamera.transform.rotation);
+        projectile.GetComponent<Rigidbody>().velocity = mainCamera.transform.forward * 75f;
 
         isSecondarySkillCD = true;
         StartCoroutine("SkillCDCountDown");

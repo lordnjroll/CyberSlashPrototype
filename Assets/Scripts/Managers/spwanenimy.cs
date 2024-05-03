@@ -85,7 +85,7 @@ public class spwanenimy : MonoBehaviour
                     //Easy preset
                     for (int i = 0; i < EnemySet[0].EnemySetGroup.Length; i++)
                     {
-                        if (EnemySet[0].EnemySetGroup[i]) 
+                        if (EnemySet[0].EnemySetGroup[i].transform.gameObject.tag == "Shooter" || EnemySet[0].EnemySetGroup[i].transform.gameObject.tag == "Muscle")  
                         {
                             Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[RandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
