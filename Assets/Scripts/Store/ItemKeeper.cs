@@ -5,7 +5,7 @@ using TMPro;
 
 public class ItemKeeper : MonoBehaviour
 {
-    hp hp;
+    [SerializeField] private GameObject Player;
     [SerializeField] private TMP_Text Tipstxt;
     [SerializeField] private TMP_Text KeepList;
     private Weapon_Skill_Katana WSK;
@@ -21,7 +21,6 @@ public class ItemKeeper : MonoBehaviour
         UseBonusPotion();
         UsePowerUp();
         UnlockSkill1();
-        UnlockSkill2();
     }
 
     void DisplayKeepList()
@@ -84,17 +83,9 @@ public class ItemKeeper : MonoBehaviour
 
     void UnlockSkill1()
     {
-        if (Store.Skill1 > 0)
+        if (Store.Skill1 == true)
         {
-
-        }
-    }
-
-    void UnlockSkill2()
-    {
-        if(Store.Skill2 > 0)
-        {
-
+            Player.GetComponent<DomanExpansion>().enabled = false;
         }
     }
 

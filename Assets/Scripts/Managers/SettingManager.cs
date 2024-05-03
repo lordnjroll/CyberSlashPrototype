@@ -80,6 +80,11 @@ public class SettingManager : MonoBehaviour
         audioMixer.SetFloat("Cheering", Mathf.Log10(volume) * 32);
     }
 
+    public void SetEnvironment(float volume)
+    {
+        audioMixer.SetFloat("Environment", Mathf.Log10(volume) * 32);
+    }
+
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);

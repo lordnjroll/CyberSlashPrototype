@@ -27,6 +27,11 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject failMission;
 
     public static bool plat1, plat2, plat3;
+    [SerializeField] private List<Transform> checkPoint = new List<Transform>();
+    [SerializeField] private List<Transform> miniGame = new List<Transform>();
+    [SerializeField] private List<Transform> letter = new List<Transform>();
+    private GameObject obj_checkPoint, obj_mini, obj_Letter;
+
 
     private int m_killcount;
     private int m_totalkillcount = 30;
@@ -34,7 +39,7 @@ public class Mission : MonoBehaviour
     public static bool Clearkill;
 
     private int m_collectcount;
-    private int m_totalcollectcount = 5;
+    private int m_totalcollectcount = 4;
     public bool Startcollect;
     public static bool Clearcollect;
 
@@ -98,11 +103,18 @@ public class Mission : MonoBehaviour
         #region Collect Mission
         if (other.gameObject.name == "StartCollectMission")
         {
+            Instantiate(obj_Letter, letter[0]);
+            Instantiate(obj_Letter, letter[1]);
+            Instantiate(obj_Letter, letter[2]);
+            Instantiate(obj_Letter, letter[3]);
+            Instantiate(obj_Letter, letter[4]);
+
             Startcollect = true;
         }
 
         if (other.gameObject.name == "EndCollectMission")
         {
+            Destroy(GameObject.FindWithTag("CollectItem"));
             collectmissiontxt.text = " ";
         }
         #endregion
@@ -123,11 +135,16 @@ public class Mission : MonoBehaviour
 
         if (other.gameObject.name == "StartCheckPoint")
         {
+            Instantiate(obj_checkPoint, checkPoint[0]);
+            Instantiate(obj_checkPoint, checkPoint[1]);
+            Instantiate(obj_checkPoint, checkPoint[2]);
+
             StartCP = true;
         }
 
         if (other.gameObject.name == "EndCheckPoint")
         {
+            Destroy(GameObject.FindWithTag("CheckPoint"));
             StartCP = false;
             CPmissiontxt.text = " ";
         }
@@ -143,11 +160,16 @@ public class Mission : MonoBehaviour
         #region Mini Game
         if (other.gameObject.name == "Startmini")
         {
+            Instantiate(obj_mini, miniGame[0]);
+            Instantiate(obj_mini, miniGame[1]);
+            Instantiate(obj_mini, miniGame[2]);
+            Instantiate(obj_mini, miniGame[3]);
             Startminigame = true;
         }
 
         if (other.gameObject.name == "Endmini")
         {
+            Destroy(GameObject.FindWithTag("CheckPoint"));
             Startminigame = false;
             minimissiontxt.text = " ";
         }
@@ -218,7 +240,8 @@ public class Mission : MonoBehaviour
     {
         if (collision.gameObject.tag == "CollectItem")
         {
-            Debug.Log("Hit Collision");
+            Debug.Log("collect item");
+            Destroy(GameObject.FindWithTag("CollectItem"));
             m_collectcount++;
         }
 

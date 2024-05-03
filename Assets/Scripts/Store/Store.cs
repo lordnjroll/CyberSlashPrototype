@@ -25,8 +25,8 @@ public class Store : MonoBehaviour
     public static int healthpotion = 0;
     public static int bonuspotion = 0;
     public static int powerup = 0;
-    public static int Skill1 = 0;
-    public static int Skill2 = 0;
+    public static bool Skill1 = false;
+    public static bool Skill2 = false;
     private void Awake()
     {
         Instance = this;
@@ -129,7 +129,7 @@ public class Store : MonoBehaviour
         if (data.itemName.Equals("Skill1") && ScoreManager.score >= data.value)
         {
             ScoreManager.score -= data.value;
-            Skill1++;
+            Skill1 = true;
         }
         else if (data.itemName.Equals("Skill1") && ScoreManager.score < data.value)
         {
@@ -140,7 +140,7 @@ public class Store : MonoBehaviour
         if (data.itemName.Equals("Skill2") && ScoreManager.score >= data.value)
         {
             ScoreManager.score -= data.value;
-            Skill2++;
+            Skill2 = true;
         }
         else if (data.itemName.Equals("Skill2") && ScoreManager.score < data.value)
         {

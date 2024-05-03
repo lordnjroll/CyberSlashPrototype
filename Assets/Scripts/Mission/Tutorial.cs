@@ -28,7 +28,22 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (T_trigger == true)
+        {
+            DoDash();
+
+            if (Wall_Jumped)
+            {
+                m_WallJump.text = "Wall Jump Done";
+                Clear_walljump = true;
+            }
+
+        }
+
+        if (Clear_Dash == true && Clear_walljump == true)
+        {
+            //try kill enemy
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,26 +56,9 @@ public class Tutorial : MonoBehaviour
             Debug.Log("Start Tutorial");
             tipsLayer.SetActive(true);
             m_WallJump.text = "Do Wall Jump";
-            m_Dash.text = "Do Dash";
-            m_SkillDash.text = "Do Skill Dash";
+            m_Dash.text = "Do Dash(LS)";
+            m_SkillDash.text = "Do Skill Dash(LS + RMB)";
             T_trigger = true;
-
-            if (T_trigger == true)
-            {
-                DoDash();
-
-                if (Wall_Jumped)
-                {
-                    m_WallJump.text = "Wall Jump Done";
-                    Clear_walljump = true;
-                }
-                
-            }
-
-            if(Clear_Dash == true && Clear_walljump == true)
-            {
-                //try kill enemy
-            }
         }
 
         if (other.gameObject.name == "FinishTutorial")

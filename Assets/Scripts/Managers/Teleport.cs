@@ -24,7 +24,7 @@ public class Teleport : MonoBehaviour
 
             if(Timer <= 3)
             {
-                tipstxt.text = "You teleport to next stage in " + Timer;
+                tipstxt.text = "You teleport to next stage in " + (int)Timer;
             }
 
 

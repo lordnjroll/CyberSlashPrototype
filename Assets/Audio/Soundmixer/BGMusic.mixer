@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-7050944317792758877
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 88d32c95fd6c248468f251dbe2082b30
+  m_EffectName: Attenuation
+  m_MixLevel: a8229fbf2f3d89a419993da80152d94f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-5469685350765167440
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -33,6 +47,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-3574805815259679661
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Environment
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 87070b258cc64944097be360bffb2bf8
+  m_Children: []
+  m_Volume: 3670151a2897ac14ca1465a64ffcdd18
+  m_Pitch: c8d32d4edd0a26f41bf3b413f0462b29
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -7050944317792758877}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-184117739238982578
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -75,6 +108,8 @@ AudioMixerController:
     name: Button
   - guid: 3f9cbd3ec0859cb47835d850d8e71c74
     name: Cheering
+  - guid: 3670151a2897ac14ca1465a64ffcdd18
+    name: Environment
   - guid: e60774572ca81e3458a44befaaf68b87
     name: ALLMusic
   m_AudioMixerGroupViews:
@@ -83,6 +118,7 @@ AudioMixerController:
     - f9f080dde283a4b49a1fe146516d3c53
     - 0ffd4ab1a77e3a844aefe79db31aa4c2
     - 273a3aa8d34562c45a2cc1f2c1910bfb
+    - 87070b258cc64944097be360bffb2bf8
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -99,6 +135,7 @@ AudioMixerGroupController:
   - {fileID: 3174297856188595177}
   - {fileID: -184117739238982578}
   - {fileID: -5469685350765167440}
+  - {fileID: -3574805815259679661}
   m_Volume: e60774572ca81e3458a44befaaf68b87
   m_Pitch: da085ec8bf625874c848ecef604c3e66
   m_Send: 00000000000000000000000000000000
