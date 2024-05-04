@@ -5,9 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class FlyerBossAI : MonoBehaviour
 {
-    public GameObject ThePlayer;
+    private GameObject ThePlayer;
 
-    public Transform playerLocation;
     public Transform laserOrigin;
     public LineRenderer laserLine;
 
@@ -21,6 +20,8 @@ public class FlyerBossAI : MonoBehaviour
 
     public ParticleSystem FireEffect, HitEffect;
 
+    public GameObject HexAttack;
+
     RaycastHit PlayerHit;
     private void Awake()
     {
@@ -33,30 +34,20 @@ public class FlyerBossAI : MonoBehaviour
         AttackCD = false;
     }
 
-    public void FlyerChasingPlayer()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, ThePlayer.transform.position, FlyerMoveSpeed * Time.deltaTime);
-        transform.LookAt(playerLocation);
-    }
 
     // Update is called once per frame
     void Update()
     {
-        playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
         playerInAttackRange = Physics.CheckSphere(transform.position, FlyerAttackRange, PlayerLayer);
+        transform.LookAt(ThePlayer.transform);
 
         //To Look at the player when winding up an attack
         if (AttackWindingUp)
         {
-            transform.LookAt(playerLocation);
+            transform.LookAt(ThePlayer.transform);
             laserLine.SetPosition(0, laserOrigin.position);
-            laserLine.SetPosition(1, playerLocation.position);
+            laserLine.SetPosition(1, ThePlayer.transform.position);
             //Vector3 rayOrigin = playerLocation.position;
-        }
-
-        if (!playerInAttackRange && !IsAttacking || AttackCD)
-        {
-            FlyerChasingPlayer();
         }
 
         if (playerInAttackRange && !IsAttacking && !AttackCD)
