@@ -32,6 +32,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject failMission;
     [SerializeField] private GameObject failMission2;
     [SerializeField] private GameObject failMission3;
+    [SerializeField] private GameObject set2, set3;
 
     public static bool plat1, plat2, plat3;
     [SerializeField] private List<Transform> checkPoint = new List<Transform>();
@@ -130,6 +131,7 @@ public class Mission : MonoBehaviour
         if (other.gameObject.name == "StartKillMission")
         {
             Startkill = true;
+            set2.GetComponent<spwanenimy>().enabled = true;
             Start_kill.SetActive(false);
         }
 
@@ -148,6 +150,7 @@ public class Mission : MonoBehaviour
             Instantiate(obj_checkPoint, checkPoint[2].position, Quaternion.identity);
             Start_CP.SetActive(false);
             StartCP = true;
+            set3.GetComponent<spwanenimy>().enabled = true;
         }
 
         if (other.gameObject.name == "EndCheckPoint")
@@ -210,6 +213,8 @@ public class Mission : MonoBehaviour
             minimissiontxt.text = " ";
             Startsur = false;
             surmissiontxt.text = " ";
+            set3.GetComponent<spwanenimy>().enabled = false;
+            set2.GetComponent<spwanenimy>().enabled = false;
         }
         #endregion
 
@@ -256,6 +261,7 @@ public class Mission : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 GameUILayer.SetActive(false);
                 miniLayer.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
 
@@ -274,6 +280,7 @@ public class Mission : MonoBehaviour
             Clearkill = true;
             if (Clearkill)
             {
+                set2.GetComponent<spwanenimy>().enabled = false;
                 killmissiontxt.text = "Kill Shooters " + "<color=yellow>" + m_killcount + " / " + m_totalkillcount + "</color>";
                 ScoreManager.mission_point += 600;
                 Startkill = false;
@@ -363,6 +370,7 @@ public class Mission : MonoBehaviour
                 Clearsur = true;
                 Timer = 0;
                 timecount = false;
+                set3.GetComponent<spwanenimy>().enabled = false;
                 ScoreManager.mission_point += 600;
                 surmissiontxt.text = "<color=yellow>" + "Survive" + "</color>";
                 Startsur = false;

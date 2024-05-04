@@ -4689,6 +4689,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &296821027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 946776379364727961, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
+  m_PrefabInstance: {fileID: 8950061051336903344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &301903899
 GameObject:
   m_ObjectHideFlags: 0
@@ -27989,6 +27994,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &1516214253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3892693420188086954, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+  m_PrefabInstance: {fileID: 5703039278397642582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1528631481
 Mesh:
   m_ObjectHideFlags: 0
@@ -30774,6 +30784,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1751343697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715504125033637100, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
+  m_PrefabInstance: {fileID: 7126621503123874325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1754271714
 GameObject:
   m_ObjectHideFlags: 0
@@ -32083,11 +32098,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &1833480199 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7126621503739875858, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
-  m_PrefabInstance: {fileID: 7126621503123874325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1841359046
 GameObject:
   m_ObjectHideFlags: 0
@@ -38807,6 +38817,42 @@ PrefabInstance:
     m_TransformParent: {fileID: 3067270058274211363}
     m_Modifications:
     - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: set1
+      value: 
+      objectReference: {fileID: 296821027}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: set2
+      value: 
+      objectReference: {fileID: 1751343697}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: set3
+      value: 
+      objectReference: {fileID: 1516214253}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: Source
+      value: 
+      objectReference: {fileID: 957895250}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: SpawnAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: d39e228344318ae43821df33a71ceb34, type: 3}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: ManagerCredit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: ManagerSpawnRate
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: maxManagerCredit
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358325665212971380, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
       propertyPath: EnemySet.Array.size
       value: 8
       objectReference: {fileID: 0}
@@ -39146,6 +39192,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1492696921}
+    - target: {fileID: 5703039277098856089, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5703039277136156082, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -39198,6 +39248,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 487198244}
+    - target: {fileID: 5703039277611318002, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5703039277611318012, guid: d3d4e79f11bab9d4eb4281988be2645b, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -39939,6 +39993,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1471547131}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: set2
+      value: 
+      objectReference: {fileID: 1751343697}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: set3
+      value: 
+      objectReference: {fileID: 1516214253}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: EndCP
       value: 
       objectReference: {fileID: 46854079}
@@ -40061,7 +40123,7 @@ PrefabInstance:
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: letter.Array.data[1]
       value: 
-      objectReference: {fileID: 1833480199}
+      objectReference: {fileID: 0}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: letter.Array.data[2]
       value: 
@@ -40102,6 +40164,10 @@ PrefabInstance:
       propertyPath: Fail
       value: 
       objectReference: {fileID: 1634632764}
+    - target: {fileID: 4577545782716576722, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: set1
+      value: 
+      objectReference: {fileID: 296821027}
     - target: {fileID: 4577545782716576722, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: m_Dash
       value: 
@@ -40424,9 +40490,25 @@ PrefabInstance:
       value: PlatformSet2
       objectReference: {fileID: 0}
     - target: {fileID: 4097096969217949265, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
+      propertyPath: set1
+      value: 
+      objectReference: {fileID: 296821027}
+    - target: {fileID: 4097096969217949265, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
+      propertyPath: set2
+      value: 
+      objectReference: {fileID: 1751343697}
+    - target: {fileID: 4097096969217949265, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
+      propertyPath: set3
+      value: 
+      objectReference: {fileID: 1516214253}
+    - target: {fileID: 4097096969217949265, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
       propertyPath: Source
       value: 
       objectReference: {fileID: 957895250}
+    - target: {fileID: 4097096969217949265, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4097096969217949265, guid: 82a5586e392822e41a4d45f666f47f12, type: 3}
       propertyPath: SpawnAudio
       value: 
@@ -41519,9 +41601,25 @@ PrefabInstance:
       value: 33.93
       objectReference: {fileID: 0}
     - target: {fileID: 2559714694708451598, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
+      propertyPath: set1
+      value: 
+      objectReference: {fileID: 296821027}
+    - target: {fileID: 2559714694708451598, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
+      propertyPath: set2
+      value: 
+      objectReference: {fileID: 1751343697}
+    - target: {fileID: 2559714694708451598, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
+      propertyPath: set3
+      value: 
+      objectReference: {fileID: 1516214253}
+    - target: {fileID: 2559714694708451598, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
       propertyPath: Source
       value: 
       objectReference: {fileID: 957895250}
+    - target: {fileID: 2559714694708451598, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2559714694708451598, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
       propertyPath: SpawnAudio
       value: 

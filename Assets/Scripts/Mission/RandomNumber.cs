@@ -58,21 +58,4 @@ public class RandomNumber : MonoBehaviour
         corrent = true;
         Debug.Log(corrent);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            GameUILayer.SetActive(false);
-            miniLayer.SetActive(true);
-            //Time.timeScale = 0f;
-        }
-
-        if(questionnum == maxquestionnum)
-        {
-            Destroy(this);
-        }
-    }
 }

@@ -14,6 +14,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject StartTutor;
     [SerializeField] private GameObject EndTutor;
     [SerializeField] private GameObject Fail;
+    [SerializeField] private GameObject set1;
     ScoreManager ScoreManager;
 
     bool T_trigger = false;
@@ -48,11 +49,13 @@ public class Tutorial : MonoBehaviour
 
         if(Clear_Dash && Clear_walljump)
         {
+            set1.GetComponent<spwanenimy>().enabled = true;
             m_Dash.text = "Try kill enemy" + killcount + " / " + Totalkill;
         }
 
         if(killcount == Totalkill)
         {
+            set1.GetComponent<spwanenimy>().enabled = false;
             m_Dash.text = "<color=yellow>" + "Tutorial Finish" + "</color>";
             Clear_Dash = false;
             Clear_walljump = false;
@@ -78,19 +81,21 @@ public class Tutorial : MonoBehaviour
 
         if (other.gameObject.name == "FinishTutorial")
         {
-            m_WallJump.text = " ";
-            m_Dash.text = " ";
-            m_SkillDash.text = " ";
+            set1.GetComponent<spwanenimy>().enabled = false;
+            tipsLayer.SetActive(false);
             T_trigger = false;
+            Clear_Dash = false;
+            Clear_walljump = false;
         }
 
         if(other.gameObject.tag == "Fail")
         {
-            m_WallJump.text = " ";
-            m_Dash.text = " ";
-            m_SkillDash.text = " ";
-            Debug.Log("Fail");
+            set1.GetComponent<spwanenimy>().enabled = false;
+            tipsLayer.SetActive(false);
             T_trigger = false;
+            Debug.Log("Fail");
+            Clear_Dash = false;
+            Clear_walljump = false;
         }
     }
 
@@ -113,7 +118,7 @@ public class Tutorial : MonoBehaviour
             ScoreManager.mission_point += 100;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Mouse1))
         {
             m_SkillDash.text = "<color=yellow>" + "Skill Dash Done" + "</color>";
             Clear_skilldash = true;

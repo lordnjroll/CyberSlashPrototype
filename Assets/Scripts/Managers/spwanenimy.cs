@@ -40,9 +40,7 @@ public class spwanenimy : MonoBehaviour
     string[] GroundedEnemyTags = { "Shooter", "FodderTag", "MuscleTag" };
     string[] SpecialEnemyTags = { "TurretTag", "DroneTag" };
     //private int SpawnPresets;
-
-    [SerializeField]
-    private GroupEnemy[] EnemySet;
+    [SerializeField] private GroupEnemy[] EnemySet;
     [SerializeField] private AudioClip SpawnAudio;
     [SerializeField] private AudioSource Source;
 
@@ -62,14 +60,14 @@ public class spwanenimy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mission.Startkill == true || Mission.Startsur == true)
+        if (Mission.Startkill == true || Mission.Startsur)
         {
             InvokeRepeating("enemySpwan", 0, 0.5f);
         }
 
         if(Tutorial.Clear_Dash && Tutorial.Clear_walljump)
         {
-            enemySpwan();
+            InvokeRepeating("enemySpwan", 0, 0.5f);
         }
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
