@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5654097811421881933}
   - component: {fileID: 5528174693725052177}
   - component: {fileID: 5529884636179540237}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4856,7 +4856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5654051673836924761}
   - component: {fileID: 5706054422289259511}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5000,7 +5000,7 @@ GameObject:
   - component: {fileID: 5528477698031045477}
   - component: {fileID: 5661251702339195555}
   - component: {fileID: 5673225705072845111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

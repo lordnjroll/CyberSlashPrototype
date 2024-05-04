@@ -145,9 +145,122 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
-  RespawnPoint: {fileID: 0}
+  RespawnPoint: {fileID: 1745494346904058601}
   scoreManager: {fileID: 0}
-  uIManager: {fileID: 0}
+--- !u!1 &946776379364727961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2425389862081704932}
+  - component: {fileID: 2559714694708451598}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2425389862081704932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946776379364727961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3897766879334310334}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2559714694708451598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946776379364727961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8af76055a523604686a14f02cd79399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
+  EnemyCount: 0
+  XPosition: 0
+  ZPosition: 0
+  GroundedSpawnPoints:
+  - {fileID: 3897766879597187923}
+  - {fileID: 3897766879656063243}
+  - {fileID: 3897766878495483042}
+  - {fileID: 3897766878335620397}
+  - {fileID: 3897766879345715525}
+  - {fileID: 3897766878416996720}
+  TurretSpawnPoint:
+  - {fileID: 3897766878830016698}
+  - {fileID: 3897766879431949179}
+  - {fileID: 3897766879837344025}
+  - {fileID: 3897766879887677801}
+  - {fileID: 3897766879090972157}
+  - {fileID: 3897766879283524591}
+  Shooterenemy: {fileID: 0}
+  FodderEnemy: {fileID: 0}
+  Shieldenemy: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
+  ShieldenemyCount: 0
+  ManagerCredit: 10
+  ManagerSpawnRate: 1.5
+  maxManagerCredit: 100
+  EnemySet:
+  - EnemySetGroup:
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+  - EnemySetGroup:
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+  - EnemySetGroup:
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
+    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
+    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+  - EnemySetGroup:
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+  - EnemySetGroup:
+    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
+    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
+    - {fileID: 2222421839653301279, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+  - EnemySetGroup:
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 2222421839653301279, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
+    - {fileID: 2222421839653301279, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
+  - EnemySetGroup: []
+  - EnemySetGroup: []
 --- !u!1 &1435426389360719498
 GameObject:
   m_ObjectHideFlags: 0
@@ -7895,7 +8008,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3897766879334310334}
-  - component: {fileID: 3897766879334310335}
   m_Layer: 0
   m_Name: PlatformSet
   m_TagString: Untagged
@@ -7910,7 +8022,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3897766879334310333}
-  m_LocalRotation: {x: -0, y: 0.923879, z: -0, w: 0.3826848}
+  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
   m_LocalPosition: {x: -0.82720596, y: -1.5488515, z: -8.49792}
   m_LocalScale: {x: 0.35450917, y: 0.35450935, z: 0.35450917}
   m_ConstrainProportionsScale: 0
@@ -7947,91 +8059,10 @@ Transform:
   - {fileID: 3340237929871924143}
   - {fileID: 1035324048102913242}
   - {fileID: 2236437998917753372}
+  - {fileID: 2425389862081704932}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3897766879334310335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3897766879334310333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8af76055a523604686a14f02cd79399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 3492876334676278136, guid: ab2075ce52778f743b426bc455bffe0c, type: 3}
-  EnemyCount: 0
-  XPosition: 0
-  ZPosition: 0
-  GroundedSpawnPoints:
-  - {fileID: 3897766879597187923}
-  - {fileID: 3897766879656063243}
-  - {fileID: 3897766878495483042}
-  - {fileID: 3897766878335620397}
-  - {fileID: 3897766879345715525}
-  - {fileID: 3897766878416996720}
-  TurretSpawnPoint:
-  - {fileID: 3897766878830016698}
-  - {fileID: 3897766879431949179}
-  - {fileID: 3897766879837344025}
-  - {fileID: 3897766879887677801}
-  - {fileID: 3897766879090972157}
-  - {fileID: 3897766879283524591}
-  Shooterenemy: {fileID: 0}
-  FodderEnemy: {fileID: 0}
-  Shieldenemy: {fileID: 6876251210765111946, guid: 9137ad70a037fcc4998f4879e7cb1839, type: 3}
-  ShieldenemyCount: 0
-  ManagerCredit: 10
-  ManagerSpawnRate: 1.5
-  maxManagerCredit: 100
-  EnemySet:
-  - EnemySetGroup:
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-  - EnemySetGroup:
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-  - EnemySetGroup:
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
-    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
-    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-  - EnemySetGroup:
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-  - EnemySetGroup:
-    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
-    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
-    - {fileID: 2222421839653301279, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-  - EnemySetGroup:
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-    - {fileID: 2222421839653301279, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
-    - {fileID: 2222421839653301279, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-    - {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
-  - EnemySetGroup: []
-  - EnemySetGroup: []
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!1 &3897766879338525190
 GameObject:
   m_ObjectHideFlags: 0

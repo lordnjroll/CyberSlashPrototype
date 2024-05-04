@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class KillManager : MonoBehaviour
 {
-    
+    private GameObject PlayerObject;
     private FodderAI fodderScript;
     private ShooterAI shooterScript;
     private TurretAI turretScript;
     private DroneAI droneScript;
+    private ScoreManager ScoreScript;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        PlayerObject = GameObject.FindWithTag("Player").gameObject;
+        ScoreScript = PlayerObject.GetComponent<ScoreManager>();
+    }
     void Start()
     {
         
@@ -23,7 +29,7 @@ public class KillManager : MonoBehaviour
 
     public void NormalAttacked(GameObject Target)
     {
-        Debug.Log("KM function called");
+        //Debug.Log("KM function called");
         switch (Target.transform.gameObject.tag)
         {
             case "FodderTag":
@@ -44,11 +50,12 @@ public class KillManager : MonoBehaviour
                 Debug.Log("default " + Target);
                 break;
         }
+        ScoreScript.OnEnemyKilled();
     }
 
     public void StrongAttack(GameObject Target)
     {
-        Debug.Log("KM function called");
+        //Debug.Log("KM function called");
         switch (Target.transform.gameObject.tag)
         {
             case "FodderTag":
@@ -69,5 +76,6 @@ public class KillManager : MonoBehaviour
                 Debug.Log("default " + Target);
                 break;
         }
+        ScoreScript.OnEnemyKilled();
     }
 }

@@ -67,7 +67,7 @@ public class spwanenimy : MonoBehaviour
        
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
-        EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
+        //EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length + GameObject.FindGameObjectsWithTag("FodderTag").Length + GameObject.FindGameObjectsWithTag("Turret").Length;
         ShieldenemyCount = GameObject.FindGameObjectsWithTag("Shield").Length;  
 
         if(SpawnCoolDown != 0)

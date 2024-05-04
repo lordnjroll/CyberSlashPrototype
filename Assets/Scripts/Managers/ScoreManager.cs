@@ -37,6 +37,8 @@ public class ScoreManager : MonoBehaviour
     public int HypeLevelThreshold;
     public int CurrentKS = 0;
     public float KSDuration = 10;
+    private spwanenimy SpawnScript;
+    private GameObject[] SpawnObject;
 
     [Header("Level Bar Setting")]
     [SerializeField] private Image LevelBarSprite;
@@ -60,6 +62,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("HypeLevelSelector", 0, 0.07f);
+        InvokeRepeating("HypeLevelController", 0, 0.07f);
     }
 
     // Update is called once per frame
@@ -72,7 +75,10 @@ public class ScoreManager : MonoBehaviour
         scorecontroll();
         LevelBarFill();
         SkillBarFill();
+        
     }
+
+    
 
     void scorecontroll()
     {
@@ -205,12 +211,44 @@ public class ScoreManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+    void HypeLevelController()
+    {
+        //LevelBarLevel = HypeLevel;
+        Debug.Log("CurrentKS " + CurrentKS);
+        if (CurrentKS <= 5)
+        {
+            HypeLevel = 1;
+            
+        }
+        else if (CurrentKS >= 6 & CurrentKS <= 9)
+        {
+            HypeLevel = 2;
+        }
+        else if (CurrentKS >= 10 & CurrentKS <= 14)
+        {
+            HypeLevel = 3;
+        }
+        else if (CurrentKS >= 15 & CurrentKS <= 19)
+        {
+            HypeLevel = 4;
+        }
+        else if (CurrentKS >= 20 & CurrentKS <= 24)
+        {
+            HypeLevel = 5;
+        }
+        else if (CurrentKS >= 25)
+        {
+            HypeLevel = 6;
+        }
+        LevelBarLevel = HypeLevel;
+    }
 
     public void HypeLevelSelector()
     {
         switch (HypeLevel)
         {
             case 1:
+
                 break;
 
         }

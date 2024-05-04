@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class Weapon_Skill_Katana : MonoBehaviour
 {
     [HideInInspector]
@@ -74,6 +74,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public AudioClip Sword_Swing;
     public AudioClip Kunai_Throw;
     public AudioClip Target_Marked;
+    public AudioClip Sword_Counterhit;
     public AudioSource Source;
 
     [Header("Animation")]
@@ -195,6 +196,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                     if (meleehit.transform.tag == "EnemyProjectileTag")
                     {
+                        Source.PlayOneShot(Sword_Counterhit);
                         katanaAnimator.SetBool("isParrying", true);
                         StartCoroutine("HitStop");
                         GameObject EnemyProjectile = meleehit.transform.gameObject;
@@ -207,7 +209,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             }
             else if(isStrongAttackOn)
             {
-                Source.PlayOneShot(Sword_Swing);
+                Source.PlayOneShot(Sword_Counterhit);
                 RaycastHit Strongmeleehit;
                 isAttackCD = true;
                 SwordTrail.SetActive(true);
@@ -278,7 +280,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         RaycastHit knifehit;
 
         var projectile = Instantiate(DaggerObject, PlayerTrans.position, mainCamera.transform.rotation);
-        projectile.GetComponent<Rigidbody>().velocity = mainCamera.transform.forward * 75f;
+        projectile.GetComponent<Rigidbody>().velocity = mainCamera.transform.forward * 150f;
 
         isSecondarySkillCD = true;
         StartCoroutine("SkillCDCountDown");
@@ -429,6 +431,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
         bool waiting = false;
         if (!waiting)
         {
+            mainCamera.transform.DOShakePosition(0.1f, 2, 0, 1, false, false);
             waiting = true;
             Time.timeScale = 0.01f;
             yield return new WaitForSeconds(0.0035f);
