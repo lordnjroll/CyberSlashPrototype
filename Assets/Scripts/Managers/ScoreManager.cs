@@ -257,6 +257,7 @@ public class ScoreManager : MonoBehaviour
     public void OnEnemyKilled()
     {
         CurrentKS += 1;
+        DesiredScore += 50;
     }
 
     public void KillStreakCountDown()
