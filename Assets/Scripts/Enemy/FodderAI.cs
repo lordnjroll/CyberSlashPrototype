@@ -203,6 +203,7 @@ public class FodderAI : MonoBehaviour
 
     public void OnDeath()
     {
+        Tutorial.killcount++;
         Debug.Log("dead");
         HitboxObject.GetComponent<Collider>().isTrigger = true;
         setRigidbodyState(false);

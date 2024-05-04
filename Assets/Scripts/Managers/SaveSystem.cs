@@ -49,7 +49,7 @@ public class SaveSystem : MonoBehaviour
     static void OnAfterSceneLoad()
     {
         hp.Hp += savehp;
-        ScoreManager.score1 += savescore;
+        ScoreManager.score = savescore + ScoreManager.score1;
         Store.healthpotion += keep_health;
         Store.bonuspotion += keep_exp;
         Store.powerup += keep_power;
@@ -58,8 +58,8 @@ public class SaveSystem : MonoBehaviour
 
     private void Update()
     {
-        Save();
+        //Save();
         Debug.Log(savescore);
-        Debug.Log(savehp);
+        //Debug.Log(savehp);
     }
 }

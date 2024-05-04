@@ -30,6 +30,8 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject Endmini;
     [SerializeField] private GameObject Endsur;
     [SerializeField] private GameObject failMission;
+    [SerializeField] private GameObject failMission2;
+    [SerializeField] private GameObject failMission3;
 
     public static bool plat1, plat2, plat3;
     [SerializeField] private List<Transform> checkPoint = new List<Transform>();
@@ -168,8 +170,6 @@ public class Mission : MonoBehaviour
         {
             Instantiate(obj_mini, miniGame[0].position, Quaternion.identity);
             Instantiate(obj_mini, miniGame[1].position, Quaternion.identity);
-            Instantiate(obj_mini, miniGame[2].position, Quaternion.identity);
-            Instantiate(obj_mini, miniGame[3].position, Quaternion.identity);
             Start_mini.SetActive(false);
             Startminigame = true;
         }
@@ -251,10 +251,6 @@ public class Mission : MonoBehaviour
         {
             if (Startminigame)
             {
-                GameUILayer.SetActive(false);
-                miniLayer.SetActive(true);
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
                 FinishMini();
             }
         }
@@ -278,6 +274,8 @@ public class Mission : MonoBehaviour
                 ScoreManager.mission_point += 600;
                 Startkill = false;
                 failMission.SetActive(false);
+                failMission2.SetActive(false);
+                failMission3.SetActive(false);
                 Endkill.SetActive(true);
             }
         }
@@ -295,6 +293,8 @@ public class Mission : MonoBehaviour
                 ScoreManager.mission_point += 600;
                 Startcollect = false;
                 failMission.SetActive(false);
+                failMission2.SetActive(false);
+                failMission3.SetActive(false);
                 Endcollect.SetActive(true);
             }
         }
@@ -309,6 +309,8 @@ public class Mission : MonoBehaviour
             ScoreManager.mission_point += 600;
             StartCP = false;
             failMission.SetActive(false);
+            failMission2.SetActive(false);
+            failMission3.SetActive(false);
             EndCP.SetActive(true);
         }
     }
@@ -327,6 +329,8 @@ public class Mission : MonoBehaviour
                 ScoreManager.mission_point += 600;
                 Startminigame = false;
                 failMission.SetActive(false);
+                failMission2.SetActive(false);
+                failMission3.SetActive(false);
                 Endmini.SetActive(true);
             }
         }
@@ -359,6 +363,8 @@ public class Mission : MonoBehaviour
                 surmissiontxt.text = "<color=yellow>" + "Survive" + "</color>";
                 Startsur = false;
                 failMission.SetActive(false);
+                failMission2.SetActive(false);
+                failMission3.SetActive(false);
                 Endsur.SetActive(true);
             }
         }

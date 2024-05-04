@@ -60,9 +60,12 @@ public class DomanExpansion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputManager();
+        if (Store.Skill1)
+        {
+            InputManager();
 
-        DomainManager();
+            DomainManager();
+        }
     }
 
     void InputManager()

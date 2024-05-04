@@ -31,6 +31,8 @@ public class ShooterAI : MonoBehaviour
 
     RaycastHit PlayerHit;
     public Animator enemyANIM;
+    [SerializeField] private AudioClip ShootAudio;
+    [SerializeField] private AudioSource Source;
 
     [SerializeField] private float ememyHP = 10f;
     private void Awake()
@@ -115,6 +117,7 @@ public class ShooterAI : MonoBehaviour
 
         IsAttacking = false;
         AttackCD = true;
+        Source.PlayOneShot(ShootAudio);
 
         StartCoroutine("AttackCoolDown");
         StopCoroutine("AttackWindUp");
@@ -130,6 +133,7 @@ public class ShooterAI : MonoBehaviour
 
     public void OnDeath()
     {
+        Tutorial.killcount++;
         Debug.Log("dead");
         HitboxObject.GetComponent<Collider>().isTrigger = true;
         isDead = true;

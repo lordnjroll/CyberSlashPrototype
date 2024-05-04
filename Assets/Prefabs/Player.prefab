@@ -5938,7 +5938,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6814015311937255687}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 309374b7854e63a45968747418b1d2a4, type: 3}
   m_Name: 
@@ -6119,6 +6119,10 @@ MonoBehaviour:
   m_SkillDash: {fileID: 0}
   tipsLayer: {fileID: 0}
   timetxt: {fileID: 0}
+  StartTutor: {fileID: 0}
+  EndTutor: {fileID: 0}
+  Fail: {fileID: 0}
+  Totalkill: 20
 --- !u!114 &1465243493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6265,6 +6269,8 @@ MonoBehaviour:
   Endmini: {fileID: 0}
   Endsur: {fileID: 0}
   failMission: {fileID: 0}
+  failMission2: {fileID: 0}
+  failMission3: {fileID: 0}
   checkPoint: []
   miniGame: []
   letter: []

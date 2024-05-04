@@ -43,10 +43,12 @@ public class spwanenimy : MonoBehaviour
 
     [SerializeField]
     private GroupEnemy[] EnemySet;
+    [SerializeField] private AudioClip SpawnAudio;
+    [SerializeField] private AudioSource Source;
 
     private void Awake()
     {
-        InvokeRepeating("enemySpwan", 0, 0.5f);
+        //InvokeRepeating("enemySpwan", 0, 0.5f);
     }
 
     void Start()
@@ -60,11 +62,15 @@ public class spwanenimy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Mission.Startkill == true || Mission.Startsur == true)
-        //{
-            
-        //}
-       
+        if (Mission.Startkill == true || Mission.Startsur == true)
+        {
+            InvokeRepeating("enemySpwan", 0, 0.5f);
+        }
+
+        if(Tutorial.Clear_Dash && Tutorial.Clear_walljump)
+        {
+            enemySpwan();
+        }
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
         //EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length + GameObject.FindGameObjectsWithTag("FodderTag").Length + GameObject.FindGameObjectsWithTag("Turret").Length;
@@ -76,7 +82,7 @@ public class spwanenimy : MonoBehaviour
         }
     }
 
-    void enemySpwan()
+    public void enemySpwan()
     {
         if (ManagerCredit > 20 && SpawnCoolDown <= 0 && EnemyCount < 30)
         {
@@ -88,6 +94,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if(ManagerCredit >= 15)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 15;
                     //Easy preset
                     for (int i = 0; i < EnemySet[0].EnemySetGroup.Length; i++)
@@ -110,6 +117,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if(ManagerCredit >= 16)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 16;
                     //Easy preset 2
                     for (int i = 0; i < EnemySet[1].EnemySetGroup.Length; i++)
@@ -132,6 +140,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 18)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 18;
                     //Easy preset 3
                     for (int i = 0; i < EnemySet[2].EnemySetGroup.Length; i++)
@@ -156,6 +165,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 20)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 20;
                     //Mid preset 1
                     for (int i = 0; i < EnemySet[3].EnemySetGroup.Length; i++)
@@ -178,6 +188,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 22)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 22;
                     //Mid preset 2
                     for (int i = 0; i < EnemySet[4].EnemySetGroup.Length; i++)
@@ -200,6 +211,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 30)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 30;
                     //Hard preset 1
                     for (int i = 0; i < EnemySet[5].EnemySetGroup.Length; i++)
@@ -222,6 +234,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 30)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 30;
                     //Hard preset 2
                     for (int i = 0; i < EnemySet[6].EnemySetGroup.Length; i++)
@@ -244,6 +257,7 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 40)
                 {
+                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 40;
                     //Hard preset 3
                     for (int i = 0; i < EnemySet[7].EnemySetGroup.Length; i++)

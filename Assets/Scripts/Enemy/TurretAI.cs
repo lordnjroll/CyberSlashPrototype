@@ -20,6 +20,8 @@ public class TurretAI : MonoBehaviour
     private hp HpScript;
     private bool isDead;
 
+    [SerializeField] private AudioClip TurretAudio;
+    [SerializeField] private AudioSource Source;
     //public ParticleSystem FireEffect, HitEffect;
 
     RaycastHit PlayerHit;
@@ -86,6 +88,7 @@ public class TurretAI : MonoBehaviour
 
             if(TurretTarget.transform.gameObject.layer == 7)
             {
+                Source.PlayOneShot(TurretAudio);
                 Debug.Log("player hit");
                 //hp lost here
                 HpScript.HealthLost();

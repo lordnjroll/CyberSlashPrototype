@@ -14,6 +14,7 @@ public class Store : MonoBehaviour
 
     private UIManager uiManager;
     public static Store Instance;
+    [SerializeField] private AudioSource buyitemAudio;
 
     public List<StoreItem> ItemList = new List<StoreItem>();
     public List<ItemUI> itemsList = new List<ItemUI>();
@@ -97,6 +98,7 @@ public class Store : MonoBehaviour
         {
             ScoreManager.score -= data.value;
             healthpotion++;
+            buyitemAudio.Play();
         }
         else if (data.itemName.Equals("HealthPotion") && ScoreManager.score < data.value)
         {
@@ -108,6 +110,7 @@ public class Store : MonoBehaviour
         {
             ScoreManager.score -= data.value;
             bonuspotion++;
+            buyitemAudio.Play();
         }
         else if (data.itemName.Equals("EXPPotion") && ScoreManager.score < data.value)
         {
@@ -119,6 +122,7 @@ public class Store : MonoBehaviour
         {
             ScoreManager.score -= data.value;
             powerup++;
+            buyitemAudio.Play();
         }
         else if (data.itemName.Equals("PowerUp") && ScoreManager.score < data.value)
         {
@@ -130,6 +134,7 @@ public class Store : MonoBehaviour
         {
             ScoreManager.score -= data.value;
             Skill1 = true;
+            buyitemAudio.Play();
         }
         else if (data.itemName.Equals("Skill1") && ScoreManager.score < data.value)
         {
@@ -141,6 +146,7 @@ public class Store : MonoBehaviour
         {
             ScoreManager.score -= data.value;
             Skill2 = true;
+            buyitemAudio.Play();
         }
         else if (data.itemName.Equals("Skill2") && ScoreManager.score < data.value)
         {

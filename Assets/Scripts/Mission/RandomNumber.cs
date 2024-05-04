@@ -41,6 +41,7 @@ public class RandomNumber : MonoBehaviour
             Mission.m_minicount++;
             GameUILayer.SetActive(true);
             miniLayer.SetActive(false);
+            Time.timeScale = 1f;
         }
 
         questionNumberText.text = "Question " + questionnum + " / " + maxquestionnum;
@@ -52,5 +53,20 @@ public class RandomNumber : MonoBehaviour
         targetNumberText.text = targetNumber.ToString();
         corrent = true;
         Debug.Log(corrent);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "MiniGame")
+        {
+            GameUILayer.SetActive(false);
+            miniLayer.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
+        if(questionnum == maxquestionnum)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
