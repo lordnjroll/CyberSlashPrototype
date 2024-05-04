@@ -6,8 +6,8 @@ using TMPro;
 
 public class Teleport : MonoBehaviour
 {
-    float Timer;
-    private TMP_Text tipstxt;
+    float Timer = 3;
+    [SerializeField] private TMP_Text tipstxt;
 
     public void OnCollisionStay(Collision collision)
     {
@@ -17,9 +17,11 @@ public class Teleport : MonoBehaviour
             {
                 Timer -= Time.deltaTime;
             }
-            else if(Timer == 0)
+            else
             {
+                Timer = 0;
                 SceneManager.LoadScene("stage 2");
+                Debug.Log("teleport");
             }
 
             if(Timer <= 3)
