@@ -22,6 +22,7 @@ TagManager:
   - Plat2
   - Plat3
   - DroneTag
+  - Spawner
   layers:
   - Default
   - TransparentFX

@@ -2035,6 +2035,7 @@ MonoBehaviour:
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
   RespawnPoint: {fileID: 5973925676870022729}
+  scoreManager: {fileID: 0}
 --- !u!1 &5973925675300697640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +3905,7 @@ MonoBehaviour:
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
   RespawnPoint: {fileID: 5973925676870022729}
+  scoreManager: {fileID: 0}
 --- !u!1 &5973925675899859400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4017,6 +4019,7 @@ MonoBehaviour:
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
   RespawnPoint: {fileID: 5973925676870022729}
+  scoreManager: {fileID: 0}
 --- !u!1 &5973925675973402668
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4854,7 @@ MonoBehaviour:
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
   RespawnPoint: {fileID: 5973925676870022729}
+  scoreManager: {fileID: 0}
 --- !u!1 &5973925676020550298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,6 +5313,7 @@ MonoBehaviour:
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
   RespawnPoint: {fileID: 5973925676870022729}
+  scoreManager: {fileID: 0}
 --- !u!1 &5973925676270726273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7616,6 +7621,7 @@ MonoBehaviour:
   PlayerLocation: {fileID: 0}
   Player: {fileID: 0}
   RespawnPoint: {fileID: 5973925676870022729}
+  scoreManager: {fileID: 0}
 --- !u!1 &5973925676726767836
 GameObject:
   m_ObjectHideFlags: 0
