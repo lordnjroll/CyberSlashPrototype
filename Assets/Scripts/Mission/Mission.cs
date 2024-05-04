@@ -19,6 +19,11 @@ public class Mission : MonoBehaviour
 
     [SerializeField] private GameObject GameUILayer;
     [SerializeField] private GameObject miniLayer;
+    [SerializeField] private GameObject Start_collect;
+    [SerializeField] private GameObject Start_kill;
+    [SerializeField] private GameObject Start_CP;
+    [SerializeField] private GameObject Start_mini;
+    [SerializeField] private GameObject Start_sur;
     [SerializeField] private GameObject Endcollect;
     [SerializeField] private GameObject Endkill;
     [SerializeField] private GameObject EndCP;
@@ -39,7 +44,7 @@ public class Mission : MonoBehaviour
     public static bool Clearkill;
 
     private int m_collectcount;
-    private int m_totalcollectcount = 4;
+    private int m_totalcollectcount = 5;
     public bool Startcollect;
     public static bool Clearcollect;
 
@@ -109,6 +114,7 @@ public class Mission : MonoBehaviour
             Instantiate(obj_Letter, letter[3].position, Quaternion.identity);
             Instantiate(obj_Letter, letter[4].position, Quaternion.identity);
             Startcollect = true;
+            Start_collect.SetActive(false);
         }
 
         if (other.gameObject.name == "EndCollectMission")
@@ -122,6 +128,7 @@ public class Mission : MonoBehaviour
         if (other.gameObject.name == "StartKillMission")
         {
             Startkill = true;
+            Start_kill.SetActive(false);
         }
 
         if (other.gameObject.name == "EndKillMission")
@@ -137,7 +144,7 @@ public class Mission : MonoBehaviour
             Instantiate(obj_checkPoint, checkPoint[0].position, Quaternion.identity);
             Instantiate(obj_checkPoint, checkPoint[1].position, Quaternion.identity);
             Instantiate(obj_checkPoint, checkPoint[2].position, Quaternion.identity);
-
+            Start_CP.SetActive(false);
             StartCP = true;
         }
 
@@ -163,6 +170,7 @@ public class Mission : MonoBehaviour
             Instantiate(obj_mini, miniGame[1].position, Quaternion.identity);
             Instantiate(obj_mini, miniGame[2].position, Quaternion.identity);
             Instantiate(obj_mini, miniGame[3].position, Quaternion.identity);
+            Start_mini.SetActive(false);
             Startminigame = true;
         }
 
@@ -177,6 +185,7 @@ public class Mission : MonoBehaviour
         #region Survive
         if (other.gameObject.name == "Startsur")
         {
+            Start_sur.SetActive(false);
             Startsur = true;
         }
 
@@ -229,21 +238,12 @@ public class Mission : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "CheckPoint")
-        {
-            m_CPcount++;
-            Destroy(gameObject);
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "CollectItem")
         {
             Debug.Log("collect item");
-            Destroy(GameObject.FindWithTag("CollectItem"));
+            Destroy(collision.gameObject);
             m_collectcount++;
         }
 
@@ -257,6 +257,12 @@ public class Mission : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 FinishMini();
             }
+        }
+
+        if(collision.gameObject.tag == "CheckPoint")
+        {
+            m_CPcount += 1;
+            Destroy(collision.gameObject);
         }
     }
 
