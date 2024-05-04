@@ -78,8 +78,10 @@ public class Tutorial : MonoBehaviour
 
         if (other.gameObject.name == "FinishTutorial")
         {
-            tipsLayer.SetActive(false);
-            Destroy(this);
+            m_WallJump.text = " ";
+            m_Dash.text = " ";
+            m_SkillDash.text = " ";
+            T_trigger = false;
         }
 
         if(other.gameObject.tag == "Fail")
@@ -87,6 +89,8 @@ public class Tutorial : MonoBehaviour
             m_WallJump.text = " ";
             m_Dash.text = " ";
             m_SkillDash.text = " ";
+            Debug.Log("Fail");
+            T_trigger = false;
         }
     }
 

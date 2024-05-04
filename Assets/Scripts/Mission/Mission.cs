@@ -252,6 +252,10 @@ public class Mission : MonoBehaviour
             if (Startminigame)
             {
                 FinishMini();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                GameUILayer.SetActive(false);
+                miniLayer.SetActive(true);
             }
         }
 

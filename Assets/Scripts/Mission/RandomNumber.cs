@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class RandomNumber : MonoBehaviour
 {
@@ -10,12 +11,12 @@ public class RandomNumber : MonoBehaviour
     [SerializeField] private GameObject GameUILayer;
     [SerializeField] private GameObject miniLayer;
 
-    private int targetNumber;
+    public int targetNumber;
     private Calculator calculator;
     private Mission mission;
     public bool corrent;
     private int questionnum = -1;
-    private int maxquestionnum = 3;
+    public int maxquestionnum = 3;
 
     void Start()
     {
@@ -39,6 +40,8 @@ public class RandomNumber : MonoBehaviour
         if (questionnum == maxquestionnum)
         {
             Mission.m_minicount++;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             GameUILayer.SetActive(true);
             miniLayer.SetActive(false);
             Time.timeScale = 1f;
@@ -51,22 +54,25 @@ public class RandomNumber : MonoBehaviour
     {
         targetNumber = UnityEngine.Random.Range(0, 255);
         targetNumberText.text = targetNumber.ToString();
+        
         corrent = true;
         Debug.Log(corrent);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "MiniGame")
+        if(collision.gameObject.tag == "Player")
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             GameUILayer.SetActive(false);
             miniLayer.SetActive(true);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
 
         if(questionnum == maxquestionnum)
         {
-            Destroy(collision.gameObject);
+            Destroy(this);
         }
     }
 }
