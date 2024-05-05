@@ -22,7 +22,6 @@ public class ItemKeeper : MonoBehaviour
         UseHealthPotion();
         UseBonusPotion();
         UsePowerUp();
-        UnlockSkill1();
     }
 
     void DisplayKeepList()
@@ -53,6 +52,7 @@ public class ItemKeeper : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.B) && Store.bonuspotion > 0)
         {
             ScoreManager.score += 2500;
+            Store.bonuspotion--;
         }
         else if(Input.GetKeyDown(KeyCode.B) && Store.bonuspotion == 0)
         {
@@ -75,19 +75,12 @@ public class ItemKeeper : MonoBehaviour
                 PowerHoldTime = 0;
                 WSK.PlayerDamage -= PowerBuff;
             }
+            Store.powerup--;
         }
         else if(Input.GetKeyDown(KeyCode.V) && Store.powerup == 0)
         {
             Tipstxt.text = "You cant power up.";
             StartCoroutine(ClearText());
-        }
-    }
-
-    void UnlockSkill1()
-    {
-        if (Store.Skill1 == true)
-        {
-            Player.GetComponent<DomanExpansion>().enabled = true;
         }
     }
 

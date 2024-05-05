@@ -103,8 +103,12 @@ public class Tutorial : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
-            Wall_Jumped = true;
-            ScoreManager.mission_point += 100;
+            if (T_trigger)
+            {
+                Wall_Jumped = true;
+                ScoreManager.mission_point += 100;
+            }
+            
         }
     }
 

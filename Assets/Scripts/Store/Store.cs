@@ -136,9 +136,9 @@ public class Store : MonoBehaviour
             Skill1 = true;
             buyitemAudio.Play();
         }
-        else if (data.itemName.Equals("Skill1") && ScoreManager.score < data.value)
+        else if (data.itemName.Equals("Skill1") && ScoreManager.score < data.value || Skill1)
         {
-            Tipstxt.text = "You don't have enough score to buy this item.";
+            Tipstxt.text = "You can't buy this item.";
             StartCoroutine(ClearText());
         }
 
@@ -148,9 +148,9 @@ public class Store : MonoBehaviour
             Skill2 = true;
             buyitemAudio.Play();
         }
-        else if (data.itemName.Equals("Skill2") && ScoreManager.score < data.value)
+        else if (data.itemName.Equals("Skill2") && ScoreManager.score < data.value || Skill2)
         {
-            Tipstxt.text = "You don't have enough score to buy this item.";
+            Tipstxt.text = "You can't buy this item.";
             StartCoroutine(ClearText());
         }
     }

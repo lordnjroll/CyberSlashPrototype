@@ -222,6 +222,7 @@ public class Mission : MonoBehaviour
 
         if (other.gameObject.tag == "Plat1")
         {
+            ScoreManager.isRunning = true;
             plat1 = true;
             plat2 = false;
             plat3 = false;
@@ -369,6 +370,7 @@ public class Mission : MonoBehaviour
             }
             else
             {
+                Timertxt.text = " ";
                 Clearsur = true;
                 Timer = 0;
                 timecount = false;
