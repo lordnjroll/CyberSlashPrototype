@@ -126,6 +126,7 @@ public class Tutorial : MonoBehaviour
             m_SkillDash.text = "<color=yellow>" + "Skill Dash Done" + "</color>";
             Clear_skilldash = true;
             ScoreManager.mission_point += 100;
+            Weapon_Skill_Katana.T_isSkillDashing = false;
         }
     }
 }

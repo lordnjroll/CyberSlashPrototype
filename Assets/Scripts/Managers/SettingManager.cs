@@ -84,6 +84,10 @@ public class SettingManager : MonoBehaviour
     {
         audioMixer.SetFloat("Environment", Mathf.Log10(volume) * 32);
     }
+    public void SetPlayer(float volume)
+    {
+        audioMixer.SetFloat("Player", Mathf.Log10(volume) * 32);
+    }
 
     public void SetQuality(int qualityIndex)
     {

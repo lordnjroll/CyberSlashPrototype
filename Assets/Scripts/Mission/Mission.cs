@@ -46,7 +46,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject obj_checkPoint, obj_mini, obj_Letter;
 
 
-    private int m_killcount;
+    public static int m_killcount;
     private int m_totalkillcount = 30;
     public static bool Startkill;
     public static bool Clearkill;
@@ -380,8 +380,14 @@ public class Mission : MonoBehaviour
                 Timer -= Time.deltaTime;
                 float minutes = Mathf.FloorToInt(Timer / 60);
                 float seconds = Mathf.FloorToInt(Timer % 60);
-
-                Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
+                if(seconds < 10)
+                {
+                    Timertxt.text = minutes.ToString() + ":0" + seconds.ToString();
+                }
+                else
+                {
+                    Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
+                }
                 if(Timer > 0 && Timer <= 31)
                 {
                     Timertxt.text = "<color=red>" + minutes.ToString() + ":" + seconds.ToString() + "</color>";

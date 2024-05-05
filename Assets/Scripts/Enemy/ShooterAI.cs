@@ -134,6 +134,7 @@ public class ShooterAI : MonoBehaviour
     public void OnDeath()
     {
         Tutorial.killcount++;
+        Mission.m_killcount++;
         Debug.Log("dead");
         HitboxObject.GetComponent<Collider>().isTrigger = true;
         isDead = true;
@@ -152,6 +153,8 @@ public class ShooterAI : MonoBehaviour
     public void StrongOnDeath()
     {
         Debug.Log("dead");
+        Tutorial.killcount++;
+        Mission.m_killcount++;
         HitboxObject.GetComponent<Collider>().isTrigger = true;
         isDead = true;
         setRigidbodyState(false);

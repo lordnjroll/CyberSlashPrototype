@@ -93,6 +93,7 @@ public class MuscleAI : MonoBehaviour
     public void OnDeath()
     {
         Tutorial.killcount++;
+        Mission.m_killcount++;
         ScoreManager.score += 50;
         Debug.Log("dead");
         HitboxObject.GetComponent<Collider>().isTrigger = true;
@@ -111,6 +112,8 @@ public class MuscleAI : MonoBehaviour
     public void StrongOnDeath()
     {
         Debug.Log("dead");
+        Tutorial.killcount++;
+        Mission.m_killcount++;
         HitboxObject.GetComponent<Collider>().isTrigger = true;
         setRigidbodyState(false);
         setColliderState(true);

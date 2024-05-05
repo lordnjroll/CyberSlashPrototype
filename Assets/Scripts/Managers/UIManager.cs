@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject ClearLayer;
     public GameObject deathLayer;
     public GameObject Player;
+    public Transform tpchet;
 
     private bool menuSwitch = false;
 
@@ -31,6 +32,10 @@ public class UIManager : MonoBehaviour
     {
         OpenEscMenu();
         PlayerDead();
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Player.transform.position = tpchet.position;
+        }
     }
 
     void OpenEscMenu()
@@ -106,8 +111,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitBtnOnClick()
     {
-        gameover.Play();
-        StartCoroutine(GAMEOVER());
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void RetryBtnOnClick()
@@ -138,14 +142,6 @@ public class UIManager : MonoBehaviour
     {
         DisplayLayer.SetActive(false);
         VolumeLayer.SetActive(true);
-    }
-
-    public IEnumerator GAMEOVER()
-    {
-        Time.timeScale = 1f;
-        yield return new WaitForSeconds(4);
-        SceneManager.LoadScene("MenuScene");
-        Time.timeScale = 1f;
     }
 
     void Respawn()

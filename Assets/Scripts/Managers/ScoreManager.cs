@@ -179,8 +179,14 @@ public class ScoreManager : MonoBehaviour
                 Timer -= Time.deltaTime;
                 float minutes = Mathf.FloorToInt(Timer / 60);
                 float seconds = Mathf.FloorToInt(Timer % 60);
-
-                Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
+                if(seconds < 10)
+                {
+                    Timertxt.text = minutes.ToString() + ":0" + seconds.ToString();
+                }
+                else
+                {
+                    Timertxt.text = minutes.ToString() + ":" + seconds.ToString();
+                }
             }
             else
             {
