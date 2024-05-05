@@ -9,6 +9,7 @@ public class KillManager : MonoBehaviour
     private ShooterAI shooterScript;
     private TurretAI turretScript;
     private DroneAI droneScript;
+    private FlyerBossAI flyerBossScript;
     private ScoreManager ScoreScript;
     // Start is called before the first frame update
     private void Awake()
@@ -46,6 +47,11 @@ public class KillManager : MonoBehaviour
                 turretScript = Target.GetComponentInParent<TurretAI>();
                 turretScript.OnDeath();
                 break;
+            case "BossTag":
+                flyerBossScript = Target.GetComponentInParent<FlyerBossAI>();
+                flyerBossScript.OnDeath();
+                Debug.Log("fuck");
+                break;
             default:
                 Debug.Log("default " + Target);
                 break;
@@ -71,6 +77,11 @@ public class KillManager : MonoBehaviour
             case "TurretTag":
                 turretScript = Target.GetComponentInParent<TurretAI>();
                 turretScript.StrongOnDeath();
+                break;
+            case "BossTag":
+                flyerBossScript = Target.GetComponentInParent<FlyerBossAI>();
+                flyerBossScript.OnDeath();
+                Debug.Log("fuck");
                 break;
             default:
                 Debug.Log("default " + Target);

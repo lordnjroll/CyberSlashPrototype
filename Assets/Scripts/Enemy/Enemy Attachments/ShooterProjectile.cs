@@ -13,6 +13,7 @@ public class ShooterProjectile : MonoBehaviour
 
     private mesh_destroy ShatterScript;
     private KillManager KillScript;
+    private FlyerBossShield shieldScript;
     private void Awake()
     {
         Destroy(gameObject, DespawnTime);
@@ -62,23 +63,24 @@ public class ShooterProjectile : MonoBehaviour
         }
         else
         {
-            Instantiate(ExplosionEffect, this.transform.position, this.transform.rotation);
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, 1 << 8);
-            foreach (Collider c in colliders)
+            if(collision.transform.gameObject.layer == 15)
             {
-                Debug.Log("hit layer 8");
-                GameObject HitTarget = c.transform.gameObject;
-                KillScript = HitTarget.transform.GetComponentInParent<KillManager>();
-                KillScript.StrongAttack(HitTarget.transform.gameObject);
+                shieldScript = collision.transform.GetComponent<FlyerBossShield>();
 
-                
-
-                //if (c.transform.gameObject.layer == 7)
-                //{
-                //    Debug.Log("hit layer 7");
-                //    c.attachedRigidbody.AddExplosionForce(20f, transform.position, 7f);
-                //}
             }
+            else if(collision.transform.gameObject.layer != 7)
+            {
+                Instantiate(ExplosionEffect, this.transform.position, this.transform.rotation);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, 1 << 8);
+                foreach (Collider c in colliders)
+                {
+                    Debug.Log("hit layer 8");
+                    GameObject HitTarget = c.transform.gameObject;
+                    KillScript = HitTarget.transform.GetComponentInParent<KillManager>();
+                    KillScript.StrongAttack(HitTarget.transform.gameObject);
+                }
+            }
+      
             Destroy(gameObject);
         }
             

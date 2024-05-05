@@ -24,6 +24,7 @@ TagManager:
   - DroneTag
   - Spawner
   - Portal
+  - BossTag
   layers:
   - Default
   - TransparentFX

@@ -95,6 +95,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private ShooterAI shooterScript;
     private TurretAI turretScript;
     private DroneAI droneScript;
+    private FlyerBossAI BossScript;
     private KillManager KillScript;
 
     float horizontalInput;
@@ -194,6 +195,14 @@ public class Weapon_Skill_Katana : MonoBehaviour
                         turretScript = Enemy.GetComponentInParent<TurretAI>();
                         turretScript.OnDeath();
                     }
+
+                    if (meleehit.transform.tag == "Tag")
+                    {
+                        Enemy = meleehit.transform.gameObject;
+                        BossScript = Enemy.GetComponentInParent<FlyerBossAI>();
+                        BossScript.OnDeath();
+                    }
+                    
 
                     if (meleehit.transform.tag == "EnemyProjectileTag")
                     {

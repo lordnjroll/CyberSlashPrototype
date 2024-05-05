@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(LineRenderer))]
 public class FlyerBossAI : MonoBehaviour
 {
     private GameObject ThePlayer;
 
+    public Transform Eye;
     public Transform laserOrigin;
     public LineRenderer laserLine;
 
@@ -18,16 +20,19 @@ public class FlyerBossAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, IsAttacking, AttackCD;
     private bool AttackWindingUp;
 
-    public ParticleSystem FireEffect, HitEffect;
+    public ParticleSystem FireEffect, HitEffect, DeathExplosion, shatterEffect;
+    public GameObject ChargeEffect;
 
+    public GameObject BossProjectile;
     public GameObject HexAttack;
+    public bool isDead = false;
     int i;
 
     RaycastHit PlayerHit;
     private void Awake()
     {
         laserLine = GetComponent<LineRenderer>();
-        
+        ChargeEffect.SetActive(false);
     }
 
     void Start()
@@ -35,6 +40,7 @@ public class FlyerBossAI : MonoBehaviour
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         AttackCD = false;
         InvokeRepeating("HexAOEattack", 0, 1f);
+        
     }
 
 
@@ -55,50 +61,13 @@ public class FlyerBossAI : MonoBehaviour
 
         if (playerInAttackRange && !IsAttacking && !AttackCD)
         {
-            AttackMode();
+            //AttackMode();
         }
-    }
 
-    public void AttackMode()
-    {
-        IsAttacking = true;
-        StartCoroutine("AttackWindUp");
-        AttackWindingUp = true;
-    }
-
-    IEnumerator AttackWindUp()
-    {
-        laserLine.enabled = true;
-        //Debug.Log("Starts Charging");
-        yield return new WaitForSeconds(3f);
-
-        //Debug.Log("Stop Looking at the player");
-        AttackWindingUp = false;
-        yield return new WaitForSeconds(.7f);
-
-        //Debug.Log("Flyer fire");
-
-        IsAttacking = false;
-        AttackCD = true;
-
-        //Laser effect
-        Instantiate(FireEffect, laserLine.GetPosition(0), Quaternion.identity);
-        Destroy(FireEffect, 1f);
-
-        Instantiate(FireEffect, laserLine.GetPosition(1), Quaternion.identity);
-        Destroy(FireEffect, 1f);
-
-        laserLine.enabled = false;
-
-        StartCoroutine("AttackCoolDown");
-        StopCoroutine("AttackWindUp");
-    }
-
-    //Flyer attack cool down
-    IEnumerator AttackCoolDown()
-    {
-        yield return new WaitForSeconds(4f);
-        AttackCD = false;
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartCoroutine("DeathAnimation");
+        }
     }
     void HexAOEattack()
     {
@@ -119,5 +88,51 @@ public class FlyerBossAI : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
         yield return new WaitForSeconds(0.7f);
+    }
+
+    public void OnDeath()
+    {
+        StartCoroutine("DeathAnimation");
+    }
+
+    public IEnumerator DeathAnimation()
+    {
+        isDead = true;
+        transform.DOShakePosition(3, 5, 90, 90, true, false);
+        yield return new WaitForSeconds(3);
+        Instantiate(DeathExplosion, transform.position, transform.rotation);
+        Instantiate(shatterEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("something enters");
+        if(other.transform.tag == "Player")
+        {
+            StartCoroutine("Shooting");
+            Debug.Log("in range");
+        }
+    }
+
+    void attackReset()
+    {
+        StartCoroutine("Shooting");
+    }
+
+    IEnumerator Shooting()
+    {
+        if (!isDead)
+        {
+            ChargeEffect.SetActive(true);
+            yield return new WaitForSeconds(2f);
+
+            ChargeEffect.SetActive(false);
+            var projectile = Instantiate(BossProjectile, laserOrigin.position, laserOrigin.rotation);
+            projectile.GetComponent<Rigidbody>().velocity = (ThePlayer.transform.position - transform.position).normalized * 25;
+
+            Invoke("attackReset", 4f);
+        }
+        
     }
 }
