@@ -7,7 +7,9 @@ public class ItemKeeper : MonoBehaviour
 {
     [SerializeField] private GameObject Player;
     [SerializeField] private TMP_Text Tipstxt;
-    [SerializeField] private TMP_Text KeepList;
+    [SerializeField] private TMP_Text hp_KeepList;
+    [SerializeField] private TMP_Text exp_KeepList;
+    [SerializeField] private TMP_Text power_KeepList;
     private Weapon_Skill_Katana WSK;
 
     [SerializeField] private float PowerHoldTime;
@@ -25,11 +27,11 @@ public class ItemKeeper : MonoBehaviour
 
     void DisplayKeepList()
     {
-        KeepList.text = "Health Potion : " + Store.healthpotion.ToString() + "\n"
-                                                    +
-                        "\nBonus Potion : " + Store.bonuspotion.ToString() + "\n" 
-                                                    +
-                        "\nPower Buff : " + Store.powerup.ToString() + "\n";
+        hp_KeepList.text = "Health Potion : " + Store.healthpotion.ToString();
+
+        exp_KeepList.text = "Bonus Potion : " + Store.bonuspotion.ToString();
+
+        power_KeepList.text = "Power Buff : " + Store.powerup.ToString();
     }
 
     void UseHealthPotion()
