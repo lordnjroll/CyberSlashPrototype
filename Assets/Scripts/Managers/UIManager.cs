@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
         gameUILayer.SetActive(true);
         menuSwitch = false;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void SettingBtnOnClick()
@@ -94,6 +95,7 @@ public class UIManager : MonoBehaviour
     {
         SettingLayer.SetActive(false);
         escMenuLayer.SetActive(true);
+        
     }
 
     public void NextStage()

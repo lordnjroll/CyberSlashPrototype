@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277782160}
   - component: {fileID: 1277782161}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SwordTrailPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5830,7 +5830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounsscore: 0
-  Timer: 0
+  Timer: 600
   Timertxt: {fileID: 0}
   GameUILayer: {fileID: 0}
   scoreBoradLayer: {fileID: 0}
@@ -5858,18 +5858,18 @@ MonoBehaviour:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
+    key2: {r: 1, g: 0.9607843, b: 0.7019608, a: 0}
+    key3: {r: 1, g: 0.9607843, b: 0.7019608, a: 0}
+    key4: {r: 1, g: 0.74509805, b: 0.46666667, a: 0}
+    key5: {r: 0, g: 1, b: 0.98039216, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
+    ctime1: 21889
+    ctime2: 32768
+    ctime3: 49151
+    ctime4: 62258
+    ctime5: 65535
     ctime6: 0
     ctime7: 0
     atime0: 0
@@ -5881,7 +5881,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 2
+    m_NumColorKeys: 6
     m_NumAlphaKeys: 2
   SkillBarSprite: {fileID: 0}
   SkillBarLevel: 0
@@ -5926,11 +5926,14 @@ MonoBehaviour:
   VolumeLayer: {fileID: 0}
   ClearLayer: {fileID: 0}
   deathLayer: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 6814015311937255687}
   gameover: {fileID: 0}
   whenPaused: {fileID: 0}
   whenStarted: {fileID: 0}
-  respawnPoint: []
+  respawnPoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &3335493333375565002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6096,12 +6099,12 @@ MonoBehaviour:
   Sword_Swing: {fileID: 8300000, guid: 18c4f1e1aa2cd7a4da147ef2f11a1e36, type: 3}
   Kunai_Throw: {fileID: 8300000, guid: dbea806f7e7591547918b136cf64c6d8, type: 3}
   Target_Marked: {fileID: 8300000, guid: 912f0725fdaac634eb19bb488edd35a1, type: 3}
-  Sword_Counterhit: {fileID: 0}
+  Sword_Counterhit: {fileID: 8300000, guid: 4f91e2b2f0254c94c8bef1dd682213ef, type: 3}
   Source: {fileID: 1465243494}
   katanaModel: {fileID: 4671817529754835332}
   katanaAnimator: {fileID: 148140073}
   SwordTrail: {fileID: 1277782159}
-  DaggerObject: {fileID: 0}
+  DaggerObject: {fileID: 5655797983840972833, guid: baaddb0e4c2e78e43bf30a2894dad53c, type: 3}
 --- !u!114 &4577545782716576722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6122,6 +6125,7 @@ MonoBehaviour:
   StartTutor: {fileID: 0}
   EndTutor: {fileID: 0}
   Fail: {fileID: 0}
+  set1: {fileID: 0}
   Totalkill: 20
 --- !u!114 &1465243493
 MonoBehaviour:
@@ -6271,19 +6275,31 @@ MonoBehaviour:
   failMission: {fileID: 0}
   failMission2: {fileID: 0}
   failMission3: {fileID: 0}
-  checkPoint: []
-  miniGame: []
-  letter: []
-  obj_checkPoint: {fileID: 0}
+  set2: {fileID: 0}
+  set3: {fileID: 0}
+  checkPoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  miniGame:
+  - {fileID: 0}
+  - {fileID: 0}
+  letter:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  obj_checkPoint: {fileID: 8308327398533579884, guid: 6886dd3de9891184aa0036d29917e87e, type: 3}
   obj_mini: {fileID: 0}
-  obj_Letter: {fileID: 0}
+  obj_Letter: {fileID: 647575990098269389, guid: 93da306c9d1462a49927322b2adb4a28, type: 3}
   Startcollect: 0
   StartCP: 0
   Startboss: 0
   Startminigame: 0
   timecount: 0
   Timertxt: {fileID: 0}
-  Timer: 0
+  Timer: 90
 --- !u!114 &1101700974810018550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6296,10 +6312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e89c36698694f47aadb1592bd39f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 6814015311937255687}
   Tipstxt: {fileID: 0}
   KeepList: {fileID: 0}
-  PowerHoldTime: 0
+  PowerHoldTime: 20
   PowerBuff: 0
 --- !u!1 &7489861462567149868
 GameObject:
@@ -6613,6 +6629,10 @@ PrefabInstance:
     - target: {fileID: 1858147060561370, guid: f61520d526e2573438225f84a0220847, type: 3}
       propertyPath: m_Name
       value: Prefab_Sword_Cyber_Magma
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858147060561370, guid: f61520d526e2573438225f84a0220847, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1858147060561370, guid: f61520d526e2573438225f84a0220847, type: 3}
       propertyPath: m_TagString

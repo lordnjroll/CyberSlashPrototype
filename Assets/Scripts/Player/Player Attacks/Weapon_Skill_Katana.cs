@@ -75,6 +75,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     public AudioClip Kunai_Throw;
     public AudioClip Target_Marked;
     public AudioClip Sword_Counterhit;
+    public AudioClip Sword_Stronghit;
     public AudioSource Source;
 
     [Header("Animation")]
@@ -209,7 +210,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
             }
             else if(isStrongAttackOn)
             {
-                Source.PlayOneShot(Sword_Counterhit);
+                Source.PlayOneShot(Sword_Stronghit);
                 RaycastHit Strongmeleehit;
                 isAttackCD = true;
                 SwordTrail.SetActive(true);
@@ -431,12 +432,13 @@ public class Weapon_Skill_Katana : MonoBehaviour
         bool waiting = false;
         if (!waiting)
         {
-            mainCamera.transform.DOShakePosition(0.1f, 2, 0, 1, false, false);
+            
             waiting = true;
             Time.timeScale = 0.01f;
             yield return new WaitForSeconds(0.0035f);
             Time.timeScale = 1f;
             waiting = false;
+            mainCamera.transform.DOShakePosition(0.1f, 2, 0, 1, false, false);
         }
         katanaAnimator.SetBool("isParrying", false);
     }

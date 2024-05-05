@@ -4768,7 +4768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.004517, y: 0}
+  m_AnchoredPosition: {x: -28.004547, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &346642810
@@ -16937,7 +16937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.004517, y: 0}
+  m_AnchoredPosition: {x: -28.004547, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!43 &882124435
@@ -39912,22 +39912,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1277782159, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: DaggerObject
-      value: 
-      objectReference: {fileID: 5655797983840972833, guid: baaddb0e4c2e78e43bf30a2894dad53c, type: 3}
     - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: markerCanvas
       value: 
       objectReference: {fileID: 7954661462673145514}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Player
+    - target: {fileID: 59668301020347655, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Sword_Stronghit
       value: 
-      objectReference: {fileID: 1465243472}
+      objectReference: {fileID: 8300000, guid: 76d538f5c6b86d94b8525ff2e61fc76a, type: 3}
     - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Tipstxt
       value: 
@@ -39936,14 +39928,6 @@ PrefabInstance:
       propertyPath: KeepList
       value: 
       objectReference: {fileID: 123878542}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: PowerHoldTime
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1465243472}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: gameover
       value: 
@@ -39977,10 +39961,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1026457886}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: respawnPoint.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: respawnPoint.Array.data[0]
       value: 
       objectReference: {fileID: 3327768214588209221}
@@ -40004,10 +39984,6 @@ PrefabInstance:
       propertyPath: EndCP
       value: 
       objectReference: {fileID: 46854079}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Timer
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Endsur
       value: 
@@ -40057,10 +40033,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1267178477}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: obj_Letter
-      value: 
-      objectReference: {fileID: 647575990098269389, guid: 93da306c9d1462a49927322b2adb4a28, type: 3}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: GameUILayer
       value: 
       objectReference: {fileID: 267194627}
@@ -40101,29 +40073,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1021103181}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: obj_checkPoint
-      value: 
-      objectReference: {fileID: 8308327398533579884, guid: 6886dd3de9891184aa0036d29917e87e, type: 3}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: collectmissiontxt
       value: 
       objectReference: {fileID: 1112059997}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: letter.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: miniGame.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: letter.Array.data[0]
       value: 
       objectReference: {fileID: 451638226}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: letter.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: letter.Array.data[2]
       value: 
@@ -40136,10 +40092,6 @@ PrefabInstance:
       propertyPath: letter.Array.data[4]
       value: 
       objectReference: {fileID: 1808564956}
-    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: checkPoint.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: miniGame.Array.data[0]
       value: 
@@ -40197,10 +40149,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1804674170}
     - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Timer
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: ClearCP
       value: 
       objectReference: {fileID: 1754271716}
@@ -40252,90 +40200,6 @@ PrefabInstance:
       propertyPath: scoreBoradLayer
       value: 
       objectReference: {fileID: 1654423437}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.ctime1
-      value: 21889
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.ctime2
-      value: 32768
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.ctime3
-      value: 49151
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.ctime4
-      value: 62258
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.ctime5
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key1.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key1.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key2.b
-      value: 0.7019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key2.g
-      value: 0.9607843
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key2.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key3.b
-      value: 0.7019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key3.g
-      value: 0.9607843
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key3.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key4.b
-      value: 0.46666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key4.g
-      value: 0.74509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key4.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key5.b
-      value: 0.98039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key5.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.key5.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarGradient.m_NumColorKeys
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4671817529754835332, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: DeathLayer
       value: 
