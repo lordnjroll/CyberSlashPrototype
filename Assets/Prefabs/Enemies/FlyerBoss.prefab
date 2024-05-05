@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &167367381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167367382}
+  - component: {fileID: 167367385}
+  - component: {fileID: 167367384}
+  - component: {fileID: 167367383}
+  m_Layer: 15
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &167367382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167367381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.040785853, y: 0.040785853, z: 0.040785853}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6313015720435894744}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &167367385
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167367381}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &167367384
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167367381}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3d8668714a6a7dd4ab452066bd01de36, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &167367383
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167367381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1803074720046031697
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +108,7 @@ GameObject:
   - component: {fileID: 8669692972403428827}
   - component: {fileID: 713865105065906338}
   - component: {fileID: 139984976080809232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +191,7 @@ GameObject:
   - component: {fileID: 6943400426587624647}
   - component: {fileID: 6498200676976159724}
   - component: {fileID: 8700606396293621944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +275,7 @@ GameObject:
   - component: {fileID: 3607287768576897574}
   - component: {fileID: 3607287768576897575}
   - component: {fileID: 3607287768576897592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +371,7 @@ GameObject:
   - component: {fileID: 3067687612232381922}
   - component: {fileID: 2172864483141619220}
   - component: {fileID: 8269299992563017402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +454,7 @@ GameObject:
   - component: {fileID: 128947605126374905}
   - component: {fileID: 8589448722005250082}
   - component: {fileID: 4636156982173942434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +537,7 @@ GameObject:
   - component: {fileID: 183880341771753630}
   - component: {fileID: 7070596359137944712}
   - component: {fileID: 8924984152655898450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +620,7 @@ GameObject:
   - component: {fileID: 6313015720435894744}
   - component: {fileID: 6637161136086612241}
   - component: {fileID: 3661384032836312676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlyerBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +634,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6689964158520759138}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 107.75, y: 58.161, z: 659.91}
   m_LocalScale: {x: 681.02026, y: 681.02026, z: 681.02026}
   m_ConstrainProportionsScale: 0
@@ -550,6 +647,7 @@ Transform:
   - {fileID: 3067687612232381922}
   - {fileID: 3881718560844887754}
   - {fileID: 3607287768576897593}
+  - {fileID: 167367382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -573,7 +671,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c97096d8ad927dc42befafc0d5505e0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -605,7 +703,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.20238304
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -664,11 +762,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eb09c5fcc26ef49aba42a9e646672e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserOrigin: {fileID: 0}
-  laserLine: {fileID: 0}
+  laserOrigin: {fileID: 183880341771753630}
+  laserLine: {fileID: 6637161136086612241}
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   FlyerAttackRange: 0
   FlyerMoveSpeed: 0
   playerInSightRange: 0
@@ -677,6 +775,7 @@ MonoBehaviour:
   AttackCD: 0
   FireEffect: {fileID: 0}
   HitEffect: {fileID: 0}
+  HexAttack: {fileID: 6771113655860561056, guid: 45470c1626838e140a6ec04c94c054f3, type: 3}
 --- !u!1 &7343943817096964689
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +787,7 @@ GameObject:
   - component: {fileID: 3881718560844887754}
   - component: {fileID: 8480568514478003954}
   - component: {fileID: 6125393383275347459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pTorus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +870,7 @@ GameObject:
   - component: {fileID: 7971454329652561069}
   - component: {fileID: 2754978750015625889}
   - component: {fileID: 3189219980076265027}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

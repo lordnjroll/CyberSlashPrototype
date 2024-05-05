@@ -21,17 +21,20 @@ public class FlyerBossAI : MonoBehaviour
     public ParticleSystem FireEffect, HitEffect;
 
     public GameObject HexAttack;
+    int i;
 
     RaycastHit PlayerHit;
     private void Awake()
     {
         laserLine = GetComponent<LineRenderer>();
+        
     }
 
     void Start()
     {
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
         AttackCD = false;
+        InvokeRepeating("HexAOEattack", 0, 1f);
     }
 
 
@@ -96,5 +99,25 @@ public class FlyerBossAI : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         AttackCD = false;
+    }
+    void HexAOEattack()
+    {
+        i += 1;
+        if(i >= 8)
+        {
+            Debug.Log("hex attack called");
+            StartCoroutine("HexAOEattackSecond");
+            i = 0;
+        }
+    }
+
+    IEnumerator HexAOEattackSecond()
+    {
+        Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
+        yield return new WaitForSeconds(0.7f);
+        Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
+        yield return new WaitForSeconds(0.7f);
+        Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
+        yield return new WaitForSeconds(0.7f);
     }
 }

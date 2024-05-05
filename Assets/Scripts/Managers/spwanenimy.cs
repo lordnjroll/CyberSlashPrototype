@@ -44,9 +44,13 @@ public class spwanenimy : MonoBehaviour
     [SerializeField] private AudioClip SpawnAudio;
     [SerializeField] private AudioSource Source;
 
+    private GameObject player;
+    private ScoreManager ScoreScript;
+
     private void Awake()
     {
-        //InvokeRepeating("enemySpwan", 0, 0.5f);
+        player = GameObject.FindGameObjectWithTag("Player");
+        ScoreScript = player.GetComponent<ScoreManager>();
     }
 
     void Start()
