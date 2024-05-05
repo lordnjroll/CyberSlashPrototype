@@ -24,6 +24,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject Start_CP;
     [SerializeField] private GameObject Start_mini;
     [SerializeField] private GameObject Start_sur;
+    [SerializeField] private GameObject Start_boss;
     [SerializeField] private GameObject Endcollect;
     [SerializeField] private GameObject Endkill;
     [SerializeField] private GameObject EndCP;
@@ -33,6 +34,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject failMission2;
     [SerializeField] private GameObject failMission3;
     [SerializeField] private GameObject set2, set3;
+
 
     public static bool plat1, plat2, plat3;
     [SerializeField] private List<Transform> checkPoint = new List<Transform>();
@@ -365,7 +367,7 @@ public class Mission : MonoBehaviour
                     Timertxt.text = "<color=red>" + minutes.ToString() + ":" + seconds.ToString() + "</color>";
                 }
             }
-            else if(Timer <= 0)
+            else
             {
                 Clearsur = true;
                 Timer = 0;

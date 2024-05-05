@@ -27,11 +27,11 @@ public class ItemKeeper : MonoBehaviour
 
     void DisplayKeepList()
     {
-        hp_KeepList.text = "Health Potion : " + Store.healthpotion.ToString();
+        hp_KeepList.text = Store.healthpotion.ToString();
 
-        exp_KeepList.text = "Bonus Potion : " + Store.bonuspotion.ToString();
+        exp_KeepList.text = Store.bonuspotion.ToString();
 
-        power_KeepList.text = "Power Buff : " + Store.powerup.ToString();
+        power_KeepList.text = Store.powerup.ToString();
     }
 
     void UseHealthPotion()

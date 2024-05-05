@@ -53344,6 +53344,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1442373680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8308327398533579884, guid: 6886dd3de9891184aa0036d29917e87e, type: 3}
+  m_PrefabInstance: {fileID: 3261453273478441507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1459951504
 GameObject:
   m_ObjectHideFlags: 0
@@ -77624,6 +77629,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2204436261720641001, guid: 6886dd3de9891184aa0036d29917e87e, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204436261720641001, guid: 6886dd3de9891184aa0036d29917e87e, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8308327398533579884, guid: 6886dd3de9891184aa0036d29917e87e, type: 3}
       propertyPath: m_Name
       value: Transmitter
@@ -79598,6 +79611,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 581760767}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: MarkingObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Start_collect
       value: 
       objectReference: {fileID: 368870435}
@@ -79617,6 +79634,10 @@ PrefabInstance:
       propertyPath: minimissiontxt
       value: 
       objectReference: {fileID: 1021103181}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: obj_checkPoint
+      value: 
+      objectReference: {fileID: 1442373680}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: collectmissiontxt
       value: 
