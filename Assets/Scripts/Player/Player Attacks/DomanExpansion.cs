@@ -31,7 +31,7 @@ public class DomanExpansion : MonoBehaviour
 
     public KeyCode expandButton = KeyCode.Q;
 
-    private bool isExpanding = false;
+    public bool isExpanding = false;
     private Vector3 initialScale;
 
     //Script references

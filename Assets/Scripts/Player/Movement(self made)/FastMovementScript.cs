@@ -78,6 +78,8 @@ public class FastMovementScript : MonoBehaviour
     private Weapon_Skill_Katana KatanaScript;
     private PlayerAiming camScript;
     private LaunchWave LaunchScript;
+    private DomanExpansion DomainScript;
+    private bool isExpanding = false;
     public Transform orientation;
     Rigidbody rb;
 
@@ -96,6 +98,7 @@ public class FastMovementScript : MonoBehaviour
         LaunchScript = GetComponent<LaunchWave>();
         camScript = CamHolder.GetComponent<PlayerAiming>();
         KatanaScript = GetComponent<Weapon_Skill_Katana>();
+        DomainScript = GetComponent<DomanExpansion>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -117,7 +120,8 @@ public class FastMovementScript : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
         isSkillDashing = KatanaScript.isSkillDashing;
-        
+
+        isExpanding = DomainScript.isExpanding;
             MyInput();
             SpeedControl();
             CheckForWall();
@@ -259,7 +263,10 @@ public class FastMovementScript : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
 
-
+        if (isExpanding)
+        {
+            rb.velocity = rb.velocity / 3;
+        }
 
         //increase the player's speed as the desiredSpeed build up
 
