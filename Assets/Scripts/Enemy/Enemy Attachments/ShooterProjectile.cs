@@ -91,7 +91,7 @@ public class ShooterProjectile : MonoBehaviour
     {
         this.gameObject.layer = 11;
         isReflected = true;
-        ProRB.AddForce(AimDirection * 75f, ForceMode.VelocityChange);
+        ProRB.AddForce(AimDirection * 155f, ForceMode.VelocityChange);
         
     }
 
