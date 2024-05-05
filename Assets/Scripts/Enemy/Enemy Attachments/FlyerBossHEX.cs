@@ -8,6 +8,7 @@ public class FlyerBossHEX : MonoBehaviour
     private GameObject player;
     private bool isInside = false;
     private hp HPScript;
+    public ParticleSystem explosion;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -15,7 +16,7 @@ public class FlyerBossHEX : MonoBehaviour
         HPScript = player.GetComponent<hp>();
         transform.DOScale(2, 0.3f);
 
-        Invoke("CountDown", 3f);
+        Invoke("CountDown", 2f);
     }
 
     void Start()
@@ -48,6 +49,7 @@ public class FlyerBossHEX : MonoBehaviour
 
     void CountDown()
     {
+        Instantiate(explosion, transform.position, transform.rotation);
         if (isInside)
         {
             HPScript.HealthLost();
