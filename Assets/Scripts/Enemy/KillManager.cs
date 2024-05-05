@@ -7,6 +7,7 @@ public class KillManager : MonoBehaviour
     private GameObject PlayerObject;
     private FodderAI fodderScript;
     private ShooterAI shooterScript;
+    private MuscleAI muscleScript;
     private TurretAI turretScript;
     private DroneAI droneScript;
     private FlyerBossAI flyerBossScript;
@@ -42,6 +43,11 @@ public class KillManager : MonoBehaviour
                 Debug.Log("shooterHit");
                 shooterScript = Target.GetComponentInParent<ShooterAI>();
                 shooterScript.OnDeath();
+
+                break;
+            case "Muscletag":
+                muscleScript = Target.GetComponentInParent<MuscleAI>();
+                muscleScript.OnDeath();
                 break;
             case "TurretTag":
                 turretScript = Target.GetComponentInParent<TurretAI>();
@@ -73,6 +79,10 @@ public class KillManager : MonoBehaviour
                 Debug.Log("shooterHit");
                 shooterScript = Target.GetComponentInParent<ShooterAI>();
                 shooterScript.StrongOnDeath();
+                break;
+            case "Muscletag":
+                muscleScript = Target.GetComponentInParent<MuscleAI>();
+                muscleScript.StrongOnDeath();
                 break;
             case "TurretTag":
                 turretScript = Target.GetComponentInParent<TurretAI>();

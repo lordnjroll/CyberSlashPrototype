@@ -122,6 +122,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("Retry");
     }
 
+    public void ReturnBtnOnClick()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("stage 1");
+    }
+
     public void DisplayBtnOnClick()
     {
         VolumeLayer.SetActive(false);

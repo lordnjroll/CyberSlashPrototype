@@ -69,7 +69,6 @@ public class Tutorial : MonoBehaviour
         if(other.gameObject.name == "StartTutorial")
         {
             timetxt.SetActive(true);
-            ScoreManager.isRunning = true;
             Debug.Log("Start Tutorial");
             tipsLayer.SetActive(true);
             m_WallJump.text = "Do Wall Run";
@@ -122,7 +121,7 @@ public class Tutorial : MonoBehaviour
             ScoreManager.mission_point += 100;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Mouse1))
+        if (Weapon_Skill_Katana.T_isSkillDashing)
         {
             m_SkillDash.text = "<color=yellow>" + "Skill Dash Done" + "</color>";
             Clear_skilldash = true;

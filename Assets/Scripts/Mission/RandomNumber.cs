@@ -16,7 +16,7 @@ public class RandomNumber : MonoBehaviour
     private Mission mission;
     public bool corrent;
     private int questionnum = -1;
-    public int maxquestionnum = 3;
+    public int maxquestionnum = 2;
 
     void Start()
     {

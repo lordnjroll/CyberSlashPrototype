@@ -32,6 +32,7 @@ public class DomanExpansion : MonoBehaviour
     public KeyCode expandButton = KeyCode.Q;
 
     public bool isExpanding = false;
+    public static bool buyExpand = false;
     private Vector3 initialScale;
 
     //Script references
@@ -60,7 +61,7 @@ public class DomanExpansion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Store.Skill1)
+        if (buyExpand)
         {
             InputManager();
 

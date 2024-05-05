@@ -133,7 +133,7 @@ public class Store : MonoBehaviour
         if (data.itemName.Equals("Skill1") && ScoreManager.score >= data.value)
         {
             ScoreManager.score -= data.value;
-            Skill1 = true;
+            DomanExpansion.buyExpand = true;
             buyitemAudio.Play();
         }
         else if (data.itemName.Equals("Skill1") && ScoreManager.score < data.value || Skill1)
@@ -145,7 +145,7 @@ public class Store : MonoBehaviour
         if (data.itemName.Equals("Skill2") && ScoreManager.score >= data.value)
         {
             ScoreManager.score -= data.value;
-            Skill2 = true;
+            LaunchWave.buyLaunch = true;
             buyitemAudio.Play();
         }
         else if (data.itemName.Equals("Skill2") && ScoreManager.score < data.value || Skill2)

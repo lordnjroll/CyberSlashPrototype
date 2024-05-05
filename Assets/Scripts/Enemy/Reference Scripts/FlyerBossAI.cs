@@ -103,6 +103,7 @@ public class FlyerBossAI : MonoBehaviour
         Instantiate(DeathExplosion, transform.position, transform.rotation);
         Instantiate(shatterEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+        Weapon_Skill_Katana.bossDead = true;
     }
 
     private void OnTriggerEnter(Collider other)

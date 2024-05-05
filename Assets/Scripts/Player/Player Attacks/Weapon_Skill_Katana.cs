@@ -24,6 +24,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private RaycastHit DashCutDetector;
     public bool isDashing = false;// normal dash
     public bool isSkillDashing = false;// skill dash
+    public static bool T_isSkillDashing = false;// skill dash
     public bool DashingCD = false;
     public bool isStrongAttackOn = false;
     public KeyCode MovementBtn = KeyCode.LeftShift;
@@ -93,6 +94,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     private hp hpScript;
     private FodderAI fodderScript;
     private ShooterAI shooterScript;
+    private MuscleAI muscleScript;
     private TurretAI turretScript;
     private DroneAI droneScript;
     private FlyerBossAI BossScript;
@@ -100,7 +102,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
-
+    public static bool bossDead = false;
     void Start()
     {
         //Debug.Log("looking at " + EnemyAimedAt);
@@ -161,7 +163,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
                         Enemy = meleehit.transform.gameObject;
                         fodderScript = Enemy.GetComponent<FodderAI>();
                         fodderScript.OnDeath();
-
+                        ScoreManager.score += 50;
 
                         //ScoreScript.GetScore();
                     }
@@ -170,6 +172,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
                         Enemy = meleehit.transform.gameObject;
                         shooterScript = Enemy.GetComponentInParent<ShooterAI>();
                         shooterScript.OnDeath();
+                        ScoreManager.score += 50;
 
                         //ScoreScript.GetScore();
                     }
@@ -179,6 +182,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
 
                         ShieldEnemyHP = ShieldEnemyHP - PlayerDamage;
                         DismentleScript = ShieldEnemy.GetComponent<mesh_destroy>();
+                        ScoreManager.score += 50;
                         //Debug.Log("Hit Shield");
 
                     }
@@ -187,6 +191,8 @@ public class Weapon_Skill_Katana : MonoBehaviour
                     {
                         MuscleEnemyHP = MuscleEnemyHP - PlayerDamage;
                         DismentleScript = MuscleEnemy.GetComponent<mesh_destroy>();
+                        muscleScript.OnDeath();
+                        ScoreManager.score += 50;
                     }
 
                     if (meleehit.transform.tag == "TurretTag")
@@ -194,13 +200,16 @@ public class Weapon_Skill_Katana : MonoBehaviour
                         Enemy = meleehit.transform.gameObject;
                         turretScript = Enemy.GetComponentInParent<TurretAI>();
                         turretScript.OnDeath();
+                        ScoreManager.score += 50;
                     }
 
-                    if (meleehit.transform.tag == "Tag")
+                    if (meleehit.transform.tag == "BossTag")
                     {
                         Enemy = meleehit.transform.gameObject;
                         BossScript = Enemy.GetComponentInParent<FlyerBossAI>();
                         BossScript.OnDeath();
+                        ScoreManager.score += 50;
+                        bossDead = true;
                     }
                     
 
@@ -382,6 +391,7 @@ public class Weapon_Skill_Katana : MonoBehaviour
     IEnumerator SkillDash()
     {
         isSkillDashing = true;
+        T_isSkillDashing = true;
         //Debug.Log("Skill dash function called");
         float travelTime = 0.5f;
         float elapsedTime = 0f;

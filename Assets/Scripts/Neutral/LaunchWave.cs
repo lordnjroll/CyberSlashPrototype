@@ -7,7 +7,7 @@ public class LaunchWave : MonoBehaviour
     public Transform playerTrans;
     public float launchForce;
     public ParticleSystem StompEffect;
-
+    public static bool buyLaunch = false;
     private FodderAI fodderScript;
     private ShooterAI shooterScript;
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class LaunchWave : MonoBehaviour
 
     public IEnumerator PlayerIniatedLaunch()
     {
-        if(Store.Skill2 == true)
+        if(buyLaunch)
         {
             Instantiate(StompEffect, new Vector3(this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z), this.transform.rotation);
 

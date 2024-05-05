@@ -7,7 +7,6 @@ public class Mission : MonoBehaviour
 {
     [SerializeField] private GameObject Boss;
     [SerializeField] private Transform BossSpawn;
-    [SerializeField] private Transform BossSpawns;
 
     [SerializeField] private TMP_Text killmissiontxt;
     [SerializeField] private TMP_Text collectmissiontxt;
@@ -18,6 +17,7 @@ public class Mission : MonoBehaviour
     [SerializeField] private TMP_Text tipstxt;
 
     [SerializeField] private GameObject GameUILayer;
+    [SerializeField] private GameObject ClearLayer;
     [SerializeField] private GameObject miniLayer;
     [SerializeField] private GameObject Start_collect;
     [SerializeField] private GameObject Start_kill;
@@ -34,6 +34,9 @@ public class Mission : MonoBehaviour
     [SerializeField] private GameObject failMission2;
     [SerializeField] private GameObject failMission3;
     [SerializeField] private GameObject set2, set3;
+    [SerializeField] private GameObject danagerzone;
+    [SerializeField] private GameObject danagerzone2;
+    [SerializeField] private GameObject danagerzone3;
 
 
     public static bool plat1, plat2, plat3;
@@ -63,7 +66,7 @@ public class Mission : MonoBehaviour
     public static bool Clearboss;
 
     public static int m_minicount;
-    private int m_totalminicount = 5;
+    private int m_totalminicount = 2;
     public bool Startminigame;
     public static bool Clearminigame;
 
@@ -166,6 +169,8 @@ public class Mission : MonoBehaviour
         #region Fight Boss
         if (other.gameObject.name == "FightBoss")
         {
+            Instantiate(Boss, BossSpawn.position, Quaternion.identity);
+            Start_boss.SetActive(false);
             Startboss = true;
         }
         #endregion
@@ -173,6 +178,7 @@ public class Mission : MonoBehaviour
         #region Mini Game
         if (other.gameObject.name == "Startmini")
         {
+            minimissiontxt.text = "Finish Hacking Mini Game " + m_minicount + " / " + m_totalminicount;
             Instantiate(obj_mini, miniGame[0].position, Quaternion.identity);
             Instantiate(obj_mini, miniGame[1].position, Quaternion.identity);
             Start_mini.SetActive(false);
@@ -223,6 +229,9 @@ public class Mission : MonoBehaviour
         if (other.gameObject.tag == "Plat1")
         {
             ScoreManager.isRunning = true;
+            danagerzone.SetActive(true);
+            danagerzone2.SetActive(false);
+            danagerzone3.SetActive(false);
             plat1 = true;
             plat2 = false;
             plat3 = false;
@@ -231,6 +240,11 @@ public class Mission : MonoBehaviour
 
         if (other.gameObject.tag == "Plat2")
         {
+            danagerzone.SetActive(false);
+            danagerzone2.SetActive(true);
+            danagerzone3.SetActive(false);
+            DanagerZone.outOfZone = false;
+            DanagerZone.inzone = true;
             plat1 = false;
             plat2 = true;
             plat3 = false;
@@ -239,6 +253,11 @@ public class Mission : MonoBehaviour
 
         if(other.gameObject.tag == "Plat3")
         {
+            danagerzone.SetActive(false);
+            danagerzone2.SetActive(false);
+            danagerzone3.SetActive(true);
+            DanagerZone.outOfZone = false;
+            DanagerZone.inzone = true;
             plat1 = false;
             plat2 = false;
             plat3 = true;
@@ -388,11 +407,18 @@ public class Mission : MonoBehaviour
 
     void FinishBoss()
     {
-        //Boss = Instantiate(BossSpawn, BossSpawns).GetComponent<>();
-        if(bosshp == 0)
+        bossmissiontxt.text = "Fight Boss";
+        if (Weapon_Skill_Katana.bossDead)
         {
-            uIManager.gameUILayer.SetActive(false);
-            uIManager.ClearLayer.SetActive(true);
+            bossmissiontxt.text = "<color=yellow>" + "Boss" + "</color>";
+            ScoreManager.mission_point += 600;
+            Startboss = false;
+            Clearboss = true;
+            ScoreManager.fin = true;
+            failMission.SetActive(false);
+            failMission2.SetActive(false);
+            
         }
     }
+
 }

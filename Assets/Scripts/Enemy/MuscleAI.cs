@@ -16,6 +16,7 @@ public class MuscleAI : MonoBehaviour
 
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    public ParticleSystem DeathEffect;
 
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
@@ -23,6 +24,9 @@ public class MuscleAI : MonoBehaviour
     public static bool resetAttack;
     public Animator enemyANIM;
     public GameObject Fist;
+    public GameObject ShooterModel;
+    public GameObject ShooterHead;
+    public GameObject HitboxObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,5 +88,61 @@ public class MuscleAI : MonoBehaviour
         enemyANIM.SetBool("isMuscle_Trebuchet", false);
         enemyANIM.SetBool("isMuscle_Hughug", true);
         hugPlayer = true;
+    }
+
+    public void OnDeath()
+    {
+        Tutorial.killcount++;
+        ScoreManager.score += 50;
+        Debug.Log("dead");
+        HitboxObject.GetComponent<Collider>().isTrigger = true;
+        setRigidbodyState(false);
+        setColliderState(true);
+        transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        transform.GetComponentInChildren<Collider>().enabled = false;
+        transform.GetComponent<Animator>().enabled = false;
+        ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+
+        Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
+        Destroy(gameObject, 2f);
+
+    }
+
+    public void StrongOnDeath()
+    {
+        Debug.Log("dead");
+        HitboxObject.GetComponent<Collider>().isTrigger = true;
+        setRigidbodyState(false);
+        setColliderState(true);
+        transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        transform.GetComponentInChildren<Collider>().enabled = false;
+        transform.GetComponent<Animator>().enabled = false;
+        ShooterModel.GetComponentInChildren<Rigidbody>().AddForce((transform.up * 10) + (transform.right * Random.Range(-50, 50) + (transform.forward * 50f)), ForceMode.VelocityChange);
+
+        Instantiate(DeathEffect, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), transform.rotation);
+        Destroy(gameObject, 0.2f);
+
+    }
+
+    void setRigidbodyState(bool state)
+    {
+        Rigidbody[] rigidbodies = ShooterModel.GetComponentsInChildren<Rigidbody>();
+
+        foreach (Rigidbody rigidbody in rigidbodies)
+        {
+            rigidbody.isKinematic = state;
+        }
+
+        GetComponent<Rigidbody>().isKinematic = !state;
+    }
+
+    void setColliderState(bool state)
+    {
+        Collider[] colliders = ShooterModel.GetComponentsInChildren<Collider>();
+
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = state;
+        }
     }
 }

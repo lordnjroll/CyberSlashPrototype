@@ -58,7 +58,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float SkillBarDevideValue = 20f;
     [SerializeField] private int SkillBarMin = 0;
     [SerializeField] private int SkillBarMax = 120;
-
+    public static bool fin = false;
     private void Start()
     {
         InvokeRepeating("HypeLevelSelector", 0, 0.07f);
@@ -75,7 +75,83 @@ public class ScoreManager : MonoBehaviour
         scorecontroll();
         LevelBarFill();
         SkillBarFill();
-        
+
+        if (fin)
+        {
+            GameUILayer.SetActive(false);
+            isRunning = false;
+            Debug.Log(SaveSystem.savescore);
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            scoreBoradLayer.SetActive(true);
+            scoreborad.text = "This Level you got \n"
+                                            +
+                              "\nScore " + score + " \n"
+                                            +
+                              "\nMission Point " + mission_point + " \n"
+                                            +
+                              "\nUse Time " + (600 - (int)Timer) + " \n"
+                                            +
+                              "\nTotal Death " + deathcount + " \n"
+                                            +
+                              "\nTotal Score " + score1;
+
+            if (Mission.Clearcollect)
+            {
+                Clearcollect.text = "<color=yellow>Collection</color>";
+            }
+            else
+            {
+                Clearcollect.text = "<color=red>Collection</color>";
+            }
+
+            if (Mission.Clearkill)
+            {
+                Clearkill.text = "<color=yellow>Kill</color>";
+            }
+            else
+            {
+                Clearkill.text = "<color=red>Kill</color>";
+            }
+
+            if (Mission.ClearCP)
+            {
+                ClearCP.text = "<color=yellow>Check Point</color>";
+            }
+            else
+            {
+                ClearCP.text = "<color=red>Check Point</color>";
+            }
+
+            if (Mission.Clearminigame)
+            {
+                Clearmini.text = "<color=yellow>Mini Game</color>";
+            }
+            else
+            {
+                Clearmini.text = "<color=red>Mini Game</color>";
+            }
+
+            if (Mission.Clearsur)
+            {
+                Clearsur.text = "<color=yellow>Survive</color>";
+            }
+            else
+            {
+                Clearsur.text = "<color=red>Survive</color>";
+            }
+
+            if (Mission.Clearboss)
+            {
+                Clearboss.text = "<color=yellow>Boss</color>";
+            }
+            else
+            {
+                Clearboss.text = "<color=red>Boss</color>";
+            }
+            
+        }
     }
 
     
@@ -136,80 +212,9 @@ public class ScoreManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Portal")
         {
-            GameUILayer.SetActive(false);
-            isRunning = false;
-            Debug.Log(SaveSystem.savescore);
-
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            scoreBoradLayer.SetActive(true);
-            scoreborad.text = "This Level you got \n"
-                                            +
-                              "\nScore " + score + " \n"
-                                            +
-                              "\nMission Point " + mission_point + " \n"
-                                            +
-                              "\nUse Time " + (600 - (int)Timer) + " \n"
-                                            +
-                              "\nTotal Death " + deathcount + " \n"
-                                            +
-                              "\nTotal Score " + score1;
-            
-            if (Mission.Clearcollect)
-            {
-                Clearcollect.text = "<color=yellow>Collection</color>";
-            }
-            else
-            {
-                Clearcollect.text = "<color=red>Collection</color>";
-            }
-
-            if (Mission.Clearkill)
-            {
-                Clearkill.text = "<color=yellow>Kill</color>";
-            }
-            else
-            {
-                Clearkill.text = "<color=red>Kill</color>";
-            }
-
-            if (Mission.ClearCP)
-            {
-                ClearCP.text = "<color=yellow>Check Point</color>";
-            }
-            else
-            {
-                ClearCP.text = "<color=red>Check Point</color>";
-            }
-
-            if (Mission.Clearminigame)
-            {
-                Clearmini.text = "<color=yellow>Mini Game</color>";
-            }
-            else
-            {
-                Clearmini.text = "<color=red>Mini Game</color>";
-            }
-
-            if (Mission.Clearsur)
-            {
-                Clearsur.text = "<color=yellow>Survive</color>";
-            }
-            else
-            {
-                Clearsur.text = "<color=red>Survive</color>";
-            }
-
-            if (Mission.Clearboss)
-            {
-                Clearboss.text = "<color=yellow>Boss</color>";
-            }
-            else
-            {
-                Clearboss.text = "<color=red>Boss</color>";
-            }
-            Time.timeScale = 0;
+            fin = true;
         }
+            
     }
     void HypeLevelController()
     {
