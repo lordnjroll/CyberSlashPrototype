@@ -150,7 +150,7 @@ public class ScoreManager : MonoBehaviour
             {
                 Clearboss.text = "<color=red>Boss</color>";
             }
-            
+            fin = false;
         }
     }
 

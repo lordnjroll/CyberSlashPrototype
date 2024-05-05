@@ -47,7 +47,7 @@ public class Mission : MonoBehaviour
 
 
     public static int m_killcount;
-    private int m_totalkillcount = 30;
+    private int m_totalkillcount = 10;
     public static bool Startkill;
     public static bool Clearkill;
 

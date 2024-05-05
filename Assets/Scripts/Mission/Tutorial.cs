@@ -20,7 +20,7 @@ public class Tutorial : MonoBehaviour
     bool T_trigger = false;
     bool Wall_Jumped = false;
     public static int killcount;
-    public int Totalkill = 20;
+    public int Totalkill = 10;
 
     public static bool Clear_Dash = false;
     public static bool Clear_walljump = false;
