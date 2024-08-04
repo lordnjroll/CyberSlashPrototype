@@ -9457,7 +9457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.004547, y: 0}
+  m_AnchoredPosition: {x: -28.004578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &346642810
@@ -28918,6 +28918,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723382774}
   m_Mesh: {fileID: -5345760584941703707, guid: 90849b37ca87f4b4eb93014d84c10e02, type: 3}
+--- !u!1 &723538281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 723538282}
+  - component: {fileID: 723538283}
+  m_Layer: 0
+  m_Name: ObjectPoolingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &723538282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723538281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 81.06827, y: -207.83093, z: 490.8461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &723538283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723538281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c611e87da7711e040bdf9c75893af476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectPoolItems:
+  - _name: 
+    _prefab: {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    _initialNum: 30
+  - _name: 
+    _prefab: {fileID: 5109579779566359376, guid: b1d71d6ab439e1d43b80347f3cd0cccb, type: 3}
+    _initialNum: 20
+  - _name: 
+    _prefab: {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    _initialNum: 10
+  - _name: 
+    _prefab: {fileID: 5457279002803947172, guid: eaa86808cd6917a4eba6b14328b4eca1, type: 3}
+    _initialNum: 10
 --- !u!43 &737149279
 Mesh:
   m_ObjectHideFlags: 0
@@ -34984,7 +35041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.004547, y: 0}
+  m_AnchoredPosition: {x: -28.004578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &873109859
@@ -82384,6 +82441,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 511214718}
+    - target: {fileID: 3897766878799781588, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ee3defbfde59f4c44a4ff86a2367819b, type: 2}
     - target: {fileID: 3897766878799781590, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
       propertyPath: m_Mesh
       value: 

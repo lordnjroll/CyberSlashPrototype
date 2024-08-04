@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 5344003012730363318}
   m_Layer: 8
   m_Name: ShieldEnemy
-  m_TagString: Shooter
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

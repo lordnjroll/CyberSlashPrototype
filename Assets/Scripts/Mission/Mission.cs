@@ -223,6 +223,15 @@ public class Mission : MonoBehaviour
             surmissiontxt.text = " ";
             set3.GetComponent<spwanenimy>().enabled = false;
             set2.GetComponent<spwanenimy>().enabled = false;
+            var allenemy = GameObject.FindGameObjectsWithTag("FodderTag");
+            foreach(var enemy in allenemy)
+            {
+                Destroy(GameObject.FindWithTag("FodderTag"));
+                Destroy(GameObject.FindWithTag("Shooter"));
+                Destroy(GameObject.FindWithTag("Shield"));
+                Destroy(GameObject.FindWithTag("Muscketag"));
+            }
+            
         }
         #endregion
 
@@ -249,6 +258,14 @@ public class Mission : MonoBehaviour
             plat2 = true;
             plat3 = false;
             Debug.Log(plat2);
+            var allenemy = GameObject.FindGameObjectsWithTag("FodderTag");
+            foreach (var enemy in allenemy)
+            {
+                Destroy(GameObject.FindWithTag("FodderTag"));
+                Destroy(GameObject.FindWithTag("Shooter"));
+                Destroy(GameObject.FindWithTag("Shield"));
+                Destroy(GameObject.FindWithTag("Muscketag"));
+            }
         }
 
         if(other.gameObject.tag == "Plat3")
@@ -262,6 +279,14 @@ public class Mission : MonoBehaviour
             plat2 = false;
             plat3 = true;
             Debug.Log(plat3);
+            var allenemy = GameObject.FindGameObjectsWithTag("FodderTag");
+            foreach (var enemy in allenemy)
+            {
+                Destroy(GameObject.FindWithTag("FodderTag"));
+                Destroy(GameObject.FindWithTag("Shooter"));
+                Destroy(GameObject.FindWithTag("Shield"));
+                Destroy(GameObject.FindWithTag("Muscketag"));
+            }
         }
     }
 
