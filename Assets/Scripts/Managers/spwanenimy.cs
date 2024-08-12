@@ -69,7 +69,7 @@ public class spwanenimy : MonoBehaviour
             InvokeRepeating("enemySpwan", 0, 0.5f);
         }
 
-        if(Tutorial.Clear_Dash && Tutorial.Clear_walljump)
+        if(Mission.Clear_Dash && Mission.Clear_walljump)
         {
             InvokeRepeating("enemySpwan", 0, 0.5f);
         }

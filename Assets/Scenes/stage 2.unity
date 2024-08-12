@@ -31525,7 +31525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.004425, y: 0}
+  m_AnchoredPosition: {x: -28.004395, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1143968871
@@ -44751,7 +44751,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712387228}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cacbc740f5428f34cb1481fb1b7bee7e, type: 3}
   m_Name: 
@@ -49109,7 +49109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.004425, y: 0}
+  m_AnchoredPosition: {x: -28.004395, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!43 &1992833844
@@ -64715,13 +64715,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1779466087}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Timer
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: GameUI
+      value: 
+      objectReference: {fileID: 267194627}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: tpchet
       value: 
       objectReference: {fileID: 1889948163}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: ClearCP
+      value: 
+      objectReference: {fileID: 1293311697}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Tipstxt
+      value: 
+      objectReference: {fileID: 359979241}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearsur
+      value: 
+      objectReference: {fileID: 1350212823}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Timertxt
+      value: 
+      objectReference: {fileID: 1030869068}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: gameover
       value: 
       objectReference: {fileID: 59536786}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: scoretxt
+      value: 
+      objectReference: {fileID: 1404409925}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearboss
+      value: 
+      objectReference: {fileID: 846204322}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearkill
+      value: 
+      objectReference: {fileID: 2134464450}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearmini
+      value: 
+      objectReference: {fileID: 1636486822}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: quitLayer
       value: 
@@ -64731,13 +64771,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1654423437}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: DeathLayer
+      value: 
+      objectReference: {fileID: 401112833}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: deathLayer
       value: 
       objectReference: {fileID: 401112833}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: scoreborad
+      value: 
+      objectReference: {fileID: 660892236}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: whenPaused
       value: 
       objectReference: {fileID: 5870009647998356334, guid: db1a12c0861d9ab43971ae8cb752cb87, type: 2}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: GameUILayer
+      value: 
+      objectReference: {fileID: 267194627}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: VolumeLayer
       value: 
@@ -64747,13 +64799,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 267194627}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: hp_KeepList
+      value: 
+      objectReference: {fileID: 988179147}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: whenStarted
       value: 
       objectReference: {fileID: 24500006, guid: db1a12c0861d9ab43971ae8cb752cb87, type: 2}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearcollect
+      value: 
+      objectReference: {fileID: 1215388015}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: DisplayLayer
       value: 
       objectReference: {fileID: 1142233433}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: HealthHp1Bar
+      value: 
+      objectReference: {fileID: 2111608296}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: HealthHp2Bar
+      value: 
+      objectReference: {fileID: 1295596870}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: HealthHp3Bar
+      value: 
+      objectReference: {fileID: 820947046}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: SettingLayer
       value: 
@@ -64763,12 +64835,116 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1026457886}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: exp_KeepList
+      value: 
+      objectReference: {fileID: 1720343289}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: continueLayer
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarSprite
+      value: 
+      objectReference: {fileID: 991659934440896450}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: SkillBarSprite
+      value: 
+      objectReference: {fileID: 4635032610760663425}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: power_KeepList
+      value: 
+      objectReference: {fileID: 1779466087}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: scoreBoradLayer
+      value: 
+      objectReference: {fileID: 1654423437}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: musicSettingLayer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime1
+      value: 21627
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime2
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime3
+      value: 49151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime4
+      value: 62258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime5
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime6
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key2.b
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key2.g
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key3.b
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key3.g
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key3.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key4.b
+      value: 0.46666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key4.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key4.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key5.b
+      value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key5.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key5.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key6.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key6.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key6.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: respawnPoint.Array.data[0]
@@ -64782,6 +64958,10 @@ PrefabInstance:
       propertyPath: respawnPoint.Array.data[2]
       value: 
       objectReference: {fileID: 2043813546}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.m_NumColorKeys
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Boss
       value: 

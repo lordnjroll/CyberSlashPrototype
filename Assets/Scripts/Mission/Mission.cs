@@ -77,10 +77,29 @@ public class Mission : MonoBehaviour
     public static bool Clearsur;
 
     
-    ScoreManager ScoreManager;
+
     UIManager uIManager;
 
+    [SerializeField] private TMP_Text m_WallJump;
+    [SerializeField] private TMP_Text m_Dash;
+    [SerializeField] private TMP_Text m_SkillDash;
 
+    [SerializeField] private GameObject tipsLayer;
+    [SerializeField] private GameObject timetxt;
+    [SerializeField] private GameObject StartTutor;
+    [SerializeField] private GameObject EndTutor;
+    [SerializeField] private GameObject Fail;
+    [SerializeField] private GameObject set1;
+
+    bool T_trigger = false;
+    bool Wall_Jumped = false;
+    public static int killcount;
+    public int Totalkill = 10;
+
+    public static bool Clear_Dash = false;
+    public static bool Clear_walljump = false;
+    public static bool Clear_skilldash = false;
+    private spwanenimy spwanenimy;
     void Update()
     {
         if (Startcollect)
@@ -109,10 +128,100 @@ public class Mission : MonoBehaviour
         {
             FinishBoss();
         }
+        if (T_trigger == true)
+        {
+            DoDash();
+
+            if (Wall_Jumped)
+            {
+                m_WallJump.text = "<color=yellow>" + "Wall Run Done" + "</color>";
+                Clear_walljump = true;
+            }
+
+        }
+
+        if (Clear_Dash && Clear_walljump)
+        {
+            set1.GetComponent<spwanenimy>().enabled = true;
+            m_Dash.text = "Try kill enemy" + killcount + " / " + Totalkill;
+        }
+
+        if (killcount == Totalkill)
+        {
+            set1.GetComponent<spwanenimy>().enabled = false;
+            m_Dash.text = "<color=yellow>" + "Tutorial Finish" + "</color>";
+            Clear_Dash = false;
+            Clear_walljump = false;
+            EndTutor.SetActive(true);
+            Fail.SetActive(false);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            if (T_trigger)
+            {
+                Wall_Jumped = true;
+                UIManager.mission_point += 100;
+            }
+
+        }
+    }
+
+
+    void DoDash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            m_Dash.text = "<color=yellow>" + "Dash Done" + "</color>";
+            Clear_Dash = true;
+            UIManager.mission_point += 100;
+        }
+
+        if (Weapon_Skill_Katana.T_isSkillDashing)
+        {
+            m_SkillDash.text = "<color=yellow>" + "Skill Dash Done" + "</color>";
+            Clear_skilldash = true;
+            UIManager.mission_point += 100;
+            Weapon_Skill_Katana.T_isSkillDashing = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.name == "StartTutorial")
+        {
+            timetxt.SetActive(true);
+            Debug.Log("Start Tutorial");
+            tipsLayer.SetActive(true);
+            m_WallJump.text = "Do Wall Run";
+            m_Dash.text = "Do Dash(LS)";
+            m_SkillDash.text = "Do Skill Dash(LS + RMB)";
+            T_trigger = true;
+            StartTutor.SetActive(false);
+        }
+
+        if (other.gameObject.name == "FinishTutorial")
+        {
+            set1.GetComponent<spwanenimy>().enabled = false;
+            tipsLayer.SetActive(false);
+            T_trigger = false;
+            Clear_Dash = false;
+            Clear_walljump = false;
+        }
+
+        if (other.gameObject.tag == "Fail")
+        {
+            set1.GetComponent<spwanenimy>().enabled = false;
+            tipsLayer.SetActive(false);
+            T_trigger = false;
+            Debug.Log("Fail");
+            Clear_Dash = false;
+            Clear_walljump = false;
+        }
+
         #region Collect Mission
         if (other.gameObject.name == "StartCollectMission")
         {
@@ -223,13 +332,15 @@ public class Mission : MonoBehaviour
             surmissiontxt.text = " ";
             set3.GetComponent<spwanenimy>().enabled = false;
             set2.GetComponent<spwanenimy>().enabled = false;
-            var allenemy = GameObject.FindGameObjectsWithTag("FodderTag");
-            foreach(var enemy in allenemy)
+            
+            for(int i = 0; i < 50; i++)
             {
                 Destroy(GameObject.FindWithTag("FodderTag"));
                 Destroy(GameObject.FindWithTag("Shooter"));
                 Destroy(GameObject.FindWithTag("Shield"));
-                Destroy(GameObject.FindWithTag("Muscketag"));
+                Destroy(GameObject.FindWithTag("TurretTag"));
+                i++;
+                Debug.Log(i);
             }
             
         }
@@ -237,7 +348,7 @@ public class Mission : MonoBehaviour
 
         if (other.gameObject.tag == "Plat1")
         {
-            ScoreManager.isRunning = true;
+            UIManager.isRunning = true;
             danagerzone.SetActive(true);
             danagerzone2.SetActive(false);
             danagerzone3.SetActive(false);
@@ -245,6 +356,15 @@ public class Mission : MonoBehaviour
             plat2 = false;
             plat3 = false;
             Debug.Log(plat1);
+            for (int i = 0; i < 50; i++)
+            {
+                Destroy(GameObject.FindWithTag("FodderTag"));
+                Destroy(GameObject.FindWithTag("Shooter"));
+                Destroy(GameObject.FindWithTag("Shield"));
+                Destroy(GameObject.FindWithTag("TurretTag"));
+                i++;
+                Debug.Log(i);
+            }
         }
 
         if (other.gameObject.tag == "Plat2")
@@ -258,13 +378,13 @@ public class Mission : MonoBehaviour
             plat2 = true;
             plat3 = false;
             Debug.Log(plat2);
-            var allenemy = GameObject.FindGameObjectsWithTag("FodderTag");
-            foreach (var enemy in allenemy)
+            for (int i = 0; i < 50; i++)
             {
                 Destroy(GameObject.FindWithTag("FodderTag"));
                 Destroy(GameObject.FindWithTag("Shooter"));
                 Destroy(GameObject.FindWithTag("Shield"));
-                Destroy(GameObject.FindWithTag("Muscketag"));
+                Destroy(GameObject.FindWithTag("TurretTag"));
+                i++;
             }
         }
 
@@ -279,13 +399,13 @@ public class Mission : MonoBehaviour
             plat2 = false;
             plat3 = true;
             Debug.Log(plat3);
-            var allenemy = GameObject.FindGameObjectsWithTag("FodderTag");
-            foreach (var enemy in allenemy)
+            for (int i = 0; i < 50; i++)
             {
                 Destroy(GameObject.FindWithTag("FodderTag"));
                 Destroy(GameObject.FindWithTag("Shooter"));
                 Destroy(GameObject.FindWithTag("Shield"));
-                Destroy(GameObject.FindWithTag("Muscketag"));
+                Destroy(GameObject.FindWithTag("TurretTag"));
+                i++;
             }
         }
     }
@@ -329,7 +449,7 @@ public class Mission : MonoBehaviour
             {
                 set2.GetComponent<spwanenimy>().enabled = false;
                 killmissiontxt.text = "Kill Shooters " + "<color=yellow>" + m_killcount + " / " + m_totalkillcount + "</color>";
-                ScoreManager.mission_point += 600;
+                UIManager.mission_point += 600;
                 Startkill = false;
                 failMission.SetActive(false);
                 failMission2.SetActive(false);
@@ -348,7 +468,7 @@ public class Mission : MonoBehaviour
             if (Clearcollect)
             {
                 collectmissiontxt.text = "Collect Items " + "<color=yellow>" + m_collectcount + " / " + m_totalcollectcount + "</color>";
-                ScoreManager.mission_point += 600;
+                UIManager.mission_point += 600;
                 Startcollect = false;
                 failMission.SetActive(false);
                 failMission2.SetActive(false);
@@ -364,7 +484,7 @@ public class Mission : MonoBehaviour
         if(m_CPcount == m_totalCPcount)
         {
             CPmissiontxt.text = "Go Check Point " + "<color=yellow>" + m_CPcount + " / " + m_totalCPcount + "</color>";
-            ScoreManager.mission_point += 600;
+            UIManager.mission_point += 600;
             StartCP = false;
             failMission.SetActive(false);
             failMission2.SetActive(false);
@@ -384,7 +504,7 @@ public class Mission : MonoBehaviour
                 minimissiontxt.text = "Finish Hacking Mini Game " + "<color=yellow>" + m_minicount + " / " + m_totalminicount + "</color>";
                 miniLayer.SetActive(false);
                 GameUILayer.SetActive(true);
-                ScoreManager.mission_point += 600;
+                UIManager.mission_point += 600;
                 Startminigame = false;
                 failMission.SetActive(false);
                 failMission2.SetActive(false);
@@ -425,7 +545,7 @@ public class Mission : MonoBehaviour
                 Timer = 0;
                 timecount = false;
                 set3.GetComponent<spwanenimy>().enabled = false;
-                ScoreManager.mission_point += 600;
+                UIManager.mission_point += 600;
                 surmissiontxt.text = "<color=yellow>" + "Survive" + "</color>";
                 Startsur = false;
                 failMission.SetActive(false);
@@ -442,10 +562,10 @@ public class Mission : MonoBehaviour
         if (Weapon_Skill_Katana.bossDead)
         {
             bossmissiontxt.text = "<color=yellow>" + "Boss" + "</color>";
-            ScoreManager.mission_point += 600;
+            UIManager.mission_point += 600;
             Startboss = false;
             Clearboss = true;
-            ScoreManager.fin = true;
+            UIManager.fin = true;
             failMission.SetActive(false);
             failMission2.SetActive(false);
             

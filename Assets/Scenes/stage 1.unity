@@ -78768,6 +78768,10 @@ PrefabInstance:
       propertyPath: ThePlayer
       value: 
       objectReference: {fileID: 1465243472}
+    - target: {fileID: 3123848974935106817, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3123848976587660548, guid: 2b6fbaf322689c14d806828f0d20f956, type: 3}
       propertyPath: playerTrans
       value: 
@@ -80728,38 +80732,70 @@ PrefabInstance:
       propertyPath: Sword_Stronghit
       value: 
       objectReference: {fileID: 8300000, guid: 76d538f5c6b86d94b8525ff2e61fc76a, type: 3}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Timer
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: GameUI
+      value: 
+      objectReference: {fileID: 267194627}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: ClearCP
+      value: 
+      objectReference: {fileID: 1754271716}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Tipstxt
       value: 
       objectReference: {fileID: 359979241}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: KeepList
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearsur
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: hp_KeepList
+      objectReference: {fileID: 889677335}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Timertxt
       value: 
-      objectReference: {fileID: 1706330896}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: exp_KeepList
-      value: 
-      objectReference: {fileID: 1755378863}
-    - target: {fileID: 1101700974810018550, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: power_KeepList
-      value: 
-      objectReference: {fileID: 1535409290}
+      objectReference: {fileID: 1030869068}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: gameover
       value: 
       objectReference: {fileID: 1283611982}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: scoretxt
+      value: 
+      objectReference: {fileID: 786166515}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearboss
+      value: 
+      objectReference: {fileID: 1314770144}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearkill
+      value: 
+      objectReference: {fileID: 1217070356}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearmini
+      value: 
+      objectReference: {fileID: 844142915}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: ClearLayer
       value: 
       objectReference: {fileID: 1654423437}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: DeathLayer
+      value: 
+      objectReference: {fileID: 9353410}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: deathLayer
       value: 
       objectReference: {fileID: 9353410}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: scoreborad
+      value: 
+      objectReference: {fileID: 660892236}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: GameUILayer
+      value: 
+      objectReference: {fileID: 267194627}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: VolumeLayer
       value: 
@@ -80769,9 +80805,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 267194627}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: hp_KeepList
+      value: 
+      objectReference: {fileID: 1706330896}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Clearcollect
+      value: 
+      objectReference: {fileID: 2116487125}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: DisplayLayer
       value: 
       objectReference: {fileID: 325924911}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: HealthHp1Bar
+      value: 
+      objectReference: {fileID: 2111608296}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: HealthHp2Bar
+      value: 
+      objectReference: {fileID: 1295596870}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: HealthHp3Bar
+      value: 
+      objectReference: {fileID: 820947046}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: SettingLayer
       value: 
@@ -80780,6 +80836,122 @@ PrefabInstance:
       propertyPath: escMenuLayer
       value: 
       objectReference: {fileID: 1026457886}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: exp_KeepList
+      value: 
+      objectReference: {fileID: 1755378863}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarSprite
+      value: 
+      objectReference: {fileID: 7996634610203937278}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: SkillBarSprite
+      value: 
+      objectReference: {fileID: 2333690592695154429}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: power_KeepList
+      value: 
+      objectReference: {fileID: 1535409290}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: scoreBoradLayer
+      value: 
+      objectReference: {fileID: 1654423437}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime1
+      value: 21627
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime2
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime3
+      value: 49151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime4
+      value: 62258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime5
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.ctime6
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key2.b
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key2.g
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key3.b
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key3.g
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key3.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key4.b
+      value: 0.46666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key4.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key4.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key5.b
+      value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key5.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key5.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key6.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key6.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.key6.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: respawnPoint.Array.data[0]
       value: 
@@ -80792,6 +80964,18 @@ PrefabInstance:
       propertyPath: respawnPoint.Array.data[2]
       value: 
       objectReference: {fileID: 1471547131}
+    - target: {fileID: 1525951680513988629, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: LevelBarGradient.m_NumColorKeys
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Fail
+      value: 
+      objectReference: {fileID: 1634632764}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: set1
+      value: 
+      objectReference: {fileID: 296821027}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: set2
       value: 
@@ -80809,6 +80993,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1971570173}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: m_Dash
+      value: 
+      objectReference: {fileID: 1818004283}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Endkill
       value: 
       objectReference: {fileID: 260730403}
@@ -80817,9 +81005,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 528878707}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: timetxt
+      value: 
+      objectReference: {fileID: 1030869066}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: tipstxt
       value: 
       objectReference: {fileID: 359979241}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: EndTutor
+      value: 
+      objectReference: {fileID: 777441894}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Start_CP
       value: 
@@ -80837,13 +81033,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 518332981}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: Totalkill
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: miniLayer
       value: 
       objectReference: {fileID: 1038666110}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: tipsLayer
+      value: 
+      objectReference: {fileID: 1290668749}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Endcollect
       value: 
       objectReference: {fileID: 541068853}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: StartTutor
+      value: 
+      objectReference: {fileID: 514104141}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: Start_kill
       value: 
@@ -80852,6 +81060,10 @@ PrefabInstance:
       propertyPath: Start_mini
       value: 
       objectReference: {fileID: 1267178477}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: m_WallJump
+      value: 
+      objectReference: {fileID: 395138827}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: GameUILayer
       value: 
@@ -80864,6 +81076,10 @@ PrefabInstance:
       propertyPath: failMission
       value: 
       objectReference: {fileID: 1331592219}
+    - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
+      propertyPath: m_SkillDash
+      value: 
+      objectReference: {fileID: 1804674170}
     - target: {fileID: 1685699370092061528, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: CPmissiontxt
       value: 
@@ -81008,78 +81224,6 @@ PrefabInstance:
       propertyPath: m_SkillDash
       value: 
       objectReference: {fileID: 1804674170}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: ClearCP
-      value: 
-      objectReference: {fileID: 1754271716}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Clearsur
-      value: 
-      objectReference: {fileID: 889677335}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Timertxt
-      value: 
-      objectReference: {fileID: 1030869068}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: scoretxt
-      value: 
-      objectReference: {fileID: 786166515}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Clearboss
-      value: 
-      objectReference: {fileID: 1314770144}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Clearkill
-      value: 
-      objectReference: {fileID: 1217070356}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Clearmini
-      value: 
-      objectReference: {fileID: 844142915}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: scoreborad
-      value: 
-      objectReference: {fileID: 660892236}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: GameUILayer
-      value: 
-      objectReference: {fileID: 267194627}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: Clearcollect
-      value: 
-      objectReference: {fileID: 2116487125}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: LevelBarSprite
-      value: 
-      objectReference: {fileID: 7996634610203937278}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: SkillBarSprite
-      value: 
-      objectReference: {fileID: 2333690592695154429}
-    - target: {fileID: 4639350221203295381, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: scoreBoradLayer
-      value: 
-      objectReference: {fileID: 1654423437}
-    - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: DeathLayer
-      value: 
-      objectReference: {fileID: 9353410}
-    - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: GameUILayer
-      value: 
-      objectReference: {fileID: 267194627}
-    - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: HealthHp1Bar
-      value: 
-      objectReference: {fileID: 2111608296}
-    - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: HealthHp2Bar
-      value: 
-      objectReference: {fileID: 1295596870}
-    - target: {fileID: 5054067995470302974, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
-      propertyPath: HealthHp3Bar
-      value: 
-      objectReference: {fileID: 820947046}
     - target: {fileID: 6814015311937255687, guid: dd8c50d8b47feb349a37679cd959e57d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -82444,7 +82588,7 @@ PrefabInstance:
     - target: {fileID: 3897766878799781588, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee3defbfde59f4c44a4ff86a2367819b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2e82002925ee35b4497390c9829b4fcb, type: 2}
     - target: {fileID: 3897766878799781590, guid: 458e4d819048ff6428f5a900a7ed3936, type: 3}
       propertyPath: m_Mesh
       value: 

@@ -271,16 +271,6 @@ public class ScoreManager : MonoBehaviour
         DesiredScore += 50;
     }
 
-    public void KillStreakCountDown()
-    {
-
-    }
-
-    //public void LevelBarFill(float LevelBarCurrentValue, float LevelBarMin, float LevelBarMax)
-    //{
-    //    _LevelBarSprite.fillAmount = Mathf.Clamp(LevelBarCurrentValue, LevelBarMin, LevelBarMax);
-    //}
-
     public void LevelBarFill()
     {
         LevelBarCurrentValue = (float)LevelBarLevel * LevelBarDevideValue;
