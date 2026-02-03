@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DomanExpansion : MonoBehaviour
 {
-
+    
     public GameObject DomainSphere;
     public ParticleSystem DomainParticleEffect;
     public float DomainParticleDuration = 0.75f;

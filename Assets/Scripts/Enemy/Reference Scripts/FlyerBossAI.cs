@@ -83,11 +83,11 @@ public class FlyerBossAI : MonoBehaviour
     IEnumerator HexAOEattackSecond()
     {
         Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.8f);
         Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.8f);
         Instantiate(HexAttack, new Vector3(ThePlayer.transform.position.x, ThePlayer.transform.position.y - 3f, ThePlayer.transform.position.z), ThePlayer.transform.rotation);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.8f);
     }
 
     public void OnDeath()

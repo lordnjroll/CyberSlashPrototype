@@ -18,10 +18,10 @@ public class spwanenimy : MonoBehaviour
     public Transform[] GroundedSpawnPoints;
     public Transform[] TurretSpawnPoint;
 
-    [Header("Enemy Objects")]
+    /*[Header("Enemy Objects")]
     public GameObject Shooterenemy;
     public GameObject FodderEnemy;
-    public GameObject Shieldenemy;
+    public GameObject Shieldenemy;*/
     
     public float ShieldenemyCount;
 
@@ -41,8 +41,8 @@ public class spwanenimy : MonoBehaviour
     string[] SpecialEnemyTags = { "TurretTag", "DroneTag" };
     //private int SpawnPresets;
     [SerializeField] private GroupEnemy[] EnemySet;
-    [SerializeField] private AudioClip SpawnAudio;
-    [SerializeField] private AudioSource Source;
+    //[SerializeField] private AudioClip SpawnAudio;
+    //[SerializeField] private AudioSource Source;
 
     private GameObject player;
     private ScoreManager ScoreScript;
@@ -50,7 +50,7 @@ public class spwanenimy : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        ScoreScript = player.GetComponent<ScoreManager>();
+        //ScoreScript = player.GetComponent<ScoreManager>();
     }
 
     void Start()
@@ -59,20 +59,15 @@ public class spwanenimy : MonoBehaviour
         ManagerCredit = maxManagerCredit;
 
         InvokeRepeating("CreditBuildUp", 0 ,2);
+        StartCoroutine("MaxCreditBuildUp");
+        //InvokeRepeating("enemySpwan", 0, 0.5f);
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (Mission.Startkill == true || Mission.Startsur)
-        {
-            InvokeRepeating("enemySpwan", 0, 0.5f);
-        }
-
-        if(Mission.Clear_Dash && Mission.Clear_walljump)
-        {
-            InvokeRepeating("enemySpwan", 0, 0.5f);
-        }
+        DevInputs();
+        
 
         //EnemyCount = GameObject.FindGameObjectsWithTag("EnemyTag").Length;
         //EnemyCount = GameObject.FindGameObjectsWithTag("Shooter").Length + GameObject.FindGameObjectsWithTag("FodderTag").Length + GameObject.FindGameObjectsWithTag("Turret").Length;
@@ -82,6 +77,8 @@ public class spwanenimy : MonoBehaviour
         {
             SpawnCoolDown -= Time.deltaTime;
         }
+
+        
     }
 
     public void enemySpwan()
@@ -90,20 +87,23 @@ public class spwanenimy : MonoBehaviour
         {
             GroundedRandomSpawnNumber = Random.Range(0, GroundedSpawnPoints.Length); //select the spawn position
             TurretRandomSpawnNumber = Random.Range(0, TurretSpawnPoint.Length);
-            PresetSelector = Random.Range(0, 100) + HypeDifficultyLevel;
+            PresetSelector = Random.Range(0, 65) + HypeDifficultyLevel;
             //Debug.Log("The difficulty is " + PresetSelector);
             if (PresetSelector <=20)
             {
                 if(ManagerCredit >= 15)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 15;
                     //Easy preset
-                    for (int i = 0; i < EnemySet[0].EnemySetGroup.Length; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         if(GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            /*for(int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }*/
+                            Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[i].transform.position, new Quaternion(0, 90, 0, 0));
 
                         } else if (SpecialEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
@@ -111,7 +111,8 @@ public class spwanenimy : MonoBehaviour
                         }
                                                 
                     }
-                    SpawnCoolDown = 15; //set spawn cooldown;
+                    SpawnCoolDown = 2; //set spawn cooldown;
+                    return;
                 }
                     
             }
@@ -119,14 +120,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if(ManagerCredit >= 16)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 16;
                     //Easy preset 2
-                    for (int i = 0; i < EnemySet[1].EnemySetGroup.Length; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         if (GroundedEnemyTags.Contains(EnemySet[1].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[1].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            /*for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[2], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }*/
+                            Instantiate(EnemySet[1].EnemySetGroup[i], GroundedSpawnPoints[i].transform.position, new Quaternion(0, 90, 0, 0));
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[1].EnemySetGroup[i].gameObject.tag))
@@ -134,7 +138,8 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[1].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;   
+                    SpawnCoolDown = 2;   
+                    return;
                 }
                             
             }
@@ -142,14 +147,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 18)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 18;
                     //Easy preset 3
-                    for (int i = 0; i < EnemySet[2].EnemySetGroup.Length; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         if (GroundedEnemyTags.Contains(EnemySet[2].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[2].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            /*for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[3], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }*/
+                            Instantiate(EnemySet[2].EnemySetGroup[i], GroundedSpawnPoints[i].transform.position, new Quaternion(0, 90, 0, 0));
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[2].EnemySetGroup[i].gameObject.tag))
@@ -157,8 +165,8 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[2].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;  
-
+                    SpawnCoolDown = 2;
+                    return;
                 }
                         
             }
@@ -167,14 +175,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 20)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 20;
                     //Mid preset 1
                     for (int i = 0; i < EnemySet[3].EnemySetGroup.Length; i++)
                     {
-                        if (GroundedEnemyTags.Contains(EnemySet[3].EnemySetGroup[i].gameObject.tag))
+                        if (GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[3].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }
+
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[3].EnemySetGroup[i].gameObject.tag))
@@ -182,7 +193,7 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[3].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;
+                    SpawnCoolDown = 2;
                 }
                 
             }
@@ -190,14 +201,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 22)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 22;
                     //Mid preset 2
                     for (int i = 0; i < EnemySet[4].EnemySetGroup.Length; i++)
                     {
-                        if (GroundedEnemyTags.Contains(EnemySet[4].EnemySetGroup[i].gameObject.tag))
+                        if (GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[4].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }
+
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[4].EnemySetGroup[i].gameObject.tag))
@@ -205,7 +219,7 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[4].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;
+                    SpawnCoolDown = 2;
                 }
                 
             }    
@@ -213,14 +227,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 30)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 30;
                     //Hard preset 1
                     for (int i = 0; i < EnemySet[5].EnemySetGroup.Length; i++)
                     {
-                        if (GroundedEnemyTags.Contains(EnemySet[5].EnemySetGroup[i].gameObject.tag))
+                        if (GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[5].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }
+
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[5].EnemySetGroup[i].gameObject.tag))
@@ -228,7 +245,7 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[5].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;
+                    SpawnCoolDown = 2;
                 }
                 
             }
@@ -236,14 +253,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 30)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 30;
                     //Hard preset 2
                     for (int i = 0; i < EnemySet[6].EnemySetGroup.Length; i++)
                     {
-                        if (GroundedEnemyTags.Contains(EnemySet[6].EnemySetGroup[i].gameObject.tag))
+                        if (GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[6].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }
+
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[6].EnemySetGroup[i].gameObject.tag))
@@ -251,7 +271,7 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[6].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;
+                    SpawnCoolDown = 2;
                 }
                 
             }
@@ -259,14 +279,17 @@ public class spwanenimy : MonoBehaviour
             {
                 if (ManagerCredit >= 40)
                 {
-                    Source.PlayOneShot(SpawnAudio);
                     ManagerCredit -= 40;
                     //Hard preset 3
                     for (int i = 0; i < EnemySet[7].EnemySetGroup.Length; i++)
                     {
-                        if (GroundedEnemyTags.Contains(EnemySet[7].EnemySetGroup[i].gameObject.tag))
+                        if (GroundedEnemyTags.Contains(EnemySet[0].EnemySetGroup[i].gameObject.tag))
                         {
-                            Instantiate(EnemySet[7].EnemySetGroup[i], GroundedSpawnPoints[GroundedRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
+                            for (int GP = 0; GP < GroundedSpawnPoints.Length; GP++)
+                            {
+                                Instantiate(EnemySet[0].EnemySetGroup[i], GroundedSpawnPoints[GP].transform.position, new Quaternion(0, 90, 0, 0));
+                            }
+
 
                         }
                         else if (SpecialEnemyTags.Contains(EnemySet[7].EnemySetGroup[i].gameObject.tag))
@@ -274,12 +297,14 @@ public class spwanenimy : MonoBehaviour
                             Instantiate(EnemySet[7].EnemySetGroup[i], TurretSpawnPoint[TurretRandomSpawnNumber].transform.position, new Quaternion(0, 90, 0, 0));
                         }
                     }
-                    SpawnCoolDown = 15;
+                    SpawnCoolDown = 2;
                 }
                 
             } 
             
         }
+
+        Debug.Log(PresetSelector);
 
     }
     
@@ -293,7 +318,24 @@ public class spwanenimy : MonoBehaviour
     {
         while(ManagerCredit <= maxManagerCredit)
         {
-            ManagerCredit += 1;
+            ManagerCredit += 1000;
+        }
+    }
+
+    void DevInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Invoke("enemySpwan", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Shooter" + "FodderTag" + "TurretTag");
+            foreach(GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
         }
     }
 }
