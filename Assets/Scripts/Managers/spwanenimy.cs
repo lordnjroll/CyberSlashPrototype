@@ -337,6 +337,11 @@ public class spwanenimy : MonoBehaviour
                 Destroy(enemy);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            InvokeRepeating("enemySpwan", 0, 0.5f);
+        }
     }
 }
 

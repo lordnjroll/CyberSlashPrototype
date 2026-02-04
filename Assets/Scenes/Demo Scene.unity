@@ -1759,17 +1759,17 @@ MonoBehaviour:
   maxManagerCredit: 100
   EnemySet:
   - EnemySetGroup:
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
     - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
-  - EnemySetGroup:
     - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
-    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
     - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
   - EnemySetGroup:
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
     - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+  - EnemySetGroup:
     - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
-    - {fileID: 2449809178926863921, guid: 0e90c13eb4a0d1c45a2ff0089d01e8ac, type: 3}
+    - {fileID: 1703654277698019207, guid: 1d659b157385f7c468429951cca9d154, type: 3}
+    - {fileID: 4091262047933902740, guid: 4d103f84617731b41a10ca60d53a999a, type: 3}
 --- !u!4 &4097096968077464823
 Transform:
   m_ObjectHideFlags: 0
